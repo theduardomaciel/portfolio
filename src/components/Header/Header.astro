@@ -195,13 +195,25 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
     .menu {
         position: absolute;
         top: 0;
+        left: 0;
         opacity: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7.5rem 2.5rem;
+
+        height: calc(100vh - (var(--nav-height) / 2));
+        width: 100%;
 
         font-family: "Roboto SerifVariable", "Roboto Serif";
 
-        transition: transform var(--transition);
+        transition: calc(var(--transition) * 2);
         transition-timing-function: cubic-bezier(0.002, 0.82, 0.165, 1);
-        transform: translateY(100%);
+
+        transform: translateY(100vh);
+        transform-style: preserve-3d;
     }
 
     .sectionLine {
@@ -211,22 +223,10 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
     .header.menuExpanded .menu {
         position: fixed;
         top: var(--nav-height);
-        left: 0;
 
+        background-color: var(--secondary-01);
         transform: translateY(0%);
         opacity: 1;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        background-color: var(--secondary-01);
-
-        padding: 7.5rem 2.5rem;
-        height: calc(100vh - (var(--nav-height) / 2));
-        width: 100%;
-
-        transform-style: preserve-3d;
     }
 
     .header.menuExpanded body {
@@ -285,27 +285,24 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
             transition: 0.35s;
         }
 
-        .menu .list {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
-
-            gap: 5rem;
-        }
-
         .menu {
-            display: flex;
             flex-direction: row;
-            align-items: center;
             justify-content: space-between;
+            gap: 7.5rem;
 
+            position: initial;
             transform: initial;
 
-            opacity: 1;
-            position: initial;
+            width: fit-content;
+            height: var(--nav-height-desktop);
+            padding: 0;
 
-            gap: 7.5rem;
+            opacity: 1;
+        }
+
+        .menu .list {
+            flex-direction: row;
+            gap: 5rem;
         }
     }
 </style>

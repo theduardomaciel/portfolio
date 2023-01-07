@@ -50,9 +50,9 @@
 
     overflow: hidden;
     white-space: nowrap;
-    opacity: 0;
+    opacity: 1;
 
-    animation: fadeIn 250ms forwards;
+    /*  animation: fadeIn 250ms 100ms forwards; */
 }
 
 .blob {
