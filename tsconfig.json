@@ -1,0 +1,22 @@
+{
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "types": [
+            "@astrojs/image/client"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": [
+                "src/components/*"
+            ],
+            "@assets/*": [
+                "public/*"
+            ],
+            "@layouts/*": [
+                "src/layouts/*"
+            ]
+        }
+    }
+}

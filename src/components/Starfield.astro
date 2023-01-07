@@ -1,0 +1,139 @@
+---
+---
+
+<canvas class="starfield"></canvas>
+
+<script>
+    const allCanvas = document.querySelectorAll("canvas.starfield");
+
+    const lod = "high" as "low" | "high";
+    const theme = "dark" as "light" | "dark";
+
+    const STARS_NUM = 200;
+    const STAR_SIZE = 0.005; //tamanho máximo da estrela como fração da largura da tela
+    const STAR_SPEED = 0.05;
+
+    function randomSign() {
+        return Math.random() >= 0.5 ? 1 : -1;
+    }
+
+    function createCanvas(canvasToAssign: any, width: number, height: number) {
+        const canvas = canvasToAssign as HTMLCanvasElement;
+
+        canvas.height = height;
+        canvas.width = width;
+
+        return canvas;
+    }
+
+    function renderStars(canvas: HTMLCanvasElement) {
+        // Determinamos as estrelas
+        let stars = [] as any;
+        const starSpeed = STAR_SPEED * canvas.width;
+        const xv = starSpeed * randomSign() * Math.random();
+        // A função "randomSign()" determina a direção em que a estrela vai andar (esquerda ou direita)
+        // Using Pythagoras' theorem, yv = sqrt(starSpeed^2 - xv^2)
+        const yv =
+            Math.sqrt(Math.pow(starSpeed, 2) - Math.pow(xv, 2)) * randomSign();
+        for (let i = 0; i < STARS_NUM; i++) {
+            let speedMultiplier = Math.random() * 1.5 + 0.5;
+            stars[i] = {
+                r: (Math.random() * STAR_SIZE * canvas.width) / 2, //raio
+                x: Math.floor(Math.random() * canvas.width), // posição x
+                y: Math.floor(Math.random() * canvas.height), // posição y
+                xv: xv * speedMultiplier, // velocidade horizontal (x)
+                yv: yv * speedMultiplier, // velocidade vertical (y)
+            };
+        }
+        return stars;
+    }
+
+    function starsAnimation(
+        time: number,
+        context: CanvasRenderingContext2D,
+        canvas: HTMLCanvasElement,
+        stars: any,
+        requestRef: any,
+        previousTimeRef: any
+    ) {
+        if (previousTimeRef !== undefined) {
+            const deltaTime = time - previousTimeRef;
+
+            // Em seguida, determinamos o plano de fundo do canvas
+            context.fillStyle = "dark";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // E renderizamos as estrelas
+            context.fillStyle = theme === "light" ? "white" : "black";
+            for (let i = 0; i < STARS_NUM; i++) {
+                context.beginPath();
+                context.arc(stars[i].x, stars[i].y, stars[i].r, 0, Math.PI * 2);
+                context.fill();
+
+                // update the star's x position
+                stars[i].x += stars[i].xv * deltaTime * 0.001;
+
+                // reposition the star to the other side if it goes off screen
+                if (stars[i].x < 0 - stars[i].r) {
+                    stars[i].x = canvas.width + stars[i].r;
+                } else if (stars[i].x > canvas.width + stars[i].r) {
+                    stars[i].x = 0 - stars[i].r;
+                }
+
+                // update the star's y position
+                stars[i].y += stars[i].yv * deltaTime * 0.001;
+
+                // reposition the star to the other side if it goes off screen
+                if (stars[i].y < 0 - stars[i].r) {
+                    stars[i].y = canvas.height + stars[i].r;
+                } else if (stars[i].y > canvas.height + stars[i].r) {
+                    stars[i].y = 0 - stars[i].r;
+                }
+            }
+        }
+
+        previousTimeRef = time;
+        requestRef = requestAnimationFrame((time: number) =>
+            starsAnimation(
+                time,
+                context,
+                canvas,
+                stars,
+                requestRef,
+                previousTimeRef
+            )
+        );
+    }
+
+    allCanvas.forEach((canvasFromIteration) => {
+        let requestRef: any = undefined;
+        let previousTimeRef: any = undefined;
+
+        const width = window.innerWidth;
+        const isScreenWide = width > 1024;
+
+        const blobDefaultWidth = isScreenWide ? width / 2 : width;
+
+        if (lod !== "low") {
+            const canvas = createCanvas(
+                canvasFromIteration,
+                blobDefaultWidth,
+                blobDefaultWidth
+            );
+            const context = canvas.getContext("2d") as any;
+            const stars = renderStars(canvas);
+
+            requestRef = requestAnimationFrame((time: number) =>
+                starsAnimation(
+                    time,
+                    context,
+                    canvas,
+                    stars,
+                    requestRef,
+                    previousTimeRef
+                )
+            );
+        }
+    });
+</script>

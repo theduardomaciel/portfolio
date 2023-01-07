@@ -1,0 +1,99 @@
+[
+    {
+        "name": "Web",
+        "techs": [
+            {
+                "name": "HTML",
+                "experience": 2,
+                "unit": "year",
+                "id": 0
+            },
+            {
+                "name": "CSS",
+                "experience": 2,
+                "unit": "year",
+                "id": 1
+            },
+            {
+                "name": "JavaScript",
+                "experience": 4,
+                "unit": "year",
+                "id": 2
+            },
+            {
+                "name": "TypeScript",
+                "experience": 2,
+                "unit": "year",
+                "id": 3
+            }
+        ]
+    },
+    {
+        "name": "Frameworks",
+        "techs": [
+            {
+                "name": "Next.js",
+                "experience": 1.5,
+                "unit": "year",
+                "id": 4
+            },
+            {
+                "name": "Node.js",
+                "experience": 4,
+                "unit": "year",
+                "id": 5
+            }
+        ]
+    },
+    {
+        "name": "Libraries",
+        "techs": [
+            {
+                "name": "React",
+                "experience": 3,
+                "unit": "year",
+                "id": 6
+            },
+            {
+                "name": "React Native",
+                "experience": 2,
+                "unit": "year",
+                "id": 6
+            }
+        ]
+    },
+    {
+        "name": "Data",
+        "techs": [
+            {
+                "name": "Prisma",
+                "experience": 1,
+                "unit": "year",
+                "id": 7
+            },
+            {
+                "name": "PostgreSQL",
+                "experience": 1,
+                "unit": "year",
+                "id": 8
+            }
+        ]
+    },
+    {
+        "name": "Games",
+        "techs": [
+            {
+                "name": "Lua",
+                "experience": 4,
+                "unit": "year",
+                "id": 9
+            },
+            {
+                "name": "C#",
+                "experience": 6,
+                "unit": "month",
+                "id": 10
+            }
+        ]
+    }
+]

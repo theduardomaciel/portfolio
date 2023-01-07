@@ -1,0 +1,60 @@
+---
+import Svg from "@jasikpark/astro-svg-loader";
+---
+
+<script>
+    function toggleHandler() {
+        const header = document.getElementById("header") as HTMLDivElement;
+        if (header) {
+            header.classList.toggle("menuExpanded");
+        }
+    }
+
+    const button = document.querySelector(".toggleButton");
+    if (button) {
+        button.addEventListener("click", toggleHandler);
+    }
+</script>
+
+<button type="button" class="toggleButton" name={"Menu button"}>
+    <Svg
+        class={"close"}
+        src={import("@assets/icons/close.svg?raw")}
+        aria-label="Menu close button"
+    />
+    <Svg
+        class={"open"}
+        src={import("@assets/icons/menu.svg?raw")}
+        aria-label="Menu open button"
+    />
+</button>
+
+<style>
+    .toggleButton {
+        cursor: pointer;
+    }
+
+    .close path {
+        fill: var(--primary-01);
+    }
+
+    .open path {
+        stroke: var(--primary-01);
+    }
+
+    :global(.header.menuExpanded) .close,
+    .open {
+        display: block;
+    }
+
+    :global(.header.menuExpanded) .open,
+    .close {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .toggleButton {
+            display: none;
+        }
+    }
+</style>

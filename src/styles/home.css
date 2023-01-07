@@ -1,0 +1,369 @@
+/*  HOME  ========================================== */
+.home {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.home header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-block: 1.5rem;
+
+    width: 100%;
+
+    z-index: 5;
+    gap: 2.5rem;
+    padding-top: 2.5rem;
+}
+
+.home header h2 {
+    font-family: "Sugarpunch";
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.home header h1 {
+    font-family: "Organic Relief";
+    font-size: 4rem;
+    text-align: center;
+    line-height: 8rem;
+}
+
+.home header p {
+    font-family: "Roboto SerifVariable", "Roboto Serif";
+    font-size: 1.8rem;
+    width: 65%;
+}
+
+.home .title {
+    max-width: 80vw;
+}
+
+.blobContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+
+    animation: fadeIn 250ms forwards;
+}
+
+.blob {
+    position: relative;
+
+    width: 100vw;
+    height: 100vw;
+}
+
+.blob img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.blobBackground {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: var(--primary-01);
+}
+
+.blob1 {
+    transition: 5s;
+    left: -15rem;
+}
+
+.blob1 img {
+    display: none;
+    z-index: 2;
+}
+
+.blob2 {
+    transition: 5s;
+    right: -15rem;
+}
+
+.blob2 img {
+    position: absolute;
+    top: 15rem;
+    right: 20rem;
+    z-index: 2;
+
+    animation: moveAstronautMobile 8s infinite alternate;
+}
+
+.blob2 .stars {
+    position: absolute;
+    top: 10rem;
+    right: 17.5rem;
+
+    animation: moveStarsHorizontally 15s infinite alternate;
+}
+
+.blob2 .stars path {
+    fill: var(--secondary-01);
+}
+
+.blob2 .stars path:nth-child(1) {
+    animation: moveStars 8s infinite alternate;
+}
+
+.blob2 .stars path:nth-child(2) {
+    animation: moveStars 4s infinite alternate;
+}
+
+.blob2 .stars path:nth-child(2) {
+    animation-name: moveStars;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.rocket {
+    position: absolute;
+    top: 5rem;
+    left: -5rem;
+
+    z-index: 1;
+
+    animation-name: moveRocketMobile;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    /* animation-direction: alternate; */
+}
+
+.rocket2 {
+    position: absolute;
+    top: -2rem;
+    left: 3rem;
+
+    z-index: 1;
+    animation: moveRocketMobile linear 5s infinite 10s;
+}
+
+.rocket path,
+.rocket2 path {
+    fill: var(--secondary-01);
+}
+
+.blob2 img {
+    z-index: 2;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveRocketMobile {
+    0% {
+        transform: translateX(0) translateY(0%) rotate(65deg);
+    }
+
+    60%,
+    100% {
+        transform: translateX(80vw) translateY(90vh) rotate(75deg);
+    }
+}
+
+@keyframes moveStarsHorizontally {
+    from {
+        transform: translateX(-10%) rotate(10deg);
+    }
+
+    to {
+        transform: translateX(15) rotate(2deg);
+    }
+}
+
+@keyframes moveAstronautMobile {
+    from {
+        transform: translateY(0%) rotate(10deg);
+    }
+
+    to {
+        transform: translate(-2%, 10%) rotate(2deg);
+    }
+}
+
+@keyframes moveStars {
+    from {
+        transform: translate(10%) rotate(15deg);
+    }
+
+    to {
+        transform: translate(-2%, 8%) rotate(1deg);
+    }
+}
+
+@keyframes moveStars2 {
+    from {
+        transform: translate(0%, -35%) rotate(15deg);
+    }
+
+    to {
+        transform: translate(25%, 10%) rotate(-4deg);
+    }
+}
+
+@media (min-width: 1366px) {
+    .home header h1 {
+        font-family: "Organic Relief";
+        font-size: 5.5rem;
+        text-align: center;
+        line-height: 10rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /*  HOME  ========================================== */
+    .home {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .home header {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        width: 33%;
+
+        transform: translate(-50%, 0%);
+    }
+
+    .home header p {
+        width: 100%;
+    }
+
+    .home .blobContainer {
+        margin-top: -5rem;
+    }
+
+    .home .blobContainer.holder1 {
+        order: 1;
+    }
+
+    .home .blobContainer.holder2 {
+        order: 3;
+    }
+
+    .blob,
+    .blobBackground {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .blob1 {
+        left: -35%;
+    }
+
+    .blob2 {
+        right: -35%;
+    }
+
+    .blob2 .stars {
+        top: 20rem;
+        right: 35rem;
+    }
+
+    @keyframes moveRocket {
+        0% {
+            transform: translateX(0) rotate(10deg);
+        }
+
+        60%,
+        100% {
+            transform: translateX(50vw) rotate(8deg);
+        }
+    }
+
+    .rocket {
+        top: 42.5rem;
+        left: 10rem;
+
+        animation: moveRocket 20s linear infinite;
+    }
+
+    .rocket2 {
+        position: absolute;
+        top: 42.5rem;
+        left: -5rem;
+
+        animation: moveRocket 20s linear 13s infinite;
+    }
+
+    .blob2 img {
+        top: 30rem;
+        right: 37.5rem;
+
+        animation: moveAstronautFromBlob2 ease-in-out 13s infinite alternate;
+    }
+
+    @keyframes moveAstronautFromBlob2 {
+        0% {
+            transform: translate(-15%, 0%) rotate(10deg);
+        }
+
+        80%,
+        100% {
+            transform: translate(-10%, 55vh) rotate(2deg);
+        }
+    }
+
+    .blob1 img {
+        display: flex;
+        position: absolute;
+        bottom: -20rem;
+        left: 35rem;
+
+        animation: moveAstronautFromBlob1 13s infinite alternate;
+    }
+
+    @keyframes moveAstronautFromBlob1 {
+
+        0%,
+        50% {
+            transform: translate(-15%, 0%) rotate(10deg);
+        }
+
+        100% {
+            transform: translate(-10%, -55vh) rotate(2deg);
+        }
+    }
+
+    .home header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        order: 2;
+
+        margin-block: 1.5rem;
+
+        gap: 2.5rem;
+        padding-top: 5rem;
+    }
+
+    .home header h2 {
+        font-size: 3.2rem;
+    }
+
+    .home header p {
+        font-size: 2.4rem;
+    }
+}

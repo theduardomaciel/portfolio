@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Sugarpunch';
+    src: url('/fonts/Sugarpunch.woff2') format('woff2'),
+        url('/fonts/Sugarpunch.woff') format('woff');
+    font-display: optional;
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+    --nav-height: 10rem;
+    --nav-height-desktop: 8rem;
+
+    --primary-01: #FFFFFF;
+    --secondary-01: #000000;
+    --secondary-02: #040305;
+
+    --transition: 215ms;
+}
+
+:root.light {
+    --primary-01: #000000;
+    --secondary-01: #FFFFFF;
+    --secondary-02: #EEE9F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* outline: 1px solid red; */
+    box-sizing: border-box;
+    /* As caixas agora passam a ser contadas a partir da borda, e não do conteúdo, evitando problemas com o "padding" */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    text-rendering: optimizeLegibility;
+    margin: 0;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--primary-01);
+
+    overflow-y: overlay;
+    overflow-x: hidden;
+    background-color: var(--secondary-01);
+    transition: background-color var(--transition);
+}
+
+main {
+    margin-inline: auto;
+    margin-top: var(--nav-height);
+}
+
+.wrapper {
+    padding-inline: 5rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 10rem;
+    gap: 6.5rem;
+}
+
+.bolder {
+    font-weight: 800;
+}
+
+.big {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-01)
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+}
+
+.button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button {
+    background-color: initial;
+    border: none;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .wrapper {
+        padding-inline: 12.5rem;
+    }
+}
