@@ -4,8 +4,6 @@ import ActionButtons from "./subcomponents/ActionButtons.astro";
 import SectionButton from "./subcomponents/SectionButton.astro";
 import ToggleButton from "./subcomponents/ToggleButton.astro";
 
-const LOD = "high";
-
 const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar minúsculo
 ---
 
@@ -135,7 +133,7 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
     window.addEventListener("resize", handleResize);
 </script>
 
-<header id="header" class={`header ${LOD === "high" ? "highDetail" : ""}`}>
+<header id="header" class={`header`}>
     <a class="title" href="/#">
         {`<>edu.</>`}
     </a>
@@ -178,7 +176,7 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
         font-size: 2.4rem;
     }
 
-    .header.scroll.highDetail:not(.menuExpanded) {
+    html[data-lod="high"] .header.scroll:not(.menuExpanded) {
         opacity: 1;
         background-color: initial;
         -webkit-backdrop-filter: blur(25px);

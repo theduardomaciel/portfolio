@@ -15,7 +15,11 @@ const { excludeInstagram, excludeTwitter, excludeEmail, excludeWhatsApp } =
 <div class="social">
     {
         !excludeEmail && (
-            <a title="email" href="mailto:eduardomacielbr@gmail.com">
+            <a
+                title="email"
+                href="mailto:eduardomacielbr@gmail.com"
+                target="_blank"
+            >
                 <Svg
                     class={"icon"}
                     src={import("@assets/icons/mail.svg?raw")}
@@ -28,6 +32,7 @@ const { excludeInstagram, excludeTwitter, excludeEmail, excludeWhatsApp } =
         !excludeWhatsApp && (
             <a
                 title="whatsApp"
+                target="_blank"
                 href="https://api.whatsapp.com/send?phone=5582988299223&text=Want%20to%20develop%20an%20awesome%20project?%20Contact%20me%20directly%20so%20we%20can%20talk%20about%20it%20:)"
             >
                 <Svg
@@ -40,7 +45,11 @@ const { excludeInstagram, excludeTwitter, excludeEmail, excludeWhatsApp } =
     }
     {
         !excludeInstagram && (
-            <a title="instagram" href="https://instagram.com/theduardomaciel">
+            <a
+                title="instagram"
+                href="https://instagram.com/theduardomaciel"
+                target="_blank"
+            >
                 <Svg
                     class={"icon outlined"}
                     src={import("@assets/icons/enterprises/instagram.svg?raw")}
@@ -51,7 +60,11 @@ const { excludeInstagram, excludeTwitter, excludeEmail, excludeWhatsApp } =
     }
     {
         !excludeTwitter && (
-            <a title="twitter" href="https://twitter.com/theduardomaciel">
+            <a
+                title="twitter"
+                href="https://twitter.com/theduardomaciel"
+                target="_blank"
+            >
                 <Svg
                     class={"icon twitter"}
                     src={import("@assets/icons/enterprises/twitter.svg?raw")}

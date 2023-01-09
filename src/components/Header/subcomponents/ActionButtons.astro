@@ -1,56 +1,83 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
-
-const currentTheme = "dark";
-const currentLOD = "high";
 ---
 
 <script>
     const themeButton = document.getElementById("themeButton") as HTMLElement;
     const lodButton = document.getElementById("lodButton") as HTMLElement;
 
+    const lod = localStorage.getItem("lod") || "high";
+    const theme = localStorage.getItem("theme") || "dark";
+
+    const currentLodText = document.getElementById("currentLOD") as HTMLElement;
+    currentLodText.textContent = lod;
+
+    const currentThemeText = document.getElementById(
+        "currentTheme"
+    ) as HTMLElement;
+    currentThemeText.textContent = theme;
+
     themeButton.addEventListener("click", () => {
-        console.log("theme button clicked");
+        const theme = localStorage.getItem("theme");
+
+        if (theme === "light") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            currentThemeText.textContent = "Dark";
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+            currentThemeText.textContent = "Light";
+        }
+        themeButton.classList.toggle("dark");
     });
 
     lodButton.addEventListener("click", () => {
-        console.log("lod button clicked");
+        const lod = localStorage.getItem("lod");
+        if (lod === "low") {
+            localStorage.setItem("lod", "high");
+            document.documentElement.setAttribute("data-lod", "high");
+            currentLodText.textContent = "High";
+        } else {
+            localStorage.setItem("lod", "low");
+            document.documentElement.setAttribute("data-lod", "low");
+            currentLodText.textContent = "Low";
+        }
     });
 </script>
 
 <div class="holder">
     <div id="themeButton" class="iconHolder theme">
-        {
-            currentTheme === "dark" ? (
-                <Svg
-                    class={"interactiveIcon"}
-                    width={28}
-                    height={28}
-                    src={import("@assets/icons/dark_mode.svg?raw")}
-                    aria-label="Dark theme toggle button"
-                />
-            ) : (
-                <Svg
-                    class={"interactiveIcon"}
-                    width={28}
-                    height={28}
-                    src={import("@assets/icons/light_mode.svg?raw")}
-                    aria-label="Light theme toggle button"
-                />
-            )
-        }
-        <p>{currentTheme}</p>
+        <Svg
+            class={"interactiveIcon"}
+            id={"darkIcon"}
+            width={28}
+            height={28}
+            fill={"var(--primary-01)"}
+            src={import("@assets/icons/dark_mode.svg?raw")}
+            aria-label="Dark theme toggle button"
+        />
+        <Svg
+            class={"interactiveIcon"}
+            id={"lightIcon"}
+            width={28}
+            height={28}
+            fill={"var(--primary-01)"}
+            src={import("@assets/icons/light_mode.svg?raw")}
+            aria-label="Light theme toggle button"
+        />
+        <p id="currentTheme">DARK</p>
     </div>
     <div id="lodButton" class="iconHolder lod">
         <Svg
             class={"interactiveIcon detail"}
             width={28}
-            fill={"var(--primary-color-01)"}
             height={28}
+            fill={"var(--primary-01)"}
             src={import("@assets/icons/level_of_detail.svg?raw")}
             aria-label="Light theme toggle button"
         />
-        <p>{currentLOD}</p>
+        <p id="currentLOD">HIGH</p>
     </div>
 </div>
 
@@ -80,6 +107,16 @@ const currentLOD = "high";
         display: flex;
     }
 
+    html[data-theme="light"] #darkIcon,
+    html[data-theme="dark"] #lightIcon {
+        display: flex;
+    }
+
+    html[data-theme="light"] #lightIcon,
+    html[data-theme="dark"] #darkIcon {
+        display: none;
+    }
+
     .iconHolder.lod {
         display: flex;
     }
@@ -88,10 +125,6 @@ const currentLOD = "high";
         font-size: 1rem;
         width: 2.8rem;
         height: 2.8rem;
-    }
-
-    .interactiveIcon path {
-        fill: var(--primary-01);
     }
 
     @media (min-width: 1024px) {

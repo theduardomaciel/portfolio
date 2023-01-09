@@ -114,7 +114,7 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
 
             }
             <a target={"_blank"} rel="noreferrer" href="https://github.com/theduardomaciel">
-                <Button style={{ fontSize: `1.4rem`, paddingInline: `3rem` }}>
+                <Button style={{ fontSize: `1.4rem`, paddingInline: `3rem`, marginBottom: "1rem" }}>
                     <GithubLogo width={`1.8rem`} height={`1.8rem`} />
                     <Translate>Check other repositories</Translate>
                 </Button>

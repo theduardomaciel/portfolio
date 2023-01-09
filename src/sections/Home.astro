@@ -21,6 +21,7 @@ const theme = "dark" as "dark" | "light";
             <h2 style={{ textTransform: "capitalize" }}>HI, I'M</h2>
             <Svg
                 class={"title"}
+                fill={theme === "dark" ? "#fff" : "#000"}
                 src={import("@assets/visual/title.svg?raw")}
                 aria-label="Eduardo Maciel"
                 width={375}

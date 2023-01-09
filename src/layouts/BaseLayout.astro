@@ -10,8 +10,25 @@ const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={i18next.language}>
+<html lang={"en"}>
     <head>
+        <script is:inline>
+            // Get the current theme from local storage
+            const userPrefersLightMode =
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: light)").matches;
+            const currentTheme =
+                localStorage.getItem("theme") ||
+                (userPrefersLightMode ? "light" : "dark");
+
+            // Set the body data-theme attribute to match the local storage item
+            document.documentElement.setAttribute("data-theme", currentTheme);
+
+            const currentLOD = localStorage.getItem("lod") || "high";
+            // Set the body data-lod attribute to match the device capacity
+            localStorage.setItem("lod", currentLOD);
+            document.documentElement.setAttribute("data-lod", currentLOD);
+        </script>
         <BaseHead title={title} description={description} />
     </head>
     <body>

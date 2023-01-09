@@ -1,4 +1,9 @@
 /*  PROJECTS  ========================================== */
+.projects {
+    width: 100vw;
+    overflow: hidden;
+}
+
 .title {
     display: flex;
     flex-direction: row;
@@ -211,6 +216,10 @@
     list-style-type: initial;
 
     text-align: left;
+}
+
+.projectTechnologies .column p {
+    font-family: "Roboto";
 }
 
 .projectTechnologies h5 {

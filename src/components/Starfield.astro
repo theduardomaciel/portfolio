@@ -7,8 +7,10 @@ const { ...props } = Astro.props;
 <script>
     const allCanvas = document.querySelectorAll("canvas.starfield");
 
-    const lod = "high" as "low" | "high";
-    const theme = "dark" as "light" | "dark";
+    const lod = localStorage.getItem("lod") || "high";
+    const theme = localStorage.getItem("theme") || ("dark" as "light" | "dark");
+
+    console.log(lod, theme);
 
     const STARS_NUM = 200;
     const STAR_SIZE = 0.005; //tamanho máximo da estrela como fração da largura da tela

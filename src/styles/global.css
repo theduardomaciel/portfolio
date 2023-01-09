@@ -17,13 +17,17 @@
     --secondary-01: #000000;
     --secondary-02: #040305;
 
+    --deco-gradient: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
+
     --transition: 215ms;
 }
 
-:root.light {
+[data-theme="light"] {
     --primary-01: #000000;
     --secondary-01: #FFFFFF;
     --secondary-02: #EEE9F0;
+
+    --deco-gradient: linear-gradient(90deg, #ffffff 0%, rgba(92, 56, 119, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
 }
 
 * {
