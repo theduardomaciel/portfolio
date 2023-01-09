@@ -11,12 +11,21 @@
             "@components/*": [
                 "src/components/*"
             ],
+            "@utils/*": [
+                "src/utils/*"
+            ],
             "@assets/*": [
                 "public/*"
             ],
             "@layouts/*": [
                 "src/layouts/*"
-            ]
+            ],
+            "@styles/*": [
+                "src/styles/*"
+            ],
+            "@languages/*": [
+                "src/languages/*"
+            ],
         }
     }
 }

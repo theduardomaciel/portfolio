@@ -1,0 +1,170 @@
+/*  TECHNOLOGIES  ========================================== */
+.tech {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tech .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+
+    position: relative;
+}
+
+.tech header {
+    font-family: "Roboto SlabVariable";
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tech header p:nth-child(1) {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 3.2rem;
+}
+
+.tech header p:nth-child(3) {
+    font-weight: 500;
+    text-align: left;
+    font-size: 2rem;
+
+    margin-top: -1.5rem;
+}
+
+.tech header h2 {
+    font-weight: 900;
+    font-size: 12.5rem;
+
+    margin-top: -2.5rem;
+}
+
+.techsList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+
+    gap: 10rem;
+    /* width: 65%; isso só no pc */
+    margin-right: auto;
+}
+
+.techSection {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 3.5rem;
+}
+
+.techSection .techs {
+    /* max-width: 75%; só no pc*/
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3.5rem;
+}
+
+.techDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    /* max-width: 55%; */
+}
+
+.techIcon {
+    width: 10rem;
+    height: 10rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.techIcon path {
+    fill: var(--primary-01);
+}
+
+.techSection .tech {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 2.5rem;
+
+    font-family: "Roboto SerifVariable";
+    font-style: normal;
+    text-align: left;
+}
+
+.techSection .tech p:nth-child(1) {
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.3rem;
+}
+
+.techSection .tech p:nth-child(2) {
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+
+    line-break: auto;
+
+    color: var(--primary-01);
+    opacity: 0.55;
+}
+
+.column2 {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+
+    /*  TECHNOLOGIES  ========================================== */
+    .tech header p {
+        max-width: 75%;
+    }
+
+    .techsList {
+        width: 65%;
+    }
+
+    .techDescription p:nth-child(2) {
+        max-width: 75%;
+    }
+
+    .column2 {
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 35%;
+        height: 100%;
+    }
+
+    .column2 .overlay {
+        position: absolute;
+        width: 65vw;
+        height: 110%;
+        right: -125%;
+        top: -10%;
+
+        background: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
+        ;
+        transform: rotate(-5deg);
+        border-radius: 8rem;
+    }
+}

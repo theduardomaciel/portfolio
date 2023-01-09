@@ -1,12 +1,27 @@
 ---
-import Header from "@components/Header/Header.astro";
+import { createClient } from "@vercel/edge-config";
+
 import Layout from "@layouts/BaseLayout.astro";
-import Home from "./Home.astro";
+
+import Header from "@components/Header/Header.astro";
+import Footer from "@components/Footer.astro";
+
+import Home from "src/sections/Home.astro";
+import Projects from "src/sections/Projects";
+import Tech from "src/sections/Tech.astro";
+import Contact from "src/sections/Contact.astro";
+
+const config = createClient(import.meta.env.EDGE_CONFIG);
+const response = await config.getAll(["projects", "tech"]);
 ---
 
 <Layout>
     <main>
         <Header />
         <Home />
+        <Projects projects={response?.projects} client:load />
+        <Tech technologies={response?.tech} />
+        <Contact />
+        <Footer />
     </main>
 </Layout>

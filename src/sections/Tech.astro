@@ -1,0 +1,70 @@
+---
+import "@styles/tech.css";
+
+import AstronautDeco from "@components/AstronautDeco.astro";
+import Tag from "@components/Tag.astro";
+
+interface Props {
+    technologies: {
+        name: string;
+        techs: {
+            name: string;
+            experience: number;
+            unit: string;
+            icon_url: string;
+        }[];
+    }[];
+}
+
+const { technologies } = Astro.props;
+---
+
+<section class={`tech section wrapper`} id="tech">
+    <header>
+        <p>and finally,</p>
+        <h2>tech</h2>
+        <p>
+            In my personal journey, I already worked with some technologies, and
+            here they are:
+        </p>
+    </header>
+    <div class="content">
+        <ul id="techsList" class="techsList">
+            {
+                technologies.map((techSection, sectionIndex) => (
+                    <li class="techSection">
+                        <Tag title={techSection.name} />
+                        <ul class="techs">
+                            {techSection.techs.map((tech) => (
+                                <li class="tech">
+                                    <div class="techIcon">
+                                        <img
+                                            width={100}
+                                            height={100}
+                                            src={tech.icon_url}
+                                            alt={`Tech (${tech.name}) icon`}
+                                        />
+                                    </div>
+                                    <div class="techDescription">
+                                        <p>{tech.name} </p>
+                                        <p>
+                                            +{tech.experience}
+                                            {`${tech.unit}${
+                                                tech.experience > 1 ? "s" : ""
+                                            }`}{" "}
+                                            experience
+                                        </p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))
+            }
+        </ul>
+        <div class="column2">
+            <AstronautDeco />
+            <div class="overlay"></div>
+        </div>
+    </div>
+</section>

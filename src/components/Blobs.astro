@@ -25,8 +25,25 @@ import "../styles/home.css";
         "blob2Path"
     ) as unknown as SVGPathElement;
 
+    const blobContainer1 = document.querySelector(".blobContainer.holder1");
+    const blobContainer2 = document.querySelector(".blobContainer.holder2");
+
+    if (blobContainer1) {
+        blobContainer1.classList.add("loaded");
+    }
+
+    if (blobContainer2) {
+        blobContainer2.classList.add("loaded");
+    }
+
     function generateBlobs() {
         const { width, isScreenWide } = getWindowDimensions();
+        console.log(
+            width,
+            isScreenWide,
+            document.documentElement.clientWidth,
+            window.innerWidth || 0
+        );
         const blobWidth = isScreenWide ? width / 2 : width;
 
         const blob1 = getBlobPath(blobWidth);

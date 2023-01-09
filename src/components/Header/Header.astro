@@ -1,11 +1,12 @@
 ---
+import Button from "@components/Button";
 import ActionButtons from "./subcomponents/ActionButtons.astro";
 import SectionButton from "./subcomponents/SectionButton.astro";
 import ToggleButton from "./subcomponents/ToggleButton.astro";
 
 const LOD = "high";
 
-const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
+const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar minúsculo
 ---
 
 <script>
@@ -90,7 +91,6 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
                     const sectionButton = document.querySelector(
                         `.menu a[title*=${sectionId}]`
                     ) as HTMLElement;
-                    console.log(sectionButton);
                     if (sectionButton) {
                         sectionButton.classList.add("active");
                         lastSectionId = sectionId;
@@ -128,8 +128,8 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
     originalSizes = Object.assign({}, ...buttonsSizes);
     const timeout = setTimeout(() => {
         updateNavLine(sectionsButtons[0], "home");
+        clearTimeout(timeout);
     }, 500);
-    clearTimeout(timeout);
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
@@ -148,7 +148,9 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
                     <SectionButton title={section} />
                 ))
             }
-            <!-- <HeaderContactButton /> -->
+            <li>
+                <a class="button" href="/blog">Blog</a>
+            </li>
         </ul>
         <ActionButtons />
     </div>
@@ -183,6 +185,25 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
         backdrop-filter: blur(25px);
     }
 
+    .button {
+        font-family: Roboto SerifVariable;
+        font-weight: 400;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid var(--primary-01);
+        border-radius: 0.5rem;
+        padding: 0.35rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button:hover {
+        background-color: var(--primary-01);
+        outline: none;
+        color: var(--secondary-01);
+    }
+
     .title {
         font-family: "Roboto SerifVariable", "Roboto Serif";
         font-style: normal;
@@ -202,9 +223,9 @@ const SECTIONS = ["home", "projects", "tech"]; // lembra de deixar minúsculo
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 7.5rem 2.5rem;
+        padding: 4.5rem;
 
-        height: calc(100vh - (var(--nav-height) / 2));
+        height: calc(100vh - var(--nav-height));
         width: 100%;
 
         font-family: "Roboto SerifVariable", "Roboto Serif";

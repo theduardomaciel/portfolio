@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'Sugarpunch';
-    src: url('/fonts/Sugarpunch.woff2') format('woff2'),
-        url('/fonts/Sugarpunch.woff') format('woff');
-    font-display: optional;
+    font-family: 'Organic Relief';
+    src: url('/fonts/OrganicRelief.woff2') format('woff2'),
+        url('/fonts/OrganicRelief.woff') format('woff');
+    font-display: swap;
     font-weight: normal;
     font-style: normal;
 }

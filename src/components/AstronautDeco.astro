@@ -1,0 +1,33 @@
+---
+const theme = "dark" as "dark" | "light";
+---
+
+<video
+    class="deco"
+    width="320"
+    height="240"
+    autoplay
+    muted
+    loop
+    style={{
+        filter: theme === "light" ? "invert()" : "none",
+        userSelect: "none",
+        zIndex: -1,
+    }}
+>
+    <source src="/astronaut_1024.mp4" type="video/mp4" />
+</video>
+
+<style>
+    .deco {
+        width: 100%;
+        height: fit-content;
+
+        position: sticky;
+        top: 10rem;
+        align-self: flex-start;
+
+        transition: 0.275s;
+        /* filter: invert(); */
+    }
+</style>

@@ -4,15 +4,13 @@ import "../styles/home.css";
 import { Image } from "@astrojs/image/components";
 
 import Svg from "@jasikpark/astro-svg-loader";
-import AstronautDarkMode from "@assets/images/astronauta_dark.png";
 
 import Planet from "@components/Planet.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 import Starfield from "@components/Starfield.astro";
 import Blobs from "@components/Blobs.astro";
 
-const theme = "dark";
-const lod = "high";
+const theme = "dark" as "dark" | "light";
 ---
 
 <section id="home" class="home">
@@ -29,10 +27,18 @@ const lod = "high";
             />
         </div>
         <p>Ongoing software engineer</p>
-        <!-- <a href="/#contact">
-            <Button>Contact</Button>
-        </a> -->
         <SocialMedia />
+        <div id="mouseScroll" class="mouseScroll">
+            <Svg
+                src={import("@assets/icons/mouse.svg?raw")}
+                aria-label="Mouse indicator for scrolling"
+            />
+            <Svg
+                class={"doubleArrow"}
+                src={import("@assets/icons/double_arrow.svg?raw")}
+                aria-label="Double arrow down"
+            />
+        </div>
     </header>
     <div class="blobContainer holder1">
         <Planet />
@@ -40,13 +46,24 @@ const lod = "high";
             class="blob blob1"
             style={{ WebkitClipPath: `url(#blob1)`, clipPath: `url(#blob1)` }}
         >
-            <Image
-                src={AstronautDarkMode}
-                style={{ filter: theme === "dark" ? "none" : "invert()" }}
-                width={239}
-                height={239}
-                alt="Astronauta"
-            />
+            <picture>
+                <source
+                    type="image/avif"
+                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    width={239}
+                    height={239}
+                    srcset="/images/astronauta.avif"
+                />
+                <img
+                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    width={239}
+                    height={239}
+                    src="/images/astronauta.png"
+                    sizes="((max-width: 768px)) 119.5px,
+              (min-width: 769px) 239px"
+                    alt="Astronauta picture fallback"
+                />
+            </picture>
             <Svg
                 class={"rocket"}
                 src={import("@assets/visual/rocket.svg?raw")}
@@ -66,13 +83,22 @@ const lod = "high";
                 src={import("@assets/visual/stars.svg?raw")}
                 aria-label="Drawing of a group of stars"
             />
-            <Image
-                src={AstronautDarkMode}
-                style={{ filter: theme === "dark" ? "none" : "invert()" }}
-                width={239}
-                height={239}
-                alt="Astronauta"
-            />
+            <picture>
+                <source
+                    type="image/avif"
+                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    width={239}
+                    height={239}
+                    srcset="/images/astronauta.avif"
+                />
+                <img
+                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    width={239}
+                    height={239}
+                    src="/images/astronauta.png"
+                    alt="Astronauta picture fallback"
+                />
+            </picture>
             <Svg
                 class={"rocket2"}
                 src={import("@assets/visual/rocket.svg?raw")}

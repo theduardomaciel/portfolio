@@ -1,15 +1,13 @@
 import styles from './button.module.css';
 
-type Props = {
-    children?: React.ReactNode;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    classes?: string;
     scheme?: 'light_background' | 'dark_background' | 'disable_invert';
-    style?: React.CSSProperties;
-    onClick?: () => void;
 }
 
-export default function Button({ children, style, scheme = "light_background", onClick }: Props) {
+export default function Button({ classes, children, style, scheme = "light_background", onClick, ...rest }: Props) {
     return (
-        <button onClick={onClick} className={`${styles.button} ${scheme ? styles[scheme] : ""}`} type='button' style={style} >
+        <button {...rest} onClick={onClick} className={`${styles.button} ${classes} ${scheme ? styles[scheme] : ""}`} type='button' style={style} >
             {children}
         </button>
     );

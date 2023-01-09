@@ -1,18 +1,18 @@
 import { defineConfig } from 'astro/config';
+
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
 import react from "@astrojs/react";
-
-// https://astro.build/config
 import image from "@astrojs/image";
+/* import tailwind from "@astrojs/tailwind";
+import astroI18next from "astro-i18next"; */
 
-// https://astro.build/config
-import tailwind from "@astrojs/tailwind";
+import svgr from 'vite-plugin-svgr'
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), react(), image(), tailwind()]
+    site: 'https://theduardomaciel-v2.vercel.app/',
+    integrations: [mdx(), sitemap(), react(), image()],
+    vite: {
+        plugins: [svgr()]
+    }
 });

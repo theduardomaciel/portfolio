@@ -1,7 +1,8 @@
 ---
+const { ...props } = Astro.props;
 ---
 
-<canvas class="starfield"></canvas>
+<canvas {...props} class="starfield"></canvas>
 
 <script>
     const allCanvas = document.querySelectorAll("canvas.starfield");
