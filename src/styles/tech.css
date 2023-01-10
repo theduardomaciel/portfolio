@@ -165,8 +165,9 @@ html[data-theme="light"] .techIcon img {
         position: absolute;
         width: 65vw;
         height: 110%;
-        right: -125%;
+        right: -115%;
         top: -10%;
+        overflow: hidden;
 
         background: var(--deco-gradient);
         transform: rotate(-5deg);

@@ -18,7 +18,9 @@
     --secondary-02: #040305;
 
     --deco-gradient: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
+    --blog-gradient: linear-gradient(180deg, var(--secondary-01) -8.29%, rgba(15, 5, 23, 0.65) 75.18%, rgba(74, 25, 112, 0.25) 100%);
 
+    --margin: 5rem;
     --transition: 215ms;
 }
 
@@ -28,6 +30,7 @@
     --secondary-02: #EEE9F0;
 
     --deco-gradient: linear-gradient(90deg, #ffffff 0%, rgba(92, 56, 119, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
+    --blog-gradient: linear-gradient(180deg, var(--secondary-01) 0%, rgba(92, 56, 119, 0.1) 35%, rgba(104, 35, 157, 0.2) 100%);
 }
 
 * {
@@ -68,10 +71,8 @@ main {
 }
 
 .wrapper {
-    padding-inline: 5rem;
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
+    padding-inline: var(--margin);
+    width: 100%;
 }
 
 .section {
@@ -82,19 +83,6 @@ main {
 
     padding-top: 10rem;
     gap: 6.5rem;
-}
-
-.bolder {
-    font-weight: 800;
-}
-
-.big {
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.underlined {
-    text-decoration: underline;
 }
 
 ul {
@@ -113,19 +101,87 @@ a {
     gap: 3.2rem;
 }
 
-.button {
-    cursor: pointer;
-    transition: 0.3s;
-}
-
 button {
     background-color: initial;
     border: none;
     text-align: center;
 }
 
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 2rem;
+    gap: 1.5rem;
+
+    font-family: "Roboto SerifVariable";
+    font-weight: 400;
+
+    transition: var(--transition);
+    cursor: pointer;
+
+    background-color: transparent;
+    border: 1px solid var(--primary-01);
+    border-radius: 0.5rem;
+}
+
+.button svg {
+    transition: var(--transition);
+}
+
+.button:hover,
+.button.selected {
+    background-color: var(--primary-01);
+    outline: none;
+    color: var(--secondary-01);
+}
+
+.button:hover svg,
+.button.selected svg {
+    filter: invert();
+}
+
+/* SUBTITLE */
+.subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle p {
+    font-family: "Roboto SlabVariable";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 2.8rem;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--primary-01);
+}
+
+.subtitle div {
+    width: 125%;
+    height: 1.25px;
+    border-radius: 1rem;
+
+    align-self: center;
+
+    /* margin-top: 1rem; */
+    background-color: var(--primary-01);
+}
+
+.iconHolder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
 @media (min-width: 1024px) {
-    .wrapper {
-        padding-inline: 12.5rem;
+    :root {
+        --margin: 12.5rem;
     }
 }

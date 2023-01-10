@@ -1,12 +1,16 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
-import i18next from "i18next";
+import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
 
 export interface Props {
     title?: string;
+    seo?: BaseHeadProps;
 }
 
-const { title, description } = Astro.props;
+export interface Props {
+    seo?: BaseHeadProps;
+}
+const { seo } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,19 +21,27 @@ const { title, description } = Astro.props;
             const userPrefersLightMode =
                 window.matchMedia &&
                 window.matchMedia("(prefers-color-scheme: light)").matches;
+
+            const storageTheme = localStorage.getItem("theme");
             const currentTheme =
-                localStorage.getItem("theme") ||
-                (userPrefersLightMode ? "light" : "dark");
+                storageTheme || (userPrefersLightMode ? "light" : "dark");
+            if (!storageTheme) {
+                localStorage.setItem("theme", storageTheme);
+            }
 
             // Set the body data-theme attribute to match the local storage item
             document.documentElement.setAttribute("data-theme", currentTheme);
 
-            const currentLOD = localStorage.getItem("lod") || "high";
+            const storageLOD = localStorage.getItem("lod");
+            const currentLOD = storageLOD || "high";
+            if (!storageLOD) {
+                localStorage.setItem("lod", currentLOD);
+            }
+
             // Set the body data-lod attribute to match the device capacity
-            localStorage.setItem("lod", currentLOD);
             document.documentElement.setAttribute("data-lod", currentLOD);
         </script>
-        <BaseHead title={title} description={description} />
+        <BaseHead {...seo} />
     </head>
     <body>
         <slot />

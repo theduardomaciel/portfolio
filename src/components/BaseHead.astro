@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "@styles/global.css";
+import "@styles/reset.css";
 
 import "@fontsource/inter/variable.css";
 import "@fontsource/roboto/400.css";
@@ -13,14 +14,20 @@ import "@fontsource/roboto-serif/variable.css";
 export interface Props {
     title?: string;
     description?: string;
+    canonicalURL?: URL | string;
     image?: string;
 }
 
-import { t } from "i18next";
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const title = Astro.props.title || "Eduardo Maciel.";
 
-const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
-const DEFAULT_TITLE = "Eduardo Maciel.";
+const description =
+    Astro.props.description ||
+    "A simple portfolio for showcasing my projects and knowledge.";
+
+const canonicalURL =
+    Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
+
+const image = new URL(Astro.props.image || "/cover.png", Astro.site);
 ---
 
 <!-- Global Metadata -->
@@ -33,32 +40,20 @@ const DEFAULT_TITLE = "Eduardo Maciel.";
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title || DEFAULT_TITLE}</title>
-<meta name="title" content={title || DEFAULT_TITLE} />
-<meta
-    name="description"
-    content={description ||
-        "A simple portfolio for showcasing my projects and knowledge."}
-/>
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title || DEFAULT_TITLE} />
-<meta
-    property="og:description"
-    content={description ||
-        "A simple portfolio for showcasing my projects and knowledge."}
-/>
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title || DEFAULT_TITLE} />
-<meta
-    property="twitter:description"
-    content={description ||
-        "A simple portfolio for showcasing my projects and knowledge."}
-/>
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />

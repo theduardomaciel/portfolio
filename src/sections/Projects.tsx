@@ -29,8 +29,8 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
 
     return (
         <section className={`${styles.projects} section wrapper`} id='projects'>
-            <header className={styles.subtitle}>
-                <h2><Translate>Projects</Translate></h2>
+            <header className={"subtitle"}>
+                <p><Translate>Projects</Translate></p>
                 <div />
             </header>
 

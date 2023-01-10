@@ -5,6 +5,7 @@ import SectionButton from "./subcomponents/SectionButton.astro";
 import ToggleButton from "./subcomponents/ToggleButton.astro";
 
 const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar minúsculo
+const isBlog = Astro.url.pathname.includes("blog");
 ---
 
 <script>
@@ -139,7 +140,7 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
     </a>
 
     <div class="menu">
-        <div id="headerLine" class="sectionLine"></div>
+        {!isBlog && <div id="headerLine" class="sectionLine" />}
         <ul class="list">
             {
                 SECTIONS.map((section, index) => (
@@ -147,7 +148,10 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
                 ))
             }
             <li>
-                <a class="button" href="/blog">Blog</a>
+                <a
+                    class={`blogButton button ${isBlog ? "selected" : ""}`}
+                    href="/blog">Blog</a
+                >
             </li>
         </ul>
         <ActionButtons />
@@ -183,25 +187,6 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
         backdrop-filter: blur(25px);
     }
 
-    .button {
-        font-family: Roboto SerifVariable;
-        font-weight: 400;
-        cursor: pointer;
-        background-color: transparent;
-        border: 1px solid var(--primary-01);
-        border-radius: 0.5rem;
-        padding: 0.35rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .button:hover {
-        background-color: var(--primary-01);
-        outline: none;
-        color: var(--secondary-01);
-    }
-
     .title {
         font-family: "Roboto SerifVariable", "Roboto Serif";
         font-style: normal;
@@ -209,6 +194,12 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
         font-size: 2.4rem;
 
         color: var(--primary-01);
+    }
+
+    .list .blogButton {
+        display: flex;
+        padding: 0.5rem 2.25rem;
+        width: fit-content;
     }
 
     .menu {

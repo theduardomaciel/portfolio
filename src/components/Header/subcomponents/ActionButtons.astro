@@ -87,7 +87,7 @@ import Svg from "@jasikpark/astro-svg-loader";
         gap: 7.5rem;
     }
 
-    .iconHolder {
+    .holder .iconHolder {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -96,14 +96,14 @@ import Svg from "@jasikpark/astro-svg-loader";
         cursor: pointer;
     }
 
-    .iconHolder p {
+    .holder .iconHolder p {
         font-size: 0.85rem;
         font-family: "InterVariable";
 
         text-transform: uppercase;
     }
 
-    .iconHolder.theme p {
+    .holder .iconHolder.theme p {
         display: flex;
     }
 
@@ -117,32 +117,32 @@ import Svg from "@jasikpark/astro-svg-loader";
         display: none;
     }
 
-    .iconHolder.lod {
+    .holder .iconHolder.lod {
         display: flex;
     }
 
-    .iconHolder .interactiveIcon {
+    .holder .iconHolder .interactiveIcon {
         font-size: 1rem;
         width: 2.8rem;
         height: 2.8rem;
     }
 
     @media (min-width: 1024px) {
-        .iconHolder {
+        .holder .iconHolder {
             align-items: flex-end;
             gap: 0px;
             flex-direction: row;
         }
 
-        .iconHolder.theme p {
+        .holder .iconHolder.theme p {
             display: none;
         }
 
-        .iconHolder.lod {
+        .holder .iconHolder.lod {
             display: none;
         }
 
-        .iconHolder .interactiveIcon {
+        .holder .iconHolder .interactiveIcon {
             width: 2.2rem;
             height: 2.2rem;
         }

@@ -1,0 +1,145 @@
+---
+import "@styles/post.css";
+
+import Svg from "@jasikpark/astro-svg-loader";
+
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header/Header.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PostPreview from "@components/PostPreview.astro";
+import Button from "@components/Button";
+
+import { getAllPosts, getAllTags } from "src/lib/sanity/api";
+import PortableText from "@components/PortableText.astro";
+import getSanityImageURL from "src/lib/sanity/getSanityImageUrl";
+import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
+
+export async function getStaticPaths() {
+    const allBlogPosts = await getAllPosts();
+    const allTags = await getAllTags();
+    // rss({
+    //   title: 'Example Blog',
+    //   description: 'An example blog on Astro',
+    //   customData: `<language>en-us</language>`,
+    //   items: allBlogPosts.map(item => ({
+    //     title: item.title,
+    //     description: item.description,
+    //     link: `/blog/${item.slug.current}`,
+    //     pubDate: item.publishedAt,
+    //   })),
+    // });
+
+    return allBlogPosts.map((post: any) => ({
+        params: { slug: post.slug.current },
+        props: { post, tags: getTagsFromPost(allTags, post.categories) },
+    }));
+}
+
+const { post, tags } = Astro.props;
+
+const date = new Date(post.publishedAt);
+const formattedDate = date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+});
+
+const seo = {
+    title: post.title,
+    description: post.description,
+    image: post.mainImage
+        ? getSanityImageURL(post.mainImage).width(1200).url()
+        : undefined,
+};
+---
+
+<script></script>
+
+<BaseLayout seo={seo}>
+    <Header />
+    <main class="post">
+        <nav>
+            <div class="subtitle">
+                <p style="font-size: 3.6rem;">Blog</p>
+                <div></div>
+            </div>
+            <a href="/blog" class="back">
+                <Svg
+                    src={import("@assets/icons/left_arrow.svg?raw")}
+                    aria-label={"Back arrow"}
+                />
+                Back to home
+            </a>
+        </nav>
+        <div class="holder">
+            <div class="content">
+                <a href="/blog" class="back desktop">
+                    <Svg
+                        src={import("@assets/icons/left_arrow.svg?raw")}
+                        aria-label={"Back arrow"}
+                    />
+                    Back to home
+                </a>
+                <header>
+                    <section class="info">
+                        <div class="iconHolder icon">
+                            <Svg
+                                width={16}
+                                src={import("@assets/icons/calendar.svg?raw")}
+                                aria-label={"Calendar icon"}
+                            />
+                            {formattedDate}
+                        </div>
+                        <div class="divisor"></div>
+                        <div class="iconHolder">
+                            <Svg
+                                width={16}
+                                src={import("@assets/icons/view.svg?raw")}
+                                aria-label={"Eye icon"}
+                            />
+                            123
+                        </div>
+                    </section>
+                    <h1>{post.title}</h1>
+                    <ul class="tags">
+                        {tags.map((tag: any) => <li>#{tag.title}</li>)}
+                    </ul>
+                </header>
+                <article class="post">
+                    <PortableText text={post.body} />
+                </article>
+            </div>
+            <aside>
+                <div class="container shareIntegrated">
+                    <Button style={{ width: "100%" }}>
+                        <Svg
+                            class={"buttonIcon"}
+                            src={import("@assets/icons/share.svg?raw")}
+                            aria-label={"Eye icon"}
+                        />
+                        Share
+                    </Button>
+                </div>
+                <div class="container">
+                    <h6>Your reading list</h6>
+                    {
+                        post && post.categories && (
+                            <PostPreview post={post} tags={tags} isMinimal />
+                        )
+                    }
+                </div>
+            </aside>
+        </div>
+        <div class="container share">
+            <Button style={{ width: "100%" }}>
+                <Svg
+                    class={"buttonIcon"}
+                    src={import("@assets/icons/share.svg?raw")}
+                    aria-label={"Eye icon"}
+                />
+                Share
+            </Button>
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

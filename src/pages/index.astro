@@ -16,12 +16,12 @@ const response = await config.getAll(["projects", "tech"]);
 ---
 
 <Layout>
+    <Header />
     <main>
-        <Header />
         <Home />
         <Projects projects={response?.projects} client:load />
         <Tech technologies={response?.tech} />
         <Contact />
-        <Footer />
     </main>
+    <Footer />
 </Layout>

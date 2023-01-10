@@ -1,0 +1,183 @@
+---
+import Svg from "@jasikpark/astro-svg-loader";
+import type { PostTag } from "src/lib/sanity/getTagsFromPost";
+
+const { post, tags, isMinimal } = Astro.props;
+
+const date = new Date(post.publishedAt);
+const formattedDate = date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+});
+---
+
+<li class={`postPreviewContainer ${isMinimal ? "isMinimal" : ""}`}>
+    <a class="postPreview" href={`/blog/${post.slug.current}`}>
+        <header>
+            {
+                !isMinimal && (
+                    <ul class="tags">
+                        {tags.map((tag: PostTag) => {
+                            return <li>#{tag.title}</li>;
+                        })}
+                    </ul>
+                )
+            }
+        </header>
+        <div class="previewContent">
+            <h6>{post.title}</h6>
+            <footer>
+                <div class="iconHolder">
+                    <Svg
+                        width={18}
+                        src={import("@assets/icons/calendar.svg?raw")}
+                        aria-label="Calendar icon"
+                    />
+                    <span>{formattedDate}</span>
+                </div>
+                {
+                    !isMinimal && (
+                        <Svg
+                            class="icon"
+                            fill={"var(--secondary-01)"}
+                            src={import("@assets/icons/bookmark.svg?raw")}
+                            aria-label="Bookmark icon"
+                        />
+                    )
+                }
+            </footer>
+        </div>
+    </a>
+</li>
+
+<style>
+    .postPreviewContainer {
+        width: 100%;
+        height: 100%;
+
+        list-style: none;
+    }
+
+    .postPreviewContainer .postPreview {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 0px;
+
+        width: 100%;
+
+        background-color: var(--secondary-01);
+        border: 1px solid var(--primary-01);
+        border-radius: 0.5rem;
+    }
+
+    .postPreviewContainer .postPreview header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 1.25rem 2.5rem;
+
+        width: 100%;
+        overflow: scroll;
+    }
+
+    .postPreviewContainer.isMinimal .postPreview header {
+        padding: 0.75rem 2.5rem;
+    }
+
+    .postPreviewContainer .postPreview header::-webkit-scrollbar {
+        display: none;
+    }
+
+    .postPreviewContainer .postPreview header .tags {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2.5rem;
+    }
+
+    .tags li {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.8rem;
+
+        color: var(--primary-01);
+    }
+
+    .postPreviewContainer .postPreview .previewContent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2.5rem; /* 3.5 no pc */
+
+        background-color: var(--primary-01);
+        text-align: left;
+        width: 100%;
+    }
+
+    .postPreview .previewContent h6 {
+        font-family: "Roboto SerifVariable";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 3.6rem;
+
+        max-width: 80%;
+        color: var(--secondary-01);
+    }
+
+    .postPreviewContainer.isMinimal .postPreview .previewContent h6 {
+        font-size: 2.4rem;
+        max-width: 100%;
+    }
+
+    .postPreview .previewContent footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px;
+        gap: 1rem;
+
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .iconHolder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 1rem;
+
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+
+        color: var(--secondary-01);
+    }
+
+    .icon {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        .icon {
+            display: flex;
+        }
+
+        .postPreview .previewContent {
+            gap: 1.5rem;
+        }
+
+        .postPreview .previewContent header {
+            padding: 1.5rem 2.5rem 0px 2.5rem;
+        }
+    }
+</style>
