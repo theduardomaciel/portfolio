@@ -1,18 +1,21 @@
 ---
+import BaseLayout from "@layouts/BaseLayout.astro";
 import "@styles/post.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header/Header.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
 import PostPreview from "@components/PostPreview.astro";
 import Button from "@components/Button";
 
+// Data
 import { getAllPosts, getAllTags } from "src/lib/sanity/api";
 import PortableText from "@components/PortableText.astro";
 import getSanityImageURL from "src/lib/sanity/getSanityImageUrl";
 import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
+
+import ArticleSchema from "@components/seo/ArticleSchema.astro";
 
 export async function getStaticPaths() {
     const allBlogPosts = await getAllPosts();
@@ -53,9 +56,10 @@ const seo = {
 };
 ---
 
-<script></script>
-
 <BaseLayout seo={seo}>
+    <Fragment>
+        <ArticleSchema {...seo} />
+    </Fragment>
     <Header />
     <main class="post">
         <nav>
@@ -90,7 +94,7 @@ const seo = {
                             />
                             {formattedDate}
                         </div>
-                        <div class="divisor"></div>
+                        <!-- <div class="divisor"></div>
                         <div class="iconHolder">
                             <Svg
                                 width={16}
@@ -98,7 +102,7 @@ const seo = {
                                 aria-label={"Eye icon"}
                             />
                             123
-                        </div>
+                        </div> -->
                     </section>
                     <h1>{post.title}</h1>
                     <ul class="tags">
@@ -133,7 +137,7 @@ const seo = {
         <div class="container share">
             <Button style={{ width: "100%" }}>
                 <Svg
-                    class={"buttonIcon"}
+                    class={"buttonIcon share"}
                     src={import("@assets/icons/share.svg?raw")}
                     aria-label={"Eye icon"}
                 />

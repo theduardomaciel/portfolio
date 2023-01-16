@@ -126,7 +126,7 @@ export default function ProjectsCarousel({ projects, projectIndex, setMoreInfoEx
     </m.div>)
 
     return (
-        <AnimatePresence mode="popLayout" key={"teste"}>
+        <AnimatePresence initial={false} mode="popLayout" key={"teste"}>
             {projectsShowcase[projectIndex]}
         </AnimatePresence>
     )

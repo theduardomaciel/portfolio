@@ -1,6 +1,6 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
-import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
+import BaseHead from "@components/seo/BaseHead.astro";
+import type { Props as BaseHeadProps } from "@components/seo/BaseHead.astro";
 
 export interface Props {
     title?: string;
@@ -16,6 +16,7 @@ const { seo } = Astro.props;
 <!DOCTYPE html>
 <html lang={"en"}>
     <head>
+        <BaseHead {...seo} />
         <script is:inline>
             // Get the current theme from local storage
             const userPrefersLightMode =
@@ -25,23 +26,16 @@ const { seo } = Astro.props;
             const storageTheme = localStorage.getItem("theme");
             const currentTheme =
                 storageTheme || (userPrefersLightMode ? "light" : "dark");
-            if (!storageTheme) {
-                localStorage.setItem("theme", storageTheme);
-            }
 
             // Set the body data-theme attribute to match the local storage item
             document.documentElement.setAttribute("data-theme", currentTheme);
 
             const storageLOD = localStorage.getItem("lod");
             const currentLOD = storageLOD || "high";
-            if (!storageLOD) {
-                localStorage.setItem("lod", currentLOD);
-            }
 
             // Set the body data-lod attribute to match the device capacity
             document.documentElement.setAttribute("data-lod", currentLOD);
         </script>
-        <BaseHead {...seo} />
     </head>
     <body>
         <slot />

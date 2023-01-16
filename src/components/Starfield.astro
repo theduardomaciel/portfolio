@@ -10,8 +10,6 @@ const { ...props } = Astro.props;
     const lod = localStorage.getItem("lod") || "high";
     const theme = localStorage.getItem("theme") || ("dark" as "light" | "dark");
 
-    console.log(lod, theme);
-
     const STARS_NUM = 200;
     const STAR_SIZE = 0.005; //tamanho máximo da estrela como fração da largura da tela
     const STAR_SPEED = 0.05;

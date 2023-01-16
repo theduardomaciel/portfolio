@@ -9,11 +9,17 @@
     justify-content: flex-end;
 }
 
+.blob {
+    background-color: var(--primary-01);
+
+}
+
 .contact .blob1Holder {
     display: flex;
     width: 100%;
     overflow: hidden;
     max-width: 100vw;
+    height: 35rem;
 
     align-items: flex-start;
     justify-content: flex-start;
@@ -128,6 +134,14 @@
     display: none
 }
 
+.contactBlobs {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 @media (min-width: 1024px) {
     .contact {
         margin-top: 12.5rem;
@@ -151,17 +165,13 @@
         width: 65vw;
     }
 
-    .contact .blob1Holder {
-        min-height: 30rem;
-    }
-
     .contact .blob2Holder {
         display: flex;
         /* overflow: hidden; */
 
         position: absolute;
         right: -50rem;
-        top: -50%;
+        top: -25%;
         z-index: 0;
     }
 }

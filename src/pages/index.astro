@@ -15,6 +15,44 @@ const config = createClient(import.meta.env.EDGE_CONFIG);
 const response = await config.getAll(["projects", "tech"]);
 ---
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+
+        if ("IntersectionObserver" in window) {
+            let lazyVideoObserver = new IntersectionObserver(function (
+                entries,
+                observer
+            ) {
+                entries.forEach(function (video: any) {
+                    if (video.isIntersecting) {
+                        for (let source in video.target.children) {
+                            let videoSource = video.target.children[
+                                source
+                            ] as HTMLSourceElement;
+                            if (
+                                typeof videoSource.tagName === "string" &&
+                                videoSource.tagName === "SOURCE"
+                            ) {
+                                videoSource.src = videoSource.dataset
+                                    .src as string;
+                            }
+                        }
+
+                        video.target.load();
+                        video.target.classList.remove("lazy");
+                        lazyVideoObserver.unobserve(video.target);
+                    }
+                });
+            });
+
+            lazyVideos.forEach(function (lazyVideo) {
+                lazyVideoObserver.observe(lazyVideo);
+            });
+        }
+    });
+</script>
+
 <Layout>
     <Header />
     <main>

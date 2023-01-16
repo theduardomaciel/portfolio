@@ -13,6 +13,9 @@
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
+
+    gap: 2.5rem;
+    flex-wrap: wrap;
 }
 
 .blog header h1 {
@@ -20,8 +23,6 @@
     font-style: normal;
     font-weight: 900;
     font-size: 10rem;
-
-    width: 100%;
 
     text-align: left;
     color: var(--primary-01);
@@ -38,18 +39,11 @@
     width: 100%;
 }
 
-.blog nav .listButton {
-    width: 100%;
-    height: 5rem;
-
-    order: 1;
-}
-
-.listButton a {
-    padding: 1.25rem 1.5rem;
+.blog header .listButton {
+    padding: 1.15rem 2.5rem;
     font-size: 1.8rem;
     width: 100%;
-    height: 100%;
+    white-space: nowrap;
 }
 
 .blog nav .tagsHolder {
@@ -75,8 +69,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 5rem;
 
+    gap: 5rem;
     padding: 1.25rem 5rem;
     height: 100%;
     overflow: visible;
@@ -90,12 +84,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
 
+    opacity: 0.45;
     cursor: pointer;
+    transition: var(--transition);
+    position: relative;
 
     font-family: 'Roboto SerifVariable';
-    text-transform: capitalize;
     white-space: nowrap;
     font-style: normal;
     font-weight: 500;
@@ -103,7 +98,29 @@
     color: var(--primary-01);
 }
 
-.tag .divisor {
+.blog nav .tag.active {
+    opacity: 1;
+}
+
+.selectionCircle {
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: var(--transition);
+
+    width: 11rem;
+    height: 11rem;
+
+    border-radius: 50%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(217, 217, 217, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
+    filter: blur(32.5px);
+}
+
+.divisor {
     width: 1px;
     height: 2rem;
     background: var(--primary-01);
@@ -117,6 +134,41 @@
     justify-content: flex-start;
 
     width: 100%;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+
+    padding-bottom: 5rem;
+    padding-top: 7.5rem;
+    margin-inline: auto;
+
+    width: 80%;
+    height: 100%;
+}
+
+.empty h2 {
+    font-family: 'Roboto SlabVariable';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 5rem;
+
+    text-align: center;
+    color: var(--primary-01);
+}
+
+.empty h5 {
+    font-family: 'Roboto SlabVariable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+
+    text-align: center;
+    color: var(--primary-01);
 }
 
 @media (max-width: 768px) {
@@ -135,17 +187,11 @@
         padding-inline: 12.5rem;
     }
 
-    .blog nav .listButton {
+    .blog header .listButton {
         width: fit-content;
-        height: 100%;
-
-        padding: 0;
-        order: 2;
     }
 
-    .blog nav .tagsHolder {
-        width: fit-content;
-        order: 1;
+    .blog .tagsHolder {
         padding: 0;
     }
 

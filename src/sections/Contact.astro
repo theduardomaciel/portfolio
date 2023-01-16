@@ -9,12 +9,10 @@ import Planet from "@components/Planet.astro";
 <section class={`contact section`} id="contact">
     <div class="blob1Holder">
         <div
-            class="blob1Holder"
+            class="blob1Holder blob"
             style={{
                 WebkitClipPath: `url(#contactBlob1)`,
                 clipPath: `url(#contactBlob1)`,
-                backgroundColor: "var(--primary-01)",
-                height: "35rem",
             }}
         >
             <Starfield />
@@ -29,10 +27,10 @@ import Planet from "@components/Planet.astro";
     </div>
     <div class="blob2Holder">
         <div
+            class="blob"
             style={{
                 WebkitClipPath: `url(#contactBlob2)`,
                 clipPath: `url(#contactBlob2)`,
-                backgroundColor: "var(--primary-01)",
             }}
         >
             <Starfield />
@@ -40,7 +38,7 @@ import Planet from "@components/Planet.astro";
         <Planet style={{ top: "27.5rem", left: "-6.5rem" }} />
     </div>
     <svg
-        style={{ overflow: "hidden", position: "absolute", zIndex: -1 }}
+        class="contactBlobs"
         width="200"
         height="347"
         viewBox="0 0 200 347"

@@ -1,8 +1,18 @@
 ---
 ---
 
-<video class="deco" width="320" height="240" autoplay muted loop>
-    <source src="/visual/astronaut_1024.mp4" type="video/mp4" />
+<video
+    class="lazy deco"
+    autoplay
+    muted
+    loop
+    playsinline
+    width="320"
+    height="240"
+    poster="/visual/astronaut_placeholder.png"
+>
+    <source data-src="/visual/astronaut.webm" type="video/webm" />
+    <source data-src="/visual/astronaut.mp4" type="video/mp4" />
 </video>
 
 <style>
@@ -14,7 +24,7 @@
         top: 10rem;
         align-self: flex-start;
 
-        transition: 0.275s;
+        transition: var(--transition);
         userselect: "none";
         zindex: -1;
     }

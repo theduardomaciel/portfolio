@@ -8,9 +8,40 @@ const seo = {
 ---
 
 <BaseLayout seo={seo}>
-    <div class="wrapper">
+    <div class="wrapper content">
         <h1>404</h1>
-        <p>Uh Oh! We couldn't find the page you were looking for</p>
-        <a href="/">Return Home</a>
+        <p>
+            Oops! <br />
+            This page does not exist, or its functionality has not yet been implemented.
+        </p>
+        <a class="button" style="padding: 1rem 2.5rem;" href="/"
+            >Return to home</a
+        >
     </div>
 </BaseLayout>
+
+<style>
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .content h1 {
+        font-size: 8.4rem;
+        font-family: "Roboto SlabVariable";
+    }
+
+    .content p {
+        font-size: 2.4rem;
+        font-family: "Roboto SerifVariable";
+        text-align: center;
+
+        width: 50%;
+    }
+</style>

@@ -50,16 +50,26 @@ const theme = "dark" as "dark" | "light";
             <picture>
                 <source
                     type="image/avif"
-                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    style={{
+                        filter: theme === "dark" ? "none" : "invert()",
+                        userSelect: "none",
+                        pointerEvents: "none",
+                    }}
                     width={239}
                     height={239}
-                    srcset="/images/astronauta.avif"
+                    draggable="false"
+                    srcset="/visual/astronaut.avif"
                 />
                 <img
-                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    style={{
+                        filter: theme === "dark" ? "none" : "invert()",
+                        userSelect: "none",
+                        pointerEvents: "none",
+                    }}
                     width={239}
                     height={239}
-                    src="/images/astronauta.png"
+                    draggable="false"
+                    src="/visual/astronaut.png"
                     sizes="((max-width: 768px)) 119.5px,
               (min-width: 769px) 239px"
                     alt="Astronauta picture fallback"
@@ -87,16 +97,26 @@ const theme = "dark" as "dark" | "light";
             <picture>
                 <source
                     type="image/avif"
-                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    style={{
+                        filter: theme === "dark" ? "none" : "invert()",
+                        userSelect: "none",
+                        pointerEvents: "none",
+                    }}
                     width={239}
                     height={239}
-                    srcset="/images/astronauta.avif"
+                    draggable="false"
+                    srcset="/visual/astronaut.avif"
                 />
                 <img
-                    style={{ filter: theme === "dark" ? "none" : "invert()" }}
+                    style={{
+                        filter: theme === "dark" ? "none" : "invert()",
+                        userSelect: "none",
+                        pointerEvents: "none",
+                    }}
                     width={239}
                     height={239}
-                    src="/images/astronauta.png"
+                    draggable="false"
+                    src="/visual/astronaut.png"
                     alt="Astronauta picture fallback"
                 />
             </picture>

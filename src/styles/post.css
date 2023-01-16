@@ -172,6 +172,10 @@
     max-width: 100%;
 }
 
+.post .content article li {
+    margin-left: 5rem;
+}
+
 .post aside {
     display: inline-flex;
     flex-direction: column;

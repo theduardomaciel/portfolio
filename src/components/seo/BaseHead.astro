@@ -1,0 +1,73 @@
+---
+import "@styles/global.css";
+
+import "@fontsource/inter/variable.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto-slab/variable.css";
+
+import "@fontsource/roboto-serif/400.css";
+import "@fontsource/roboto-serif/variable.css";
+import settings from "@utils/settings";
+
+import { astroI18n } from "astro-i18n"
+
+astroI18n.init(Astro)
+
+export interface Props {
+    title?: string;
+    description?: string;
+    canonicalURL?: URL | string;
+    image?: string;
+}
+
+const title = Astro.props.title || "Eduardo Maciel.";
+
+const description = Astro.props.description || settings.description;
+
+const canonicalURL =
+    Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
+
+const image = new URL(Astro.props.image || "/cover.png", Astro.site);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- settingsmap -->
+<link rel="settingsmap" href="/settingsmap.xml" />
+<!-- RSS -->
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title={`${title.split(" ")[0]}'s Blog`}
+    href={`${settings.url}/feed/blog.xml`}
+/>
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Manifest -->
+<link rel="manifest" href="/manifest.json" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
