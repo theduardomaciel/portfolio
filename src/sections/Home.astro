@@ -1,16 +1,13 @@
 ---
 import "../styles/home.css";
 
-import { Image } from "@astrojs/image/components";
-
 import Svg from "@jasikpark/astro-svg-loader";
 
 import Planet from "@components/Planet.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 import Starfield from "@components/Starfield.astro";
 import Blobs from "@components/Blobs.astro";
-
-const theme = "dark" as "dark" | "light";
+import Rocket from "@components/Rocket.astro";
 ---
 
 <section id="home" class="home">
@@ -21,7 +18,6 @@ const theme = "dark" as "dark" | "light";
             <h2 style={{ textTransform: "capitalize" }}>HI, I'M</h2>
             <Svg
                 class={"title"}
-                fill={theme === "dark" ? "#fff" : "#000"}
                 src={import("@assets/visual/title.svg?raw")}
                 aria-label="Eduardo Maciel"
                 width={375}
@@ -50,22 +46,14 @@ const theme = "dark" as "dark" | "light";
             <picture>
                 <source
                     type="image/avif"
-                    style={{
-                        filter: theme === "dark" ? "none" : "invert()",
-                        userSelect: "none",
-                        pointerEvents: "none",
-                    }}
+                    class="astronaut"
                     width={239}
                     height={239}
                     draggable="false"
                     srcset="/visual/astronaut.avif"
                 />
                 <img
-                    style={{
-                        filter: theme === "dark" ? "none" : "invert()",
-                        userSelect: "none",
-                        pointerEvents: "none",
-                    }}
+                    class="astronaut"
                     width={239}
                     height={239}
                     draggable="false"
@@ -75,11 +63,7 @@ const theme = "dark" as "dark" | "light";
                     alt="Astronauta picture fallback"
                 />
             </picture>
-            <Svg
-                class={"rocket"}
-                src={import("@assets/visual/rocket.svg?raw")}
-                aria-label="Drawing of a rocket"
-            />
+            <Rocket classes={"rocket"} />
             <Starfield />
             <div class="blobBackground"></div>
         </div>
@@ -97,22 +81,14 @@ const theme = "dark" as "dark" | "light";
             <picture>
                 <source
                     type="image/avif"
-                    style={{
-                        filter: theme === "dark" ? "none" : "invert()",
-                        userSelect: "none",
-                        pointerEvents: "none",
-                    }}
+                    class="astronaut"
                     width={239}
                     height={239}
                     draggable="false"
                     srcset="/visual/astronaut.avif"
                 />
                 <img
-                    style={{
-                        filter: theme === "dark" ? "none" : "invert()",
-                        userSelect: "none",
-                        pointerEvents: "none",
-                    }}
+                    class="astronaut"
                     width={239}
                     height={239}
                     draggable="false"
@@ -120,12 +96,7 @@ const theme = "dark" as "dark" | "light";
                     alt="Astronauta picture fallback"
                 />
             </picture>
-            <Svg
-                class={"rocket2"}
-                src={import("@assets/visual/rocket.svg?raw")}
-                width={75}
-                aria-label="Drawing of a rocket"
-            />
+            <Rocket classes={"rocket2"} />
             <Starfield />
             <div class="blobBackground"></div>
         </div>
