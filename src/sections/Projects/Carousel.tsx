@@ -3,9 +3,6 @@ import { m, AnimatePresence, MotionProps } from "framer-motion"
 import styles from '@styles/projects.module.css';
 import Translate, { TranslateText } from '@components/Translate';
 
-// Components
-import Button from '@components/Button';
-
 // Icons
 import { ReactComponent as DownArrow } from 'src/assets/icons/down_arrow.svg';
 
@@ -71,8 +68,8 @@ export default function ProjectsCarousel({ projects, projectIndex, setMoreInfoEx
                 {
                     project.link &&
                     <a target={"_blank"} rel="noreferrer" href={project.link}>
-                        <Button
-                            scheme="disable_invert"
+                        <button
+                            className="button inverted modern outline disabled"
                             style={{
                                 backgroundColor: `rgb(${project.accent_color})`,
                                 color: "#FFFFFF",
@@ -81,7 +78,7 @@ export default function ProjectsCarousel({ projects, projectIndex, setMoreInfoEx
                             }}
                         >
                             {project.link ? TranslateText("VISIT PROJECT") : TranslateText("WORK IN PROGRESS")}
-                        </Button>
+                        </button>
                     </a>
                 }
                 {

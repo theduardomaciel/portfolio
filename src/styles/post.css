@@ -133,6 +133,8 @@
     font-style: normal;
     font-weight: 400;
     font-size: 1.8rem;
+
+    cursor: pointer;
 }
 
 .divisor {
@@ -170,6 +172,8 @@
     list-style: initial;
     margin: initial;
     max-width: 100%;
+    letter-spacing: -0.03rem;
+    line-height: 3.15rem;
 }
 
 .post .content article li {
@@ -233,11 +237,26 @@
     gap: 5rem;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+.container .share button,
+.container.shareIntegrated button {
+    width: 100%;
+}
+
 @media (min-width: 1024px) {
 
     /* CLEANING SHARE DISPLAY */
     .post .container.shareIntegrated {
         display: flex;
+        gap: 1rem;
     }
 
     .post .container.share {
@@ -289,8 +308,12 @@
         height: 100%;
 
         position: sticky;
-        top: calc(var(--nav-height-desktop) + 2.5rem);
+        top: 2.5rem;
         right: 0;
+    }
+
+    .subtitle {
+        margin-top: 5rem;
     }
 
     .back.desktop {

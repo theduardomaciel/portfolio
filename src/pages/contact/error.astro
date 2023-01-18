@@ -1,0 +1,36 @@
+---
+import "@styles/contact.css";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import SocialMedia from "@components/SocialMedia.astro";
+---
+
+<BaseLayout>
+    <main class="wrapper contactMessageContent">
+        <h1>Oops! Looks like something went wrong... ❌</h1>
+        <div
+            style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}
+        >
+            <p>
+                Try again and if the problem persists, then it really is my
+                fault, so please send me a message via one of the following
+                social networks:
+                <br />
+            </p>
+            <SocialMedia
+                excludeWhatsApp
+                excludeEmail
+                style={{ justifyContent: "center" }}
+            />
+            <h5>
+                Thank you in advance for your support and apologies for the
+                problem 😊
+                <br />
+                <br />
+            </h5>
+        </div>
+        <a class="button back" href={"/"} style="padding: 1rem 2.5rem;"
+            >Return to home</a
+        >
+    </main>
+</BaseLayout>

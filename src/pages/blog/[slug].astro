@@ -4,20 +4,27 @@ import "@styles/post.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
+// Components
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header/Header.astro";
-import PostPreview from "@components/PostPreview.astro";
-import Button from "@components/Button";
+import PostPreview from "@components/Post/PostPreview.astro";
+
+import LikeButton from "@components/Post/Buttons/LikeButton";
+import ShareButton from "@components/Post/Buttons/ShareButton";
+
+import ArticleSchema from "@components/seo/ArticleSchema.astro";
 
 // Data
-import { getAllPosts, getAllTags } from "src/lib/sanity/api";
+import { getAllTags, getPostBySlug } from "src/lib/sanity/api";
 import PortableText from "@components/PortableText.astro";
 import getSanityImageURL from "src/lib/sanity/getSanityImageUrl";
 import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 
-import ArticleSchema from "@components/seo/ArticleSchema.astro";
+import { getPostDataBySlug } from "../api/post/[slug]";
+import { getGuestFromId } from "../api/guest/index";
+import BookmarkButton from "@components/Post/Buttons/BookmarkButton";
 
-export async function getStaticPaths() {
+/* export async function getStaticPaths() {
     const allBlogPosts = await getAllPosts();
     const allTags = await getAllTags();
     // rss({
@@ -38,7 +45,18 @@ export async function getStaticPaths() {
     }));
 }
 
-const { post, tags } = Astro.props;
+const { post, tags } = Astro.props; */
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug as string);
+
+if (!post) {
+    return Astro.redirect("/404");
+}
+
+const postData = await getPostDataBySlug(slug as string);
+
+const allTags = await getAllTags();
+const tags = getTagsFromPost(allTags, post.categories);
 
 const date = new Date(post.publishedAt);
 const formattedDate = date.toLocaleDateString(undefined, {
@@ -46,6 +64,19 @@ const formattedDate = date.toLocaleDateString(undefined, {
     month: "2-digit",
     day: "2-digit",
 });
+
+const guestId = Astro.cookies.get("guest.id").value;
+const guest = (await getGuestFromId(guestId as string)) as any;
+
+const likedPostsSlugs = guest?.likedPosts.map(
+    (likedPost: any) => likedPost.slug
+);
+const hasLiked = likedPostsSlugs?.includes(post.slug.current);
+
+const markedPostsSlugs = guest?.readingList.map(
+    (postInList: any) => postInList.slug
+);
+const hasMarked = markedPostsSlugs?.includes(post.slug.current);
 
 const seo = {
     title: post.title,
@@ -60,7 +91,7 @@ const seo = {
     <Fragment>
         <ArticleSchema {...seo} />
     </Fragment>
-    <Header />
+    <Header isStatic={true} />
     <main class="post">
         <nav>
             <div class="subtitle">
@@ -94,19 +125,36 @@ const seo = {
                             />
                             {formattedDate}
                         </div>
-                        <!-- <div class="divisor"></div>
+                        <div class="divisor"></div>
                         <div class="iconHolder">
                             <Svg
                                 width={16}
                                 src={import("@assets/icons/view.svg?raw")}
                                 aria-label={"Eye icon"}
                             />
-                            123
-                        </div> -->
+                            {postData?.views || "--"}
+                        </div>
+                        <div class="divisor"></div>
+                        <div class="iconHolder">
+                            <Svg
+                                width={16}
+                                src={import("@assets/icons/like.svg?raw")}
+                                aria-label={"Like (heart) icon"}
+                            />
+                            {postData?.likedBy.length || "--"}
+                        </div>
                     </section>
                     <h1>{post.title}</h1>
                     <ul class="tags">
-                        {tags.map((tag: any) => <li>#{tag.title}</li>)}
+                        {
+                            tags.map((tag: any) => (
+                                <li>
+                                    <a href={`/blog/category/${tag.title}`}>
+                                        #{tag.title}
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </header>
                 <article class="post">
@@ -115,34 +163,64 @@ const seo = {
             </div>
             <aside>
                 <div class="container shareIntegrated">
-                    <Button style={{ width: "100%" }}>
-                        <Svg
-                            class={"buttonIcon"}
-                            src={import("@assets/icons/share.svg?raw")}
-                            aria-label={"Eye icon"}
-                        />
-                        Share
-                    </Button>
-                </div>
-                <div class="container">
-                    <h6>Your reading list</h6>
                     {
-                        post && post.categories && (
-                            <PostPreview post={post} tags={tags} isMinimal />
+                        guestId && (
+                            <div class="row">
+                                <LikeButton
+                                    client:load
+                                    post={post}
+                                    guest={guest}
+                                    initialValue={hasLiked}
+                                />
+                                <BookmarkButton
+                                    client:load
+                                    post={post}
+                                    guest={guest}
+                                    initialValue={hasMarked}
+                                />
+                            </div>
                         )
                     }
+                    <ShareButton client:load post={post} />
                 </div>
+                {
+                    guest && guest.readingList.length > 0 && (
+                        <div class="container">
+                            <h6>Your reading list</h6>
+                            {post && post.categories && (
+                                <PostPreview
+                                    post={post}
+                                    tags={tags}
+                                    isMinimal
+                                />
+                            )}
+                        </div>
+                    )
+                }
             </aside>
         </div>
         <div class="container share">
-            <Button style={{ width: "100%" }}>
-                <Svg
-                    class={"buttonIcon share"}
-                    src={import("@assets/icons/share.svg?raw")}
-                    aria-label={"Eye icon"}
-                />
-                Share
-            </Button>
+            <div class="row">
+                {
+                    guestId && guest && (
+                        <Fragment>
+                            <LikeButton
+                                initialValue={hasLiked}
+                                client:load
+                                post={post}
+                                guest={guest}
+                            />
+                            <BookmarkButton
+                                initialValue={hasMarked}
+                                client:load
+                                post={post}
+                                guest={guest}
+                            />
+                        </Fragment>
+                    )
+                }
+                <ShareButton client:load post={post} />
+            </div>
         </div>
     </main>
     <Footer />

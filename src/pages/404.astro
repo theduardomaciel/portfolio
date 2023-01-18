@@ -7,6 +7,13 @@ const seo = {
 };
 ---
 
+<script>
+    const back = document.querySelector(".button.back") as HTMLButtonElement;
+    back.addEventListener("click", () => {
+        window.history.back();
+    });
+</script>
+
 <BaseLayout seo={seo}>
     <div class="wrapper content">
         <h1>404</h1>
@@ -14,8 +21,10 @@ const seo = {
             Oops! <br />
             This page does not exist, or its functionality has not yet been implemented.
         </p>
-        <a class="button" style="padding: 1rem 2.5rem;" href="/"
-            >Return to home</a
+        <button
+            class="button back"
+            style="padding: 1rem 2.5rem; font-size: 1.8rem;"
+            >Return to home</button
         >
     </div>
 </BaseLayout>

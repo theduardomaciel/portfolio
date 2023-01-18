@@ -8,11 +8,17 @@ type Props = {
     excludeWhatsApp?: boolean;
 };
 
-const { excludeInstagram, excludeTwitter, excludeEmail, excludeWhatsApp } =
-    Astro.props;
+const {
+    excludeInstagram,
+    excludeTwitter,
+    excludeEmail,
+    excludeWhatsApp,
+    classes,
+    style,
+} = Astro.props;
 ---
 
-<div class="social">
+<div class={`social ${classes}`} style={style}>
     {
         !excludeEmail && (
             <a

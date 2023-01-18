@@ -1,14 +1,13 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogLayout from "@layouts/BlogLayout.astro";
+import BlogHome from "@layouts/BlogHome.astro";
 
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header/Header.astro";
 
 import { getAllPosts, getAllTags } from "src/lib/sanity/api";
-
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
-import BlogHome from "@components/BlogHome.astro";
 
 const posts = await getAllPosts();
 const tags = (await getAllTags()) as PostTag[];

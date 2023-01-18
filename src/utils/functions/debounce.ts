@@ -1,7 +1,10 @@
-export default function debounce(func: () => void) {
-    let timer: any;
-    return function (event: any) {
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(func, 100, event);
+export default function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(
+    func: F,
+    waitFor = 300,
+): (...args: Parameters<F>) => void {
+    let timeout: NodeJS.Timeout;
+    return (...args: Parameters<F>): void => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), waitFor);
     };
 }

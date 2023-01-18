@@ -10,8 +10,7 @@
 :root {
     font-size: 62.5%;
     /* 1rem = 10px */
-    --nav-height: 10rem;
-    --nav-height-desktop: 8rem;
+    --nav-height: 8rem;
 
     --primary-01: #FFFFFF;
     --secondary-01: #000000;
@@ -19,18 +18,22 @@
 
     --deco-gradient: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
     --blog-gradient: linear-gradient(180deg, var(--secondary-01) -8.29%, rgba(15, 5, 23, 0.65) 75.18%, rgba(74, 25, 112, 0.25) 100%);
+    --blog-radial-gradient: radial-gradient(50% 50% at 50% 50%, rgba(217, 217, 217, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
 
     --margin: 5rem;
     --transition: 215ms;
+    color-scheme: dark;
 }
 
 [data-theme="light"] {
+    color-scheme: light;
     --primary-01: #000000;
     --secondary-01: #FFFFFF;
     --secondary-02: #EEE9F0;
 
     --deco-gradient: linear-gradient(90deg, #ffffff 0%, rgba(92, 56, 119, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
     --blog-gradient: linear-gradient(180deg, var(--secondary-01) 0%, rgba(92, 56, 119, 0.1) 35%, rgba(104, 35, 157, 0.2) 100%);
+    --blog-radial-gradient: radial-gradient(50% 50% at 50% 50%, rgb(92, 56, 119) 0%, rgba(217, 217, 217, 0) 100%);
 }
 
 * {
@@ -44,7 +47,7 @@
 html,
 body {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 
     text-rendering: optimizeLegibility;
     margin: 0;
@@ -111,8 +114,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.35rem 2rem;
-    gap: 1.5rem;
+    padding: 0.35rem 2.25rem;
+    gap: 2.5rem;
 
     font-family: "Roboto SerifVariable";
     font-weight: 400;
@@ -121,8 +124,18 @@ button {
     cursor: pointer;
 
     background-color: transparent;
+    color: var(--primary-01);
     border: 1px solid var(--primary-01);
     border-radius: 0.5rem;
+}
+
+.button.modern {
+    font-family: "InterVariable";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.8rem;
+    padding: 1.25rem 2.5rem;
+    border-radius: 1rem;
 }
 
 .button svg {
@@ -136,9 +149,29 @@ button {
     color: var(--secondary-01);
 }
 
-.button:hover svg,
+.button.inverted {
+    background-color: var(--primary-01);
+    color: var(--secondary-01);
+}
+
+.button.inverted svg path {
+    fill: var(--secondary-01);
+}
+
+.button.inverted:not(.button[disabled]):not(.button.disabled):hover,
+.button.inverted.selected {
+    background-color: var(--secondary-01);
+    color: var(--primary-01);
+}
+
+.button:not(.button[disabled]):not(.button.disabled):hover svg,
 .button.selected svg {
     filter: invert();
+}
+
+.button.outline:hover {
+    outline: 1.5px solid var(--primary-01);
+    filter: brightness(1.1);
 }
 
 /* SUBTITLE */
@@ -147,6 +180,11 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
+}
+
+.subtitle.marginTop {
+    margin-top: 5rem;
 }
 
 .subtitle p {
@@ -178,6 +216,10 @@ button {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+}
+
+html[data-theme="light"] .deco {
+    filter: invert();
 }
 
 @media (min-width: 1024px) {

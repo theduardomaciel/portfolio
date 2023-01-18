@@ -1,19 +1,16 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogLayout from "@layouts/BlogLayout.astro";
+import BlogHome from "@layouts/BlogHome.astro";
 
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header/Header.astro";
 
-import { getAllPosts, getAllTags } from "src/lib/sanity/api";
-import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
-
-import type { PostTag } from "src/lib/sanity/getTagsFromPost";
-import BlogHome from "@components/BlogHome.astro";
+import { getAllPostsWithCategory, getAllTags } from "src/lib/sanity/api";
 
 const allTags = await getAllTags();
 
-export async function getStaticPaths() {
+/* export async function getStaticPaths() {
     const allBlogPosts = await getAllPosts();
     const allTags = await getAllTags();
 
@@ -32,7 +29,10 @@ export async function getStaticPaths() {
     });
 }
 
-const { posts } = Astro.props;
+const { posts } = Astro.props; */
+
+const { slug } = Astro.params;
+const posts = (await getAllPostsWithCategory(slug as string)) || [];
 
 const seo = {
     title: "Blog",

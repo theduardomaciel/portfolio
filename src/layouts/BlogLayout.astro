@@ -2,31 +2,58 @@
 ---
 
 <script>
-    // Scrolls the element to the left or right when the mouse wheel is scrolled
-    const scrolls = document.querySelectorAll(".scroller");
-    scrolls.forEach((scroll) => {
-        scroll.addEventListener("wheel", function (event: any) {
-            if (event.deltaY > 0) {
-                scroll.scrollTo({
-                    top: 0,
-                    left: scroll.scrollLeft + 100,
-                    behavior: "smooth",
-                });
-                event.preventDefault();
-                // preventDefault() will help avoid worrisome
-            } else {
-                scroll.scrollTo({
-                    top: 0,
-                    left: scroll.scrollLeft - 100,
-                    behavior: "smooth",
-                });
-                event.preventDefault();
-            }
-        });
+    const category = window.location.pathname.split("/")[3];
+
+    // Tags Scroll
+    const tagsHolder = document.getElementById("tagsHolder") as HTMLElement;
+    const tagsScroll = document.getElementById("tagsScroll") as HTMLElement;
+    const top = localStorage.getItem("tags-scroll");
+    if (top !== null) {
+        tagsScroll.scrollLeft = parseInt(top);
+    }
+
+    function checkScroll(event: any) {
+        const maxScrollRight = tagsScroll.scrollWidth - tagsScroll.clientWidth;
+        if (tagsScroll.scrollLeft === 0) {
+            tagsHolder.classList.remove("left");
+        } else {
+            tagsHolder.classList.add("left");
+        }
+
+        if (tagsScroll.scrollLeft >= maxScrollRight - 10) {
+            tagsHolder.classList.remove("right");
+        } else {
+            tagsHolder.classList.add("right");
+        }
+    }
+
+    tagsScroll.addEventListener("wheel", function (event: any) {
+        checkScroll(event);
+        if (event.deltaY > 0) {
+            tagsScroll.scrollTo({
+                top: 0,
+                left: tagsScroll.scrollLeft + 200,
+                behavior: "smooth",
+            });
+            event.preventDefault();
+            // preventDefault() will help avoid worrisome
+        } else {
+            tagsScroll.scrollTo({
+                top: 0,
+                left: tagsScroll.scrollLeft - 200,
+                behavior: "smooth",
+            });
+            event.preventDefault();
+            // preventDefault() will help avoid worrisome
+        }
+    });
+
+    tagsScroll.addEventListener("touchmove", function (event: any) {
+        checkScroll(event);
     });
 
     // Tags
-    const tags = document.querySelectorAll(".tags .tag");
+    const tagsContainers = document.querySelectorAll(".tags .tag");
     const selectionCircle = document.getElementById(
         "selectionCircle"
     ) as HTMLDivElement;
@@ -37,8 +64,7 @@
         }
     }
 
-    const category = window.location.pathname.split("/")[3];
-    tags.forEach((tag) => {
+    tagsContainers.forEach((tag) => {
         if (tag.getAttribute("title") === category) {
             tag.classList.add("active");
             updateSelectionCircle(tag as HTMLElement);
@@ -51,6 +77,10 @@
             event.target.classList.add("active");
             updateSelectionCircle(event.target);
         }); */
+    });
+
+    window.addEventListener("beforeunload", () => {
+        localStorage.setItem("tags-scroll", tagsScroll.scrollLeft.toString());
     });
 </script>
 

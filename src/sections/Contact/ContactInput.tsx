@@ -1,12 +1,9 @@
 import { useState } from "react";
 import "@styles/contact.css";
 
-// Components
-import Button from '@components/Button';
-
 // Functions
-import postEmail from '@utils/functions/sendEmailToDiscord';
 import Translate, { TranslateText } from "@components/Translate";
+import axios from "axios";
 
 const validateEmail = (email: string) => {
     return String(email)
@@ -20,6 +17,8 @@ export default function ContactInput() {
     const [status, setStatus] = useState<boolean | "pending" | "success" | "invalidEmail" | "serverError">(false)
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
         const formData = new FormData(event.target as HTMLFormElement);
         const userEmail = formData.get("email") as string;
 
@@ -31,14 +30,16 @@ export default function ContactInput() {
                 setStatus(false)
             }, 1000);
         } else {
-            const response = await postEmail(userEmail)
-            if (!response) {
-                setStatus("serverError")
-                setTimeout(() => {
-                    setStatus(false)
-                }, 1000);
-            } else {
-                setStatus("success")
+            try {
+                const response = await axios.post("/api/contact", { email: userEmail })
+                if (response.status === 200) {
+                    window.location.href = "/contact/success"
+                } else {
+                    window.location.href = "/contact/error"
+                }
+            } catch (error) {
+                console.log(error)
+                window.location.href = "/contact/error"
             }
         }
     }
@@ -48,13 +49,13 @@ export default function ContactInput() {
             <input
                 placeholder={status === "invalidEmail" ? TranslateText("The e-mail inserted is invalid.") : TranslateText("Enter your e-mail here")}
                 className={"input"}
-                style={{ borderColor: status === "invalidEmail" ? "red" : "var(--secondary-color-01)" }}
+                style={{ border: status === "invalidEmail" ? "2px solid red" : "1px solid var(--secondary-01)" }}
                 type="email"
                 name="email"
             />
-            <Button type="submit">
+            <button type="submit">
                 <Translate>Contact</Translate>
-            </Button>
+            </button>
         </form>
     )
 }

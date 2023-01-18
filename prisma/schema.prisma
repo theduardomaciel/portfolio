@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider          = "mysql"
+    url               = env("DATABASE_URL")
+    shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+    relationMode      = "prisma"
+}
+
+model Guest {
+    id        String   @id @default(cuid())
+    name      String
+    image_url String?
+    email     String   @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    readingList Post[] @relation(name: "inListOf")
+    likedPosts  Post[] @relation(name: "likedBy")
+
+    @@map("guests")
+}
+
+model Post {
+    slug String @id @db.VarChar(128)
+
+    views    BigInt  @default(1)
+    likedBy  Guest[] @relation(name: "likedBy")
+    inListOf Guest[] @relation(name: "inListOf")
+
+    @@map("views")
+}

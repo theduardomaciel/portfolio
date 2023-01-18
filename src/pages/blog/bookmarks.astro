@@ -1,0 +1,80 @@
+---
+import "@styles/bookmarks.css";
+import "@styles/post.css";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Svg from "@jasikpark/astro-svg-loader";
+
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header/Header.astro";
+import PostPreview from "@components/Post/PostPreview.astro";
+
+import { getAllPosts, getAllTags } from "src/lib/sanity/api";
+import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
+
+import { getGuestFromId } from "../api/guest/index";
+
+const guestId = Astro.cookies.get("guest.id").value;
+
+if (!guestId) {
+    Astro.redirect(`/blog`);
+}
+
+const guest = (await getGuestFromId(guestId as string)) as any;
+
+if (!guest) {
+    Astro.redirect(`/blog`);
+}
+
+const tags = await getAllTags();
+const allPosts = await getAllPosts();
+
+const guestReadingListTitles = guest.readingList.map((post: any) => post.slug);
+
+const posts = allPosts.filter((post: any) => {
+    return guestReadingListTitles.includes(post.slug.current);
+});
+
+const seo = {
+    title: "Blog",
+    description: "The blog of my simple porfolio.",
+};
+---
+
+<BaseLayout seo={seo}>
+    <Header />
+    <main class="bookmarks wrapper">
+        <nav>
+            <div class="subtitle marginTop">
+                <p style="font-size: 2.8rem;">Your reading list</p>
+                <div></div>
+            </div>
+            <a href="/blog" class="back">
+                <Svg
+                    src={import("@assets/icons/left_arrow.svg?raw")}
+                    aria-label={"Back arrow"}
+                />
+                Back to home
+            </a>
+        </nav>
+        <section class={`posts ${posts.length === 0 ? "empty" : ""}`}>
+            {
+                posts.length > 0 ? (
+                    posts.map((post: any) => {
+                        const postTags = getTagsFromPost(tags, post.categories);
+                        return <PostPreview post={post} tags={postTags} />;
+                    })
+                ) : (
+                    <div class="empty">
+                        <h2>It's a little empty here! </h2>
+                        <h5>
+                            Add some posts to your reading list to see them
+                            here.
+                        </h5>
+                    </div>
+                )
+            }
+        </section>
+    </main>
+    <Footer />
+</BaseLayout>

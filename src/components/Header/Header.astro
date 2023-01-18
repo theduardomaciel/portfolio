@@ -1,11 +1,12 @@
 ---
-import Button from "@components/Button";
 import ActionButtons from "./subcomponents/ActionButtons.astro";
 import SectionButton from "./subcomponents/SectionButton.astro";
 import ToggleButton from "./subcomponents/ToggleButton.astro";
 
 const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar minúsculo
 const isBlog = Astro.url.pathname.includes("blog");
+
+const { isStatic } = Astro.props;
 ---
 
 <script>
@@ -134,7 +135,7 @@ const isBlog = Astro.url.pathname.includes("blog");
     window.addEventListener("resize", handleResize);
 </script>
 
-<header id="header" class={`header`}>
+<header id="header" class={`header ${isStatic ? "static" : ""}`}>
     <a class="title" href="/#">
         {`<>edu.</>`}
     </a>
@@ -180,7 +181,11 @@ const isBlog = Astro.url.pathname.includes("blog");
         font-size: 2.4rem;
     }
 
-    html[data-lod="high"] .header.scroll:not(.menuExpanded) {
+    .header.static {
+        position: absolute;
+    }
+
+    html[data-lod="high"] .header.scroll:not(.menuExpanded):not(.static) {
         opacity: 1;
         background-color: initial;
         -webkit-backdrop-filter: blur(25px);
@@ -267,7 +272,7 @@ const isBlog = Astro.url.pathname.includes("blog");
         .header {
             padding-inline: 12.5rem;
             font-size: 1.6rem;
-            height: var(--nav-height-desktop);
+            height: var(--nav-height);
         }
 
         .title {
@@ -304,7 +309,7 @@ const isBlog = Astro.url.pathname.includes("blog");
             transform: initial;
 
             width: fit-content;
-            height: var(--nav-height-desktop);
+            height: var(--nav-height);
             padding: 0;
 
             opacity: 1;

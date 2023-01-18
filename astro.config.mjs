@@ -17,6 +17,7 @@ export default defineConfig({
         apiVersion: "v2023-01-01",
         useCdn: true,
     })],
+    output: 'server',
     vite: {
         plugins: [svgr()]
     }

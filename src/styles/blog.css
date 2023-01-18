@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 5rem;
+    gap: 2.5rem;
     width: 100vw;
     margin-bottom: 15rem;
 }
@@ -39,7 +39,16 @@
     width: 100%;
 }
 
-.blog header .listButton {
+.blog .bookmarksContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.bookmarksContainer .button {
     padding: 1.15rem 2.5rem;
     font-size: 1.8rem;
     width: 100%;
@@ -52,16 +61,50 @@
     align-items: center;
     justify-content: flex-start;
 
-    overflow: scroll;
+    position: relative;
+
+    overflow: hidden;
     overflow-y: hidden;
-    max-width: 100vw;
+    width: 100%;
     height: 5rem;
 
     order: 2;
 }
 
-.tagsHolder::-webkit-scrollbar {
+.tags::-webkit-scrollbar {
     display: none;
+}
+
+.limit {
+    display: flex;
+    width: 10rem;
+    height: 105%;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    opacity: 0;
+
+    transition: var(--transition);
+    pointer-events: none;
+
+    background: linear-gradient(270deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+.tagsHolder.left .limit.left,
+.tagsHolder.right .limit.right {
+    opacity: 1;
+}
+
+.limit.left {
+    left: calc(var(--margin) - 0.5rem);
+    background: linear-gradient(90deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
+}
+
+.limit.right {
+    right: calc(var(--margin) - 0.5rem);
+    background: linear-gradient(270deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
 }
 
 .blog nav .tags {
@@ -73,9 +116,10 @@
     gap: 5rem;
     padding: 1.25rem 5rem;
     height: 100%;
-    overflow: visible;
+    overflow-x: scroll;
+    overflow-y: hidden;
 
-    background: var(--secondary-01);
+    background: transparent;
     border: 1px solid var(--primary-01);
     border-radius: 0.5rem;
 }
@@ -85,7 +129,7 @@
     align-items: center;
     justify-content: center;
 
-    opacity: 0.65;
+    opacity: 0.75;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
@@ -99,7 +143,18 @@
 }
 
 .blog nav .tag.active {
-    opacity: 1;
+    font-weight: 700;
+    animation: fadeIn 450ms ease 0ms forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .selectionCircle {
@@ -110,19 +165,22 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    transition: var(--transition);
+    opacity: 0;
+    animation: fadeIn 450ms ease 100ms forwards;
 
     width: 11rem;
     height: 11rem;
 
     border-radius: 50%;
-    background: radial-gradient(50% 50% at 50% 50%, rgba(217, 217, 217, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
+    background: var(--blog-radial-gradient);
     filter: blur(32.5px);
 }
 
 .divisor {
     width: 1px;
+    min-width: 1px;
     height: 2rem;
+    opacity: 0.35;
     background: var(--primary-01);
 }
 
@@ -165,10 +223,27 @@
     font-family: 'Roboto SlabVariable';
     font-style: normal;
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
 
     text-align: center;
     color: var(--primary-01);
+}
+
+.loginRequest {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.loginRequest h6 {
+    font-family: 'Roboto SerifVariable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+
+    text-align: right;
 }
 
 @media (max-width: 768px) {
@@ -184,15 +259,18 @@
 
     .blog nav {
         flex-direction: row;
-        padding-inline: 12.5rem;
     }
 
-    .blog header .listButton {
+    .blog header.wrapper {
+        margin-top: 5rem;
+    }
+
+    .bookmarksContainer .button {
         width: fit-content;
     }
 
     .blog .tagsHolder {
-        padding: 0;
+        padding-inline: var(--margin);
     }
 
     .blog nav .tags::-webkit-scrollbar {
@@ -203,5 +281,9 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5rem;
+    }
+
+    .limit {
+        width: 15rem;
     }
 }

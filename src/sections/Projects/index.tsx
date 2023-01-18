@@ -5,8 +5,7 @@ import styles from '@styles/projects.module.css';
 import Translate from '@components/Translate';
 
 // Components
-import Button from '@components/Button';
-import ProjectsCarousel from '@components/Carousel';
+import ProjectsCarousel from './Carousel';
 
 // Icons
 import { ReactComponent as ChevronLeft } from 'src/assets/icons/chevron.svg';
@@ -114,10 +113,10 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
 
             }
             <a target={"_blank"} rel="noreferrer" href="https://github.com/theduardomaciel">
-                <Button style={{ fontSize: `1.4rem`, paddingInline: `3rem`, marginBottom: "1rem" }}>
+                <button className='button inverted modern' style={{ fontSize: `1.4rem`, paddingInline: `3rem`, paddingBlock: "1.25rem", marginBottom: "1rem" }}>
                     <GithubLogo width={`1.8rem`} height={`1.8rem`} />
                     <Translate>Check other repositories</Translate>
-                </Button>
+                </button>
             </a>
         </section>
     );

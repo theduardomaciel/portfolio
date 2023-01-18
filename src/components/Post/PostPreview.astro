@@ -1,6 +1,7 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
+import sanity from "src/lib/sanity/portableText";
 
 const { post, tags, isMinimal } = Astro.props;
 
@@ -10,6 +11,20 @@ const formattedDate = date.toLocaleDateString(undefined, {
     month: "2-digit",
     day: "2-digit",
 });
+
+function getReadingTime(text: string) {
+    const wordPerMinute = 225;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wordPerMinute);
+    return time;
+}
+const postBody = sanity(post.body)
+    .replace(/\s*\<.*?\>\s*/g, "")
+    .replace(new RegExp("&" + "#" + "x27;", "g"), "'");
+
+const readTime = getReadingTime(postBody);
+
+const { isLogged, hasMarked } = Astro.props;
 ---
 
 <li class={`postPreviewContainer ${isMinimal ? "isMinimal" : ""}`}>
@@ -37,16 +52,34 @@ const formattedDate = date.toLocaleDateString(undefined, {
                     <span>{formattedDate}</span>
                 </div>
                 {
-                    !isMinimal && (
-                        <Svg
-                            class="icon"
-                            fill={"var(--secondary-01)"}
-                            src={import("@assets/icons/bookmark.svg?raw")}
-                            aria-label="Bookmark icon"
-                        />
+                    !isMinimal && isLogged && (
+                        <div class="footer">
+                            <p class="readTime">{readTime} min read</p>
+                            {!hasMarked && (
+                                <Svg
+                                    class="icon"
+                                    fill={"var(--secondary-01)"}
+                                    src={import(
+                                        "@assets/icons/bookmark.svg?raw"
+                                    )}
+                                    aria-label="Bookmark icon"
+                                />
+                            )}
+                            {hasMarked && (
+                                <Svg
+                                    class="icon"
+                                    fill={"var(--secondary-01)"}
+                                    src={import(
+                                        "@assets/icons/bookmark_filled.svg?raw"
+                                    )}
+                                    aria-label="Bookmark filled icon"
+                                />
+                            )}
+                        </div>
                     )
                 }
             </footer>
+            <!-- {!isMinimal && <p class="readTime">{readTime} min reading time</p>} -->
         </div>
     </a>
 </li>
@@ -163,13 +196,35 @@ const formattedDate = date.toLocaleDateString(undefined, {
         color: var(--secondary-01);
     }
 
-    .icon {
-        display: none;
+    .readTime {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        text-align: right;
+
+        color: var(--secondary-01);
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .footer path {
+        fill: var(--secondary-01);
     }
 
     @media (min-width: 1024px) {
-        .icon {
+        .footer {
             display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+            width: initial;
         }
 
         .postPreview .previewContent {

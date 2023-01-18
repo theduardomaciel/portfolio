@@ -1,13 +1,13 @@
 ---
-import "../styles/home.css";
+import "@styles/home.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
 import Planet from "@components/Planet.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 import Starfield from "@components/Starfield.astro";
-import Blobs from "@components/Blobs.astro";
-import Rocket from "@components/Rocket.astro";
+import Blobs from "@components/Home/Blobs.astro";
+import Rocket from "@components/Home/Rocket.astro";
 ---
 
 <section id="home" class="home">
@@ -23,7 +23,7 @@ import Rocket from "@components/Rocket.astro";
                 width={375}
             />
         </div>
-        <p>Ongoing software engineer</p>
+        <p>Ongoing designer and software engineer</p>
         <SocialMedia />
         <div id="mouseScroll" class="mouseScroll">
             <Svg

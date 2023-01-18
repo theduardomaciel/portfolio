@@ -1,0 +1,195 @@
+---
+import "@styles/blog.css";
+import Svg from "@jasikpark/astro-svg-loader";
+
+import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
+import type { PostTag } from "src/lib/sanity/getTagsFromPost";
+
+import PostPreview from "@components/Post/PostPreview.astro";
+import { getGuestFromId } from "src/pages/api/guest";
+
+const { posts, tags } = Astro.props;
+const sortedTags = tags.sort((tagA: PostTag, tagB: PostTag) => {
+    return tagA.title.localeCompare(tagB.title);
+});
+
+const category = Astro.url.pathname.split("/")[3];
+
+const guestId = Astro.cookies.get("guest.id").value;
+const guest = await getGuestFromId(guestId);
+const isLogged = guestId !== undefined;
+
+const markedPostsSlugs = guest?.readingList.map(
+    (postInList: any) => postInList.slug
+);
+---
+
+<script>
+    import { eraseCookie } from "@utils/cookies";
+
+    function redirectToGithub() {
+        const GITHUB_URL = "https://github.com/login/oauth/authorize";
+        const params = {
+            client_id: import.meta.env.PUBLIC_GITHUB_CLIENT_ID,
+            responseType: "code",
+            scope: "user%3Aemail read%3Auser",
+            state: "portfolio-test",
+            allow_signup: false,
+        };
+        const authURL = `${GITHUB_URL}?${JSON.stringify(params)
+            .replace(/["{}]/g, "")
+            .replace(
+                /:/g,
+                "="
+            ) /* isso troca caracteres até demais, inclusive os do REDIRECT_URI */
+            .replace(/,/g, "&")}?redirect_uri=${
+            import.meta.env.PUBLIC_GITHUB_REDIRECT_URI
+        }`;
+        console.log(authURL);
+        window.location.href = authURL;
+    }
+
+    const loginButton = document.getElementById(
+        "loginButton"
+    ) as HTMLButtonElement;
+    if (loginButton) {
+        loginButton.addEventListener("click", redirectToGithub);
+    }
+
+    function logout() {
+        eraseCookie("guest.id");
+        location.reload();
+    }
+
+    const logoutButton = document.getElementById(
+        "logoutButton"
+    ) as HTMLButtonElement;
+    if (logoutButton) {
+        logoutButton.addEventListener("click", logout);
+    }
+</script>
+
+<main class="blog">
+    <header class="wrapper">
+        <h1>Blog</h1>
+        {
+            isLogged ? (
+                <div class="bookmarksContainer">
+                    <a class="button" href="/blog/bookmarks">
+                        <Svg
+                            class="icon"
+                            fill={"var(--primary-01)"}
+                            src={import("@assets/icons/bookmark.svg?raw")}
+                            aria-label="Bookmark icon"
+                        />
+                        My reading list
+                    </a>
+                    <button
+                        id="logoutButton"
+                        class="button"
+                        style="padding-inline: 1.5rem;"
+                    >
+                        <Svg
+                            class="icon"
+                            fill={"var(--primary-01)"}
+                            src={import("@assets/icons/logout.svg?raw")}
+                            aria-label="Logout icon"
+                        />
+                    </button>
+                </div>
+            ) : (
+                <div class="loginRequest">
+                    <h6>
+                        Want to save articles to read later? <br />
+                        Add them to your reading list.
+                    </h6>
+                    <button
+                        id="loginButton"
+                        class="button inverted"
+                        style={{
+                            fontSize: `1.4rem`,
+                            fontFamily: "InterVariable",
+                            fontWeight: 600,
+                            paddingBlock: "1rem",
+                            borderRadius: "0.5rem",
+                        }}
+                    >
+                        <Svg
+                            src={import("src/assets/icons/github.svg?raw")}
+                            aria-label="Github icon"
+                            width={`1.8rem`}
+                            height={`1.8rem`}
+                        />
+                        Login with Github
+                    </button>
+                </div>
+            )
+        }
+    </header>
+
+    <nav>
+        <div id="tagsHolder" class="tagsHolder wrapper right">
+            <div class="limit left"></div>
+            <ul id="tagsScroll" class="tags">
+                <li class={`tag ${category === undefined ? "active" : ""}`}>
+                    <a href="/blog">All</a>
+                    <div id="selectionCircle" class="selectionCircle"></div>
+                </li>
+                <div class="divisor"></div>
+                {
+                    sortedTags.map((tag: PostTag, index: number) => {
+                        return (
+                            <Fragment>
+                                <li
+                                    title={tag.title}
+                                    class={`tag ${
+                                        category === tag.title ? "active" : ""
+                                    }`}
+                                >
+                                    <a href={`/blog/category/${tag.title}`}>
+                                        #{tag.title}
+                                    </a>
+                                </li>
+                                {index !== tags.length - 1 && (
+                                    <div class="divisor" />
+                                )}
+                            </Fragment>
+                        );
+                    })
+                }
+            </ul>
+            <div class="limit right"></div>
+        </div>
+    </nav>
+
+    {
+        posts.length > 0 ? (
+            <section id="postsContainer" class="posts wrapper">
+                {posts.map((post: any) => {
+                    const postTags = getTagsFromPost(
+                        sortedTags,
+                        post.categories
+                    );
+                    const hasMarked =
+                        guest && markedPostsSlugs?.includes(post.slug.current);
+
+                    return (
+                        <PostPreview
+                            isLogged={isLogged}
+                            post={post}
+                            tags={postTags}
+                            hasMarked={hasMarked}
+                        />
+                    );
+                })}
+            </section>
+        ) : (
+            <div class="empty">
+                <h2>Oops! </h2>
+                <h5>
+                    It looks like there aren't any blog posts with this tag yet!
+                </h5>
+            </div>
+        )
+    }
+</main>

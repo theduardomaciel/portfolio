@@ -2,8 +2,12 @@
 import "@styles/contact.css";
 
 import Starfield from "@components/Starfield.astro";
-import ContactInput from "@components/ContactInput";
+import ContactInput from "./ContactInput";
 import Planet from "@components/Planet.astro";
+
+const TITLE = "Interested in developing a new application?";
+const SUBTITLE =
+    "Enter your email and be prepared to put your ideas into practice.";
 ---
 
 <section class={`contact section`} id="contact">
@@ -17,12 +21,14 @@ import Planet from "@components/Planet.astro";
         >
             <Starfield />
             <div class="infoHolder">
-                <p>WANT TO HAVE AN AWESOME PROJECT DONE?</p>
+                <h6>{TITLE}</h6>
+                <p>{SUBTITLE}</p>
             </div>
         </div>
         <div class={`infoHolder info2`}>
-            <p>WANT TO HAVE AN AWESOME PROJECT DONE?</p>
-            <ContactInput />
+            <h6>{TITLE}</h6>
+            <p>{SUBTITLE}</p>
+            <ContactInput client:idle />
         </div>
     </div>
     <div class="blob2Holder">
@@ -33,7 +39,14 @@ import Planet from "@components/Planet.astro";
                 clipPath: `url(#contactBlob2)`,
             }}
         >
-            <Starfield />
+            <Starfield
+                style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                }}
+            />
         </div>
         <Planet style={{ top: "27.5rem", left: "-6.5rem" }} />
     </div>
@@ -48,11 +61,12 @@ import Planet from "@components/Planet.astro";
         <defs>
             <clipPath id="contactBlob1">
                 <path
-                    d="M104.499 6.20032C146.257 9.99486 173.077 13.8153 212.831 26.6993C244.563 36.9839 285.467 41.4622 321.427 47.4562C339.763 50.5124 359.346 51.4527 377.914 52.0975C400.668 52.8876 425.354 49.0279 447.792 53.2578C500.273 63.1507 553.407 83.7439 595.77 115.399C650.766 156.494 691.147 276.348 695.616 345H-198.75C-171.431 280.637 -169.749 179.506 -138.551 116.431C-126.78 92.6329 -108.353 72.8497 -87.7666 55.8363C-64.2469 36.3982 -32.3153 14.9987 -1.97636 7.36064C31.0317 -0.949368 71.0894 3.16441 104.499 6.20032Z"
-                    fill="white"
+                    d="M212.831 26.6993C173.077 13.8153 146.257 9.99486 104.499 6.20032C71.0894 3.16441 31.0317 -0.949367 -1.97636 7.36064C-32.3153 14.9987 -64.2469 36.3982 -87.7666 55.8363C-108.353 72.8497 -126.78 92.6329 -138.551 116.431C-169.749 179.506 -171.431 280.637 -198.75 345H695.616C691.147 276.348 650.766 156.494 595.77 115.399C553.407 83.7439 500.273 63.1507 447.792 53.2578C425.354 49.0279 400.668 52.8876 377.914 52.0975C359.346 51.4527 339.763 50.5124 321.427 47.4562C285.467 41.4622 244.563 36.9839 212.831 26.6993Z"
+                    fill="white"></path>
+                <path
+                    d="M695.616 345C691.147 276.348 650.766 156.494 595.77 115.399C553.407 83.7439 500.273 63.1507 447.792 53.2578C425.354 49.0279 400.668 52.8876 377.914 52.0975C359.346 51.4527 339.763 50.5124 321.427 47.4562C285.467 41.4622 244.563 36.9839 212.831 26.6993C173.077 13.8153 146.257 9.99486 104.499 6.20032C71.0894 3.16441 31.0317 -0.949367 -1.97636 7.36064C-32.3153 14.9987 -64.2469 36.3982 -87.7666 55.8363C-108.353 72.8497 -126.78 92.6329 -138.551 116.431C-169.749 179.506 -171.431 280.637 -198.75 345M695.616 345H-198.75M695.616 345V625H-198.75V345"
                     stroke="white"
-                    stroke-width="3"
-                    stoke-line-cap="round"></path>
+                    stroke-width="3"></path>
             </clipPath>
             <clipPath id="contactBlob2">
                 <path
