@@ -19,6 +19,7 @@
         "@astrojs/react": "^1.2.2",
         "@astrojs/rss": "^2.0.0",
         "@astrojs/sitemap": "^1.0.0",
+        "@astrojs/vercel": "^2.4.0",
         "@fontsource/inter": "^4.5.14",
         "@fontsource/roboto": "^4.5.8",
         "@fontsource/roboto-serif": "^4.5.10",
