@@ -33,10 +33,31 @@ const customComponents = {
         </picture>
       `;
         },
+        blockComment: ({ value }: { value: any }) => {
+            return `
+        <div class="block-comment">
+            <p>${value.comment}</p>
+        </div>
+        `;
+        },
         code: ({ value }: { value: any }) => {
             return `<code-block code='${value.code}' language='${value.language}'></code-block>`;
         },
     },
+    marks: {
+        highlight: ({ children }: { children: any }) => {
+            return `<mark>${children}</mark>`;
+        }
+    },
+    block: {
+        blockComment: ({ value }: { value: any }) => {
+            return `
+        <div class="block-comment">
+            <p>${value.comment}</p>
+        </div>
+        `;
+        },
+    }
 };
 
 

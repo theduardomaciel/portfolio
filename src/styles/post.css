@@ -176,6 +176,41 @@
     line-height: 3.15rem;
 }
 
+.post .content article a {
+    background: var(--purple);
+    border-bottom: 1px solid var(--primary-01);
+}
+
+.post .content blockquote {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.post .content blockquote::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 3px;
+    height: 90%;
+    background: var(--primary-01);
+}
+
+.post .content .unknown__pt__mark__highlight {
+    background: rgba(255, 255, 0, 0.65);
+}
+
+.post .content h2 {
+    font-family: 'Roboto SlabVariable';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 3.6rem;
+    line-height: 85%;
+    margin-top: 2rem;
+    color: var(--primary-01);
+}
+
 .post .content article li {
     margin-left: 5rem;
 }

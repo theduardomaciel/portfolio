@@ -16,6 +16,8 @@
     --secondary-01: #000000;
     --secondary-02: #040305;
 
+    --purple: rgba(74, 25, 112, 0.35);
+
     --deco-gradient: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
     --blog-gradient: linear-gradient(180deg, var(--secondary-01) -8.29%, rgba(15, 5, 23, 0.65) 75.18%, rgba(74, 25, 112, 0.25) 100%);
     --blog-radial-gradient: radial-gradient(50% 50% at 50% 50%, rgba(217, 217, 217, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
