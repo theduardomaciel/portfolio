@@ -1,10 +1,7 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
-import image from "@astrojs/image";
-/* import astroI18next from "astro-i18next"; */
-/* import i18n from "astro-i18n" */
+// import i18n from "astro-i18n"
 
 import svgr from 'vite-plugin-svgr';
 import sanity from "astro-sanity";
@@ -13,7 +10,7 @@ import vercel from "@astrojs/vercel/edge";
 // https://astro.build/config
 export default defineConfig({
     site: 'https://theduardomaciel-v2.vercel.app/',
-    integrations: [/* i18n(), */mdx(), sitemap(), react(), image(), sanity({
+    integrations: [sitemap(), react(), sanity({
         projectId: "0jclcbcz",
         dataset: "production",
         apiVersion: "v2023-01-01",

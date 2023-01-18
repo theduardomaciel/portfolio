@@ -3,9 +3,6 @@
     "compilerOptions": {
         "jsx": "react-jsx",
         "jsxImportSource": "react",
-        "types": [
-            "@astrojs/image/client"
-        ],
         "baseUrl": ".",
         "paths": {
             "@components/*": [
