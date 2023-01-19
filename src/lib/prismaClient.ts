@@ -20,15 +20,15 @@ if (import.meta.env.NODE_ENV !== "production") global.prisma = prisma
 
 export default prisma; */
 
-import type { PrismaClient as PrismaClientType } from '@prisma/client/index.js';
-import { PrismaClient } from '@prisma/client/index.js';
+import type { PrismaClient as PrismaClientType } from '@prisma/client/index';
+import { PrismaClient } from '@prisma/client/edge';
 
 let prisma: PrismaClientType | undefined;
 
 if (import.meta.env.MODE === 'development') {
     prisma = new PrismaClient();
 } else {
-    import('@prisma/client/edge.js').then(
+    import('@prisma/client/edge').then(
         mod =>
         (prisma = new mod.PrismaClient({
             datasources: {
