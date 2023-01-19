@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client/edge'
+/* import { PrismaClient } from '@prisma/client/edge'
 
 declare global {
     // allow global `var` declarations
@@ -18,15 +18,29 @@ const prisma =
 
 if (import.meta.env.NODE_ENV !== "production") global.prisma = prisma
 
-export default prisma;
-
-/* import type { PrismaClient } from '@prisma/client';
-
-let prisma: PrismaClient;
-
-if (process.env.NODE_ENV === 'development') {
-    import('@prisma/client').then(mod => (prisma = new mod.PrismaClient()));
-} else {
-    import('@prisma/client/edge').then(mod => (prisma = new mod.PrismaClient()));
-}
 export default prisma; */
+
+import type { PrismaClient as PrismaClientType } from '@prisma/client';
+import { PrismaClient } from '@prisma/client/edge'
+
+let prisma: PrismaClientType;
+
+if (import.meta.env.NODE_ENV !== "development") {
+    import('@prisma/client/edge').then(mod => (prisma = new mod.PrismaClient({
+        datasources: {
+            db: {
+                url: import.meta.env.DATABASE_URL,
+            },
+        },
+    })));
+} else {
+    prisma = new PrismaClient({
+        datasources: {
+            db: {
+                url: import.meta.env.DATABASE_URL,
+            },
+        },
+    });
+}
+
+export default prisma;
