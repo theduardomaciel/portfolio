@@ -1,9 +1,9 @@
 import { m, AnimatePresence, MotionProps } from "framer-motion"
 
 import styles from '@styles/projects.module.css';
-import Translate, { TranslateText } from '@components/Translate';
 
 // Icons
+import { ReactComponent as FigmaIcon } from 'src/assets/icons/figma.svg';
 import { ReactComponent as DownArrow } from 'src/assets/icons/down_arrow.svg';
 
 // Status Icons
@@ -59,32 +59,40 @@ export default function ProjectsCarousel({ projects, projectIndex, setMoreInfoEx
                 <m.div className={styles.statusHolder} /* {...popTransitionProps} */ >
                     {projectStatusIcon}
                     <div />
-                    <p><Translate>{projectStatus}</Translate></p>
+                    <p>{projectStatus}</p>
                 </m.div>
-                <h3><Translate>{project.name}</Translate></h3>
-                <h4><Translate>{project.description}</Translate></h4>
+                <h3>{project.name}</h3>
+                <h4>{project.description}</h4>
             </div>
             <m.div key={`$info_${index}`} className={styles.info} /* {...popTransitionProps} */>
-                {
-                    project.link &&
-                    <a target={"_blank"} rel="noreferrer" href={project.link}>
-                        <button
-                            className="button inverted modern outline disabled"
-                            style={{
-                                backgroundColor: `rgb(${project.accent_color})`,
-                                color: "#FFFFFF",
-                                paddingBlock: `1.5rem`, paddingInline: "2.75rem",
-                                textTransform: "capitalize"
-                            }}
-                        >
-                            {project.link ? TranslateText("VISIT PROJECT") : TranslateText("WORK IN PROGRESS")}
-                        </button>
-                    </a>
-                }
+                <div style={{ display: "flex", flexDirection: "row", gap: "2.5rem", alignItems: "center", justifyContent: "flex-start", width: "100%" }}>
+                    {
+                        project.project_url && (
+                            <a target={"_blank"} rel="noreferrer" href={project.project_url}>
+                                <button
+                                    className="button inverted modern outline disabled"
+                                    style={{
+                                        backgroundColor: `rgb(${project.accent_color})`,
+                                        color: "#FFFFFF",
+                                        paddingBlock: `1.5rem`, paddingInline: "2.75rem",
+                                        textTransform: "capitalize"
+                                    }}
+                                >
+                                    VISIT PROJECT
+                                </button>
+                            </a>
+                        )
+                    }
+                    {
+                        project.figma_url && <a target={"_blank"} rel="noreferrer" href={project.figma_url}>
+                            <FigmaIcon />
+                        </a>
+                    }
+                </div>
                 {
                     project.technologies.length >= 1 &&
                     <div className={styles.moreInfo} onClick={() => setMoreInfoExpanded(!isMoreInfoExpanded)}>
-                        <p style={{ textTransform: "capitalize" }}><Translate>{isMoreInfoExpanded ? "LESS INFO" : "MORE INFO"}</Translate></p>
+                        <p style={{ textTransform: "capitalize" }}>{isMoreInfoExpanded ? "LESS INFO" : "MORE INFO"}</p>
                         <DownArrow
                             fill='var(--primary-01)'
                             viewBox='0 0 24 24'

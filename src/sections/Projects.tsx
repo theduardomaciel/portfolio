@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { LazyMotion, domAnimation } from 'framer-motion';
 
 import styles from '@styles/projects.module.css';
-import Translate from '@components/Translate';
 
 // Components
-import ProjectsCarousel from './Carousel';
+import ProjectsCarousel from '@components/Carousel';
 
 // Icons
 import { ReactComponent as ChevronLeft } from 'src/assets/icons/chevron.svg';
@@ -29,7 +28,7 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
     return (
         <section className={`${styles.projects} section wrapper`} id='projects'>
             <header className={"subtitle"}>
-                <p><Translate>Projects</Translate></p>
+                <p>Projects</p>
                 <div />
             </header>
 
@@ -79,7 +78,7 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
                 <div className={styles.projectTechnologies}>
                     {
                         projects[projectIndex].technologies.length > 1 &&
-                        <h5><Translate>Technologies used to build the application services:</Translate></h5>
+                        <h5>Technologies used to build the application services:</h5>
                     }
                     <div className={styles.projectTechs}>
                         <ul className={styles.projectTechs}>
@@ -101,7 +100,7 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
                                             </ul>
                                             {
                                                 column.hasOwnProperty('outro') &&
-                                                <p><Translate>{column.outro}</Translate></p>
+                                                <p>{column.outro}</p>
                                             }
                                         </div>
                                     </li>
@@ -115,7 +114,7 @@ export default function Projects({ projects }: { projects: Array<Project> }) {
             <a target={"_blank"} rel="noreferrer" href="https://github.com/theduardomaciel">
                 <button className='button inverted modern' style={{ fontSize: `1.4rem`, paddingInline: `3rem`, paddingBlock: "1.25rem", marginBottom: "1rem" }}>
                     <GithubLogo width={`1.8rem`} height={`1.8rem`} />
-                    <Translate>Check other repositories</Translate>
+                    Check other repositories
                 </button>
             </a>
         </section>

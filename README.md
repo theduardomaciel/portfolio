@@ -2,7 +2,7 @@
      Portfolio
 </h1>
 
-![cover](.public/cover.png?style=flat)
+![cover](./public/cover.png?style=flat)
 
 ## 💻 Project
 A simple portfolio built with Astro to showcase my projects and knowledge.

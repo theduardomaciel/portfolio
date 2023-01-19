@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "prisma generate --data-proxy && astro build",
+        "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
         "i18n:install": "astro-i18n install",
