@@ -21,7 +21,8 @@ if (import.meta.env.NODE_ENV !== "production") global.prisma = prisma
 export default prisma; */
 
 import type { PrismaClient as PrismaClientType } from '@prisma/client';
-import { PrismaClient } from '@prisma/client/edge'
+import PrismaEdge from "@prisma/client/edge"
+const { PrismaClient } = PrismaEdge
 
 let prisma: PrismaClientType;
 
