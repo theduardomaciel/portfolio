@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
-// import i18n from "astro-i18n"
 
 import svgr from 'vite-plugin-svgr';
 import sanity from "astro-sanity";

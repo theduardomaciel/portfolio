@@ -18,10 +18,8 @@ specifiers:
   '@typescript-eslint/parser': ^5.48.0
   '@vercel/edge-config': ^0.1.0
   astro: ^1.9.1
-  astro-i18n: ^1.5.2
   astro-sanity: ^1.1.2
   axios: ^1.2.3
-  esbuild: ^0.16.17
   eslint: ^8.31.0
   eslint-plugin-astro: ^0.21.1
   framer-motion: ^8.1.3
@@ -47,7 +45,6 @@ dependencies:
   '@sanity/client': 4.0.1
   '@vercel/edge-config': 0.1.0
   astro: 1.9.1
-  astro-i18n: 1.5.2
   astro-sanity: 1.1.2
   axios: 1.2.3
   framer-motion: 8.1.9_biqbaboplfbrettd7655fr4n2y
@@ -61,7 +58,6 @@ devDependencies:
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
-  esbuild: 0.16.17
   eslint: 8.31.0
   eslint-plugin-astro: 0.21.1_eslint@8.31.0
   prisma: 4.9.0
@@ -482,6 +478,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-arm64/0.16.17:
@@ -490,6 +487,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-x64/0.16.17:
@@ -498,6 +496,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-arm64/0.16.17:
@@ -506,6 +505,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-x64/0.16.17:
@@ -514,6 +514,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64/0.16.17:
@@ -522,6 +523,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-x64/0.16.17:
@@ -530,6 +532,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm/0.16.17:
@@ -538,6 +541,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm64/0.16.17:
@@ -546,6 +550,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ia32/0.16.17:
@@ -554,6 +559,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-loong64/0.15.18:
@@ -570,6 +576,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-mips64el/0.16.17:
@@ -578,6 +585,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ppc64/0.16.17:
@@ -586,6 +594,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-riscv64/0.16.17:
@@ -594,6 +603,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-s390x/0.16.17:
@@ -602,6 +612,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-x64/0.16.17:
@@ -610,6 +621,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/netbsd-x64/0.16.17:
@@ -618,6 +630,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/openbsd-x64/0.16.17:
@@ -626,6 +639,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/sunos-x64/0.16.17:
@@ -634,6 +648,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-arm64/0.16.17:
@@ -642,6 +657,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-ia32/0.16.17:
@@ -650,6 +666,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-x64/0.16.17:
@@ -658,6 +675,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@eslint/eslintrc/1.4.1:
@@ -1480,13 +1498,6 @@ packages:
       - supports-color
     dev: true
 
-  /astro-i18n/1.5.2:
-    resolution: {integrity: sha512-Dtknul7dbSvg2fK0RUCBbhSCqxApmIsbuz2ChjhLO7mkBnHDtA6foIvV8TVbkNUH30Nfb8BI4adLwG5aYdPVug==}
-    hasBin: true
-    dependencies:
-      get-file-exports: 1.2.1
-    dev: false
-
   /astro-sanity/1.1.2:
     resolution: {integrity: sha512-VWWmeyP9RG2ewU9vMpYHixjCEEUcy8fTrtu3OoYAq8rLcriYiD66AJAm5a7pfPhL2qaSsfxNVYFAHguheCwwvA==}
     dependencies:
@@ -2214,6 +2225,7 @@ packages:
       '@esbuild/win32-arm64': 0.16.17
       '@esbuild/win32-ia32': 0.16.17
       '@esbuild/win32-x64': 0.16.17
+    dev: false
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -2626,13 +2638,6 @@ packages:
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
-
-  /get-file-exports/1.2.1:
-    resolution: {integrity: sha512-wkhgR++d7jTAFq0f8UEyOojvtMn/EOduoTvHhp2h5OnyT+GoC4PqfKCrfyzzzrHcmKD/7sadsYWqO/tNuBHkfw==}
-    dependencies:
-      esbuild: 0.15.18
-      node-eval: 2.0.0
-    dev: false
 
   /get-intrinsic/1.1.3:
     resolution: {integrity: sha512-QJVz1Tj7MS099PevUG5jvnt9tSkXN8K14dxQlikJuPt4uD9hHAHjLyLBiLR5zELelBdD9QNRAXZzsJx0WaDL9A==}
@@ -3899,13 +3904,6 @@ packages:
   /node-domexception/1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
-
-  /node-eval/2.0.0:
-    resolution: {integrity: sha512-Ap+L9HznXAVeJj3TJ1op6M6bg5xtTq8L5CU/PJxtkhea/DrIxdTknGKIECKd/v/Lgql95iuMAYvIzBNd0pmcMg==}
-    engines: {node: '>= 4'}
-    dependencies:
-      path-is-absolute: 1.0.1
-    dev: false
 
   /node-fetch/2.6.8:
     resolution: {integrity: sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg==}
