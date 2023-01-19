@@ -14,7 +14,7 @@
 
     function checkScroll(event: any) {
         const maxScrollRight = tagsScroll.scrollWidth - tagsScroll.clientWidth;
-        if (tagsScroll.scrollLeft === 0) {
+        if (tagsScroll.scrollLeft <= 10) {
             tagsHolder.classList.remove("left");
         } else {
             tagsHolder.classList.add("left");
@@ -69,14 +69,6 @@
             tag.classList.add("active");
             updateSelectionCircle(tag as HTMLElement);
         }
-
-        /* tag.addEventListener("click", function (event: any) {
-            tags.forEach((tag) => {
-                tag.classList.remove("active");
-            });
-            event.target.classList.add("active");
-            updateSelectionCircle(event.target);
-        }); */
     });
 
     window.addEventListener("beforeunload", () => {

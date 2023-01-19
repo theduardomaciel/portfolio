@@ -1,8 +1,7 @@
-import { useState } from "react";
+import React, { HTMLInputTypeAttribute, useState } from "react";
 import "@styles/contact.css";
 
 // Functions
-import Translate, { TranslateText } from "@components/Translate";
 import axios from "axios";
 
 const validateEmail = (email: string) => {
@@ -14,7 +13,13 @@ const validateEmail = (email: string) => {
 };
 
 export default function ContactInput() {
-    const [status, setStatus] = useState<boolean | "pending" | "success" | "invalidEmail" | "serverError">(false)
+    const [status, setStatus] = useState<any>({
+        placeholder: "Enter your e-mail here",
+        style: {
+            border: "1px solid var(--secondary-01)",
+        },
+        "data-state": "idle"
+    })
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -23,14 +28,33 @@ export default function ContactInput() {
         const userEmail = formData.get("email") as string;
 
         const isEmailValid = validateEmail(userEmail)
+        event.currentTarget.reset();
 
         if (!isEmailValid) {
-            setStatus("invalidEmail")
+            setStatus({
+                placeholder: "Please enter a valid e-mail",
+                style: {
+                    border: "2px solid rgb(255, 0, 0)",
+                }
+            })
             setTimeout(() => {
-                setStatus(false)
-            }, 1000);
+                setStatus({
+                    placeholder: "Enter your e-mail here",
+                    style: {
+                        border: "1px solid var(--secondary-01)",
+                    }
+                })
+            }, 1750);
         } else {
             try {
+                setStatus({
+                    placeholder: "Wait while the server is contacted...",
+                    disabled: true,
+                    style: {
+                        border: "1px solid var(--purple)",
+                    },
+                    "data-state": "loading"
+                })
                 const response = await axios.post("/api/contact", { email: userEmail })
                 if (response.status === 200) {
                     window.location.href = "/contact/success"
@@ -47,14 +71,18 @@ export default function ContactInput() {
     return (
         <form className="inputHolder" onSubmit={handleSubmit}>
             <input
-                placeholder={status === "invalidEmail" ? TranslateText("The e-mail inserted is invalid.") : TranslateText("Enter your e-mail here")}
                 className={"input"}
-                style={{ border: status === "invalidEmail" ? "2px solid red" : "1px solid var(--secondary-01)" }}
                 type="email"
                 name="email"
+                data-state="idle"
+                {...status}
             />
-            <button type="submit">
-                <Translate>Contact</Translate>
+            <button type="submit" disabled={status.disabled === true} style={{ cursor: status.disabled ? "not-allowed" : "pointer" }}>
+                {
+                    status['data-state'] === "loading" ?
+                        <div className="loader"></div> :
+                        "Contact"
+                }
             </button>
         </form>
     )

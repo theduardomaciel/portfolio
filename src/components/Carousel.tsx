@@ -19,7 +19,7 @@ const statusIcons = {
 }
 
 // Types
-import type Project from 'src/types/project';
+import type Project from 'src/lib/types/project';
 import type { Dispatch, SetStateAction } from "react";
 
 interface Props {

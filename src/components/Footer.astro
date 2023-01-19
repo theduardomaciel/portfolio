@@ -1,37 +1,59 @@
 ---
+import Svg from "@jasikpark/astro-svg-loader";
 import SocialMedia from "./SocialMedia.astro";
 
 const today = new Date();
-
-import quotes from "@utils/quotes.json";
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-const [quote, author] = randomQuote.split("-");
 ---
+
+<script>
+    import type NowPlaying from "src/lib/types/nowplaying";
+
+    const spotifyHolder = document.getElementById("spotify") as HTMLElement;
+    const songTitle = document.getElementById("songTitle") as HTMLAnchorElement;
+
+    async function getNowPlayingAndUpdate() {
+        const response = await fetch("/api/spotify/nowplaying");
+        const data = (await response.json()) as NowPlaying;
+        console.log(data);
+        if (data.isPlaying) {
+            spotifyHolder.classList.add("listening");
+            songTitle.innerText = data.title;
+            songTitle.href = data.songUrl;
+        } else {
+            spotifyHolder.classList.remove("listening");
+            songTitle.innerText = "Not Playing";
+        }
+    }
+
+    console.log("foi");
+    getNowPlayingAndUpdate();
+</script>
 
 <footer class={"footer"}>
     <div class={"wrapper"}>
         <div class="row1">
-            <a href="/#">
-                <h3 class="title">{` <>edu.</> `}</h3>
-            </a>
+            <div id="spotify" class="spotify">
+                <p class="info">i'm currently listening to</p>
+                <div class="currentPlaying">
+                    <Svg
+                        src={import(
+                            "@assets/icons/enterprises/spotify.svg?raw"
+                        )}
+                        aria-label={"Spotify Logo"}
+                    />
+                    <a target="_blank" id="songTitle" class="songTitle"
+                        >Not Playing</a
+                    >
+                    <p class="spotifyTitle">- Spotify</p>
+                </div>
+            </div>
             <div class="contactInfo">
                 <SocialMedia />
             </div>
         </div>
         <div class="row2">
             <p>©{today.getFullYear()} | Made with ❤️ by Eduardo Maciel.</p>
-            <!-- <div
-                style={{
-                    height: "2rem",
-                    width: "0.05rem",
-                    backgroundColor: "var(--primary-01)",
-                }}
-            > -->
         </div>
-        <!-- <p class="quote">
-            &quot;{quote}&quot; <br />
-            - {author}
-        </p> -->
     </div>
 </footer>
 
@@ -42,6 +64,9 @@ const [quote, author] = randomQuote.split("-");
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+
+        align-self: flex-end;
+        justify-self: flex-end;
 
         background-color: var(--secondary-02);
         padding-block: 4rem;
@@ -127,6 +152,55 @@ const [quote, author] = randomQuote.split("-");
         width: 100%;
         line-height: 1.35rem;
         align-self: center;
+    }
+
+    .spotify {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        gap: 1rem;
+    }
+
+    .spotify:not(.listening) .info {
+        display: none;
+    }
+
+    .spotify p {
+        font-family: "Roboto Serif";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.8rem;
+
+        color: var(--primary-01);
+    }
+
+    .spotify .currentPlaying {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        font-size: 1.8rem;
+        color: var(--primary-01);
+    }
+
+    .spotify .currentPlaying .songTitle {
+        font-family: "Roboto Serif";
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .songTitle:hover {
+        text-decoration: underline;
+    }
+
+    .spotify .currentPlaying .spotifyTitle {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
     }
 
     @media (max-width: 475px) {

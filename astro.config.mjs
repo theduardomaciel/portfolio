@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
 
 import svgr from 'vite-plugin-svgr';
@@ -9,7 +8,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
     site: 'https://theduardomaciel-v2.vercel.app/',
-    integrations: [sitemap(), react(), sanity({
+    integrations: [react(), sanity({
         projectId: "0jclcbcz",
         dataset: "production",
         apiVersion: "v2023-01-01",
@@ -17,7 +16,7 @@ export default defineConfig({
     })],
     output: 'server',
     vite: {
-        plugins: [svgr() as any]
+        plugins: [svgr()]
     },
     adapter: vercel()
 });

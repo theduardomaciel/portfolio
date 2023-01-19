@@ -47,6 +47,23 @@ const customComponents = {
     marks: {
         highlight: ({ children }: { children: any }) => {
             return `<mark>${children}</mark>`;
+        },
+        internalLink: ({ children }: { children: any, value: any }) => {
+            /* console.log(props)
+            const href = `/blog/${slug.current}` */
+            return <p /* href={""} */> {children}</p>
+        },
+        link: ({ value, children }: { value: any, children: any }) => {
+            // Read https://css-tricks.com/use-target_blank/
+            return (
+                value.blank ? (
+                    `<a href=${value.href} target="_blank" rel="noopener noreferrer">
+                        ${children}
+                    </a>`
+                ) : (
+                    `<a href=${value.href}>${children}</a>`
+                )
+            )
         }
     },
     block: {
@@ -57,9 +74,8 @@ const customComponents = {
         </div>
         `;
         },
-    }
+    },
 };
-
 
 export default function sanity(portableText: string) {
     return portableTextToHtml(portableText, customComponents);

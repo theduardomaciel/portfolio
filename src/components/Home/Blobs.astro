@@ -3,9 +3,9 @@ import "@styles/home.css";
 ---
 
 <script>
-    import debounce from "src/utils/functions/debounce";
-    import blobShape from "src/utils/functions/generateBlob";
-    import getWindowDimensions from "src/utils/functions/windowDimensions";
+    import debounce from "src/utils/debounce";
+    import blobShape from "src/utils/generateBlob";
+    import getWindowDimensions from "src/utils/windowDimensions";
 
     function getBlobPath(size: number) {
         const { path } = blobShape({

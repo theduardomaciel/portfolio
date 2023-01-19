@@ -158,6 +158,30 @@
     font-family: "Roboto SlabVariable";
 }
 
+.loader {
+    display: flex;
+    background-color: var(--primary-01);
+    border-radius: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+
+    animation: loaderAnimate 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes loaderAnimate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 @media (min-width: 1024px) {
     .contact {
         margin-top: 12.5rem;
@@ -187,11 +211,14 @@
 
     .contact .blob2Holder {
         display: flex;
-        /* overflow: hidden; */
+        overflow: hidden;
+        max-height: 55rem;
+        width: 100%;
+        justify-content: flex-end;
 
         position: absolute;
-        right: -50rem;
         top: -25%;
+        right: -50rem;
         z-index: 0;
     }
 

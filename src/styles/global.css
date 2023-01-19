@@ -14,7 +14,7 @@
 
     --primary-01: #FFFFFF;
     --secondary-01: #000000;
-    --secondary-02: #040305;
+    --secondary-02: #0d0a10;
 
     --purple: rgba(74, 25, 112, 0.35);
 
@@ -48,7 +48,7 @@
 
 html,
 body {
-    width: 100%;
+    /* width: 100vw; */
     /* height: 100%; */
 
     text-rendering: optimizeLegibility;
@@ -63,6 +63,9 @@ body {
     font-size: 1.6rem;
     text-align: center;
     color: var(--primary-01);
+
+    height: 100%;
+    max-width: 100vw;
 
     overflow-y: overlay;
     overflow-x: hidden;

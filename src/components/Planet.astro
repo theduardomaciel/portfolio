@@ -1,9 +1,9 @@
 ---
-const { style } = Astro.props;
+const { style, classes } = Astro.props;
 ---
 
 <svg
-    class="planet"
+    class={`planetAnimation ${classes}`}
     width="217"
     height="181"
     viewBox="0 0 217 181"
@@ -48,13 +48,8 @@ const { style } = Astro.props;
 </svg>
 
 <style>
-    .planet {
+    .planetAnimation {
         z-index: 5;
-
-        position: absolute;
-        top: 60rem;
-        left: 5rem;
-
         animation: rotate 4s infinite alternate;
     }
 
@@ -94,13 +89,5 @@ const { style } = Astro.props;
 
     .moon2 {
         animation: moveDown 6s infinite alternate;
-    }
-
-    @media (min-width: 1024px) {
-        .planet {
-            position: absolute;
-            top: 17.5rem;
-            left: 10.5%;
-        }
     }
 </style>

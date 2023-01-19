@@ -12,7 +12,7 @@ import { ReactComponent as LinkIcon } from 'src/assets/icons/link.svg';
 import { ReactComponent as GithubLogo } from 'src/assets/icons/github.svg';
 
 // Utils
-import type Project from 'src/types/project';
+import type Project from 'src/lib/types/project';
 
 type ColumnProps = {
     name: string;

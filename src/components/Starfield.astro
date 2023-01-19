@@ -66,13 +66,15 @@ const { ...props } = Astro.props;
             context.clearRect(0, 0, canvas.width, canvas.height);
 
             const preColor = canvas.dataset.color;
+            const inverted = canvas.dataset.scheme === "inverted";
 
             // E renderizamos as estrelas
             context.fillStyle = preColor
                 ? preColor
-                : theme === "light"
+                : theme === "light" || (theme === "dark" && inverted)
                 ? "white"
                 : "black";
+
             for (let i = 0; i < STARS_NUM; i++) {
                 context.beginPath();
                 context.arc(stars[i].x, stars[i].y, stars[i].r, 0, Math.PI * 2);

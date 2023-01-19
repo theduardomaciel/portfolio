@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './buttons.module.css'
 
 import { ReactComponent as BookmarkFilled } from "src/assets/icons/bookmark_filled.svg";
@@ -18,6 +18,7 @@ async function toggleLike(guest: any, post: any) {
 
 export default function BookmarkButton({ guest, post, initialValue }: Props) {
     const [isActive, setActive] = useState(initialValue);
+    const debouncing = useRef(false);
 
     return (
         <button
@@ -25,7 +26,13 @@ export default function BookmarkButton({ guest, post, initialValue }: Props) {
             style={{ width: "100%", paddingInline: "0px" }}
             onClick={() => {
                 setActive(!isActive)
-                toggleLike(guest, post)
+                if (debouncing.current === false) {
+                    debouncing.current = true;
+                    setTimeout(() => {
+                        toggleLike(guest, post)
+                        debouncing.current = false;
+                    }, 2000);
+                }
             }}
         >
             <BookmarkFilled className={styles.filled} />
