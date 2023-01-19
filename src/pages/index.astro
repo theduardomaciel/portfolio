@@ -7,7 +7,7 @@ import Header from "@components/Header/Header.astro";
 import Footer from "@components/Footer.astro";
 
 import Home from "src/sections/Home.astro";
-import Projects from "src/sections/Projects";
+/* import Projects from "src/sections/Projects"; */
 import Tech from "src/sections/Tech.astro";
 import Contact from "src/sections/Contact/Contact.astro";
 
@@ -57,7 +57,7 @@ const response = await config.getAll(["projects", "tech"]);
     <Header />
     <main>
         <Home />
-        <Projects projects={response?.projects} client:load />
+        <!-- <Projects projects={response?.projects} client:load /> -->
         <Tech technologies={response?.tech} />
         <Contact />
     </main>

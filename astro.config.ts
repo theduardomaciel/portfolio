@@ -17,7 +17,7 @@ export default defineConfig({
     })],
     output: 'server',
     vite: {
-        plugins: [svgr()]
+        plugins: [svgr() as any]
     },
     adapter: vercel()
 });
