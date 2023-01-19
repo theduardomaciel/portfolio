@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client/edge'
 
 declare global {
     // allow global `var` declarations
@@ -8,7 +8,13 @@ declare global {
 
 const prisma =
     global.prisma ||
-    new PrismaClient() // { log: ['query']}
+    new PrismaClient({
+        datasources: {
+            db: {
+                url: import.meta.env.DATABASE_URL,
+            },
+        },
+    }) // { log: ['query']}
 
 if (import.meta.env.NODE_ENV !== "production") global.prisma = prisma
 
