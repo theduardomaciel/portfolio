@@ -20,10 +20,5 @@ export default defineConfig({
     vite: {
         plugins: [svgr()]
     },
-    adapter: vercel({
-        includeFiles: [
-            './node_modules/@prisma/client/edge.js',
-            './node_modules/@prisma/client/index-browser.js',
-        ]
-    })
+    adapter: vercel()
 });
