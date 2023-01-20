@@ -10,6 +10,9 @@ const today = new Date();
 
     const spotifyHolder = document.getElementById("spotify") as HTMLElement;
     const songTitle = document.getElementById("songTitle") as HTMLAnchorElement;
+    const songArtist = document.getElementById(
+        "songArtist"
+    ) as HTMLParagraphElement;
 
     async function getNowPlayingAndUpdate() {
         const response = await fetch("/api/spotify/nowplaying");
@@ -19,6 +22,7 @@ const today = new Date();
             spotifyHolder.classList.add("listening");
             songTitle.innerText = data.title;
             songTitle.href = data.songUrl;
+            songArtist.innerText = `- ${data.artist}`;
         } else {
             spotifyHolder.classList.remove("listening");
             songTitle.innerText = "Not Playing";
@@ -43,7 +47,7 @@ const today = new Date();
                     <a target="_blank" id="songTitle" class="songTitle"
                         >Not Playing</a
                     >
-                    <p class="spotifyTitle">- Spotify</p>
+                    <p id="songArtist" class="songArtist">- Spotify</p>
                 </div>
             </div>
             <div class="contactInfo">
@@ -89,7 +93,7 @@ const today = new Date();
     .footer .wrapper .row1 {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
         flex-wrap: wrap;
 
