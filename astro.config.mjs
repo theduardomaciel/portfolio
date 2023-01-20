@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
 import svgr from 'vite-plugin-svgr';
 import sanity from "astro-sanity";
-import vercel from "@astrojs/vercel/edge";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 import prefetch from "@astrojs/prefetch";
