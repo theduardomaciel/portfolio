@@ -23,13 +23,7 @@ export default defineConfig({
     adapter: vercel({
         includeFiles: [
             './node_modules/@prisma/client/edge.js',
-            './node_modules/@prisma/client/index.js',
             './node_modules/@prisma/client/index-browser.js',
-            './node_modules/@prisma/client/runtime/index.js',
-            './node_modules/@prisma/client/runtime/index-browser.js',
-            './node_modules/@prisma/client/runtime/index.d.ts',
-            './node_modules/@prisma/client/runtime/index-browser.d.ts',
-            './node_modules/@prisma/client/runtime/index.d.ts',
         ]
     })
 });
