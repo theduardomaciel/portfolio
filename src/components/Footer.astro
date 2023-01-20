@@ -25,7 +25,6 @@ const today = new Date();
         }
     }
 
-    console.log("foi");
     getNowPlayingAndUpdate();
 </script>
 
@@ -193,8 +192,9 @@ const today = new Date();
         font-weight: 700;
     }
 
-    .songTitle:hover {
+    .spotify.listening .songTitle:hover {
         text-decoration: underline;
+        cursor: pointer;
     }
 
     .spotify .currentPlaying .spotifyTitle {

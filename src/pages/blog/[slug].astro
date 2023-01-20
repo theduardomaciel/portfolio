@@ -24,28 +24,6 @@ import { getPostDataBySlug } from "../api/post/[slug]";
 import { getGuestFromId } from "../api/guest/index";
 import BookmarkButton from "@components/Post/Buttons/BookmarkButton";
 
-/* export async function getStaticPaths() {
-    const allBlogPosts = await getAllPosts();
-    const allTags = await getAllTags();
-    // rss({
-    //   title: 'Example Blog',
-    //   description: 'An example blog on Astro',
-    //   customData: `<language>en-us</language>`,
-    //   items: allBlogPosts.map(item => ({
-    //     title: item.title,
-    //     description: item.description,
-    //     link: `/blog/${item.slug.current}`,
-    //     pubDate: item.publishedAt,
-    //   })),
-    // });
-
-    return allBlogPosts.map((post: any) => ({
-        params: { slug: post.slug.current },
-        props: { post, tags: getTagsFromPost(allTags, post.categories) },
-    }));
-}
-
-const { post, tags } = Astro.props; */
 const { slug } = Astro.params;
 const post = await getPostBySlug(slug as string);
 

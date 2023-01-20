@@ -6,15 +6,13 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "prisma generate --data-proxy && astro build",
+        "build": "astro build",
         "preview": "astro preview",
-        "astro": "astro",
-        "i18n:install": "astro-i18n install",
-        "i18n:sync": "astro-i18n sync",
-        "i18n:extract:keys": "astro-i18n extract:keys"
+        "astro": "astro"
     },
     "dependencies": {
         "@astrojs/mdx": "^0.14.0",
+        "@astrojs/prefetch": "^0.1.1",
         "@astrojs/react": "^1.2.2",
         "@astrojs/rss": "^2.0.0",
         "@astrojs/sitemap": "^1.0.0",

@@ -24,11 +24,15 @@ const postBody = sanity(post.body)
 
 const readTime = getReadingTime(postBody);
 
-const { isLogged, hasMarked } = Astro.props;
+const { isLogged, hasMarked, hightPriority } = Astro.props;
 ---
 
 <li class={`postPreviewContainer ${isMinimal ? "isMinimal" : ""}`}>
-    <a class="postPreview" href={`/blog/${post.slug.current}`}>
+    <a
+        rel={hightPriority ? "prefetch" : ""}
+        class="postPreview"
+        href={`/blog/${post.slug.current}`}
+    >
         <header>
             {
                 !isMinimal && (

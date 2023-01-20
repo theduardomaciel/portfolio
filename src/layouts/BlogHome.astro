@@ -165,7 +165,7 @@ const markedPostsSlugs = guest?.readingList.map(
     {
         posts.length > 0 ? (
             <section id="postsContainer" class="posts wrapper">
-                {posts.map((post: any) => {
+                {posts.map((post: any, index: number) => {
                     const postTags = getTagsFromPost(
                         sortedTags,
                         post.categories
@@ -175,6 +175,7 @@ const markedPostsSlugs = guest?.readingList.map(
 
                     return (
                         <PostPreview
+                            hightPriority={index <= 5}
                             isLogged={isLogged}
                             post={post}
                             tags={postTags}
