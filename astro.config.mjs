@@ -1,13 +1,11 @@
 import { defineConfig } from 'astro/config';
-import react from "@astrojs/react";
 import svgr from 'vite-plugin-svgr';
 import sanity from "astro-sanity";
 import vercel from "@astrojs/vercel/serverless";
 
-// https://astro.build/config
+import react from "@astrojs/react";
 import prefetch from "@astrojs/prefetch";
 
-// https://astro.build/config
 export default defineConfig({
     site: 'https://theduardomaciel-v2.vercel.app/',
     integrations: [react(), sanity({
@@ -17,8 +15,10 @@ export default defineConfig({
         useCdn: true
     }), prefetch()],
     output: 'server',
+    adapter: vercel({
+        excludeFiles: [".prisma/client/index-browser"]
+    }),
     vite: {
         plugins: [svgr()]
-    },
-    adapter: vercel()
+    }
 });

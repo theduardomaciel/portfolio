@@ -57,9 +57,7 @@ const customComponents = {
             // Read https://css-tricks.com/use-target_blank/
             return (
                 value.blank ? (
-                    `<a href=${value.href} target="_blank" rel="noopener noreferrer">
-                        ${children}
-                    </a>`
+                    `<a href=${value.href} target="_blank" rel="noopener noreferrer">${children}</a>`
                 ) : (
                     `<a href=${value.href}>${children}</a>`
                 )

@@ -208,13 +208,15 @@
     background-color: var(--secondary-02);
 }
 
-.post .content article h2 {
+.post .content article h2,
+.post .content article h1 {
     font-family: 'Roboto SlabVariable';
     font-style: normal;
     font-weight: 900;
     font-size: 3.6rem;
     line-height: 85%;
     margin-top: 2rem;
+    margin-bottom: 1rem;
     color: var(--primary-01);
 }
 

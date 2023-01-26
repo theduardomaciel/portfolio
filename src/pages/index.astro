@@ -13,6 +13,8 @@ import Contact from "src/sections/Contact/Contact.astro";
 
 const config = createClient(import.meta.env.EDGE_CONFIG);
 const response = await config.getAll(["projects", "tech"]);
+
+export const prerender = true;
 ---
 
 <script>

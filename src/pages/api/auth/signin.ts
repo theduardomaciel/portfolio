@@ -2,7 +2,7 @@ import axios from "axios";
 
 import type { APIRoute } from "astro";
 
-import prisma from "src/lib/prismaClient";
+import prisma from "src/lib/prisma";
 
 const GITHUB_ACCESS_TOKEN_URL = "https://github.com/login/oauth/access_token"
 const { PUBLIC_GITHUB_REDIRECT_URI, PUBLIC_GITHUB_CLIENT_ID, GITHUB_SECRET } = process.env

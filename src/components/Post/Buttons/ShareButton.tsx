@@ -18,9 +18,9 @@ async function sharePost(shareData: { title: string; text: string; url: string; 
 export default function ShareButton({ post }: Props) {
 
     const shareData = {
-        title: post.slug,
+        title: post.title,
         text: "Read this post on theduardomaciel's blog",
-        url: `https://theduardomaciel.vercel.app/blog/${post.slug}`
+        url: `https://theduardomaciel.vercel.app/blog/${post.slug.current}`
     }
 
     return (

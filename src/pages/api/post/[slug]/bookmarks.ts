@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import prisma from "src/lib/prismaClient";
+import prisma from "src/lib/prisma";
 
 async function toggleReadingList(slug: string, guestId: string) {
     const post = await prisma.post.findUnique({
