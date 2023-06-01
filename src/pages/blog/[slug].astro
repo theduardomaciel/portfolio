@@ -43,6 +43,8 @@ const formattedDate = date.toLocaleDateString(undefined, {
     day: "2-digit",
 });
 
+console.log(date, formattedDate)
+
 const guestId = Astro.cookies.get("guest.id").value;
 const guest = (await getGuestFromId(guestId as string)) as any;
 

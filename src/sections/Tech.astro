@@ -9,8 +9,7 @@ interface Props {
         name: string;
         techs: {
             name: string;
-            experience: number;
-            unit: string;
+            experience: string;
             icon_url: string;
         }[];
     }[];
@@ -35,29 +34,56 @@ const { technologies } = Astro.props;
                     <li class="techSection">
                         <Tag title={techSection.name} />
                         <ul class="techs">
-                            {techSection.techs.map((tech) => (
-                                <li class="tech">
-                                    <div class="techIcon">
-                                        <img
-                                            width={100}
-                                            height={100}
-                                            loading="lazy"
-                                            src={tech.icon_url}
-                                            alt={`Tech (${tech.name}) icon`}
-                                        />
-                                    </div>
-                                    <div class="techDescription">
-                                        <p>{tech.name} </p>
-                                        <p>
-                                            +{tech.experience}
-                                            {`${tech.unit}${
-                                                tech.experience > 1 ? "s" : ""
-                                            }`}{" "}
-                                            experience
-                                        </p>
-                                    </div>
-                                </li>
-                            ))}
+                            {techSection.techs.map((tech) => {
+                                const splitExperience =
+                                    tech.experience.split("/");
+                                const experienceDate = new Date(
+                                    parseInt(splitExperience[1]),
+                                    parseInt(splitExperience[0]),
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ).getTime();
+                                const timeSinceExperience =
+                                    Date.now() - experienceDate;
+                                const experienceInMonths =
+                                    timeSinceExperience / 2592000000;
+                                const convertedExperience = Math.round(
+                                    experienceInMonths > 12
+                                        ? experienceInMonths / 12
+                                        : experienceInMonths
+                                );
+                                const monthsOrYears =
+                                    experienceInMonths > 12 ? "year" : "month";
+
+                                return (
+                                    <li class="tech">
+                                        <div class="techIcon">
+                                            <img
+                                                width={100}
+                                                height={100}
+                                                loading="lazy"
+                                                src={tech.icon_url}
+                                                alt={`Tech (${tech.name}) icon`}
+                                            />
+                                        </div>
+                                        <div class="techDescription">
+                                            <p>{tech.name} </p>
+                                            <p>
+                                                +{convertedExperience}
+                                                {`${monthsOrYears}${
+                                                    convertedExperience !== 1
+                                                        ? "s"
+                                                        : ""
+                                                }`}{" "}
+                                                experience
+                                            </p>
+                                        </div>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </li>
                 ))

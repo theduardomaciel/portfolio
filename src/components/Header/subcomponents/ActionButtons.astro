@@ -68,6 +68,20 @@ import Svg from "@jasikpark/astro-svg-loader";
         />
         <p id="currentTheme">DARK</p>
     </div>
+    <div class="iconHolder">
+        <a
+            title="github"
+            href="https://github.com/theduardomaciel"
+            target="_blank"
+        >
+            <Svg
+                class={"icon"}
+                src={import("@assets/icons/enterprises/github.svg?raw")}
+                aria-label="Github icon"
+            />
+        </a>
+        <!-- <p>GitHub</p> -->
+    </div>
     <div id="lodButton" class="iconHolder lod">
         <Svg
             class={"interactiveIcon detail"}
@@ -82,9 +96,15 @@ import Svg from "@jasikpark/astro-svg-loader";
 </div>
 
 <style>
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .holder {
         display: flex;
-        gap: 7.5rem;
+        gap: 5rem;
     }
 
     .holder .iconHolder {
@@ -98,7 +118,7 @@ import Svg from "@jasikpark/astro-svg-loader";
 
     .holder .iconHolder p {
         font-size: 0.85rem;
-        font-family: "InterVariable";
+        font-family: "Inter Variable";
 
         text-transform: uppercase;
     }

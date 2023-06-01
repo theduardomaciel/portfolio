@@ -1,289 +1,303 @@
 .blog {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 2.5rem;
-    width: 100vw;
-    margin-bottom: 15rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 2.5rem;
+	width: 100vw;
+	margin-bottom: 15rem;
 }
 
 .blog header {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
 
-    gap: 2.5rem;
-    flex-wrap: wrap;
+	gap: 2.5rem;
+	flex-wrap: wrap;
 }
 
 .blog header h1 {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 10rem;
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 900;
+	font-size: 10rem;
 
-    text-align: left;
-    color: var(--primary-01);
+	text-align: left;
+	color: var(--primary-01);
 }
 
 .blog nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 2.5rem;
 
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 .blog .bookmarksContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1.5rem;
+	flex-wrap: wrap;
 }
 
 .bookmarksContainer .button {
-    padding: 1.15rem 2.5rem;
-    font-size: 1.8rem;
-    width: 100%;
-    white-space: nowrap;
+	padding: 1.15rem 2.5rem;
+	font-size: 1.8rem;
+	width: 100%;
+	white-space: nowrap;
 }
 
 .blog nav .tagsHolder {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
 
-    position: relative;
+	position: relative;
 
-    overflow: hidden;
-    overflow-y: hidden;
-    width: 100%;
-    height: 5rem;
+	overflow: hidden;
+	overflow-y: hidden;
+	width: 100%;
+	height: 5rem;
 
-    order: 2;
+	order: 2;
 }
 
 .tags::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .limit {
-    display: flex;
-    width: 10rem;
-    height: 105%;
+	display: flex;
+	width: 10rem;
+	height: 105%;
 
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	opacity: 0;
 
-    transition: var(--transition);
-    pointer-events: none;
+	transition: var(--transition);
+	pointer-events: none;
 
-    background: linear-gradient(270deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
-    z-index: 1;
+	background: linear-gradient(
+		270deg,
+		var(--secondary-01) 0%,
+		var(--secondary-01) 25%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	z-index: 1;
 }
 
 .tagsHolder.left .limit.left,
 .tagsHolder.right .limit.right {
-    opacity: 1;
+	opacity: 1;
 }
 
 .limit.left {
-    left: calc(var(--margin) - 0.5rem);
-    background: linear-gradient(90deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
+	left: calc(var(--margin) - 0.5rem);
+	background: linear-gradient(
+		90deg,
+		var(--secondary-01) 0%,
+		var(--secondary-01) 25%,
+		rgba(0, 0, 0, 0) 100%
+	);
 }
 
 .limit.right {
-    right: calc(var(--margin) - 0.5rem);
-    background: linear-gradient(270deg, var(--secondary-01) 0%, var(--secondary-01) 25%, rgba(0, 0, 0, 0) 100%);
+	right: calc(var(--margin) - 0.5rem);
+	background: linear-gradient(
+		270deg,
+		var(--secondary-01) 0%,
+		var(--secondary-01) 25%,
+		rgba(0, 0, 0, 0) 100%
+	);
 }
 
 .blog nav .tags {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
 
-    gap: 5rem;
-    padding: 1.25rem 5rem;
-    height: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
+	gap: 5rem;
+	padding: 1.25rem 5rem;
+	height: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
 
-    background: transparent;
-    border: 1px solid var(--primary-01);
-    border-radius: 0.5rem;
+	background: transparent;
+	border: 1px solid var(--primary-01);
+	border-radius: 0.5rem;
 }
 
 .blog nav .tag {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    opacity: 0.75;
-    cursor: pointer;
-    transition: var(--transition);
-    position: relative;
+	opacity: 0.75;
+	cursor: pointer;
+	transition: var(--transition);
+	position: relative;
 
-    font-family: 'Roboto SerifVariable';
-    white-space: nowrap;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.8rem;
-    color: var(--primary-01);
+	font-family: "Roboto Serif Variable";
+	white-space: nowrap;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.8rem;
+	color: var(--primary-01);
 }
 
 .blog nav .tag.active {
-    font-weight: 700;
-    animation: fadeIn 450ms ease 0ms forwards;
+	font-weight: 700;
+	animation: fadeIn 450ms ease 0ms forwards;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+	0% {
+		opacity: 0;
+	}
 
-    100% {
-        opacity: 1;
-    }
+	100% {
+		opacity: 1;
+	}
 }
 
 .selectionCircle {
-    display: block;
+	display: block;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 
-    opacity: 0;
-    animation: fadeIn 450ms ease 100ms forwards;
+	opacity: 0;
+	animation: fadeIn 450ms ease 100ms forwards;
 
-    width: 11rem;
-    height: 11rem;
+	width: 11rem;
+	height: 11rem;
 
-    border-radius: 50%;
-    background: var(--blog-radial-gradient);
-    filter: blur(32.5px);
+	border-radius: 50%;
+	background: var(--blog-radial-gradient);
+	filter: blur(32.5px);
 }
 
 .divisor {
-    width: 1px;
-    min-width: 1px;
-    height: 2rem;
-    opacity: 0.35;
-    background: var(--primary-01);
+	width: 1px;
+	min-width: 1px;
+	height: 2rem;
+	opacity: 0.35;
+	background: var(--primary-01);
 }
 
 .blog .posts {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    width: 100%;
+	width: 100%;
 }
 
 .empty {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+	align-items: center;
+	justify-content: center;
 
-    padding-bottom: 5rem;
-    padding-top: 7.5rem;
-    margin-inline: auto;
+	padding-bottom: 5rem;
+	padding-top: 7.5rem;
+	margin-inline: auto;
 
-    width: 80%;
-    height: 100%;
+	width: 80%;
+	height: 100%;
 }
 
 .empty h2 {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 5rem;
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 900;
+	font-size: 5rem;
 
-    text-align: center;
-    color: var(--primary-01);
+	text-align: center;
+	color: var(--primary-01);
 }
 
 .empty h5 {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
 
-    text-align: center;
-    color: var(--primary-01);
+	text-align: center;
+	color: var(--primary-01);
 }
 
 .loginRequest {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: flex-end;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	align-items: flex-end;
+	justify-content: center;
 }
 
 .loginRequest h6 {
-    font-family: 'Roboto SerifVariable';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.6rem;
+	font-family: "Roboto Serif Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.6rem;
 
-    text-align: right;
+	text-align: right;
 }
 
 @media (max-width: 768px) {
-    .blog nav .tagsHolder {
-        width: 100%
-    }
+	.blog nav .tagsHolder {
+		width: 100%;
+	}
 }
 
 @media (min-width: 1024px) {
-    .blog {
-        gap: 3.5rem;
-    }
+	.blog {
+		gap: 3.5rem;
+	}
 
-    .blog nav {
-        flex-direction: row;
-    }
+	.blog nav {
+		flex-direction: row;
+	}
 
-    .blog header.wrapper {
-        margin-top: 5rem;
-    }
+	.blog header.wrapper {
+		margin-top: 5rem;
+	}
 
-    .bookmarksContainer .button {
-        width: fit-content;
-    }
+	.bookmarksContainer .button {
+		width: fit-content;
+	}
 
-    .blog .tagsHolder {
-        padding-inline: var(--margin);
-    }
+	.blog .tagsHolder {
+		padding-inline: var(--margin);
+	}
 
-    .blog nav .tags::-webkit-scrollbar {
-        display: none;
-    }
+	.blog nav .tags::-webkit-scrollbar {
+		display: none;
+	}
 
-    .blog .posts {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5rem;
-    }
+	.blog .posts {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 5rem;
+	}
 
-    .limit {
-        width: 15rem;
-    }
+	.limit {
+		width: 15rem;
+	}
 }

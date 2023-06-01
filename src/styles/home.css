@@ -1,447 +1,446 @@
 /*  HOME  ========================================== */
 .home {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
 .home header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-    margin-block: 1.5rem;
+	margin-block: 1.5rem;
 
-    width: 100%;
+	width: 100%;
 
-    z-index: 5;
-    gap: 2.5rem;
-    padding-top: 2.5rem;
+	z-index: 5;
+	gap: 2.5rem;
+	padding-top: 2.5rem;
 }
 
 .home header h2 {
-    font-family: "Organic Relief";
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 1rem;
+	font-family: "Organic Relief";
+	font-size: 1.2rem;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
 .home header h1 {
-    font-family: "Organic Relief";
-    font-size: 4rem;
-    text-align: center;
-    line-height: 8rem;
+	font-family: "Organic Relief";
+	font-size: 4rem;
+	text-align: center;
+	line-height: 8rem;
 }
 
 .home header p {
-    font-family: "Roboto SerifVariable", "Roboto Serif";
-    font-size: 1.8rem;
-    width: 65%;
+	font-family: "Roboto Serif Variable", "Roboto Serif";
+	font-size: 1.8rem;
+	width: 65%;
 }
 
 .home .title {
-    max-width: 80vw;
+	max-width: 80vw;
 }
 
 [data-theme="light"] .astronaut {
-    filter: invert();
+	filter: invert();
 }
 
 .blobContainer {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
 
-    overflow: hidden;
-    white-space: nowrap;
-    opacity: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	opacity: 1;
 
-    /*  animation: fadeIn 250ms 100ms forwards; */
+	/*  animation: fadeIn 250ms 100ms forwards; */
 }
 
 .blobContainer.loaded {
-    animation: fadeIn 250ms forwards;
+	animation: fadeIn 250ms forwards;
 }
 
 .blob {
-    position: relative;
+	position: relative;
 
-    width: 100vw;
-    height: 100vw;
+	width: 100vw;
+	height: 100vw;
 }
 
 .blob img {
-    user-select: none;
-    -webkit-user-drag: none;
+	user-select: none;
+	-webkit-user-drag: none;
 }
 
 .blobBackground {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-01);
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--primary-01);
 }
 
 .blob1 {
-    transition: 5s;
-    left: -15rem;
+	transition: 5s;
+	left: -15rem;
 }
 
 .blob1 .astronaut {
-    display: none;
-    z-index: 2;
+	display: none;
+	z-index: 2;
 }
 
 .blob2 {
-    transition: 5s;
-    right: -15rem;
+	transition: 5s;
+	right: -15rem;
 }
 
 .blob2 .astronaut {
-    position: absolute;
-    top: 15rem;
-    right: 20rem;
-    z-index: 2;
+	position: absolute;
+	top: 15rem;
+	right: 20rem;
+	z-index: 2;
 
-    animation: moveAstronautMobile 8s infinite alternate;
+	animation: moveAstronautMobile 8s infinite alternate;
 }
 
 .blob2 .stars {
-    position: absolute;
-    top: 10rem;
-    right: 17.5rem;
+	position: absolute;
+	top: 10rem;
+	right: 17.5rem;
 
-    animation: moveStarsHorizontally 15s infinite alternate;
+	animation: moveStarsHorizontally 15s infinite alternate;
 }
 
 .blob2 .stars path {
-    fill: var(--secondary-01);
+	fill: var(--secondary-01);
 }
 
 .blob2 .stars path:nth-child(1) {
-    animation: moveStars 8s infinite alternate;
+	animation: moveStars 8s infinite alternate;
 }
 
 .blob2 .stars path:nth-child(2) {
-    animation: moveStars 4s infinite alternate;
+	animation: moveStars 4s infinite alternate;
 }
 
 .blob2 .stars path:nth-child(2) {
-    animation-name: moveStars;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	animation-name: moveStars;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 .rocket {
-    position: absolute;
-    top: 5rem;
-    left: -5rem;
+	position: absolute;
+	top: 5rem;
+	left: -5rem;
 
-    z-index: 1;
+	z-index: 1;
 
-    animation-name: moveRocket1;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+	animation-name: moveRocket1;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
 }
 
 .rocket2 {
-    position: absolute;
-    top: -2rem;
-    left: 3rem;
+	position: absolute;
+	top: -2rem;
+	left: 3rem;
 
-    z-index: 1;
-    animation-name: moveRocket2;
-    animation-delay: 5s;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+	z-index: 1;
+	animation-name: moveRocket2;
+	animation-delay: 5s;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
 }
 
 .rocket path,
 .rocket2 path {
-    fill: var(--secondary-01);
+	fill: var(--secondary-01);
 }
 
 .blob2 .astronaut {
-    z-index: 2;
+	z-index: 2;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+	from {
+		opacity: 0;
+	}
 
-    to {
-        opacity: 1;
-    }
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes moveRocket1 {
-    0% {
-        transform: translateX(50vw) translateY(-5rem) rotate(65deg);
-    }
+	0% {
+		transform: translateX(50vw) translateY(-5rem) rotate(65deg);
+	}
 
-    60%,
-    100% {
-        transform: translateX(100vw) translateY(90vh) rotate(65deg);
-    }
+	60%,
+	100% {
+		transform: translateX(100vw) translateY(90vh) rotate(65deg);
+	}
 }
 
 @keyframes moveRocket2 {
-    0% {
-        transform: translateX(-30vw) translateY(0%) rotate(55deg);
-    }
+	0% {
+		transform: translateX(-30vw) translateY(0%) rotate(55deg);
+	}
 
-    60%,
-    100% {
-        transform: translateX(80vw) translateY(90vh) rotate(45deg);
-    }
+	60%,
+	100% {
+		transform: translateX(80vw) translateY(90vh) rotate(45deg);
+	}
 }
 
 @keyframes moveStarsHorizontally {
-    from {
-        transform: translateX(-10%) rotate(10deg);
-    }
+	from {
+		transform: translateX(-10%) rotate(10deg);
+	}
 
-    to {
-        transform: translateX(15) rotate(2deg);
-    }
+	to {
+		transform: translateX(15) rotate(2deg);
+	}
 }
 
 @keyframes moveAstronautMobile {
-    from {
-        transform: translateY(0%) rotate(10deg);
-    }
+	from {
+		transform: translateY(0%) rotate(10deg);
+	}
 
-    to {
-        transform: translate(-2%, 10%) rotate(2deg);
-    }
+	to {
+		transform: translate(-2%, 10%) rotate(2deg);
+	}
 }
 
 @keyframes moveStars {
-    from {
-        transform: translate(10%) rotate(15deg);
-    }
+	from {
+		transform: translate(10%) rotate(15deg);
+	}
 
-    to {
-        transform: translate(-2%, 8%) rotate(1deg);
-    }
+	to {
+		transform: translate(-2%, 8%) rotate(1deg);
+	}
 }
 
 @keyframes moveStars2 {
-    from {
-        transform: translate(0%, -35%) rotate(15deg);
-    }
+	from {
+		transform: translate(0%, -35%) rotate(15deg);
+	}
 
-    to {
-        transform: translate(25%, 10%) rotate(-4deg);
-    }
+	to {
+		transform: translate(25%, 10%) rotate(-4deg);
+	}
 }
 
 @keyframes mouseScrollArrowsAnimation {
-    from {
-        transform: translateY(0%);
-        opacity: 1;
-    }
+	from {
+		transform: translateY(0%);
+		opacity: 1;
+	}
 
-    to {
-        transform: translateY(15%);
-        opacity: 0;
-    }
+	to {
+		transform: translateY(15%);
+		opacity: 0;
+	}
 }
 
 .homePlanet {
-    z-index: 5;
+	z-index: 5;
 
-    position: absolute;
-    top: 60rem;
-    left: 5rem;
+	position: absolute;
+	top: 60rem;
+	left: 5rem;
 
-    animation: rotate 4s infinite alternate;
+	animation: rotate 4s infinite alternate;
 }
 
 @media (min-width: 1366px) {
-    .home header h1 {
-        font-family: "Organic Relief";
-        font-size: 5.5rem;
-        text-align: center;
-        line-height: 10rem;
-    }
+	.home header h1 {
+		font-family: "Organic Relief";
+		font-size: 5.5rem;
+		text-align: center;
+		line-height: 10rem;
+	}
 }
 
 .home .mouseScroll {
-    display: none;
+	display: none;
 }
 
 @media (min-width: 1024px) {
+	/*  HOME  ========================================== */
+	.home {
+		display: flex;
+		flex-direction: row;
+		min-height: 100vh;
+	}
 
-    /*  HOME  ========================================== */
-    .home {
-        display: flex;
-        flex-direction: row;
-        min-height: 100vh;
-    }
+	.home .mouseScroll {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
 
-    .home .mouseScroll {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
+		margin-top: 5rem;
+		opacity: 1;
+		transform: scale(1);
+		transition: opacity 500ms, transform 500ms;
+	}
 
-        margin-top: 5rem;
-        opacity: 1;
-        transform: scale(1);
-        transition: opacity 500ms, transform 500ms;
-    }
+	.mouseScroll :global(.header):has(:global(.scroll)) {
+		opacity: 0;
+		transform: scale(0);
+	}
 
-    .mouseScroll :global(.header):has(:global(.scroll)) {
-        opacity: 0;
-        transform: scale(0);
-    }
+	.doubleArrow {
+		animation: mouseScrollArrowsAnimation 1500ms
+			cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite alternate-reverse;
+	}
 
-    .doubleArrow {
-        animation: mouseScrollArrowsAnimation 1500ms cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite alternate-reverse;
-    }
+	.home header {
+		position: absolute;
+		top: 0%;
+		left: 50%;
+		width: 33%;
 
-    .home header {
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        width: 33%;
+		transform: translate(-50%, 0%);
+	}
 
-        transform: translate(-50%, 0%);
-    }
+	.home header p {
+		width: 100%;
+	}
 
-    .home header p {
-        width: 100%;
-    }
+	.home .blobContainer {
+		margin-top: -5rem;
+	}
 
-    .home .blobContainer {
-        margin-top: -5rem;
-    }
+	.home .blobContainer.holder1 {
+		order: 1;
+	}
 
-    .home .blobContainer.holder1 {
-        order: 1;
-    }
+	.home .blobContainer.holder2 {
+		order: 3;
+	}
 
-    .home .blobContainer.holder2 {
-        order: 3;
-    }
+	.blob {
+		width: 50vw;
+		height: 50vw;
+	}
 
-    .blob {
-        width: 50vw;
-        height: 50vw;
-    }
+	.blob1 {
+		left: -35%;
+	}
 
-    .blob1 {
-        left: -35%;
-    }
+	.blob2 {
+		right: -35%;
+	}
 
-    .blob2 {
-        right: -35%;
-    }
+	.blob2 .stars {
+		top: 20rem;
+		right: 35rem;
+	}
 
-    .blob2 .stars {
-        top: 20rem;
-        right: 35rem;
-    }
+	@keyframes moveRocket {
+		0% {
+			transform: translateX(0) rotate(-5deg);
+		}
 
-    @keyframes moveRocket {
-        0% {
-            transform: translateX(0) rotate(-5deg);
-        }
+		60%,
+		100% {
+			transform: translateX(50vw) rotate(-8deg);
+		}
+	}
 
-        60%,
-        100% {
-            transform: translateX(50vw) rotate(-8deg);
-        }
-    }
+	.rocket {
+		top: 42.5rem;
+		left: 10rem;
 
-    .rocket {
-        top: 42.5rem;
-        left: 10rem;
+		animation: moveRocket 20s linear infinite;
+	}
 
-        animation: moveRocket 20s linear infinite;
-    }
+	.rocket2 {
+		position: absolute;
+		top: 42.5rem;
+		left: -5rem;
 
-    .rocket2 {
-        position: absolute;
-        top: 42.5rem;
-        left: -5rem;
+		animation: moveRocket 20s linear 13s infinite;
+	}
 
-        animation: moveRocket 20s linear 13s infinite;
-    }
+	.blob2 .astronaut {
+		top: 30rem;
+		right: 37.5rem;
 
-    .blob2 .astronaut {
-        top: 30rem;
-        right: 37.5rem;
+		animation: moveAstronautFromBlob2 ease-in-out 13s infinite alternate;
+	}
 
-        animation: moveAstronautFromBlob2 ease-in-out 13s infinite alternate;
-    }
+	@keyframes moveAstronautFromBlob2 {
+		0% {
+			transform: translate(-15%, 0%) rotate(10deg);
+		}
 
-    @keyframes moveAstronautFromBlob2 {
-        0% {
-            transform: translate(-15%, 0%) rotate(10deg);
-        }
+		80%,
+		100% {
+			transform: translate(-10%, 55vh) rotate(2deg);
+		}
+	}
 
-        80%,
-        100% {
-            transform: translate(-10%, 55vh) rotate(2deg);
-        }
-    }
+	.blob1 .astronaut {
+		display: flex;
+		position: absolute;
+		bottom: -20rem;
+		left: 35rem;
 
-    .blob1 .astronaut {
-        display: flex;
-        position: absolute;
-        bottom: -20rem;
-        left: 35rem;
+		animation: moveAstronautFromBlob1 13s infinite alternate;
+	}
 
-        animation: moveAstronautFromBlob1 13s infinite alternate;
-    }
+	@keyframes moveAstronautFromBlob1 {
+		0%,
+		50% {
+			transform: translate(-15%, 0%) rotate(10deg);
+		}
 
-    @keyframes moveAstronautFromBlob1 {
+		100% {
+			transform: translate(-10%, -55vh) rotate(2deg);
+		}
+	}
 
-        0%,
-        50% {
-            transform: translate(-15%, 0%) rotate(10deg);
-        }
+	.home header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-        100% {
-            transform: translate(-10%, -55vh) rotate(2deg);
-        }
-    }
+		order: 2;
 
-    .home header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+		margin-block: 1.5rem;
 
-        order: 2;
+		gap: 2.5rem;
+		padding-top: 5rem;
+	}
 
-        margin-block: 1.5rem;
+	.home header h2 {
+		/* font-size: 3.2rem; */
+		font-size: 1.8rem;
+	}
 
-        gap: 2.5rem;
-        padding-top: 5rem;
-    }
+	.home header p {
+		font-size: 2.4rem;
+	}
 
-    .home header h2 {
-        /* font-size: 3.2rem; */
-        font-size: 1.8rem;
-    }
-
-    .home header p {
-        font-size: 2.4rem;
-    }
-
-    .homePlanet {
-        position: absolute;
-        top: 17.5rem;
-        left: 10.5%;
-    }
+	.homePlanet {
+		position: absolute;
+		top: 17.5rem;
+		left: 10.5%;
+	}
 }

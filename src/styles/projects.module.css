@@ -1,323 +1,323 @@
 /*  PROJECTS  ========================================== */
 .projects {
-    width: 100vw;
-    overflow: hidden;
+	width: 100vw;
+	overflow: hidden;
 }
 
 .title {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
 }
 
 .carrousel {
-    width: 100%;
+	width: 100%;
 }
 
 .carrousel::placeholder {
-    /* Most modern browsers support this now. */
-    color: var(--secondary-01);
+	/* Most modern browsers support this now. */
+	color: var(--secondary-01);
 }
 
 .carrousel .image {
-    filter: drop-shadow(0px 0px 10px rgba(52, 98, 89, 0.5));
-    opacity: 1;
+	filter: drop-shadow(0px 0px 10px rgba(52, 98, 89, 0.5));
+	opacity: 1;
 
-    height: 100%;
-    width: 100%;
+	height: 100%;
+	width: 100%;
 
-    border-radius: 1.5rem;
+	border-radius: 1.5rem;
 
-    transition: 0.35s;
+	transition: 0.35s;
 
-    margin-top: 3rem;
-    /* only mobile */
+	margin-top: 3rem;
+	/* only mobile */
 
-    object-fit: contain;
+	object-fit: contain;
 }
 
 .carrousel .info .infoHeader {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    width: 100%;
+	width: 100%;
 }
 
 .info {
-    position: relative;
+	position: relative;
 }
 
 .info .headerDecoration {
-    position: absolute;
-    top: -10%;
-    left: -40%;
+	position: absolute;
+	top: -10%;
+	left: -40%;
 
-    width: 150%;
-    height: 115%;
-    /* transform: rotate(-90deg); */
+	width: 150%;
+	height: 115%;
+	/* transform: rotate(-90deg); */
 
-    z-index: -1;
+	z-index: -1;
 }
 
 .info {
-    font-family: "Roboto SlabVariable";
-    font-style: normal;
-    color: var(--primary-01);
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	color: var(--primary-01);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-    gap: 3.5rem;
+	gap: 3.5rem;
 }
 
 .info .infoHeader h3 {
-    font-weight: 900;
-    font-size: 12.5vw;
-    line-height: 12.5vw;
-    line-break: normal;
-    width: 100%;
+	font-weight: 900;
+	font-size: 12.5vw;
+	line-height: 12.5vw;
+	line-break: normal;
+	width: 100%;
 
-    margin-bottom: 2.5rem;
+	margin-bottom: 2.5rem;
 }
 
 .info h4 {
-    font-weight: 400;
-    font-size: 2.4rem;
+	font-weight: 400;
+	font-size: 2.4rem;
 }
 
 .info .moreInfo {
-    font-family: "InterVariable";
-    font-weight: 600;
-    font-size: 1.6rem;
+	font-family: "Inter Variable";
+	font-weight: 600;
+	font-size: 1.6rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	gap: 1.5rem;
 
-    cursor: pointer;
+	cursor: pointer;
 
-    margin-bottom: 2.5rem;
+	margin-bottom: 2.5rem;
 }
 
 .sectionDots {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 
-    gap: 2.5rem;
+	gap: 2.5rem;
 }
 
 .sectionDots ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 
-    gap: 2.5rem;
+	gap: 2.5rem;
 }
 
 .sectionDots ul li div {
-    background-color: var(--primary-01);
-    height: 1rem;
-    width: 1rem;
+	background-color: var(--primary-01);
+	height: 1rem;
+	width: 1rem;
 
-    cursor: pointer;
-    border-radius: 5rem;
+	cursor: pointer;
+	border-radius: 5rem;
 
-    transition: 0.5s;
+	transition: 0.5s;
 }
 
 .projectTechnologies {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-    width: 100%;
+	width: 100%;
 
-    gap: 2.5rem;
+	gap: 2.5rem;
 }
 
 .projectTechnologies .projectTechs {
-    display: flex;
+	display: flex;
 
-    align-items: flex-start;
-    justify-content: space-around;
-    width: 100%;
+	align-items: flex-start;
+	justify-content: space-around;
+	width: 100%;
 
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 7.5rem;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 7.5rem;
 }
 
 .projectTechnologies .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
 
-    width: 100%;
-    /* remover isso da versão desktop */
+	width: 100%;
+	/* remover isso da versão desktop */
 }
 
 .projectTechnologies .column ul {
-    display: flex;
+	display: flex;
 
-    width: 100%;
+	width: 100%;
 
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
 }
 
 .projectTechnologies .column li {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
 
-    list-style-position: inside;
-    list-style-type: initial;
+	list-style-position: inside;
+	list-style-type: initial;
 
-    text-align: left;
+	text-align: left;
 }
 
 .projectTechnologies .column p {
-    font-family: "Roboto";
+	font-family: "Roboto";
 }
 
 .projectTechnologies h5 {
-    font-family: "InterVariable";
-    font-weight: 600;
-    font-size: 2.2rem;
+	font-family: "Inter Variable";
+	font-weight: 600;
+	font-size: 2.2rem;
 }
 
 .projectTechnologies h6 {
-    font-family: "InterVariable";
-    font-weight: 700;
-    font-size: 2.8rem;
+	font-family: "Inter Variable";
+	font-weight: 700;
+	font-size: 2.8rem;
 }
 
 .projectTechnologies h6.link:hover {
-    text-decoration: underline;
-    cursor: pointer;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .sectionDots ul li div.bulletUp {
-    transform: translateY(-0.15rem);
+	transform: translateY(-0.15rem);
 }
 
 /* animação */
 .item-enter {
-    opacity: 0;
+	opacity: 0;
 }
 
 .item-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
+	opacity: 1;
+	transition: opacity 500ms ease-in;
 }
 
 .item-exit {
-    opacity: 1;
+	opacity: 1;
 }
 
 .item-exit-active {
-    opacity: 0;
-    transition: opacity 500ms ease-in;
+	opacity: 0;
+	transition: opacity 500ms ease-in;
 }
 
 .statusHolder {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
 
-    justify-content: center;
-    margin-bottom: 1rem;
+	justify-content: center;
+	margin-bottom: 1rem;
 
-    height: 2.5rem;
+	height: 2.5rem;
 }
 
 .statusHolder div {
-    width: 0.25rem;
-    height: 100%;
+	width: 0.25rem;
+	height: 100%;
 
-    background-color: var(--primary-01);
-    border-radius: 0.5rem;
+	background-color: var(--primary-01);
+	border-radius: 0.5rem;
 }
 
 .statusHolder p {
-    font-family: "InterVariable";
-    font-weight: 600;
-    font-size: 1.4rem;
+	font-family: "Inter Variable";
+	font-weight: 600;
+	font-size: 1.4rem;
 
-    text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 .imageHolder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media (min-width: 1024px) {
-    /*  PROJECTS  ========================================== */
+	/*  PROJECTS  ========================================== */
 
-    .statusHolder {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        align-items: center;
+	.statusHolder {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		align-items: center;
 
-        justify-content: flex-start;
+		justify-content: flex-start;
 
-        height: 2.5rem;
-    }
+		height: 2.5rem;
+	}
 
-    .info .infoHeader h3 {
-        font-weight: 900;
-        font-size: 6vw;
-        line-height: 5.5vw;
-        line-break: normal;
+	.info .infoHeader h3 {
+		font-weight: 900;
+		font-size: 6vw;
+		line-height: 5.5vw;
+		line-break: normal;
 
-        margin-bottom: 2.5rem;
-    }
+		margin-bottom: 2.5rem;
+	}
 
-    .image {
-        margin-top: 0px;
-    }
+	.image {
+		margin-top: 0px;
+	}
 
-    .projects .carrousel {
-        display: flex;
-        flex-direction: row;
+	.projects .carrousel {
+		display: flex;
+		flex-direction: row;
 
-        text-align: left;
+		text-align: left;
 
-        gap: 12.5rem;
-    }
+		gap: 12.5rem;
+	}
 
-    .projects .carrousel .info {
-        align-items: flex-start;
-        width: 50%;
-    }
+	.projects .carrousel .info {
+		align-items: flex-start;
+		width: 50%;
+	}
 
-    .projects .carrousel .info h4 {
-        margin-top: -2rem;
-    }
+	.projects .carrousel .info h4 {
+		margin-top: -2rem;
+	}
 
-    /* .projects .carrousel .column2 {
+	/* .projects .carrousel .column2 {
         height: 100%;
         width: 50%;
     } */
 
-    .projects .carrousel .imageHolder {
-        height: 100%;
-        width: 50%;
-    }
+	.projects .carrousel .imageHolder {
+		height: 100%;
+		width: 50%;
+	}
 }

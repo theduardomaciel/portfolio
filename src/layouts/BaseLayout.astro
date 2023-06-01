@@ -1,4 +1,11 @@
 ---
+import "@styles/global.css";
+
+import "@fontsource-variable/inter";
+import "@fontsource/roboto";
+import "@fontsource-variable/roboto-slab";
+import "@fontsource-variable/roboto-serif";
+
 import BaseHead from "@components/seo/BaseHead.astro";
 import type { Props as BaseHeadProps } from "@components/seo/BaseHead.astro";
 
@@ -10,6 +17,7 @@ export interface Props {
 export interface Props {
     seo?: BaseHeadProps;
 }
+
 const { seo } = Astro.props;
 ---
 

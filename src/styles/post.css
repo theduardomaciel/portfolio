@@ -1,369 +1,368 @@
 .post {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-    position: relative;
-    gap: 5rem;
+	position: relative;
+	gap: 5rem;
 }
 
 .post nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2.5rem;
 }
 
 .back {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
 
-    font-family: 'Roboto SerifVariable';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
+	font-family: "Roboto Serif Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
 
-    cursor: pointer;
+	cursor: pointer;
 
-    color: var(--primary-01);
+	color: var(--primary-01);
 }
 
 .back:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .back.desktop {
-    display: none;
+	display: none;
 }
 
 .back svg {
-    transition: var(--transition);
-    transform: translateX(0px);
+	transition: var(--transition);
+	transform: translateX(0px);
 }
 
 .back:hover svg {
-    transform: translateX(-0.5rem);
+	transform: translateX(-0.5rem);
 }
 
 .icon svg path {
-    fill: var(--primary-01);
+	fill: var(--primary-01);
 }
 
 .buttonIcon path {
-    fill: var(--secondary-01);
+	fill: var(--secondary-01);
 }
 
 .post .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 .post .content header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 1.5rem;
+	width: 100%;
 
-    background: var(--blog-gradient);
-    border-bottom: 1px solid var(--primary-01);
-    border-radius: 1rem 1rem 0px 0px;
-    padding: 3.5rem 2.5rem;
+	background: var(--blog-gradient);
+	border-bottom: 1px solid var(--primary-01);
+	border-radius: 1rem 1rem 0px 0px;
+	padding: 3.5rem 2.5rem;
 
-    text-align: left;
+	text-align: left;
 }
 
 .post .content header h1 {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 5.6rem;
-    line-height: 85%;
-    word-wrap: normal;
-    word-break: normal;
-    color: var(--primary-01);
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 900;
+	font-size: 5.6rem;
+	line-height: 85%;
+	word-wrap: normal;
+	word-break: normal;
+	color: var(--primary-01);
 }
 
 .post .content header .iconHolder {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.6rem;
-    color: var(--primary-01);
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.6rem;
+	color: var(--primary-01);
 }
 
 .post .content .info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
 
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .post .content header .tags {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 2.5rem;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 2.5rem;
+	flex-wrap: wrap;
 }
 
 .post .content header .tags li {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .divisor {
-    width: 1px;
-    height: 2rem;
-    background-color: var(--primary-01);
+	width: 1px;
+	height: 2rem;
+	background-color: var(--primary-01);
 }
 
 .post .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5rem;
 }
 
 .post .content article {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px 2.5rem;
-    gap: 1rem;
-    text-align: left;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px 2.5rem;
+	gap: 1rem;
+	text-align: left;
+	width: 100%;
 
-    font-family: 'Roboto Serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
-    line-height: 125%;
-    color: var(--primary-01);
+	font-family: "Roboto Serif Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
+	line-height: 125%;
+	color: var(--primary-01);
 }
 
 .post .content article * {
-    list-style: initial;
-    margin: initial;
-    max-width: 100%;
-    letter-spacing: -0.03rem;
-    line-height: 3.15rem;
+	list-style: initial;
+	margin: initial;
+	max-width: 100%;
+	letter-spacing: -0.03rem;
+	line-height: 3.15rem;
 }
 
 .post .content article a {
-    background: var(--purple);
-    border-bottom: 1px solid var(--primary-01);
+	background: var(--purple);
+	border-bottom: 1px solid var(--primary-01);
 }
 
 .post .content article blockquote {
-    position: relative;
-    padding-left: 2rem;
+	position: relative;
+	padding-left: 2rem;
 }
 
 .post .content article blockquote::before {
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 3px;
-    height: 90%;
-    background: var(--primary-01);
+	content: "";
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: 3px;
+	height: 90%;
+	background: var(--primary-01);
 }
 
 .post .content article .unknown__pt__mark__highlight {
-    background: rgba(255, 255, 0, 0.65);
+	background: rgba(255, 255, 0, 0.65);
 }
 
 .post .content article code {
-    padding-inline: 0.35rem;
-    margin-left: 0.2rem;
-    margin-right: 0.2rem;
-    background-color: var(--secondary-02);
+	padding-inline: 0.35rem;
+	margin-left: 0.2rem;
+	margin-right: 0.2rem;
+	background-color: var(--secondary-02);
 }
 
 .post .content article h2,
 .post .content article h1 {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 3.6rem;
-    line-height: 85%;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--primary-01);
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 900;
+	font-size: 3.6rem;
+	line-height: 85%;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	color: var(--primary-01);
 }
 
 .post .content article li {
-    margin-left: 5rem;
+	margin-left: 5rem;
 }
 
 .post aside {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 3rem;
-    width: 100%;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 3rem;
+	width: 100%;
 
-    padding-inline: 2.5rem;
+	padding-inline: 2.5rem;
 }
 
 .post .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2.5rem;
+	width: 100%;
 
-    background-color: var(--secondary-01);
-    outline: 1px solid var(--primary-01);
-    border-radius: 1rem;
+	background-color: var(--secondary-01);
+	outline: 1px solid var(--primary-01);
+	border-radius: 1rem;
 
-    padding: 2.5rem;
+	padding: 2.5rem;
 }
 
 .post .container h6 {
-    font-family: 'Roboto SerifVariable';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2rem;
-    color: var(--primary-01);
-    text-align: left;
-    width: 100%;
+	font-family: "Roboto Serif Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2rem;
+	color: var(--primary-01);
+	text-align: left;
+	width: 100%;
 }
 
 .post .container.shareIntegrated {
-    display: none;
+	display: none;
 }
 
 .post .container.share {
-    position: sticky;
-    bottom: 2.5rem;
-    left: 0;
-    padding: 1.35rem;
-    width: calc(100% - var(--margin));
-    margin-bottom: 5rem;
+	position: sticky;
+	bottom: 2.5rem;
+	left: 0;
+	padding: 1.35rem;
+	width: calc(100% - var(--margin));
+	margin-bottom: 5rem;
 }
 
 .post .holder {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 5rem;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
 }
 
 .container .share button,
 .container.shareIntegrated button {
-    width: 100%;
+	width: 100%;
 }
 
 @media (min-width: 1024px) {
+	/* CLEANING SHARE DISPLAY */
+	.post .container.shareIntegrated {
+		display: flex;
+		gap: 1rem;
+	}
 
-    /* CLEANING SHARE DISPLAY */
-    .post .container.shareIntegrated {
-        display: flex;
-        gap: 1rem;
-    }
+	.post .container.share {
+		display: none;
+	}
 
-    .post .container.share {
-        display: none;
-    }
+	/*  */
 
-    /*  */
+	.post {
+		gap: 7.5rem;
+	}
 
-    .post {
-        gap: 7.5rem;
-    }
+	.post nav .back {
+		display: none;
+	}
 
-    .post nav .back {
-        display: none;
-    }
+	.post .holder {
+		flex-direction: row;
+		padding-inline: var(--margin);
+	}
 
-    .post .holder {
-        flex-direction: row;
-        padding-inline: var(--margin);
-    }
+	.post .content {
+		border: 1px solid var(--primary-01);
+		padding: 0px;
+		gap: 0px;
+		border-width: 1px 1px 0px 1px;
+		border-style: solid;
+		border-color: var(--primary-01);
+		border-radius: 1rem 1rem 0px 0px;
+		width: 75%;
+	}
 
-    .post .content {
-        border: 1px solid var(--primary-01);
-        padding: 0px;
-        gap: 0px;
-        border-width: 1px 1px 0px 1px;
-        border-style: solid;
-        border-color: var(--primary-01);
-        border-radius: 1rem 1rem 0px 0px;
-        width: 75%;
-    }
+	.post .content article {
+		padding: 5rem;
+	}
 
-    .post .content article {
-        padding: 5rem;
-    }
+	.post .content header {
+		padding: 10rem 5rem 3.5rem;
+	}
 
-    .post .content header {
-        padding: 10rem 5rem 3.5rem;
-    }
+	.post .content header h1 {
+		width: 80%;
+		line-height: 100%;
+	}
 
-    .post .content header h1 {
-        width: 80%;
-        line-height: 100%;
-    }
+	.post aside {
+		padding-inline: 0px;
+		width: 22.5%;
+		height: 100%;
 
-    .post aside {
-        padding-inline: 0px;
-        width: 22.5%;
-        height: 100%;
+		position: sticky;
+		top: 2.5rem;
+		right: 0;
+	}
 
-        position: sticky;
-        top: 2.5rem;
-        right: 0;
-    }
+	.subtitle {
+		margin-top: 5rem;
+	}
 
-    .subtitle {
-        margin-top: 5rem;
-    }
-
-    .back.desktop {
-        display: flex;
-        position: absolute;
-        top: -5rem;
-        left: 0;
-    }
+	.back.desktop {
+		display: flex;
+		position: absolute;
+		top: -5rem;
+		left: 0;
+	}
 }

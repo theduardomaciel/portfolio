@@ -1,229 +1,228 @@
 /*  CONTACT  ========================================== */
 .contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	position: relative;
 
-    justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 .blob {
-    background-color: var(--primary-01);
-
+	background-color: var(--primary-01);
 }
 
 .contact .blob1Holder {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    max-width: 100vw;
-    height: 45rem;
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+	max-width: 100vw;
+	height: 45rem;
 
-    align-items: flex-start;
-    justify-content: flex-start;
-    z-index: 2;
+	align-items: flex-start;
+	justify-content: flex-start;
+	z-index: 2;
 }
 
 .contact .infoHolder {
-    margin-top: 5rem;
+	margin-top: 5rem;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 1.5rem;
 }
 
 .contact .infoHolder:not(.info2) {
-    position: absolute;
-    left: -10%;
+	position: absolute;
+	left: -10%;
 
-    margin-left: 20%;
-    text-align: left;
-    min-width: fit-content;
+	margin-left: 20%;
+	text-align: left;
+	min-width: fit-content;
 }
 
 .contact .infoHolder.info2 {
-    position: absolute;
-    left: 0;
-    margin-left: 10%;
-    text-align: left;
+	position: absolute;
+	left: 0;
+	margin-left: 10%;
+	text-align: left;
 }
 
 .contact .infoHolder.info2 * {
-    color: var(--primary-01);
-    z-index: 1;
+	color: var(--primary-01);
+	z-index: 1;
 }
 
 .contact .infoHolder h6 {
-    font-family: 'Organic Relief';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.4rem;
-    line-height: 4.5rem;
-    display: flex;
-    align-items: center;
+	font-family: "Organic Relief";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2.4rem;
+	line-height: 4.5rem;
+	display: flex;
+	align-items: center;
 
-    max-width: 75%;
+	max-width: 75%;
 
-    text-transform: uppercase;
-    color: var(--secondary-01);
+	text-transform: uppercase;
+	color: var(--secondary-01);
 }
 
 .contact .infoHolder p {
-    font-family: 'Roboto SlabVariable';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.8rem;
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.8rem;
 
-    max-width: 75%;
+	max-width: 75%;
 
-    color: var(--secondary-01);
+	color: var(--secondary-01);
 }
 
 .contact .infoHolder .input {
-    background: var(--primary-01);
-    border: 1px solid var(--secondary-01);
-    border-radius: 2.5rem;
+	background: var(--primary-01);
+	border: 1px solid var(--secondary-01);
+	border-radius: 2.5rem;
 
-    position: relative;
+	position: relative;
 
-    color: var(--secondary-01);
+	color: var(--secondary-01);
 
-    padding-left: 1.5rem;
-    height: 4rem;
-    width: 90%;
+	padding-left: 1.5rem;
+	height: 4rem;
+	width: 90%;
 }
 
 .contact .infoHolder.info2 button {
-    position: absolute;
-    right: 12%;
-    transform: translateY(15%);
+	position: absolute;
+	right: 12%;
+	transform: translateY(15%);
 
-    height: 3rem;
+	height: 3rem;
 
-    font-family: "Roboto SerifVariable";
-    font-weight: 500;
-    font-size: 1.2rem;
+	font-family: "Roboto Serif Variable";
+	font-weight: 500;
+	font-size: 1.2rem;
 
-    padding: 0 1rem;
-    line-height: 0;
+	padding: 0 1rem;
+	line-height: 0;
 
-    outline: 1px solid var(--primary-01);
-    background-color: var(--secondary-01);
-    color: var(--primary-01);
+	outline: 1px solid var(--primary-01);
+	background-color: var(--secondary-01);
+	color: var(--primary-01);
 
-    border-radius: 1.5rem;
-    cursor: pointer;
+	border-radius: 1.5rem;
+	cursor: pointer;
 }
 
 .contact .infoHolder .inputHolder {
-    display: flex;
-    position: relative;
-    width: 90vw;
-    z-index: 3;
+	display: flex;
+	position: relative;
+	width: 90vw;
+	z-index: 3;
 }
 
 .contact .blob2Holder {
-    display: none
+	display: none;
 }
 
 .contactBlobs {
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: -1;
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 
 /* ERROR AND SUCCESS PAGES */
 .contactMessageContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5rem;
 
-    padding-block: var(--margin);
-    font-family: 'Roboto SlabVariable';
+	padding-block: var(--margin);
+	font-family: "Roboto Slab Variable";
 
-    max-width: 90vw;
-    margin-top: 0px;
+	max-width: 90vw;
+	margin-top: 0px;
 }
 
 .contactMessageContent h1 {
-    font-size: 2.8rem;
-    font-family: "Roboto SlabVariable";
+	font-size: 2.8rem;
+	font-family: "Roboto Slab Variable";
 }
 
 .loader {
-    display: flex;
-    background-color: var(--primary-01);
-    border-radius: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
+	display: flex;
+	background-color: var(--primary-01);
+	border-radius: 50%;
+	width: 0.75rem;
+	height: 0.75rem;
 
-    animation: loaderAnimate 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+	animation: loaderAnimate 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
 }
 
 @keyframes loaderAnimate {
-    0% {
-        transform: scale(1);
-    }
+	0% {
+		transform: scale(1);
+	}
 
-    50% {
-        transform: scale(1.5);
-    }
+	50% {
+		transform: scale(1.5);
+	}
 
-    100% {
-        transform: scale(1);
-    }
+	100% {
+		transform: scale(1);
+	}
 }
 
 @media (min-width: 1024px) {
-    .contact {
-        margin-top: 12.5rem;
-    }
+	.contact {
+		margin-top: 12.5rem;
+	}
 
-    .contact .infoHolder h6 {
-        font-size: 3.2rem;
-        line-height: 5.5rem;
-    }
+	.contact .infoHolder h6 {
+		font-size: 3.2rem;
+		line-height: 5.5rem;
+	}
 
-    .contact .infoHolder.info2 button {
-        position: absolute;
-        top: 50%;
-        right: 11%;
-        transform: translateY(-50%);
+	.contact .infoHolder.info2 button {
+		position: absolute;
+		top: 50%;
+		right: 11%;
+		transform: translateY(-50%);
 
-        height: 70%;
-    }
+		height: 70%;
+	}
 
-    .contact .infoHolder .inputHolder {
-        width: 65vw;
-    }
+	.contact .infoHolder .inputHolder {
+		width: 65vw;
+	}
 
-    .contact .blob1Holder {
-        height: 35rem;
-    }
+	.contact .blob1Holder {
+		height: 35rem;
+	}
 
-    .contact .blob2Holder {
-        display: flex;
-        overflow: hidden;
-        max-height: 55rem;
-        width: 100%;
-        justify-content: flex-end;
+	.contact .blob2Holder {
+		display: flex;
+		overflow: hidden;
+		max-height: 55rem;
+		width: 100%;
+		justify-content: flex-end;
 
-        position: absolute;
-        top: -25%;
-        right: -50rem;
-        z-index: 0;
-    }
+		position: absolute;
+		top: -25%;
+		right: -50rem;
+		z-index: 0;
+	}
 
-    .contactMessageContent {
-        height: 100vh;
-        max-width: 65vw;
-    }
+	.contactMessageContent {
+		height: 100vh;
+		max-width: 65vw;
+	}
 }

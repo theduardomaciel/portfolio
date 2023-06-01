@@ -1,234 +1,262 @@
 @font-face {
-    font-family: 'Organic Relief';
-    src: url('/fonts/OrganicRelief.woff2') format('woff2'),
-        url('/fonts/OrganicRelief.woff') format('woff');
-    font-display: swap;
-    font-weight: normal;
-    font-style: normal;
+	font-family: "Organic Relief";
+	src: url("/fonts/OrganicRelief.woff2") format("woff2"),
+		url("/fonts/OrganicRelief.woff") format("woff");
+	font-display: swap;
+	font-weight: normal;
+	font-style: normal;
 }
 
 :root {
-    font-size: 62.5%;
-    /* 1rem = 10px */
-    --nav-height: 8rem;
+	font-size: 62.5%;
+	/* 1rem = 10px */
+	--nav-height: 8rem;
 
-    --primary-01: #FFFFFF;
-    --secondary-01: #000000;
-    --secondary-02: #0d0a10;
+	--primary-01: #ffffff;
+	--secondary-01: #000000;
+	--secondary-02: #0d0a10;
 
-    --purple: rgba(74, 25, 112, 0.35);
+	--purple: rgba(74, 25, 112, 0.35);
 
-    --deco-gradient: linear-gradient(90deg, #000000 0%, rgba(74, 25, 112, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
-    --blog-gradient: linear-gradient(180deg, var(--secondary-01) -8.29%, rgba(15, 5, 23, 0.65) 75.18%, rgba(74, 25, 112, 0.25) 100%);
-    --blog-radial-gradient: radial-gradient(50% 50% at 50% 50%, rgba(217, 217, 217, 0.5) 0%, rgba(217, 217, 217, 0) 100%);
+	--deco-gradient: linear-gradient(
+		90deg,
+		#000000 0%,
+		rgba(74, 25, 112, 0.25) 35%,
+		rgba(104, 35, 157, 0) 100%
+	);
+	--blog-gradient: linear-gradient(
+		180deg,
+		var(--secondary-01) -8.29%,
+		rgba(15, 5, 23, 0.65) 75.18%,
+		rgba(74, 25, 112, 0.25) 100%
+	);
+	--blog-radial-gradient: radial-gradient(
+		50% 50% at 50% 50%,
+		rgba(217, 217, 217, 0.5) 0%,
+		rgba(217, 217, 217, 0) 100%
+	);
 
-    --margin: 5rem;
-    --transition: 215ms;
-    color-scheme: dark;
+	--margin: 5rem;
+	--transition: 215ms;
+	color-scheme: dark;
 }
 
 [data-theme="light"] {
-    color-scheme: light;
-    --primary-01: #000000;
-    --secondary-01: #FFFFFF;
-    --secondary-02: #EEE9F0;
+	color-scheme: light;
+	--primary-01: #000000;
+	--secondary-01: #ffffff;
+	--secondary-02: #eee9f0;
 
-    --deco-gradient: linear-gradient(90deg, #ffffff 0%, rgba(92, 56, 119, 0.25) 35%, rgba(104, 35, 157, 0) 100%);
-    --blog-gradient: linear-gradient(180deg, var(--secondary-01) 0%, rgba(92, 56, 119, 0.1) 35%, rgba(104, 35, 157, 0.2) 100%);
-    --blog-radial-gradient: radial-gradient(50% 50% at 50% 50%, rgb(92, 56, 119) 0%, rgba(217, 217, 217, 0) 100%);
+	--deco-gradient: linear-gradient(
+		90deg,
+		#ffffff 0%,
+		rgba(92, 56, 119, 0.25) 35%,
+		rgba(104, 35, 157, 0) 100%
+	);
+	--blog-gradient: linear-gradient(
+		180deg,
+		var(--secondary-01) 0%,
+		rgba(92, 56, 119, 0.1) 35%,
+		rgba(104, 35, 157, 0.2) 100%
+	);
+	--blog-radial-gradient: radial-gradient(
+		50% 50% at 50% 50%,
+		rgb(92, 56, 119) 0%,
+		rgba(217, 217, 217, 0) 100%
+	);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    /* outline: 1px solid red; */
-    box-sizing: border-box;
-    /* As caixas agora passam a ser contadas a partir da borda, e não do conteúdo, evitando problemas com o "padding" */
+	margin: 0;
+	padding: 0;
+	/* outline: 1px solid red; */
+	box-sizing: border-box;
+	/* As caixas agora passam a ser contadas a partir da borda, e não do conteúdo, evitando problemas com o "padding" */
 }
 
 html,
 body {
-    /* width: 100vw; */
-    /* height: 100%; */
+	/* width: 100vw; */
+	/* height: 100%; */
 
-    text-rendering: optimizeLegibility;
-    margin: 0;
+	text-rendering: optimizeLegibility;
+	margin: 0;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
 }
 
 body {
-    font-size: 1.6rem;
-    text-align: center;
-    color: var(--primary-01);
+	font-size: 1.6rem;
+	text-align: center;
+	color: var(--primary-01);
 
-    height: 100%;
-    max-width: 100vw;
+	height: 100%;
+	max-width: 100vw;
 
-    overflow-y: overlay;
-    overflow-x: hidden;
-    background-color: var(--secondary-01);
-    transition: background-color var(--transition);
+	overflow-y: overlay;
+	overflow-x: hidden;
+	background-color: var(--secondary-01);
+	transition: background-color var(--transition);
 }
 
 main {
-    margin-inline: auto;
-    margin-top: var(--nav-height);
+	margin-inline: auto;
+	margin-top: var(--nav-height);
 }
 
 .wrapper {
-    padding-inline: var(--margin);
-    width: 100%;
+	padding-inline: var(--margin);
+	width: 100%;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-    padding-top: 10rem;
-    gap: 6.5rem;
+	padding-top: 10rem;
+	gap: 6.5rem;
 }
 
 ul {
-    list-style: none;
+	list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: var(--primary-01)
+	text-decoration: none;
+	color: var(--primary-01);
 }
 
 .social-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3.2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3.2rem;
 }
 
 button {
-    background-color: initial;
-    border: none;
-    text-align: center;
+	background-color: initial;
+	border: none;
+	text-align: center;
 }
 
 .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.35rem 2.25rem;
-    gap: 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.35rem 2.25rem;
+	gap: 2.5rem;
 
-    font-family: "Roboto SerifVariable";
-    font-weight: 400;
+	font-family: "Roboto Serif Variable";
+	font-weight: 400;
 
-    transition: var(--transition);
-    cursor: pointer;
+	transition: var(--transition);
+	cursor: pointer;
 
-    background-color: transparent;
-    color: var(--primary-01);
-    border: 1px solid var(--primary-01);
-    border-radius: 0.5rem;
+	background-color: transparent;
+	color: var(--primary-01);
+	border: 1px solid var(--primary-01);
+	border-radius: 0.5rem;
 }
 
 .button.modern {
-    font-family: "InterVariable";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.8rem;
-    padding: 1.25rem 2.5rem;
-    border-radius: 1rem;
+	font-family: "Inter Variable";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.8rem;
+	padding: 1.25rem 2.5rem;
+	border-radius: 1rem;
 }
 
 .button svg {
-    transition: var(--transition);
+	transition: var(--transition);
 }
 
 .button:hover,
 .button.selected {
-    background-color: var(--primary-01);
-    outline: none;
-    color: var(--secondary-01);
+	background-color: var(--primary-01);
+	outline: none;
+	color: var(--secondary-01);
 }
 
 .button.inverted {
-    background-color: var(--primary-01);
-    color: var(--secondary-01);
+	background-color: var(--primary-01);
+	color: var(--secondary-01);
 }
 
 .button.inverted svg path {
-    fill: var(--secondary-01);
+	fill: var(--secondary-01);
 }
 
 .button.inverted:not(.button[disabled]):not(.button.disabled):hover,
 .button.inverted.selected {
-    background-color: var(--secondary-01);
-    color: var(--primary-01);
+	background-color: var(--secondary-01);
+	color: var(--primary-01);
 }
 
 .button:not(.button[disabled]):not(.button.disabled):hover svg,
 .button.selected svg {
-    filter: invert();
+	filter: invert();
 }
 
 .button.outline:hover {
-    outline: 1.5px solid var(--primary-01);
-    filter: brightness(1.1);
+	outline: 1.5px solid var(--primary-01);
+	filter: brightness(1.1);
 }
 
 /* SUBTITLE */
 .subtitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .subtitle.marginTop {
-    margin-top: 5rem;
+	margin-top: 5rem;
 }
 
 .subtitle p {
-    font-family: "Roboto SlabVariable";
-    font-style: normal;
-    font-weight: 900;
-    font-size: 2.8rem;
+	font-family: "Roboto Slab Variable";
+	font-style: normal;
+	font-weight: 900;
+	font-size: 2.8rem;
 
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--primary-01);
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: var(--primary-01);
 }
 
 .subtitle div {
-    width: 125%;
-    height: 1.25px;
-    border-radius: 1rem;
+	width: 125%;
+	height: 1.25px;
+	border-radius: 1rem;
 
-    align-self: center;
+	align-self: center;
 
-    /* margin-top: 1rem; */
-    background-color: var(--primary-01);
+	/* margin-top: 1rem; */
+	background-color: var(--primary-01);
 }
 
 .iconHolder {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
 }
 
 html[data-theme="light"] .deco {
-    filter: invert();
+	filter: invert();
 }
 
 @media (min-width: 1024px) {
-    :root {
-        --margin: 12.5rem;
-    }
+	:root {
+		--margin: 12.5rem;
+	}
 }
