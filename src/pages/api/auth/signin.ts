@@ -6,7 +6,7 @@ import prisma from "src/lib/prisma";
 
 const GITHUB_ACCESS_TOKEN_URL = "https://github.com/login/oauth/access_token";
 const { PUBLIC_GITHUB_REDIRECT_URI, PUBLIC_GITHUB_CLIENT_ID, GITHUB_SECRET } =
-	process.env;
+	import.meta.env;
 
 async function getAccessTokenFromCode(code: string, state: string) {
 	const params = {
