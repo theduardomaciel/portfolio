@@ -20,51 +20,60 @@ import PortableText from "@components/PortableText.astro";
 import getSanityImageURL from "src/lib/sanity/getSanityImageUrl";
 import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 
-import { getPostDataBySlug } from "../api/post/[slug]";
-import { getGuestFromId } from "../api/guest/index";
+import { getPostDataBySlug } from "../../api/post/[slug]";
+import { getGuestFromId } from "../../api/guest/index";
 import BookmarkButton from "@components/Post/Buttons/BookmarkButton";
 
-const { slug } = Astro.params;
+const { slug, lang } = Astro.params;
 const post = await getPostBySlug(slug as string);
 
 if (!post) {
     return Astro.redirect("/404");
 }
 
-const postData = await getPostDataBySlug(slug as string);
+const postData = await getPostDataBySlug(slug);
 
 const allTags = await getAllTags();
 const tags = getTagsFromPost(allTags, post.categories);
-
-const date = new Date(post.publishedAt);
-const formattedDate = date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-});
-
-console.log(date, formattedDate)
 
 const guestId = Astro.cookies.get("guest.id").value;
 const guest = (await getGuestFromId(guestId as string)) as any;
 
 const likedPostsSlugs = guest?.likedPosts.map(
     (likedPost: any) => likedPost.slug
-);
-const hasLiked = likedPostsSlugs?.includes(post.slug.current);
-
-const markedPostsSlugs = guest?.readingList.map(
-    (postInList: any) => postInList.slug
-);
-const hasMarked = markedPostsSlugs?.includes(post.slug.current);
-
-const seo = {
-    title: post.title,
-    description: post.description,
-    image: post.mainImage
-        ? getSanityImageURL(post.mainImage).width(1200).url()
-        : undefined,
+    );
+    const hasLiked = likedPostsSlugs?.includes(post.slug.current);
+    
+    const markedPostsSlugs = guest?.readingList.map(
+        (postInList: any) => postInList.slug
+        );
+        const hasMarked = markedPostsSlugs?.includes(post.slug.current);
+        
+        const seo = {
+            title: post.title,
+            description: post.description,
+            image: post.mainImage
+            ? getSanityImageURL(post.mainImage).width(1200).url()
+            : undefined,
 };
+
+export const prerender = false;
+
+import { useTranslations } from 'src/i18n/utils';
+import type { ui } from "src/i18n/ui";
+
+const t = useTranslations(lang as keyof typeof ui);
+
+const title = post[`title_${lang?.replace("-", "_")}`] ?? post.title;
+const body = post[`body_${lang?.replace("-", "_")}`] ?? post.body;
+
+const date = new Date(post.publishedAt);
+const formattedDate = date.toLocaleDateString(lang, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+});
+
 ---
 
 <BaseLayout seo={seo}>
@@ -75,15 +84,15 @@ const seo = {
     <main class="post">
         <nav>
             <div class="subtitle">
-                <p style="font-size: 3.6rem;">Blog</p>
+                <p style="font-size: 3.6rem;">{t("blog.title")}</p>
                 <div></div>
             </div>
-            <a href="/blog" class="back">
+            <a href={`/${lang}/blog`} class="back">
                 <Svg
                     src={import("@assets/icons/left_arrow.svg?raw")}
                     aria-label={"Back arrow"}
                 />
-                Back to home
+                {t("contact.return_button")}
             </a>
         </nav>
         <div class="holder">
@@ -93,7 +102,7 @@ const seo = {
                         src={import("@assets/icons/left_arrow.svg?raw")}
                         aria-label={"Back arrow"}
                     />
-                    Back to home
+                    {t("contact.return_button")}
                 </a>
                 <header>
                     <section class="info">
@@ -124,7 +133,7 @@ const seo = {
                             {postData?.likedBy.length || "--"}
                         </div>
                     </section>
-                    <h1>{post.title}</h1>
+                    <h1>{title}</h1>
                     <ul class="tags">
                         {
                             tags.map((tag: any) => (
@@ -138,7 +147,7 @@ const seo = {
                     </ul>
                 </header>
                 <article class="post">
-                    <PortableText text={post.body} />
+                    <PortableText text={body} />
                 </article>
             </div>
             <aside>
@@ -161,12 +170,12 @@ const seo = {
                             </div>
                         )
                     }
-                    <ShareButton client:load post={post} />
+                    <ShareButton client:load label={t("blog.share")} post={post} />
                 </div>
                 {
                     guest && guest.readingList.length > 0 && (
                         <div class="container">
-                            <h6>Your reading list</h6>
+                            <h6>{t("blog.reading_list.title_your")}</h6>
                             {post && post.categories && (
                                 <PostPreview
                                     post={post}
@@ -199,7 +208,7 @@ const seo = {
                         </Fragment>
                     )
                 }
-                <ShareButton client:load post={post} />
+                <ShareButton client:load label={t("blog.share")} post={post} />
             </div>
         </div>
     </main>

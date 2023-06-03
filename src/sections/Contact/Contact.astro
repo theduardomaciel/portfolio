@@ -5,9 +5,14 @@ import Starfield from "@components/Starfield.astro";
 import ContactInput from "./ContactInput";
 import Planet from "@components/Planet.astro";
 
-const TITLE = "Interested in developing a new application?";
-const SUBTITLE =
-    "Enter your email and be prepared to put your ideas into practice.";
+import { useTranslations } from "src/i18n/utils";
+import type { ui } from "src/i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof ui);
+
+const TITLE = t("contact.title")
+const SUBTITLE = t("contact.subtitle")
 ---
 
 <section class={`contact section`} id="contact">
@@ -28,7 +33,7 @@ const SUBTITLE =
         <div class={`infoHolder info2`}>
             <h6>{TITLE}</h6>
             <p>{SUBTITLE}</p>
-            <ContactInput client:idle />
+            <ContactInput lang={lang} client:idle />
         </div>
     </div>
     <div class="blob2Holder">

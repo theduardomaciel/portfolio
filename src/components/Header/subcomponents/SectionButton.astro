@@ -1,15 +1,19 @@
 ---
 export interface Props {
-    title: string;
+    section: string;
 }
 
-const { title, ...props } = Astro.props;
-
+const { section } = Astro.props;
 const { pathname } = Astro.url;
-const isActive =
-    title === pathname ||
-    title === pathname.replace(/\/$/, "") ||
-    (title === "home" && pathname === "/");
+
+const isActive = pathname.includes(section.toLowerCase());
+
+import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+
+const url_lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url);
+
+const t = useTranslations(lang);
 ---
 
 <script>
@@ -25,11 +29,11 @@ const isActive =
 
 <li>
     <a
-        href={pathname === "home" ? "/#" : `/#${title}`}
+        href={pathname === "home" ? "/#" : `/${url_lang}/#${section.toLowerCase()}`}
         class={`sectionButton ${isActive ? "active" : ""}`}
-        title={title}
+        title={section}
     >
-        {title}
+        {t(`nav.${section.toLowerCase() as keyof typeof t}`)}
     </a>
 </li>
 

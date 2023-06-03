@@ -7,6 +7,11 @@ const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar mi
 const isBlog = Astro.url.pathname.includes("blog");
 
 const { isStatic } = Astro.props;
+
+import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <script>
@@ -78,6 +83,7 @@ const { isStatic } = Astro.props;
                 const sectionIsInBoundaries = getCurrentSection(
                     section as HTMLElement
                 );
+
                 if (sectionIsInBoundaries) {
                     const sectionId = section.getAttribute("id") as string;
 
@@ -136,7 +142,7 @@ const { isStatic } = Astro.props;
 </script>
 
 <header id="header" class={`header ${isStatic ? "static" : ""}`}>
-    <a class="title" href="/#">
+    <a class="title" href={`/${lang}`}>
         {`<>edu.</>`}
     </a>
 
@@ -144,15 +150,15 @@ const { isStatic } = Astro.props;
         {!isBlog && <div id="headerLine" class="sectionLine" />}
         <ul class="list">
             {
-                SECTIONS.map((section, index) => (
-                    <SectionButton title={section} />
+                SECTIONS.map((section, _) => (
+                    <SectionButton section={section} />
                 ))
             }
             <li>
                 <a
                     rel="prefetch"
                     class={`blogButton button ${isBlog ? "selected" : ""}`}
-                    href="/blog">Blog</a
+                    href={`/${lang}/blog`}>Blog</a
                 >
             </li>
         </ul>

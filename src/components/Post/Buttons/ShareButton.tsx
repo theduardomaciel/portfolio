@@ -4,6 +4,7 @@ import { ReactComponent as ShareIcon } from "src/assets/icons/share.svg";
 
 interface Props {
 	post: any;
+	label?: string;
 }
 
 async function sharePost(shareData: {
@@ -18,7 +19,7 @@ async function sharePost(shareData: {
 	}
 }
 
-export default function ShareButton({ post }: Props) {
+export default function ShareButton({ post, label }: Props) {
 	const shareData = {
 		title: post.title,
 		text: "Read this post on theduardomaciel's blog",
@@ -32,7 +33,7 @@ export default function ShareButton({ post }: Props) {
 			onClick={() => sharePost(shareData)}
 		>
 			<ShareIcon className={`${styles.icon} ${styles.ephemeral}`} />
-			Share
+			{label ?? "Share"}
 		</button>
 	);
 }

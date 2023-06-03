@@ -19,10 +19,16 @@ export interface Props {
 }
 
 const { seo } = Astro.props;
+
+import { getLangFromUrl } from '../i18n/utils';
+const url_lang = getLangFromUrl(Astro.url);
+
 ---
 
+<!-- <meta http-equiv="refresh" content="0;url=/en/" /> -->
+
 <!DOCTYPE html>
-<html lang={"en"}>
+<html lang={url_lang}>
     <head>
         <BaseHead {...seo} />
         <script is:inline>

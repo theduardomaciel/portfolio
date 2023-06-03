@@ -15,16 +15,23 @@ interface Props {
     }[];
 }
 
+
+import { useTranslations } from "src/i18n/utils";
+import type { ui } from "src/i18n/ui";
+
+const { lang } = Astro.params;
 const { technologies } = Astro.props;
+
+const t = useTranslations(lang as keyof typeof ui);
+
 ---
 
 <section class={`tech section wrapper`} id="tech">
     <header>
-        <p>and finally,</p>
-        <h2>tech</h2>
+        <p>{t("tech.up_title")},</p>
+        <h2>{t("tech.title")}</h2>
         <p>
-            In my personal journey, I already worked with some technologies, and
-            here they are:
+            {t("tech.subtitle")}
         </p>
     </header>
     <div class="content">
@@ -56,7 +63,7 @@ const { technologies } = Astro.props;
                                         : experienceInMonths
                                 );
                                 const monthsOrYears =
-                                    experienceInMonths > 12 ? "year" : "month";
+                                    experienceInMonths > 12 ? (convertedExperience !== 1 ? t("tech.units.years") : t("tech.units.year")) : (convertedExperience !== 1 ? t("tech.units.months") : t("tech.units.month"));
 
                                 return (
                                     <li class="tech">
@@ -73,12 +80,8 @@ const { technologies } = Astro.props;
                                             <p>{tech.name} </p>
                                             <p>
                                                 +{convertedExperience}
-                                                {`${monthsOrYears}${
-                                                    convertedExperience !== 1
-                                                        ? "s"
-                                                        : ""
-                                                }`}{" "}
-                                                experience
+                                                {`${monthsOrYears}`}{" "}
+                                                {t("tech.experience")}
                                             </p>
                                         </div>
                                     </li>

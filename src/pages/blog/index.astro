@@ -1,27 +1,5 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogLayout from "@layouts/BlogLayout.astro";
-import BlogHome from "@layouts/BlogHome.astro";
-
-import Footer from "@components/Footer.astro";
-import Header from "@components/Header/Header.astro";
-
-import { getAllPosts, getAllTags } from "src/lib/sanity/api";
-import type { PostTag } from "src/lib/sanity/getTagsFromPost";
-
-const posts = await getAllPosts();
-const tags = (await getAllTags()) as PostTag[];
-
-const seo = {
-    title: "Blog",
-    description: "The blog of my simple porfolio.",
-};
+import { getLangFromHeaders } from "src/i18n/utils";
+const headerLanguage = getLangFromHeaders(Astro.request.headers);
 ---
-
-<BaseLayout seo={seo}>
-    <BlogLayout>
-        <Header />
-        <BlogHome posts={posts} tags={tags} />
-        <Footer />
-    </BlogLayout>
-</BaseLayout>
+<meta http-equiv="refresh" content={`0;url=/${headerLanguage}/blog`} />

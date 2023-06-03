@@ -2,6 +2,7 @@
 .projects {
 	width: 100vw;
 	overflow: hidden;
+	gap: 5rem;
 }
 
 .title {
@@ -57,6 +58,7 @@
 	width: 150%;
 	height: 115%;
 	/* transform: rotate(-90deg); */
+	transition: all 1s ease-in-out;
 
 	z-index: -1;
 }
@@ -140,6 +142,10 @@
 	justify-content: center;
 
 	width: 100%;
+	overflow: hidden;
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0, 1.01, 0.44, 1.01);
+	transition-duration: 650ms;
 
 	gap: 2.5rem;
 }
@@ -263,7 +269,7 @@
 .imageHolder {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 }
 
 @media (min-width: 1024px) {

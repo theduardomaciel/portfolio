@@ -3,10 +3,23 @@ import Svg from "@jasikpark/astro-svg-loader";
 import SocialMedia from "./SocialMedia.astro";
 
 const today = new Date();
+
+import { useTranslations } from "src/i18n/utils";
+import type { ui } from "src/i18n/ui";
+
+const { lang } = Astro.params;
+
+const t = useTranslations(lang as keyof typeof ui);
 ---
 
 <script>
     import type NowPlaying from "src/lib/types/nowplaying";
+    import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+    import type { ui } from "src/i18n/ui";
+
+    const lang = getLangFromUrl(new URL(window.location.href));
+    console.log(lang, window.location.href);
+    const t = useTranslations(lang as keyof typeof ui);
 
     const spotifyHolder = document.getElementById("spotify") as HTMLElement;
     const songTitle = document.getElementById("songTitle") as HTMLAnchorElement;
@@ -25,18 +38,55 @@ const today = new Date();
             songArtist.innerText = `- ${data.artist}`;
         } else {
             spotifyHolder.classList.remove("listening");
-            songTitle.innerText = "Not Playing";
+            songTitle.innerText = t("footer.not_listening");
         }
     }
 
     getNowPlayingAndUpdate();
+
+    const languageSwitchButton = document.getElementById(
+        "languageSwitch"
+    ) as HTMLElement;
+
+    if (languageSwitchButton) {
+        languageSwitchButton.addEventListener("click", () => {
+            /* const languageIcon = document.getElementById(
+                "languageIcon"
+            ) as HTMLElement;
+            const languageText = languageSwitchButton.querySelector("p") as HTMLElement;
+            if (languageIcon.classList.contains("active")) {
+                languageIcon.classList.remove("active");
+                languageText.innerText = "Português (Brasil)";
+            } else {
+                languageIcon.classList.add("active");
+                languageText.innerText = "English";
+            } */
+            window.location.replace(
+                window.location.pathname.replace(
+                    lang,
+                    lang === "pt-BR" ? "en-US" : "pt-BR"
+                )
+            );
+            window.sessionStorage.setItem("scrollDown", "true")
+        });
+
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            if (window.sessionStorage.getItem("scrollDown") === "true") {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "instant" as any,
+                });
+                window.sessionStorage.setItem("scrollDown", "false")
+            }
+        });
+    }
 </script>
 
 <footer class={"footer"}>
     <div class={"wrapper"}>
         <div class="row1">
             <div id="spotify" class="spotify">
-                <p class="info">i'm currently listening to</p>
+                <p class="info">{t("footer.current_listening")}</p>
                 <div class="currentPlaying">
                     <Svg
                         src={import(
@@ -45,7 +95,7 @@ const today = new Date();
                         aria-label={"Spotify Logo"}
                     />
                     <a target="_blank" id="songTitle" class="songTitle"
-                        >Fetching data...</a
+                        >{t("footer.fetching")}</a
                     >
                     <p id="songArtist" class="songArtist">- Spotify</p>
                 </div>
@@ -55,7 +105,19 @@ const today = new Date();
             </div>
         </div>
         <div class="row2">
-            <p>©{today.getFullYear()} | Made with ❤️ by Eduardo Maciel.</p>
+            <p>©{today.getFullYear()} | {t("footer.love")}</p>
+            <div id="languageSwitch">
+                <Svg
+                    class={"interactiveIcon"}
+                    id={"languageIcon"}
+                    width={24}
+                    height={24}
+                    fill={"var(--primary-01)"}
+                    src={import("@assets/icons/language.svg?raw")}
+                    aria-label="Language change button"
+                />
+                <p>{lang === "pt-BR" ? "Português (Brasil)" : "English"}</p>
+            </div>
         </div>
     </div>
 </footer>
@@ -104,7 +166,7 @@ const today = new Date();
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         flex-wrap: wrap;
 
         gap: 1rem;
@@ -205,6 +267,16 @@ const today = new Date();
         font-family: "Inter";
         font-style: normal;
         font-weight: 400;
+    }
+
+    #languageSwitch {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        cursor: pointer;
     }
 
     @media (max-width: 475px) {

@@ -13,8 +13,6 @@ const sortedTags = tags.sort((tagA: PostTag, tagB: PostTag) => {
     return tagA.title.localeCompare(tagB.title);
 });
 
-const category = Astro.url.pathname.split("/")[3];
-
 const guestId = Astro.cookies.get("guest.id").value;
 const guest = await getGuestFromId(guestId);
 const isLogged = guestId !== undefined;
@@ -22,6 +20,12 @@ const isLogged = guestId !== undefined;
 const markedPostsSlugs = guest?.readingList.map(
     (postInList: any) => postInList.slug
 );
+
+import { useTranslations } from 'src/i18n/utils';
+import type { ui } from "src/i18n/ui";
+
+const { lang, category } = Astro.params;
+const t = useTranslations(lang as keyof typeof ui);
 ---
 
 <script>
@@ -82,7 +86,7 @@ const markedPostsSlugs = guest?.readingList.map(
                             src={import("@assets/icons/bookmark.svg?raw")}
                             aria-label="Bookmark icon"
                         />
-                        My reading list
+                        {t("blog.reading_list.title_my")}
                     </a>
                     <button
                         id="logoutButton"
@@ -99,9 +103,8 @@ const markedPostsSlugs = guest?.readingList.map(
                 </div>
             ) : (
                 <div class="loginRequest">
-                    <h6>
-                        Want to save articles to read later? <br />
-                        Add them to your reading list.
+                    <h6 style="white-space: pre-line;">
+                        {t("blog.login.title")}
                     </h6>
                     <button
                         id="loginButton"
@@ -120,7 +123,7 @@ const markedPostsSlugs = guest?.readingList.map(
                             width={`1.8rem`}
                             height={`1.8rem`}
                         />
-                        Login with Github
+                        {t("blog.login.button")}
                     </button>
                 </div>
             )
@@ -132,7 +135,7 @@ const markedPostsSlugs = guest?.readingList.map(
             <div class="limit left"></div>
             <ul id="tagsScroll" class="tags">
                 <li class={`tag ${category === undefined ? "active" : ""}`}>
-                    <a href="/blog">All</a>
+                    <a style="z-index: 100;" href={`/${lang}/blog`}>All</a>
                     <div id="selectionCircle" class="selectionCircle"></div>
                 </li>
                 <div class="divisor"></div>
@@ -188,7 +191,7 @@ const markedPostsSlugs = guest?.readingList.map(
             <div class="empty">
                 <h2>Oops! </h2>
                 <h5>
-                    It looks like there aren't any blog posts with this tag yet!
+                    {t("blog.tags.empty")}
                 </h5>
             </div>
         )

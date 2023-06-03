@@ -19,9 +19,22 @@ const { ...props } = Astro.props;
 
     function createCanvas(canvasToAssign: any, width: number, height: number) {
         const canvas = canvasToAssign as HTMLCanvasElement;
+        const ctx = canvas.getContext("2d"); // utilizar "canvas.getContext("2d", { alpha: false });" não funciona por conta da troca de temas
 
-        canvas.height = height;
-        canvas.width = width;
+        // Get the DPR and size of the canvas
+        const dpr = window.devicePixelRatio;
+        const rect = canvas.getBoundingClientRect();
+
+        // Set the "actual" size of the canvas
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        // Scale the context to ensure correct drawing operations
+        ctx?.scale(dpr, dpr);
+
+        // Set the "drawn" size of the canvas
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
 
         return canvas;
     }
@@ -146,4 +159,49 @@ const { ...props } = Astro.props;
             );
         }
     });
+
+
+    function onFocusChange() {
+        if (document.hidden) {
+            allCanvas.forEach((canvasFromIteration) => {
+                let requestRef: any = undefined;
+                let previousTimeRef: any = undefined;
+
+                const width = window.innerWidth;
+                const isScreenWide = width > 1024;
+
+                const blobDefaultWidth = isScreenWide ? width / 2 : width;
+
+                if (lod !== "low") {
+                    const canvas = createCanvas(
+                        canvasFromIteration,
+                        blobDefaultWidth,
+                        blobDefaultWidth
+                    );
+                    const context = canvas.getContext("2d") as any;
+                    const stars = renderStars(canvas);
+
+                    requestRef = requestAnimationFrame((time: number) =>
+                        starsAnimation(
+                            time,
+                            context,
+                            canvas,
+                            stars,
+                            requestRef,
+                            previousTimeRef
+                        )
+                    );
+                }
+            });
+        } else {
+            allCanvas.forEach((canvasFromIteration) => {
+                const canvas = canvasFromIteration as HTMLCanvasElement;
+                const ctx = canvas.getContext("2d") as any;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+        }
+    }
+
+    document.addEventListener("visibilitychange", onFocusChange);
 </script>

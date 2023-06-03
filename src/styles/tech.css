@@ -11,6 +11,7 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	height: 100%;
+	width: 100%;
 
 	position: relative;
 }
@@ -23,6 +24,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 
+	width: 100%;
 	z-index: 2;
 }
 
@@ -59,8 +61,8 @@ html[data-theme="light"] .techIcon img {
 	position: relative;
 
 	gap: 10rem;
-	/* width: 65%; isso só no pc */
 	margin-right: auto;
+	width: 100%;
 }
 
 .techSection {
@@ -72,8 +74,6 @@ html[data-theme="light"] .techIcon img {
 }
 
 .techSection .techs {
-	/* max-width: 75%; só no pc*/
-
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -87,6 +87,10 @@ html[data-theme="light"] .techIcon img {
 	justify-content: space-around;
 	/* max-width: 55%; */
 }
+
+/* .techDescription p:nth-child(1) {
+	word-break: break-all;
+} */
 
 .techIcon {
 	width: 10rem;
@@ -136,12 +140,19 @@ html[data-theme="light"] .techIcon img {
 
 @media (min-width: 1024px) {
 	/*  TECHNOLOGIES  ========================================== */
-	.tech header p {
-		max-width: 75%;
+
+	.techSection .techs {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		column-gap: 5rem;
+		row-gap: 7.5rem;
+
+		max-width: 60%;
 	}
 
-	.techsList {
-		width: 65%;
+	.tech header p {
+		max-width: 75%;
 	}
 
 	.techDescription p:nth-child(2) {

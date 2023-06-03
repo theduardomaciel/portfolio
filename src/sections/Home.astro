@@ -8,6 +8,11 @@ import SocialMedia from "@components/SocialMedia.astro";
 import Starfield from "@components/Starfield.astro";
 import Blobs from "@components/Home/Blobs.astro";
 import Rocket from "@components/Home/Rocket.astro";
+
+import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="home" class="home">
@@ -15,7 +20,7 @@ import Rocket from "@components/Home/Rocket.astro";
         <div
             style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}
         >
-            <h2 style={{ textTransform: "capitalize" }}>HI, I'M</h2>
+            <h2 style={{ textTransform: "uppercase" }}>{t('home.title')}</h2>
             <Svg
                 class={"title"}
                 src={import("@assets/visual/title.svg?raw")}
@@ -23,7 +28,7 @@ import Rocket from "@components/Home/Rocket.astro";
                 width={375}
             />
         </div>
-        <p>Ongoing designer and software engineer</p>
+        <p>{t('home.subtitle')}</p>
         <SocialMedia />
         <div id="mouseScroll" class="mouseScroll">
             <Svg

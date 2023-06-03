@@ -1,5 +1,6 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
+import { getLangFromUrl } from "src/i18n/utils";
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
 import sanity from "src/lib/sanity/portableText";
 
@@ -24,6 +25,10 @@ const postBody = sanity(post.body)
 
 const readTime = getReadingTime(postBody);
 
+const lang = getLangFromUrl(Astro.url);
+
+const title = post[`title_${lang?.replace("-", "_")}`] ?? post.title;
+
 const { isLogged, hasMarked, hightPriority } = Astro.props;
 ---
 
@@ -31,7 +36,7 @@ const { isLogged, hasMarked, hightPriority } = Astro.props;
     <a
         rel={hightPriority ? "prefetch" : ""}
         class="postPreview"
-        href={`/blog/${post.slug.current}`}
+        href={`/${lang}/blog/${post.slug.current}`}
     >
         <header>
             {
@@ -45,7 +50,7 @@ const { isLogged, hasMarked, hightPriority } = Astro.props;
             }
         </header>
         <div class="previewContent">
-            <h6>{post.title}</h6>
+            <h6>{title}</h6>
             <footer>
                 <div class="iconHolder">
                     <Svg

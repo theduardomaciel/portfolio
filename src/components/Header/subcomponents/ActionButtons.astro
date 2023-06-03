@@ -1,5 +1,10 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
+
+import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <script>
@@ -64,9 +69,9 @@ import Svg from "@jasikpark/astro-svg-loader";
             height={28}
             fill={"var(--primary-01)"}
             src={import("@assets/icons/light_mode.svg?raw")}
-            aria-label="Light theme toggle button"
+            aria-label="Theme toggle button"
         />
-        <p id="currentTheme">DARK</p>
+        <p style="text-transform: uppercase;" id="currentTheme">{t('nav.theme.dark')}</p>
     </div>
     <div class="iconHolder">
         <a
@@ -89,9 +94,9 @@ import Svg from "@jasikpark/astro-svg-loader";
             height={28}
             fill={"var(--primary-01)"}
             src={import("@assets/icons/level_of_detail.svg?raw")}
-            aria-label="Light theme toggle button"
+            aria-label="Level of detail toggle button"
         />
-        <p id="currentLOD">HIGH</p>
+        <p style="text-transform: uppercase;" id="currentLOD">{t('nav.lod.high')}</p>
     </div>
 </div>
 
