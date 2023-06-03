@@ -22,9 +22,6 @@ export default defineConfig({
 	adapter: vercel({
 		excludeFiles: [".prisma/client/index-browser"],
 	}),
-	experimental: {
-		middleware: true,
-	},
 	vite: {
 		plugins: [svgr()],
 	},
