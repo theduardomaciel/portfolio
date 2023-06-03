@@ -85,7 +85,7 @@ const t = useTranslations(lang);
                 aria-label="Github icon"
             />
         </a>
-        <!-- <p>GitHub</p> -->
+        <p class="github">GitHub</p>
     </div>
     <div id="lodButton" class="iconHolder lod">
         <Svg
@@ -116,7 +116,7 @@ const t = useTranslations(lang);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         gap: 0.5rem;
         cursor: pointer;
     }
@@ -128,8 +128,8 @@ const t = useTranslations(lang);
         text-transform: uppercase;
     }
 
-    .holder .iconHolder.theme p {
-        display: flex;
+    .holder .iconHolder p {
+        display:  flex;
     }
 
     html[data-theme="light"] #darkIcon,
@@ -142,10 +142,6 @@ const t = useTranslations(lang);
         display: none;
     }
 
-    .holder .iconHolder.lod {
-        display: flex;
-    }
-
     .holder .iconHolder .interactiveIcon {
         font-size: 1rem;
         width: 2.8rem;
@@ -154,16 +150,13 @@ const t = useTranslations(lang);
 
     @media (min-width: 1024px) {
         .holder .iconHolder {
+            justify-content: center;
             align-items: flex-end;
             gap: 0px;
             flex-direction: row;
         }
 
-        .holder .iconHolder.theme p {
-            display: none;
-        }
-
-        .holder .iconHolder.lod {
+        .holder .iconHolder p, .holder .iconHolder.lod {
             display: none;
         }
 

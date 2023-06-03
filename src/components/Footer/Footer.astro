@@ -1,15 +1,17 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
-import SocialMedia from "./SocialMedia.astro";
+import SocialMedia from "../SocialMedia.astro";
 
 const today = new Date();
 
 import { useTranslations } from "src/i18n/utils";
 import type { ui } from "src/i18n/ui";
+import LanguagePicker from "./subcomponents/LanguagePicker";
 
 const { lang } = Astro.params;
 
 const t = useTranslations(lang as keyof typeof ui);
+
 ---
 
 <script>
@@ -18,7 +20,6 @@ const t = useTranslations(lang as keyof typeof ui);
     import type { ui } from "src/i18n/ui";
 
     const lang = getLangFromUrl(new URL(window.location.href));
-    console.log(lang, window.location.href);
     const t = useTranslations(lang as keyof typeof ui);
 
     const spotifyHolder = document.getElementById("spotify") as HTMLElement;
@@ -36,6 +37,7 @@ const t = useTranslations(lang as keyof typeof ui);
             songTitle.innerText = data.title;
             songTitle.href = data.songUrl;
             songArtist.innerText = `- ${data.artist}`;
+            localStorage.setItem("lastSongPlaying", data.title);
         } else {
             spotifyHolder.classList.remove("listening");
             songTitle.innerText = t("footer.not_listening");
@@ -70,7 +72,8 @@ const t = useTranslations(lang as keyof typeof ui);
             window.sessionStorage.setItem("scrollDown", "true")
         });
 
-        document.addEventListener("DOMContentLoaded", function(event) { 
+        // Scroll to bottom after language change
+        /* document.addEventListener("DOMContentLoaded", function(event) { 
             if (window.sessionStorage.getItem("scrollDown") === "true") {
                 window.scrollTo({
                     top: document.body.scrollHeight,
@@ -78,7 +81,7 @@ const t = useTranslations(lang as keyof typeof ui);
                 });
                 window.sessionStorage.setItem("scrollDown", "false")
             }
-        });
+        }); */
     }
 </script>
 
@@ -88,15 +91,17 @@ const t = useTranslations(lang as keyof typeof ui);
             <div id="spotify" class="spotify">
                 <p class="info">{t("footer.current_listening")}</p>
                 <div class="currentPlaying">
-                    <Svg
+                    <div class="songTitleHolder">
+                        <Svg
                         src={import(
                             "@assets/icons/enterprises/spotify.svg?raw"
                         )}
-                        aria-label={"Spotify Logo"}
-                    />
-                    <a target="_blank" id="songTitle" class="songTitle"
-                        >{t("footer.fetching")}</a
-                    >
+                            aria-label={"Spotify Logo"}
+                        />
+                        <a target="_blank" id="songTitle" class="songTitle"
+                            >{t("footer.fetching")}</a
+                        >
+                    </div>
                     <p id="songArtist" class="songArtist">- Spotify</p>
                 </div>
             </div>
@@ -106,18 +111,18 @@ const t = useTranslations(lang as keyof typeof ui);
         </div>
         <div class="row2">
             <p>©{today.getFullYear()} | {t("footer.love")}</p>
-            <div id="languageSwitch">
+            <!-- <div id="languageSwitch">
                 <Svg
                     class={"interactiveIcon"}
                     id={"languageIcon"}
-                    width={24}
-                    height={24}
-                    fill={"var(--primary-01)"}
+                    width={22}
+                    height={22}
                     src={import("@assets/icons/language.svg?raw")}
                     aria-label="Language change button"
                 />
                 <p>{lang === "pt-BR" ? "Português (Brasil)" : "English"}</p>
-            </div>
+            </div> -->
+            <LanguagePicker lang={lang} client:load />
         </div>
     </div>
 </footer>
@@ -158,6 +163,7 @@ const t = useTranslations(lang as keyof typeof ui);
         align-items: flex-end;
         justify-content: space-between;
         flex-wrap: wrap;
+        gap: 2.5rem;
 
         width: 100%;
     }
@@ -166,7 +172,7 @@ const t = useTranslations(lang as keyof typeof ui);
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
 
         gap: 1rem;
@@ -237,6 +243,7 @@ const t = useTranslations(lang as keyof typeof ui);
         font-style: normal;
         font-weight: 400;
         font-size: 1.8rem;
+        text-align: center;
 
         color: var(--primary-01);
     }
@@ -247,9 +254,18 @@ const t = useTranslations(lang as keyof typeof ui);
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
+        flex-wrap: wrap;
 
         font-size: 1.8rem;
         color: var(--primary-01);
+    }
+
+    .spotify .currentPlaying .songTitleHolder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
     }
 
     .spotify .currentPlaying .songTitle {
@@ -275,14 +291,53 @@ const t = useTranslations(lang as keyof typeof ui);
         align-items: center;
         justify-content: center;
         gap: 1rem;
-
         cursor: pointer;
+        border-radius: 0.5rem;
+        transition: 150ms;
+
+        padding-inline: 1.25rem;
+        padding-block: 0.65rem;
+
+        margin-top: 1rem;
+        align-self: center;
     }
+
+    #languageSwitch svg {
+        fill: var(--primary-01);
+    }
+
+    #languageSwitch:hover {
+        background-color: rgb(51 51 51/0.1);
+    }
+
+    /* #languageSwitch:hover p {
+        color: var(--secondary-01);
+    }
+
+    #languageSwitch:hover svg {
+        fill: var(--secondary-01);
+    } */
 
     @media (max-width: 475px) {
         .footer .wrapper .row1 {
             justify-content: center;
             gap: 2rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #languageSwitch {
+            align-self: inherit;
+            margin-top: 0px;
+        }
+
+        .spotify p {
+            text-align: left;
+            width: fit-content;
+        }
+
+        .footer .wrapper .row2 {
+            justify-content: space-between;
         }
     }
 </style>

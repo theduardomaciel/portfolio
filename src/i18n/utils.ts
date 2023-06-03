@@ -1,4 +1,10 @@
-import { ui, defaultLang } from "./ui";
+import { ui, defaultLang, locales as i18n_locales } from "./ui";
+
+/* import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+
+const locales = Object.keys(i18n_locales);
+const defaultLocale = "en-US"; */
 
 export function getLangFromHeaders(headers: Headers) {
 	const acceptLanguage = headers.get("accept-language");

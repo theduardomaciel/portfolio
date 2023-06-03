@@ -1,6 +1,6 @@
 export const locales = {
 	"en-US": "English",
-	"pt-BR": "Português Brasileiro",
+	"pt-BR": "Português (Brasil)",
 };
 
 export const defaultLang = "en-US";

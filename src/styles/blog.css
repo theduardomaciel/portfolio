@@ -46,6 +46,7 @@
 	justify-content: flex-start;
 	gap: 1.5rem;
 	flex-wrap: wrap;
+	max-width: 100%;
 }
 
 .bookmarksContainer .button {
@@ -53,6 +54,7 @@
 	font-size: 1.8rem;
 	width: 100%;
 	white-space: nowrap;
+	max-width: 100%;
 }
 
 .blog nav .tagsHolder {
@@ -249,6 +251,12 @@
 	gap: 1.5rem;
 	align-items: flex-end;
 	justify-content: center;
+
+	max-width: 100%;
+}
+
+.loginRequest button {
+	max-width: 100%;
 }
 
 .loginRequest h6 {

@@ -21,20 +21,23 @@ const { ...props } = Astro.props;
         const canvas = canvasToAssign as HTMLCanvasElement;
         const ctx = canvas.getContext("2d"); // utilizar "canvas.getContext("2d", { alpha: false });" não funciona por conta da troca de temas
 
+        canvas.width = width;
+        canvas.height = height;
+
         // Get the DPR and size of the canvas
         const dpr = window.devicePixelRatio;
         const rect = canvas.getBoundingClientRect();
 
         // Set the "actual" size of the canvas
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
 
         // Scale the context to ensure correct drawing operations
         ctx?.scale(dpr, dpr);
 
         // Set the "drawn" size of the canvas
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
+        canvas.style.width = `${rect.width}px`;
+        canvas.style.height = `${rect.height}px`;
 
         return canvas;
     }

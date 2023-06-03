@@ -23,6 +23,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	gap: 2rem;
 
 	width: 100%;
 	z-index: 2;
@@ -47,6 +48,9 @@
 	font-size: 12.5rem;
 
 	margin-top: -2.5rem;
+	word-break: break-all;
+	line-height: 90%;
+	text-align: left;
 }
 
 html[data-theme="light"] .techIcon img {
@@ -88,9 +92,9 @@ html[data-theme="light"] .techIcon img {
 	/* max-width: 55%; */
 }
 
-/* .techDescription p:nth-child(1) {
+.techDescription p:nth-child(1) {
 	word-break: break-all;
-} */
+}
 
 .techIcon {
 	width: 10rem;
@@ -175,7 +179,7 @@ html[data-theme="light"] .techIcon img {
 		position: absolute;
 		width: 65vw;
 		height: 110%;
-		right: -115%;
+		right: -120%;
 		top: -10%;
 		overflow: hidden;
 

@@ -119,6 +119,8 @@ const t = useTranslations(lang);
         changeMenuSection();
     };
 
+    changeMenuSection()
+
     const sectionsButtons = document.querySelectorAll(
         `.menu a`
     ) as NodeListOf<HTMLElement>;
@@ -163,6 +165,7 @@ const t = useTranslations(lang);
             </li>
         </ul>
         <ActionButtons />
+        <div class="mobile_spacing"></div>
     </div>
     <ToggleButton />
 </header>
@@ -226,7 +229,7 @@ const t = useTranslations(lang);
         justify-content: space-between;
         padding: 4.5rem;
 
-        height: calc(100vh - var(--nav-height));
+        height: calc(100svh - var(--nav-height));
         width: 100%;
 
         font-family: "Roboto Serif Variable", "Roboto Serif Variable";
@@ -236,6 +239,12 @@ const t = useTranslations(lang);
 
         transform: translateY(100vh);
         transform-style: preserve-3d;
+    }
+
+    .mobile_spacing {
+        display: flex;
+        height: calc(100lvh - 100svh);
+        width: 100%;
     }
 
     .sectionLine {
@@ -307,6 +316,10 @@ const t = useTranslations(lang);
             transition: 0.35s;
         }
 
+        .mobile_spacing {
+            display: none;
+        }
+
         .menu {
             flex-direction: row;
             justify-content: space-between;
@@ -324,7 +337,7 @@ const t = useTranslations(lang);
 
         .menu .list {
             flex-direction: row;
-            gap: 6.5rem;
+            gap: 5rem;
         }
     }
 </style>
