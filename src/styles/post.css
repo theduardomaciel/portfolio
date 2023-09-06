@@ -275,7 +275,7 @@
 
 .post .container.share {
 	position: sticky;
-	bottom: calc(100lvh - 100svh + 2.5rem);
+	bottom: -2.5rem;
 	left: 0;
 	padding: 1.35rem;
 	width: calc(100% - var(--margin));
