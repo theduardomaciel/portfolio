@@ -55,8 +55,7 @@ export const ui = {
         "tech.games": "Games",
 
         // Contact
-        "contact.title":
-            "HAVE AN CRAZY IDEA THAT YOU WANT TO PUT INTO PRACTICE?",
+        "contact.title": "HAVE AN CRAZY IDEA?",
         "contact.subtitle": "Enter your email so we can get in touch!",
         "contact.button": "Contact",
 
@@ -157,9 +156,9 @@ export const ui = {
         "tech.games": "Jogos",
 
         // Contact
-        "contact.title": "TEM UMA IDEIA MALUCA QUE QUER COLOCAR EM PRATICA?",
+        "contact.title": "TEM UMA IDEIA MALUCA?",
         "contact.subtitle":
-            "Insira seu email para que possamos entrar em contato!",
+            "Insira seu email para que eu possa entrar em contato!",
         "contact.button": "Entrar em contato",
 
         "contact.input.placeholder.email": "Digite seu email",

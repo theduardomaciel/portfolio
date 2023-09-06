@@ -41,8 +41,8 @@
 
 .home .outro {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
     height: 2.5rem;
     margin-bottom: 2.5rem;
 
