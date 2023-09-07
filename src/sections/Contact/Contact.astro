@@ -6,13 +6,13 @@ import ContactInput from "./ContactInput";
 import Planet from "@components/Planet.astro";
 
 import { useTranslations } from "src/i18n/utils";
-import type { ui } from "src/i18n/ui";
+import type { translations } from "src/i18n/utils";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as keyof typeof ui);
+const t = useTranslations(lang as keyof typeof translations).contact;
 
-const TITLE = t("contact.title")
-const SUBTITLE = t("contact.subtitle")
+const TITLE = t.title;
+const SUBTITLE = t.subtitle;
 ---
 
 <section class={`contact section`} id="contact">

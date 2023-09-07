@@ -6,41 +6,40 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 
 import { useTranslations } from "src/i18n/utils";
-import type { ui } from "src/i18n/ui";
+import type { translations } from "src/i18n/utils";
 
 const { lang } = Astro.params;
 
-const t = useTranslations(lang as keyof typeof ui);
-
+const t = useTranslations(lang as keyof typeof translations).contact;
 ---
 
 <BaseLayout>
     <main class="wrapper contactMessageContent">
-        <h1>{t("contact.success.title")}</h1>
+        <h1>{t.success.title}</h1>
         <div
             style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}
         >
             <p>
-                {t("contact.success.subtitle")}
+                {t.success.subtitle}
             </p>
-            <h4 style={{ textAlign: "center" }}>{t("contact.success.opposite")}</h4>
+            <h4 style={{ textAlign: "center" }}>{t.success.opposite}</h4>
             <p>
-                {t("contact.success.check_social")}
+                {t.success.check_social}
                 <br />
-                {t("contact.success.by_the_way")}
+                {t.success.by_the_way}
                 <span style={{ fontSize: "1rem" }}>
-                    ({t("contact.success.addendum")})
-                </span>, {t("contact.success.dm_me")}
+                    ({t.success.addendum})
+                </span>, {t.success.dm_me}
             </p>
             <SocialMedia style={{ justifyContent: "center" }} />
             <h5>
-                {t("contact.success.thanks")}
+                {t.success.thanks}
                 <br />
                 <br />
             </h5>
         </div>
         <a class="button back" href="/" style="padding: 1rem 2.5rem;"
-            >{t("contact.return_button")}</a
+            >{t.return_button}</a
         >
     </main>
 </BaseLayout>

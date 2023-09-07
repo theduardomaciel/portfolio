@@ -13,7 +13,7 @@ const sortedTags = tags.sort((tagA: PostTag, tagB: PostTag) => {
     return tagA.title.localeCompare(tagB.title);
 });
 
-const guestId = Astro.cookies.get("guest.id").value;
+const guestId = Astro.cookies.get("guest.id")?.value;
 const guest = await getGuestFromId(guestId);
 const isLogged = guestId !== undefined;
 
@@ -21,11 +21,11 @@ const markedPostsSlugs = guest?.readingList.map(
     (postInList: any) => postInList.slug
 );
 
-import { useTranslations } from 'src/i18n/utils';
-import type { ui } from "src/i18n/ui";
+import { useTranslations } from "src/i18n/utils";
+import type { translations } from "src/i18n/utils";
 
 const { lang, category } = Astro.params;
-const t = useTranslations(lang as keyof typeof ui);
+const t = useTranslations(lang as keyof typeof translations).blog;
 ---
 
 <script>
@@ -86,7 +86,7 @@ const t = useTranslations(lang as keyof typeof ui);
                             src={import("@assets/icons/bookmark.svg?raw")}
                             aria-label="Bookmark icon"
                         />
-                        {t("blog.reading_list.title_my")}
+                        {t.reading_list.title}
                     </a>
                     <button
                         id="logoutButton"
@@ -103,9 +103,7 @@ const t = useTranslations(lang as keyof typeof ui);
                 </div>
             ) : (
                 <div class="loginRequest">
-                    <h6 style="white-space: pre-line;">
-                        {t("blog.login.title")}
-                    </h6>
+                    <h6 style="white-space: pre-line;">{t.login.title}</h6>
                     <button
                         id="loginButton"
                         class="button inverted fill"
@@ -123,7 +121,7 @@ const t = useTranslations(lang as keyof typeof ui);
                             width={`1.8rem`}
                             height={`1.8rem`}
                         />
-                             {t("blog.login.button")}
+                        {t.login.button}
                     </button>
                 </div>
             )
@@ -189,10 +187,8 @@ const t = useTranslations(lang as keyof typeof ui);
             </section>
         ) : (
             <div class="empty">
-                <h2>Oops! </h2>
-                <h5>
-                    {t("blog.tags.empty")}
-                </h5>
+                <h2>Oops!</h2>
+                <h5>{t.tags.empty}</h5>
             </div>
         )
     }

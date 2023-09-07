@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 import prisma from "src/lib/prisma";
 
-export const get: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ params, request }) => {
     const guestId = params.id;
 
     if (!guestId) {
-        return new Response('No guest id provided', {
+        return new Response("No guest id provided", {
             status: 400,
         });
     }
@@ -13,22 +13,22 @@ export const get: APIRoute = async ({ params, request }) => {
     try {
         const guest = await prisma.guest.findUnique({
             where: {
-                id: guestId
+                id: guestId,
             },
             include: {
-                readingList: true
-            }
+                readingList: true,
+            },
         });
 
         return new Response(JSON.stringify(guest?.readingList), {
             status: 200,
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
         });
     } catch (error) {
-        console.log(error)
-        return new Response('Error', {
+        console.log(error);
+        return new Response("Error", {
             status: 500,
         });
     }

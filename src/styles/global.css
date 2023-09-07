@@ -118,6 +118,8 @@ main {
     align-items: center;
     justify-content: center;
 
+    overflow-x: clip;
+
     padding-top: 10rem;
     gap: 6.5rem;
 }

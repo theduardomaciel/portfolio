@@ -31,38 +31,30 @@ if (!post) {
     return Astro.redirect("/404");
 }
 
-const postData = await getPostDataBySlug(slug);
+const postData = await getPostDataBySlug(slug!);
 
 const allTags = await getAllTags();
 const tags = getTagsFromPost(allTags, post.categories);
 
-const guestId = Astro.cookies.get("guest.id").value;
+const guestId = Astro.cookies.get("guest.id")?.value;
 const guest = (await getGuestFromId(guestId as string)) as any;
 
 const likedPostsSlugs = guest?.likedPosts.map(
     (likedPost: any) => likedPost.slug
-    );
-    const hasLiked = likedPostsSlugs?.includes(post.slug.current);
-    
-    const markedPostsSlugs = guest?.readingList.map(
-        (postInList: any) => postInList.slug
-        );
-        const hasMarked = markedPostsSlugs?.includes(post.slug.current);
-        
-        const seo = {
-            title: post.title,
-            description: post.description,
-            image: post.mainImage
-            ? getSanityImageURL(post.mainImage).width(1200).url()
-            : undefined,
-};
+);
+const hasLiked = likedPostsSlugs?.includes(post.slug.current);
+
+const markedPostsSlugs = guest?.readingList.map(
+    (postInList: any) => postInList.slug
+);
+const hasMarked = markedPostsSlugs?.includes(post.slug.current);
 
 export const prerender = false;
 
-import { useTranslations } from 'src/i18n/utils';
-import type { ui } from "src/i18n/ui";
+import { useTranslations } from "src/i18n/utils";
+import type { translations } from "src/i18n/utils";
 
-const t = useTranslations(lang as keyof typeof ui);
+const t = useTranslations(lang as keyof typeof translations).blog;
 
 const title = post[`title_${lang?.replace("-", "_")}`] ?? post.title;
 const body = post[`body_${lang?.replace("-", "_")}`] ?? post.body;
@@ -74,6 +66,15 @@ const formattedDate = date.toLocaleDateString(lang, {
     day: "2-digit",
 });
 
+const splittedBody = body.slice(0, 160);
+
+const seo = {
+    title: title,
+    description: splittedBody,
+    image: post.mainImage
+        ? getSanityImageURL(post.mainImage).width(1200).url()
+        : undefined,
+};
 ---
 
 <BaseLayout seo={seo}>
@@ -84,7 +85,7 @@ const formattedDate = date.toLocaleDateString(lang, {
     <main class="post">
         <nav>
             <div class="subtitle">
-                <p style="font-size: 3.6rem;">{t("blog.title")}</p>
+                <p style="font-size: 3.6rem;">{t.title}</p>
                 <div></div>
             </div>
             <a href={`/${lang}/blog`} class="back">
@@ -92,17 +93,17 @@ const formattedDate = date.toLocaleDateString(lang, {
                     src={import("@assets/icons/left_arrow.svg?raw")}
                     aria-label={"Back arrow"}
                 />
-                {t("contact.return_button")}
+                {t}
             </a>
         </nav>
         <div class="holder">
             <div class="content">
-                <a href="/blog" class="back desktop">
+                <a href={`/${lang}/blog`} class="back desktop">
                     <Svg
                         src={import("@assets/icons/left_arrow.svg?raw")}
                         aria-label={"Back arrow"}
                     />
-                    {t("contact.return_button")}
+                    {t.return_button}
                 </a>
                 <header>
                     <section class="info">
@@ -170,12 +171,12 @@ const formattedDate = date.toLocaleDateString(lang, {
                             </div>
                         )
                     }
-                    <ShareButton client:load label={t("blog.share")} post={post} />
+                    <ShareButton client:load label={t.share} post={post} />
                 </div>
                 {
                     guest && guest.readingList.length > 0 && (
                         <div class="container">
-                            <h6>{t("blog.reading_list.title_your")}</h6>
+                            <h6>{t.reading_list}</h6>
                             {post && post.categories && (
                                 <PostPreview
                                     post={post}
@@ -208,7 +209,7 @@ const formattedDate = date.toLocaleDateString(lang, {
                         </Fragment>
                     )
                 }
-                <ShareButton client:load label={t("blog.share")} post={post} />
+                <ShareButton client:load label={t.share} post={post} />
             </div>
         </div>
     </main>

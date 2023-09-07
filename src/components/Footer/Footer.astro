@@ -2,25 +2,23 @@
 import Svg from "@jasikpark/astro-svg-loader";
 import SocialMedia from "../SocialMedia.astro";
 
-const today = new Date();
-
-import { useTranslations } from "src/i18n/utils";
-import type { ui } from "src/i18n/ui";
 import LanguagePicker from "./subcomponents/LanguagePicker";
 
-const { lang } = Astro.params;
+const today = new Date();
 
-const t = useTranslations(lang as keyof typeof ui);
+import { getLangFromUrl, useTranslations } from "src/i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang).footer;
 ---
 
 <script>
     import type NowPlaying from "src/lib/types/nowplaying";
     import { getLangFromUrl, useTranslations } from "src/i18n/utils";
-    import type { ui } from "src/i18n/ui";
+    import type { translations } from "src/i18n/utils";
 
     const lang = getLangFromUrl(new URL(window.location.href));
-    const t = useTranslations(lang as keyof typeof ui);
+    const t = useTranslations(lang as keyof typeof translations).footer;
 
     const spotifyHolder = document.getElementById("spotify") as HTMLElement;
     const songTitle = document.getElementById("songTitle") as HTMLAnchorElement;
@@ -40,7 +38,7 @@ const t = useTranslations(lang as keyof typeof ui);
             localStorage.setItem("lastSongPlaying", data.title);
         } else {
             spotifyHolder.classList.remove("listening");
-            songTitle.innerText = t("footer.not_listening");
+            //songTitle.innerText = t.not_listening;
         }
     }
 
@@ -66,10 +64,10 @@ const t = useTranslations(lang as keyof typeof ui);
             window.location.replace(
                 window.location.pathname.replace(
                     lang,
-                    lang === "pt-BR" ? "en-US" : "pt-BR"
+                    lang === "pt-br" ? "en-US" : "pt-br"
                 )
             );
-            window.sessionStorage.setItem("scrollDown", "true")
+            window.sessionStorage.setItem("scrollDown", "true");
         });
 
         // Scroll to bottom after language change
@@ -89,17 +87,17 @@ const t = useTranslations(lang as keyof typeof ui);
     <div class={"wrapper"}>
         <div class="row1">
             <div id="spotify" class="spotify">
-                <p class="info">{t("footer.current_listening")}</p>
+                <p class="info">{t.current_listening}</p>
                 <div class="currentPlaying">
                     <div class="songTitleHolder">
                         <Svg
-                        src={import(
-                            "@assets/icons/enterprises/spotify.svg?raw"
-                        )}
+                            src={import(
+                                "@assets/icons/enterprises/spotify.svg?raw"
+                            )}
                             aria-label={"Spotify Logo"}
                         />
                         <a target="_blank" id="songTitle" class="songTitle"
-                            >{t("footer.fetching")}</a
+                            >{t.fetching}</a
                         >
                     </div>
                     <p id="songArtist" class="songArtist">- Spotify</p>
@@ -110,7 +108,7 @@ const t = useTranslations(lang as keyof typeof ui);
             </div>
         </div>
         <div class="row2">
-            <p>©{today.getFullYear()} | {t("footer.love")}</p>
+            <p>©{today.getFullYear()} | {t.love}</p>
             <!-- <div id="languageSwitch">
                 <Svg
                     class={"interactiveIcon"}
@@ -120,7 +118,7 @@ const t = useTranslations(lang as keyof typeof ui);
                     src={import("@assets/icons/language.svg?raw")}
                     aria-label="Language change button"
                 />
-                <p>{lang === "pt-BR" ? "Português (Brasil)" : "English"}</p>
+                <p>{lang === "pt-br" ? "Português (Brasil)" : "English"}</p>
             </div> -->
             <LanguagePicker lang={lang} client:load />
         </div>

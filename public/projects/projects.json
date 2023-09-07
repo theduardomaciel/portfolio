@@ -1,0 +1,202 @@
+[
+    {
+        "id": "officia",
+        "description": "An app that lets you create and manage automated flows to simplify repetitive tasks and increase productivity.",
+        "project_url": "https://officia.vercel.app",
+        "figma_url": "https://www.figma.com/file/oouRCiS0qlC3PS0UaRxXZC/officia?type=design&node-id=703%3A1870&t=H53mYGQD7dAZSFze-1",
+        "accent_color": "108, 190, 69",
+        "image_url": "https://i.imgur.com/fLc7gD3.png",
+        "status": "WORK_IN_PROGRESS",
+        "technologies": [
+            {
+                "name": "Web",
+                "link": "https://github.com/theduardomaciel/officia-web",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "React",
+                    "Next.js",
+                    "Axios",
+                    "Radix",
+                    "Material Symbols"
+                ]
+            },
+            {
+                "name": "API",
+                "link": "https://github.com/theduardomaciel/officia-api",
+                "techs": ["NestJS", "Node.js", "Prisma", "MySQL (Planet Scale)"]
+            },
+            {
+                "name": "Mobile",
+                "techs": [
+                    "React Native",
+                    "Expo",
+                    "React",
+                    "Typescript",
+                    "Axios"
+                ],
+                "outro": "And other +50 libraries"
+            }
+        ]
+    },
+    {
+        "id": "estudaí",
+        "description": "An online study organization platform that will help you review and keep your subjects up to date. Enough of forgetting.",
+        "project_url": "https://estudai.vercel.app",
+        "figma_url": "https://www.figma.com/file/jInN3zeekTIHTCCcniUucW/Estuda%C3%AD?node-id=112%3A1377",
+        "accent_color": "118, 66, 203",
+        "image_url": "https://imgur.com/AljLPyX.png",
+        "status": "WORK_IN_PROGRESS",
+        "technologies": [
+            {
+                "name": "Web",
+                "link": "https://github.com/theduardomaciel/estudai",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "React",
+                    "Next.js",
+                    "Axios",
+                    "Radix",
+                    "Stitches",
+                    "Material UI"
+                ]
+            },
+            {
+                "name": "API",
+                "techs": [
+                    "Express",
+                    "Multer",
+                    "Prisma",
+                    "PostgreSQL",
+                    "Typescript",
+                    "Node.js",
+                    "Next.js"
+                ]
+            },
+            {
+                "name": "Mobile",
+                "techs": [],
+                "outro": "Coming soon..."
+            }
+        ]
+    },
+    {
+        "id": "DFL",
+        "description": "An application that will help you to report garbage outbreaks and find trash collection points in your city.",
+        "project_url": "https://dfl.vercel.app",
+        "figma_url": "https://www.figma.com/file/6PllN3nfMjMHgkNk6AKCRV/DFL---Web?node-id=182%3A280",
+        "accent_color": "52, 98, 89",
+        "image_url": "https://imgur.com/b8s3idf.png",
+        "status": "ARCHIVED",
+        "technologies": [
+            {
+                "name": "Web",
+                "link": "https://github.com/theduardomaciel/dfl-web",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "React",
+                    "Next.js",
+                    "Axios"
+                ]
+            },
+            {
+                "name": "API",
+                "link": "https://github.com/theduardomaciel/dfl-api",
+                "techs": [
+                    "Express",
+                    "Prisma",
+                    "PostgreSQL",
+                    "Typescript",
+                    "Node.js"
+                ]
+            },
+            {
+                "name": "Mobile",
+                "link": "https://github.com/theduardomaciel/dfl-mobile",
+                "techs": [
+                    "React Native",
+                    "Expo",
+                    "React",
+                    "Typescript",
+                    "Axios"
+                ],
+                "outro": "And other +30 libraries"
+            }
+        ]
+    },
+    {
+        "id": "presenteio",
+        "description": "A platform for automating social events that seeks to help create good moments in an easy and practical way. Good memories last forever.",
+        "project_url": "https://presenteio.vercel.app",
+        "figma_url": "https://www.figma.com/file/PuDRDoObYhb6F1DWohqrjE/Presenteio?node-id=152%3A114",
+        "accent_color": "255, 38, 38",
+        "image_url": "https://imgur.com/eDFa8Ux.png",
+        "status": "PAUSED",
+        "technologies": [
+            {
+                "name": "Frontend",
+                "link": "https://github.com/theduardomaciel/presenteio",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "React",
+                    "Next.js",
+                    "Axios",
+                    "Radix"
+                ]
+            },
+            {
+                "name": "Backend",
+                "techs": [
+                    "Prisma",
+                    "MySQL",
+                    "Typescript",
+                    "Node.js",
+                    "Next.js",
+                    "React Email",
+                    "Vercel OG",
+                    "SendGrid",
+                    "Imgur",
+                    "JWT"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PATA",
+        "description": "A website that will help you find vulnerable homeless animals, as well as help overcrowded shelters.",
+        "accent_color": "125, 120, 182",
+        "image_url": "https://imgur.com/GSY7raE.png",
+        "figma_url": "https://www.figma.com/file/zRMVA07zlfuybQ9TkzydIw/PATAS?node-id=301%3A129",
+        "status": "SKETCH",
+        "technologies": []
+    },
+    {
+        "id": "portfolio",
+        "name": "This portfolio.",
+        "description": "A simple portfolio for showcasing my projects and knowledge.",
+        "accent_color": "220, 220, 220",
+        "figma_url": "https://www.figma.com/file/c28YJrimbyPnhysnhSpVBe/Portfolio?node-id=460%3A252",
+        "image_url": "https://i.imgur.com/vP2ADdS.png",
+        "status": "COMPLETED",
+        "technologies": [
+            {
+                "name": "Front End",
+                "techs": [
+                    "React",
+                    "Typescript",
+                    "HTML",
+                    "CSS",
+                    "Astro",
+                    "Sanity"
+                ]
+            }
+        ]
+    }
+]

@@ -1,6 +1,4 @@
 ---
-import { createClient } from "@vercel/edge-config";
-
 import Layout from "@layouts/BaseLayout.astro";
 
 import Header from "@components/Header/Header.astro";
@@ -8,23 +6,125 @@ import Footer from "@components/Footer/Footer.astro";
 
 import Home from "src/sections/Home.astro";
 import Projects from "src/sections/Projects";
-import Tech from "src/sections/Tech.astro";
+import Experiences from "src/sections/Experiences.astro";
 import Contact from "src/sections/Contact/Contact.astro";
+
+import projects from "@assets/projects/projects.json";
+import projects_es from "@assets/projects/dictionaries/es.json";
+import projects_pt from "@assets/projects/dictionaries/pt-br.json";
+
+import experiences from "@assets/experiences/experiences.json";
+import experiences_es from "@assets/experiences/dictionaries/es.json";
+import experiences_pt from "@assets/experiences/dictionaries/pt-br.json";
 
 export const prerender = true;
 
-import { locales } from "src/i18n/ui";
+import { defaultLang, translations } from "src/i18n/utils";
+import prisma from "src/lib/prisma";
+import type { JsonValue } from "@prisma/client/runtime/library";
 
-export async function getStaticPaths () {
-    const config = createClient(import.meta.env.EDGE_CONFIG);
-    const response = await config.getAll(["projects", "tech"]);
+export async function getStaticPaths() {
+    let randomPhrases: JsonValue[] = [];
 
-    return Object.keys(locales).map((lang) => ({ params: { lang }, props: { response } }));
+    try {
+        randomPhrases = (await prisma.randomPhrase.findMany()).map(
+            (phrase) => phrase.phrase
+        );
+    } catch (error) {
+        console.error(error);
+    }
+
+    return Object.keys(translations).map((lang) => ({
+        params: { lang },
+        props: {
+            response: {
+                randomPhrases: randomPhrases.map((phrase) =>
+                    phrase ? phrase[lang as keyof typeof phrase] : undefined
+                ),
+                projects:
+                    lang == defaultLang
+                        ? projects
+                        : projects.map((project) => {
+                              const { id, description, ...rest } = project;
+
+                              const projectsDictionaries = {
+                                  es: projects_es,
+                                  "pt-br": projects_pt,
+                              };
+
+                              const dictionary =
+                                  projectsDictionaries[
+                                      lang as keyof typeof projectsDictionaries
+                                  ];
+                              const projectDictionary = dictionary[
+                                  id as keyof typeof dictionary
+                              ] as {
+                                  name?: string;
+                                  description: string;
+                                  technologies?: {
+                                      name: string;
+                                      outro: string;
+                                  }[];
+                              };
+
+                              return {
+                                  ...rest,
+                                  name: projectDictionary.name || id,
+                                  description:
+                                      projectDictionary.description ||
+                                      description,
+                                  technologies: project.technologies.map(
+                                      (tech, index) => {
+                                          return {
+                                              ...tech,
+                                              outro:
+                                                  projectDictionary.technologies &&
+                                                  projectDictionary.technologies.find(
+                                                      (t) =>
+                                                          t.name === tech.name
+                                                  )?.outro,
+                                          };
+                                      }
+                                  ),
+                              };
+                          }),
+                experiences: experiences.map((experience) => {
+                    const { id, ...rest } = experience;
+
+                    const techsDictionaries = {
+                        es: experiences_es,
+                        "pt-br": experiences_pt,
+                    };
+
+                    const dictionary =
+                        techsDictionaries[
+                            lang as keyof typeof techsDictionaries
+                        ];
+
+                    const techDictionary =
+                        dictionary && dictionary.hasOwnProperty(id)
+                            ? (dictionary[id as keyof typeof dictionary] as {
+                                  name?: string;
+                              })
+                            : {};
+
+                    return {
+                        ...rest,
+                        id: techDictionary.name || id,
+                    };
+                }),
+            },
+        },
+    }));
 }
 
 const { lang } = Astro.params;
 const { response } = Astro.props;
 
+const randomPhrase =
+    response.randomPhrases[
+        Math.floor(Math.random() * response.randomPhrases.length)
+    ];
 ---
 
 <script>
@@ -68,9 +168,9 @@ const { response } = Astro.props;
 <Layout>
     <Header />
     <main>
-        <Home />
+        <Home randomPhrase={randomPhrase} />
         <Projects projects={response?.projects} lang={lang} client:load />
-        <Tech technologies={response?.tech} />
+        <Experiences experiences={response?.experiences} />
         <Contact />
     </main>
     <Footer />

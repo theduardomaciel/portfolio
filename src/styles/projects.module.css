@@ -144,7 +144,7 @@
     width: 100%;
     overflow: hidden;
     transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0.17, 0.67, 0.25, 1.01);
     transition-duration: 850ms;
 
     gap: 2.5rem;

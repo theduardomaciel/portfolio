@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://theduardomaciel-v2.vercel.app/sitemap-index.xml
+Sitemap: https://theduardomaciel.vercel.app/sitemap-index.xml

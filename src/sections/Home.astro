@@ -9,10 +9,12 @@ import Starfield from "@components/Starfield.astro";
 import Blobs from "@components/Home/Blobs.astro";
 import Rocket from "@components/Home/Rocket.astro";
 
-import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+import { getLangFromUrl, useTranslations } from "src/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const { randomPhrase } = Astro.props;
 ---
 
 <section id="home" class="home">
@@ -20,7 +22,7 @@ const t = useTranslations(lang);
         <div
             style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}
         >
-            <h2 style={{ textTransform: "uppercase" }}>{t('home.title')}</h2>
+            <h2 style={{ textTransform: "uppercase" }}>{t.home.title}</h2>
             <Svg
                 class={"title"}
                 src={import("@assets/visual/title.svg?raw")}
@@ -28,10 +30,10 @@ const t = useTranslations(lang);
                 width={375}
             />
         </div>
-        <p>{t('home.subtitle')}</p>
+        <p>{t.home.subtitle}</p>
 
         <div class="outro">
-            <p>{t('home.outro')}</p>
+            <p>({randomPhrase})<!-- {t.home.outro} --></p>
         </div>
 
         <SocialMedia />

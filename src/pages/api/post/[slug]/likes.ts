@@ -1,13 +1,13 @@
 import type { APIRoute } from "astro";
 import prisma from "src/lib/prisma";
 
-export const get: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async ({ request }) => {
     const url = new URL(request.url);
     const params = new URLSearchParams(url.search);
-    const slug = params.get('slug');
+    const slug = params.get("slug");
 
     if (!slug) {
-        return new Response('No slug provided', {
+        return new Response("No slug provided", {
             status: 400,
         });
     }
@@ -15,22 +15,22 @@ export const get: APIRoute = async ({ request }) => {
     try {
         const post = await prisma.post.findUnique({
             where: {
-                slug: slug
+                slug: slug,
             },
             include: {
-                likedBy: true
-            }
+                likedBy: true,
+            },
         });
 
         return new Response(JSON.stringify({ total: post?.likedBy.length }), {
             status: 200,
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
         });
     } catch (error) {
-        console.log(error)
-        return new Response('Error', {
+        console.log(error);
+        return new Response("Error", {
             status: 500,
         });
     }
@@ -39,11 +39,11 @@ export const get: APIRoute = async ({ request }) => {
 async function toggleLike(slug: string, guestId: string) {
     const post = await prisma.post.findUnique({
         where: {
-            slug: slug
+            slug: slug,
         },
         include: {
-            likedBy: true
-        }
+            likedBy: true,
+        },
     });
 
     if (!post) {
@@ -52,61 +52,63 @@ async function toggleLike(slug: string, guestId: string) {
                 slug: slug,
                 likedBy: {
                     connect: {
-                        id: guestId
-                    }
-                }
+                        id: guestId,
+                    },
+                },
             },
             include: {
-                likedBy: true
-            }
+                likedBy: true,
+            },
         });
     }
 
-    const isLiked = post.likedBy.some(guestWhoLiked => guestWhoLiked.id === guestId);
-    console.log('isLiked', isLiked)
+    const isLiked = post.likedBy.some(
+        (guestWhoLiked) => guestWhoLiked.id === guestId
+    );
+    console.log("isLiked", isLiked);
 
     if (isLiked) {
         return await prisma.post.update({
             where: {
-                slug: slug
+                slug: slug,
             },
             data: {
                 likedBy: {
                     disconnect: {
-                        id: guestId
-                    }
-                }
+                        id: guestId,
+                    },
+                },
             },
             include: {
-                likedBy: true
-            }
+                likedBy: true,
+            },
         });
     } else {
         return await prisma.post.update({
             where: {
-                slug: slug
+                slug: slug,
             },
             data: {
                 likedBy: {
                     connect: {
-                        id: guestId
-                    }
-                }
+                        id: guestId,
+                    },
+                },
             },
             include: {
-                likedBy: true
-            }
+                likedBy: true,
+            },
         });
     }
 }
 
-export const patch: APIRoute = async ({ params, request }) => {
+export const PATCH: APIRoute = async ({ params, request }) => {
     const body = await request.json();
     const { guestId } = body;
     const slug = params.slug;
 
     if (!slug) {
-        return new Response('No slug provided', {
+        return new Response("No slug provided", {
             status: 400,
         });
     }
@@ -114,12 +116,15 @@ export const patch: APIRoute = async ({ params, request }) => {
     try {
         const newOrUpdatedPost = await toggleLike(slug, guestId);
 
-        return new Response(JSON.stringify({
-            total: newOrUpdatedPost.likedBy.length
-        }), { status: 200 });
+        return new Response(
+            JSON.stringify({
+                total: newOrUpdatedPost.likedBy.length,
+            }),
+            { status: 200 }
+        );
     } catch (error) {
-        console.log(error)
-        return new Response('Error', {
+        console.log(error);
+        return new Response("Error", {
             status: 500,
         });
     }

@@ -1,0 +1,39 @@
+{
+    "officia": {
+        "description": "Um aplicativo que permite criar e gerenciar fluxos automatizados para simplificar tarefas repetitivas e aumentar a produtividade.",
+        "technologies": [
+            {
+                "name": "Mobile",
+                "outro": "E + de outras 50 bibliotecas"
+            }
+        ]
+    },
+    "estudaí": {
+        "description": "Uma plataforma de organização de estudos online que vai te ajudar a revisar e manter suas disciplinas atualizadas.",
+        "technologies": [
+            {
+                "name": "Mobile",
+                "outro": "Em breve..."
+            }
+        ]
+    },
+    "DFL": {
+        "description": "Um aplicativo que vai te ajudar a denunciar focos de lixo e encontrar pontos de coleta de lixo em sua cidade.",
+        "technologies": [
+            {
+                "name": "Mobile",
+                "outro": "E + de outras 30 bibliotecas"
+            }
+        ]
+    },
+    "presenteio": {
+        "description": "Uma plataforma de automatização de eventos sociais que busca ajudar a criar bons momentos de forma fácil e prática. Boas lembranças duram para sempre."
+    },
+    "PATA": {
+        "description": "Um site que irá ajudá-lo a encontrar animais desabrigados vulneráveis, bem como ajudar abrigos superlotados."
+    },
+    "portfolio": {
+        "name": "este portfólio.",
+        "description": "Um portfólio simples para exibir meus projetos e conhecimentos."
+    }
+}

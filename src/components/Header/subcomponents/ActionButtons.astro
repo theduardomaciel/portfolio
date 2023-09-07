@@ -1,13 +1,22 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
 
-import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+import { getLangFromUrl, useTranslations } from "src/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const t = useTranslations(lang).nav;
 ---
 
 <script>
+    import {
+        getLangFromUrl,
+        useTranslations,
+        type translations,
+    } from "src/i18n/utils";
+
+    const lang = getLangFromUrl(new URL(window.location.href));
+    const t = useTranslations(lang as keyof typeof translations).nav;
+
     const themeButton = document.getElementById("themeButton") as HTMLElement;
     const lodButton = document.getElementById("lodButton") as HTMLElement;
 
@@ -15,12 +24,12 @@ const t = useTranslations(lang);
     const theme = localStorage.getItem("theme") || "dark";
 
     const currentLodText = document.getElementById("currentLOD") as HTMLElement;
-    currentLodText.textContent = lod;
+    currentLodText.textContent = t.lod[lod as keyof typeof t.lod];
 
     const currentThemeText = document.getElementById(
         "currentTheme"
     ) as HTMLElement;
-    currentThemeText.textContent = theme;
+    currentThemeText.textContent = t.theme[theme as keyof typeof t.theme];
 
     themeButton.addEventListener("click", () => {
         const theme = localStorage.getItem("theme");
@@ -28,11 +37,11 @@ const t = useTranslations(lang);
         if (theme === "light") {
             document.documentElement.setAttribute("data-theme", "dark");
             localStorage.setItem("theme", "dark");
-            currentThemeText.textContent = "Dark";
+            currentThemeText.textContent = t.theme.dark;
         } else {
             document.documentElement.setAttribute("data-theme", "light");
             localStorage.setItem("theme", "light");
-            currentThemeText.textContent = "Light";
+            currentThemeText.textContent = t.theme.light;
         }
         themeButton.classList.toggle("dark");
     });
@@ -42,16 +51,17 @@ const t = useTranslations(lang);
         if (lod === "low") {
             localStorage.setItem("lod", "high");
             document.documentElement.setAttribute("data-lod", "high");
-            currentLodText.textContent = "High";
+            currentLodText.textContent = t.lod.high;
         } else {
             localStorage.setItem("lod", "low");
             document.documentElement.setAttribute("data-lod", "low");
-            currentLodText.textContent = "Low";
+            currentLodText.textContent = t.lod.low;
         }
     });
 </script>
 
 <div class="holder">
+    <slot />
     <div id="themeButton" class="iconHolder theme">
         <Svg
             class={"interactiveIcon"}
@@ -71,7 +81,9 @@ const t = useTranslations(lang);
             src={import("@assets/icons/light_mode.svg?raw")}
             aria-label="Theme toggle button"
         />
-        <p style="text-transform: uppercase;" id="currentTheme">{t('nav.theme.dark')}</p>
+        <p style="text-transform: uppercase;" id="currentTheme">
+            {t.theme.dark}
+        </p>
     </div>
     <div class="iconHolder">
         <a
@@ -96,7 +108,7 @@ const t = useTranslations(lang);
             src={import("@assets/icons/level_of_detail.svg?raw")}
             aria-label="Level of detail toggle button"
         />
-        <p style="text-transform: uppercase;" id="currentLOD">{t('nav.lod.high')}</p>
+        <p style="text-transform: uppercase;" id="currentLOD">{t.lod.high}</p>
     </div>
 </div>
 
@@ -129,7 +141,7 @@ const t = useTranslations(lang);
     }
 
     .holder .iconHolder p {
-        display:  flex;
+        display: flex;
     }
 
     html[data-theme="light"] #darkIcon,
@@ -156,7 +168,8 @@ const t = useTranslations(lang);
             flex-direction: row;
         }
 
-        .holder .iconHolder p, .holder .iconHolder.lod {
+        .holder .iconHolder p,
+        .holder .iconHolder.lod {
             display: none;
         }
 

@@ -14,7 +14,7 @@ import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 
 import { getGuestFromId } from "src/pages/api/guest/index";
 
-const guestId = Astro.cookies.get("guest.id").value;
+const guestId = Astro.cookies.get("guest.id")?.value;
 
 if (!guestId) {
     Astro.redirect(`/blog`);
@@ -46,12 +46,11 @@ const seo = {
 
 export const prerender = false;
 
-import { useTranslations } from 'src/i18n/utils';
-import type { ui } from "src/i18n/ui";
+import { useTranslations } from "src/i18n/utils";
+import type { translations } from "src/i18n/utils";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as keyof typeof ui);
-
+const t = useTranslations(lang as keyof typeof translations).blog;
 ---
 
 <BaseLayout seo={seo}>
@@ -59,7 +58,7 @@ const t = useTranslations(lang as keyof typeof ui);
     <main class="bookmarks wrapper">
         <nav>
             <div class="subtitle marginTop">
-                <p style="font-size: 2.8rem;">{t("blog.reading_list.title_your")}</p>
+                <p style="font-size: 2.8rem;">{t.title}</p>
                 <div></div>
             </div>
             <a href="/blog" class="back">
@@ -67,7 +66,7 @@ const t = useTranslations(lang as keyof typeof ui);
                     src={import("@assets/icons/left_arrow.svg?raw")}
                     aria-label={"Back arrow"}
                 />
-                {t("contact.return_button")}
+                {t.return_button}
             </a>
         </nav>
         <section class={`posts ${posts.length === 0 ? "empty" : ""}`}>
@@ -79,10 +78,8 @@ const t = useTranslations(lang as keyof typeof ui);
                     })
                 ) : (
                     <div class="empty">
-                        <h2>{t("blog.reading_list.empty.title")}</h2>
-                        <h5>
-                            {t("blog.reading_list.empty.subtitle")}
-                        </h5>
+                        <h2>{t.reading_list.empty}</h2>
+                        <h5>{t.reading_list.empty.subtitle}</h5>
                     </div>
                 )
             }

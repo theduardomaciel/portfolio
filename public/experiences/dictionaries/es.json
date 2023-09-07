@@ -1,0 +1,11 @@
+{
+    "libraries": {
+        "name": "Bibliotecas"
+    },
+    "data": {
+        "name": "Datos"
+    },
+    "games": {
+        "name": "Juegos"
+    }
+}

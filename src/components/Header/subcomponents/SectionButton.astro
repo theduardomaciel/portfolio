@@ -8,12 +8,12 @@ const { pathname } = Astro.url;
 
 const isActive = pathname.includes(section.toLowerCase());
 
-import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+import { getLangFromUrl, useTranslations } from "src/i18n/utils";
 
 const url_lang = getLangFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
 
-const t = useTranslations(lang);
+const t = useTranslations(lang).nav;
 ---
 
 <script>
@@ -29,11 +29,13 @@ const t = useTranslations(lang);
 
 <li>
     <a
-        href={pathname === "home" ? "/#" : `/${url_lang}/#${section.toLowerCase()}`}
+        href={pathname === "home"
+            ? "/#"
+            : `/${url_lang}/#${section.toLowerCase()}`}
         class={`sectionButton ${isActive ? "active" : ""}`}
         title={section}
     >
-        {t(`nav.${section.toLowerCase() as keyof typeof t}`)}
+        {t[section.toLowerCase() as keyof typeof t]}
     </a>
 </li>
 

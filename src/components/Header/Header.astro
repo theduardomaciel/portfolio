@@ -8,7 +8,7 @@ const isBlog = Astro.url.pathname.includes("blog");
 
 const { isStatic } = Astro.props;
 
-import { getLangFromUrl, useTranslations } from 'src/i18n/utils';
+import { getLangFromUrl, useTranslations } from "src/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -119,7 +119,7 @@ const t = useTranslations(lang);
         changeMenuSection();
     };
 
-    changeMenuSection()
+    changeMenuSection();
 
     const sectionsButtons = document.querySelectorAll(
         `.menu a`
@@ -151,11 +151,7 @@ const t = useTranslations(lang);
     <div class="menu">
         {!isBlog && <div id="headerLine" class="sectionLine" />}
         <ul class="list">
-            {
-                SECTIONS.map((section, _) => (
-                    <SectionButton section={section} />
-                ))
-            }
+            {SECTIONS.map((section, _) => <SectionButton section={section} />)}
             <li>
                 <a
                     rel="prefetch"

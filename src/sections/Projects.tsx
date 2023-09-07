@@ -11,41 +11,36 @@ import { ReactComponent as ChevronLeft } from "src/assets/icons/chevron.svg";
 import { ReactComponent as LinkIcon } from "src/assets/icons/link.svg";
 import { ReactComponent as GithubLogo } from "src/assets/icons/github.svg";
 
-// Utils
-import type Project from "src/lib/types/project";
-import { useTranslations } from "src/i18n/utils";
+import type { Project, ProjectTechnology } from "src/lib/types/project";
 
-type ColumnProps = {
-    name: string;
-    link?: string;
-    techs: Array<string>;
-    outro?: string;
-};
+// Internationalization
+import { useTranslations } from "src/i18n/utils";
+import type { translations } from "src/i18n/utils";
 
 interface Props {
     projects: Project[];
     lang?: string;
 }
 
-import type { ui } from "src/i18n/ui";
-
 export default function Projects({ projects, lang }: Props) {
     const [projectIndex, setProjectIndex] = useState(0);
     const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(true);
 
-    const t = useTranslations(lang as keyof typeof ui);
+    const t = useTranslations(lang as keyof typeof translations).projects;
+
+    const projectTechs = projects[projectIndex].technologies;
 
     return (
         <section className={`${styles.projects} section wrapper`} id="projects">
             <header className={"subtitle"}>
-                <p>{t("projects.title")}</p>
+                <p>{t.title}</p>
                 <div />
             </header>
 
             <LazyMotion features={domAnimation}>
                 <ProjectsCarousel
                     lang={lang}
-                    projects={projects as Project[]}
+                    projects={projects}
                     projectIndex={projectIndex}
                     setMoreInfoExpanded={setMoreInfoExpanded}
                     isMoreInfoExpanded={isMoreInfoExpanded}
@@ -66,26 +61,27 @@ export default function Projects({ projects, lang }: Props) {
                     }}
                 />
                 <ul>
-                    {projects.map(function (project, index) {
-                        const isCurrentProject = index === projectIndex;
-                        return (
-                            <li
-                                onClick={() => setProjectIndex(index)}
-                                key={index}
-                            >
-                                <div
-                                    style={{
-                                        backgroundColor: isCurrentProject
-                                            ? `rgb(${project.accent_color})`
-                                            : "var(--primary-01)",
-                                    }}
-                                    className={`${
-                                        isCurrentProject && "bulletUp"
-                                    }`}
-                                />
-                            </li>
-                        );
-                    })}
+                    {projects &&
+                        projects.map(function (project, index) {
+                            const isCurrentProject = index === projectIndex;
+                            return (
+                                <li
+                                    onClick={() => setProjectIndex(index)}
+                                    key={index}
+                                >
+                                    <div
+                                        style={{
+                                            backgroundColor: isCurrentProject
+                                                ? `rgb(${project.accent_color})`
+                                                : "var(--primary-01)",
+                                        }}
+                                        className={`${
+                                            isCurrentProject && "bulletUp"
+                                        }`}
+                                    />
+                                </li>
+                            );
+                        })}
                 </ul>
                 <ChevronLeft
                     style={{
@@ -108,59 +104,73 @@ export default function Projects({ projects, lang }: Props) {
                     }}
                 />
             </div>
-            {projects[projectIndex].technologies.length >= 1 && (
+            {projectTechs && projectTechs.length >= 1 && (
                 <div
                     className={styles.projectTechnologies}
                     style={{
                         maxHeight: isMoreInfoExpanded ? "100rem" : "0",
                     }}
                 >
-                    {projects[projectIndex].technologies.length > 1 && (
-                        <h5>{t("projects.info.title")}</h5>
-                    )}
+                    {projectTechs.length > 1 && <h5>{t.info.title}</h5>}
                     <div className={styles.projectTechs}>
                         <ul className={styles.projectTechs}>
-                            {projects[projectIndex].technologies.map(
-                                (column: ColumnProps, index) => (
-                                    <li key={index}>
-                                        <div className={styles.column}>
-                                            <a
-                                                target={"_blank"}
-                                                rel="noreferrer"
-                                                href={column.link}
-                                                className={styles.title}
-                                            >
-                                                <h6
-                                                    className={
-                                                        column.hasOwnProperty(
+                            {projects &&
+                                projectTechs.map(
+                                    (column: ProjectTechnology, index) => {
+                                        const techsColumn =
+                                            column.techs as string[];
+
+                                        return (
+                                            <li key={index}>
+                                                <div className={styles.column}>
+                                                    <a
+                                                        target={"_blank"}
+                                                        rel="noreferrer"
+                                                        href={
+                                                            column.link || "#"
+                                                        }
+                                                        className={styles.title}
+                                                    >
+                                                        <h6
+                                                            className={
+                                                                column.hasOwnProperty(
+                                                                    "link"
+                                                                )
+                                                                    ? styles.link
+                                                                    : ""
+                                                            }
+                                                        >
+                                                            {column.name}
+                                                        </h6>
+                                                        {column.hasOwnProperty(
                                                             "link"
-                                                        )
-                                                            ? styles.link
-                                                            : ""
-                                                    }
-                                                >
-                                                    {column.name}
-                                                </h6>
-                                                {column.hasOwnProperty(
-                                                    "link"
-                                                ) && <LinkIcon />}
-                                            </a>
-                                            <ul key={`${index}_tech`}>
-                                                {column.techs.map(
-                                                    (tech, index) => (
-                                                        <li key={index}>
-                                                            {tech}
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                            {column.hasOwnProperty("outro") && (
-                                                <p>{column.outro}</p>
-                                            )}
-                                        </div>
-                                    </li>
-                                )
-                            )}
+                                                        ) && <LinkIcon />}
+                                                    </a>
+                                                    <ul key={`${index}_tech`}>
+                                                        {techsColumn &&
+                                                            techsColumn.map(
+                                                                (
+                                                                    tech,
+                                                                    index
+                                                                ) => (
+                                                                    <li
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                    >
+                                                                        {tech}
+                                                                    </li>
+                                                                )
+                                                            )}
+                                                    </ul>
+                                                    {column.hasOwnProperty(
+                                                        "outro"
+                                                    ) && <p>{column.outro}</p>}
+                                                </div>
+                                            </li>
+                                        );
+                                    }
+                                )}
                         </ul>
                     </div>
                 </div>
@@ -184,7 +194,7 @@ export default function Projects({ projects, lang }: Props) {
                         height={`1.8rem`}
                         aria-label="Github icon"
                     />
-                    {t("projects.info.github")}
+                    {t.info.github}
                 </button>
             </a>
         </section>
