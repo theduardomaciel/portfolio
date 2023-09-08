@@ -1,7 +1,7 @@
 import { m, AnimatePresence } from "framer-motion";
 import type { MotionProps } from "framer-motion";
 
-import styles from "@styles/projects.module.css";
+import styles from "@/styles/projects.module.css";
 
 // Icons
 import { ReactComponent as FigmaIcon } from "src/assets/icons/figma.svg";
@@ -20,8 +20,8 @@ import type { Dispatch, SetStateAction } from "react";
 import type { Project } from "src/lib/types/project";
 
 // i18n
-import type { translations } from "src/i18n/utils";
-import { useTranslations } from "src/i18n/utils";
+import type { translations } from "@/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
 
 interface Props {
     projects: Project[];

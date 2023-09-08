@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "@styles/contact.css";
+import "@/styles/contact.css";
 
 // Functions
 import axios from "axios";
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 const validateEmail = (email: string) => {
     return String(email)

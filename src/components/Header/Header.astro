@@ -8,7 +8,7 @@ const isBlog = Astro.url.pathname.includes("blog");
 
 const { isStatic } = Astro.props;
 
-import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

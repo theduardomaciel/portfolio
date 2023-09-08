@@ -1,11 +1,11 @@
 ---
-import "@styles/contact.css";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import "@/styles/contact.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
-import SocialMedia from "@components/SocialMedia.astro";
+import SocialMedia from "@/components/SocialMedia.astro";
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 const { lang } = Astro.params;
 

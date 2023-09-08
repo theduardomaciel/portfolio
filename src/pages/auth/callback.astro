@@ -1,11 +1,11 @@
 ---
-import AstronautDeco from "@components/AstronautDeco.astro";
-import Starfield from "@components/Starfield.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import AstronautDeco from "@/components/AstronautDeco.astro";
+import Starfield from "@/components/Starfield.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <script>
-    import { setCookie } from "@utils/cookies";
+    import { setCookie } from "@/utils/cookies";
     import axios from "axios";
 
     async function finishLogin() {

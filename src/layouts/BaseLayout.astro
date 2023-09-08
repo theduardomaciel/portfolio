@@ -1,13 +1,13 @@
 ---
-import "@styles/global.css";
+import "@/styles/global.css";
 
 import "@fontsource-variable/inter";
 import "@fontsource/roboto";
 import "@fontsource-variable/roboto-slab";
 import "@fontsource-variable/roboto-serif";
 
-import BaseHead from "@components/seo/BaseHead.astro";
-import type { Props as BaseHeadProps } from "@components/seo/BaseHead.astro";
+import BaseHead from "@/components/seo/BaseHead.astro";
+import type { Props as BaseHeadProps } from "@/components/seo/BaseHead.astro";
 
 export interface Props {
     title?: string;
@@ -20,12 +20,9 @@ export interface Props {
 
 const { seo } = Astro.props;
 
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl } from "@/i18n/utils";
 const url_lang = getLangFromUrl(Astro.url);
-
 ---
-
-<!-- <meta http-equiv="refresh" content="0;url=/en/" /> -->
 
 <!DOCTYPE html>
 <html lang={url_lang}>

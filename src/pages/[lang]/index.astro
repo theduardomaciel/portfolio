@@ -1,25 +1,25 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
+import Layout from "@/layouts/BaseLayout.astro";
 
-import Header from "@components/Header/Header.astro";
-import Footer from "@components/Footer/Footer.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
 
 import Home from "src/sections/Home.astro";
 import Projects from "src/sections/Projects";
 import Experiences from "src/sections/Experiences.astro";
 import Contact from "src/sections/Contact/Contact.astro";
 
-import projects from "@assets/projects/projects.json";
-import projects_es from "@assets/projects/dictionaries/es.json";
-import projects_pt from "@assets/projects/dictionaries/pt-br.json";
+import projects from "@/public/projects/projects.json";
+import projects_es from "@/public/projects/dictionaries/es.json";
+import projects_pt from "@/public/projects/dictionaries/pt-br.json";
 
-import experiences from "@assets/experiences/experiences.json";
-import experiences_es from "@assets/experiences/dictionaries/es.json";
-import experiences_pt from "@assets/experiences/dictionaries/pt-br.json";
+import experiences from "@/public/experiences/experiences.json";
+import experiences_es from "@/public/experiences/dictionaries/es.json";
+import experiences_pt from "@/public/experiences/dictionaries/pt-br.json";
 
 export const prerender = true;
 
-import { defaultLang, translations } from "src/i18n/utils";
+import { defaultLang, translations } from "@/i18n/utils";
 import prisma from "src/lib/prisma";
 import type { JsonValue } from "@prisma/client/runtime/library";
 

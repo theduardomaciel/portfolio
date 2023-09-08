@@ -1,28 +1,28 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import "@styles/post.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/post.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
 // Components
-import Footer from "@components/Footer/Footer.astro";
-import Header from "@components/Header/Header.astro";
-import PostPreview from "@components/Post/PostPreview.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import Header from "@/components/Header/Header.astro";
+import PostPreview from "@/components/Post/PostPreview.astro";
 
-import LikeButton from "@components/Post/Buttons/LikeButton";
-import ShareButton from "@components/Post/Buttons/ShareButton";
+import LikeButton from "@/components/Post/Buttons/LikeButton";
+import ShareButton from "@/components/Post/Buttons/ShareButton";
 
-import ArticleSchema from "@components/seo/ArticleSchema.astro";
+import ArticleSchema from "@/components/seo/ArticleSchema.astro";
 
 // Data
 import { getAllTags, getPostBySlug } from "src/lib/sanity/api";
-import PortableText from "@components/PortableText.astro";
+import PortableText from "@/components/PortableText.astro";
 import getSanityImageURL from "src/lib/sanity/getSanityImageUrl";
 import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 
 import { getPostDataBySlug } from "../../api/post/[slug]";
 import { getGuestFromId } from "../../api/guest/index";
-import BookmarkButton from "@components/Post/Buttons/BookmarkButton";
+import BookmarkButton from "@/components/Post/Buttons/BookmarkButton";
 
 const { slug, lang } = Astro.params;
 const post = await getPostBySlug(slug as string);
@@ -51,8 +51,8 @@ const hasMarked = markedPostsSlugs?.includes(post.slug.current);
 
 export const prerender = false;
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 const t = useTranslations(lang as keyof typeof translations).blog;
 
@@ -90,7 +90,7 @@ const seo = {
             </div>
             <a href={`/${lang}/blog`} class="back">
                 <Svg
-                    src={import("@assets/icons/left_arrow.svg?raw")}
+                    src={import("@/public/icons/left_arrow.svg?raw")}
                     aria-label={"Back arrow"}
                 />
                 {t}
@@ -100,7 +100,7 @@ const seo = {
             <div class="content">
                 <a href={`/${lang}/blog`} class="back desktop">
                     <Svg
-                        src={import("@assets/icons/left_arrow.svg?raw")}
+                        src={import("@/public/icons/left_arrow.svg?raw")}
                         aria-label={"Back arrow"}
                     />
                     {t.return_button}
@@ -110,7 +110,7 @@ const seo = {
                         <div class="iconHolder icon">
                             <Svg
                                 width={16}
-                                src={import("@assets/icons/calendar.svg?raw")}
+                                src={import("@/public/icons/calendar.svg?raw")}
                                 aria-label={"Calendar icon"}
                             />
                             {formattedDate}
@@ -119,7 +119,7 @@ const seo = {
                         <div class="iconHolder">
                             <Svg
                                 width={16}
-                                src={import("@assets/icons/view.svg?raw")}
+                                src={import("@/public/icons/view.svg?raw")}
                                 aria-label={"Eye icon"}
                             />
                             {postData?.views || "--"}
@@ -128,7 +128,7 @@ const seo = {
                         <div class="iconHolder">
                             <Svg
                                 width={16}
-                                src={import("@assets/icons/like.svg?raw")}
+                                src={import("@/public/icons/like.svg?raw")}
                                 aria-label={"Like (heart) icon"}
                             />
                             {postData?.likedBy.length || "--"}

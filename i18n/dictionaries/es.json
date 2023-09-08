@@ -15,7 +15,7 @@
     },
     "home": {
         "title": "Hola, soy",
-        "subtitle": "Me gusta el arte y la informática.",
+        "subtitle": "y me gusta el arte y la informática.",
         "outro": "(¡actualmente estudiando Ciencias de la Computación! 🎉)"
     },
     "projects": {
@@ -92,7 +92,7 @@
             "title": "Idioma",
             "languages": {
                 "en": "Inglés",
-                "pt-br": "Portugués Brasileño",
+                "pt-br": "Portugués (Brasil)",
                 "es": "Español"
             }
         }

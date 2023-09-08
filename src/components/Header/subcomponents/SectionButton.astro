@@ -8,7 +8,7 @@ const { pathname } = Astro.url;
 
 const isActive = pathname.includes(section.toLowerCase());
 
-import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const url_lang = getLangFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);

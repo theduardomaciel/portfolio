@@ -1,12 +1,12 @@
 ---
-import "@styles/contact.css";
+import "@/styles/contact.css";
 
-import Starfield from "@components/Starfield.astro";
+import Starfield from "@/components/Starfield.astro";
 import ContactInput from "./ContactInput";
-import Planet from "@components/Planet.astro";
+import Planet from "@/components/Planet.astro";
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 const { lang } = Astro.params;
 const t = useTranslations(lang as keyof typeof translations).contact;

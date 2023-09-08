@@ -15,7 +15,7 @@
     },
     "home": {
         "title": "Hi, I'm",
-        "subtitle": "I like art and computing.",
+        "subtitle": "and I like art and computing.",
         "outro": "(currently majoring in Computer Science! 🎉)"
     },
     "projects": {
@@ -92,7 +92,7 @@
             "title": "Language",
             "languages": {
                 "en": "English",
-                "pt-br": "Brazilian Portuguese",
+                "pt-br": "Portuguese (Brazil)",
                 "es": "Spanish"
             }
         }

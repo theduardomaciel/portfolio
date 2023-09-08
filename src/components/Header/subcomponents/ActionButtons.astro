@@ -1,7 +1,7 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
 
-import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang).nav;
@@ -12,7 +12,7 @@ const t = useTranslations(lang).nav;
         getLangFromUrl,
         useTranslations,
         type translations,
-    } from "src/i18n/utils";
+    } from "@/i18n/utils";
 
     const lang = getLangFromUrl(new URL(window.location.href));
     const t = useTranslations(lang as keyof typeof translations).nav;
@@ -69,7 +69,7 @@ const t = useTranslations(lang).nav;
             width={28}
             height={28}
             fill={"var(--primary-01)"}
-            src={import("@assets/icons/dark_mode.svg?raw")}
+            src={import("@/public/icons/dark_mode.svg?raw")}
             aria-label="Dark theme toggle button"
         />
         <Svg
@@ -78,7 +78,7 @@ const t = useTranslations(lang).nav;
             width={28}
             height={28}
             fill={"var(--primary-01)"}
-            src={import("@assets/icons/light_mode.svg?raw")}
+            src={import("@/public/icons/light_mode.svg?raw")}
             aria-label="Theme toggle button"
         />
         <p style="text-transform: uppercase;" id="currentTheme">
@@ -93,7 +93,7 @@ const t = useTranslations(lang).nav;
         >
             <Svg
                 class={"icon"}
-                src={import("@assets/icons/enterprises/github.svg?raw")}
+                src={import("@/public/icons/enterprises/github.svg?raw")}
                 aria-label="Github icon"
             />
         </a>
@@ -105,7 +105,7 @@ const t = useTranslations(lang).nav;
             width={28}
             height={28}
             fill={"var(--primary-01)"}
-            src={import("@assets/icons/level_of_detail.svg?raw")}
+            src={import("@/public/icons/level_of_detail.svg?raw")}
             aria-label="Level of detail toggle button"
         />
         <p style="text-transform: uppercase;" id="currentLOD">{t.lod.high}</p>

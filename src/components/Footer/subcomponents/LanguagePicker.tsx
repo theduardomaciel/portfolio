@@ -8,11 +8,11 @@ import {
     SelectScrollDown,
     SelectTrigger,
     SelectValue,
-} from "@components/ui/Select";
+} from "@/components/ui/Select";
 
 import { ReactComponent as LanguageIcon } from "src/assets/icons/language.svg";
 
-import { defaultLang, translations, useTranslations } from "src/i18n/utils";
+import { defaultLang, translations, useTranslations } from "@/i18n/utils";
 
 interface Props {
     lang?: string;

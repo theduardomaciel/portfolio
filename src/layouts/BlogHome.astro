@@ -1,11 +1,11 @@
 ---
-import "@styles/blog.css";
+import "@/styles/blog.css";
 import Svg from "@jasikpark/astro-svg-loader";
 
 import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
 
-import PostPreview from "@components/Post/PostPreview.astro";
+import PostPreview from "@/components/Post/PostPreview.astro";
 import { getGuestFromId } from "src/pages/api/guest";
 
 const { posts, tags } = Astro.props;
@@ -21,15 +21,15 @@ const markedPostsSlugs = guest?.readingList.map(
     (postInList: any) => postInList.slug
 );
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 const { lang, category } = Astro.params;
 const t = useTranslations(lang as keyof typeof translations).blog;
 ---
 
 <script>
-    import { eraseCookie } from "@utils/cookies";
+    import { eraseCookie } from "@/utils/cookies";
 
     function redirectToGithub() {
         const GITHUB_URL = "https://github.com/login/oauth/authorize";
@@ -75,7 +75,7 @@ const t = useTranslations(lang as keyof typeof translations).blog;
 
 <main class="blog">
     <header class="wrapper">
-        <h1>Blog</h1>
+        <h1>{t.title}</h1>
         {
             isLogged ? (
                 <div class="bookmarksContainer">
@@ -83,7 +83,7 @@ const t = useTranslations(lang as keyof typeof translations).blog;
                         <Svg
                             class="icon"
                             fill={"var(--primary-01)"}
-                            src={import("@assets/icons/bookmark.svg?raw")}
+                            src={import("@/public/icons/bookmark.svg?raw")}
                             aria-label="Bookmark icon"
                         />
                         {t.reading_list.title}
@@ -96,7 +96,7 @@ const t = useTranslations(lang as keyof typeof translations).blog;
                         <Svg
                             class="icon"
                             fill={"var(--primary-01)"}
-                            src={import("@assets/icons/logout.svg?raw")}
+                            src={import("@/public/icons/logout.svg?raw")}
                             aria-label="Logout icon"
                         />
                     </button>

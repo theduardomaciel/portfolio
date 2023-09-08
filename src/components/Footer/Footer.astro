@@ -6,7 +6,7 @@ import LanguagePicker from "./subcomponents/LanguagePicker";
 
 const today = new Date();
 
-import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang).footer;
@@ -14,8 +14,8 @@ const t = useTranslations(lang).footer;
 
 <script>
     import type NowPlaying from "src/lib/types/nowplaying";
-    import { getLangFromUrl, useTranslations } from "src/i18n/utils";
-    import type { translations } from "src/i18n/utils";
+    import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+    import type { translations } from "@/i18n/utils";
 
     const lang = getLangFromUrl(new URL(window.location.href));
     const t = useTranslations(lang as keyof typeof translations).footer;
@@ -38,7 +38,7 @@ const t = useTranslations(lang).footer;
             localStorage.setItem("lastSongPlaying", data.title);
         } else {
             spotifyHolder.classList.remove("listening");
-            //songTitle.innerText = t.not_listening;
+            songTitle.innerText = t.not_listening;
         }
     }
 
@@ -50,17 +50,6 @@ const t = useTranslations(lang).footer;
 
     if (languageSwitchButton) {
         languageSwitchButton.addEventListener("click", () => {
-            /* const languageIcon = document.getElementById(
-                "languageIcon"
-            ) as HTMLElement;
-            const languageText = languageSwitchButton.querySelector("p") as HTMLElement;
-            if (languageIcon.classList.contains("active")) {
-                languageIcon.classList.remove("active");
-                languageText.innerText = "Português (Brasil)";
-            } else {
-                languageIcon.classList.add("active");
-                languageText.innerText = "English";
-            } */
             window.location.replace(
                 window.location.pathname.replace(
                     lang,
@@ -69,17 +58,6 @@ const t = useTranslations(lang).footer;
             );
             window.sessionStorage.setItem("scrollDown", "true");
         });
-
-        // Scroll to bottom after language change
-        /* document.addEventListener("DOMContentLoaded", function(event) { 
-            if (window.sessionStorage.getItem("scrollDown") === "true") {
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: "instant" as any,
-                });
-                window.sessionStorage.setItem("scrollDown", "false")
-            }
-        }); */
     }
 </script>
 
@@ -92,7 +70,7 @@ const t = useTranslations(lang).footer;
                     <div class="songTitleHolder">
                         <Svg
                             src={import(
-                                "@assets/icons/enterprises/spotify.svg?raw"
+                                "@/public/icons/enterprises/spotify.svg?raw"
                             )}
                             aria-label={"Spotify Logo"}
                         />
@@ -109,17 +87,6 @@ const t = useTranslations(lang).footer;
         </div>
         <div class="row2">
             <p>©{today.getFullYear()} | {t.love}</p>
-            <!-- <div id="languageSwitch">
-                <Svg
-                    class={"interactiveIcon"}
-                    id={"languageIcon"}
-                    width={22}
-                    height={22}
-                    src={import("@assets/icons/language.svg?raw")}
-                    aria-label="Language change button"
-                />
-                <p>{lang === "pt-br" ? "Português (Brasil)" : "English"}</p>
-            </div> -->
             <LanguagePicker lang={lang} client:load />
         </div>
     </div>

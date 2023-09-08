@@ -1,5 +1,5 @@
 ---
-import settings from "@utils/settings";
+import settings from "@/utils/settings";
 const { title, permalink, publishDate, ogImageUrl, description } = Astro.props;
 
 const ldData = {
@@ -43,4 +43,4 @@ const ldData = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(ldData)}></script>
+<script type="application/ld+json" set:html={JSON.stringify(ldData)} />

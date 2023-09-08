@@ -1,15 +1,15 @@
 ---
-import "@styles/tech.css";
+import "@/styles/tech.css";
 
-import AstronautDeco from "@components/AstronautDeco.astro";
-import Tag from "@components/Tag.astro";
+import AstronautDeco from "@/components/AstronautDeco.astro";
+import Tag from "@/components/Tag.astro";
 
 interface Props {
     experiences: Experience[];
 }
 
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 import type { Experience } from "src/lib/types/experience";
 
 const { lang } = Astro.params;

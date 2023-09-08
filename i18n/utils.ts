@@ -13,8 +13,11 @@ export const translations = {
 export function getLangFromHeaders(headers: Headers) {
     const acceptLanguage = headers.get("accept-language");
     if (!acceptLanguage) return defaultLang;
+
     const [lang] = acceptLanguage.split(",");
-    if (lang in translations) return lang as keyof typeof translations;
+    const locale = lang.toLocaleLowerCase();
+
+    if (locale in translations) return locale as keyof typeof translations;
     return defaultLang;
 }
 

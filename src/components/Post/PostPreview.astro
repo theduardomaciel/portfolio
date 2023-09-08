@@ -1,6 +1,6 @@
 ---
 import Svg from "@jasikpark/astro-svg-loader";
-import { getLangFromUrl } from "src/i18n/utils";
+import { getLangFromUrl } from "@/i18n/utils";
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
 import sanity from "src/lib/sanity/portableText";
 
@@ -55,7 +55,7 @@ const { isLogged, hasMarked, hightPriority } = Astro.props;
                 <div class="iconHolder">
                     <Svg
                         width={18}
-                        src={import("@assets/icons/calendar.svg?raw")}
+                        src={import("@/public/icons/calendar.svg?raw")}
                         aria-label="Calendar icon"
                     />
                     <span>{formattedDate}</span>
@@ -69,7 +69,7 @@ const { isLogged, hasMarked, hightPriority } = Astro.props;
                                     class="icon"
                                     fill={"var(--secondary-01)"}
                                     src={import(
-                                        "@assets/icons/bookmark.svg?raw"
+                                        "@/public/icons/bookmark.svg?raw"
                                     )}
                                     aria-label="Bookmark icon"
                                 />
@@ -79,7 +79,7 @@ const { isLogged, hasMarked, hightPriority } = Astro.props;
                                     class="icon"
                                     fill={"var(--secondary-01)"}
                                     src={import(
-                                        "@assets/icons/bookmark_filled.svg?raw"
+                                        "@/public/icons/bookmark_filled.svg?raw"
                                     )}
                                     aria-label="Bookmark filled icon"
                                 />

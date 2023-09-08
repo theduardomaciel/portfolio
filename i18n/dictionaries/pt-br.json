@@ -15,7 +15,7 @@
     },
     "home": {
         "title": "Eai? Me chamo",
-        "subtitle": "Gosto de arte e computação.",
+        "subtitle": "e eu gosto de arte e programação.",
         "outro": "(atualmente cursando Ciência da Computação! 🎉)"
     },
     "projects": {
@@ -86,13 +86,13 @@
     "footer": {
         "love": "Feito com ❤️ por Eduardo Maciel.",
         "fetching": "Buscando...",
-        "current_listening": "no momento 'tô ouvindo",
+        "current_listening": "no momento estou ouvindo",
         "not_listening": "não estou ouvindo nada no momento",
         "locale": {
             "title": "Idioma",
             "languages": {
                 "en": "Inglês",
-                "pt-br": "Português Brasileiro",
+                "pt-br": "Português (Brasil)",
                 "es": "Espanhol"
             }
         }

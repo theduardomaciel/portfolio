@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { LazyMotion, domAnimation } from "framer-motion";
 
-import styles from "@styles/projects.module.css";
+import styles from "@/styles/projects.module.css";
 
 // Components
-import ProjectsCarousel from "@components/Carousel";
+import ProjectsCarousel from "@/components/Carousel";
 
 // Icons
 import { ReactComponent as ChevronLeft } from "src/assets/icons/chevron.svg";
@@ -14,8 +14,8 @@ import { ReactComponent as GithubLogo } from "src/assets/icons/github.svg";
 import type { Project, ProjectTechnology } from "src/lib/types/project";
 
 // Internationalization
-import { useTranslations } from "src/i18n/utils";
-import type { translations } from "src/i18n/utils";
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
 
 interface Props {
     projects: Project[];

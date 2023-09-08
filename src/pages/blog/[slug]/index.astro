@@ -1,7 +1,8 @@
 ---
-import { getLangFromHeaders } from "src/i18n/utils";
+import { getLangFromHeaders } from "@/i18n/utils";
 const headerLanguage = getLangFromHeaders(Astro.request.headers);
 
 const { slug } = Astro.params;
 ---
+
 <meta http-equiv="refresh" content={`0;url=/${headerLanguage}/blog/${slug}`} />

@@ -1,15 +1,15 @@
 ---
-import "@styles/home.css";
+import "@/styles/home.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
-import Planet from "@components/Planet.astro";
-import SocialMedia from "@components/SocialMedia.astro";
-import Starfield from "@components/Starfield.astro";
-import Blobs from "@components/Home/Blobs.astro";
-import Rocket from "@components/Home/Rocket.astro";
+import Planet from "@/components/Planet.astro";
+import SocialMedia from "@/components/SocialMedia.astro";
+import Starfield from "@/components/Starfield.astro";
+import Blobs from "@/components/Home/Blobs.astro";
+import Rocket from "@/components/Home/Rocket.astro";
 
-import { getLangFromUrl, useTranslations } from "src/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,7 +25,7 @@ const { randomPhrase } = Astro.props;
             <h2 style={{ textTransform: "uppercase" }}>{t.home.title}</h2>
             <Svg
                 class={"title"}
-                src={import("@assets/visual/title.svg?raw")}
+                src={import("@/public/visual/title.svg?raw")}
                 aria-label="Eduardo Maciel"
                 width={375}
             />
@@ -39,12 +39,12 @@ const { randomPhrase } = Astro.props;
         <SocialMedia />
         <div id="mouseScroll" class="mouseScroll">
             <Svg
-                src={import("@assets/icons/mouse.svg?raw")}
+                src={import("@/public/icons/mouse.svg?raw")}
                 aria-label="Mouse indicator for scrolling"
             />
             <Svg
                 class={"doubleArrow"}
-                src={import("@assets/icons/double_arrow.svg?raw")}
+                src={import("@/public/icons/double_arrow.svg?raw")}
                 aria-label="Double arrow down"
             />
         </div>
@@ -87,7 +87,7 @@ const { randomPhrase } = Astro.props;
         >
             <Svg
                 class={"stars"}
-                src={import("@assets/visual/stars.svg?raw")}
+                src={import("@/public/visual/stars.svg?raw")}
                 aria-label="Drawing of a group of stars"
             />
             <picture>
