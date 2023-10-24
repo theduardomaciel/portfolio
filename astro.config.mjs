@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+
 import svgr from "vite-plugin-svgr";
 import sanity from "astro-sanity";
 import vercel from "@astrojs/vercel/serverless";

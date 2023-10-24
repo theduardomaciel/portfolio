@@ -77,12 +77,25 @@ const seo = {
 };
 ---
 
+<script>
+    const toggleButton = document.getElementById(
+        "toggleAside"
+    ) as HTMLButtonElement;
+
+    function toggle() {
+        const post = document.getElementById("post") as HTMLDivElement;
+        post.classList.toggle("collapsed");
+    }
+
+    toggleButton.addEventListener("click", toggle);
+</script>
+
 <BaseLayout seo={seo}>
     <Fragment>
         <ArticleSchema {...seo} />
     </Fragment>
     <Header isStatic={true} />
-    <main class="post">
+    <main id="post" class="post">
         <nav>
             <div class="subtitle">
                 <p style="font-size: 3.6rem;">{t.title}</p>
@@ -93,7 +106,7 @@ const seo = {
                     src={import("@/public/icons/left_arrow.svg?raw")}
                     aria-label={"Back arrow"}
                 />
-                {t}
+                {t.return_button}
             </a>
         </nav>
         <div class="holder">
@@ -152,31 +165,41 @@ const seo = {
                 </article>
             </div>
             <aside>
-                <div class="container shareIntegrated">
-                    {
-                        guestId && (
-                            <div class="row">
-                                <LikeButton
-                                    client:load
-                                    post={post}
-                                    guest={guest}
-                                    initialValue={hasLiked}
-                                />
-                                <BookmarkButton
-                                    client:load
-                                    post={post}
-                                    guest={guest}
-                                    initialValue={hasMarked}
-                                />
-                            </div>
-                        )
-                    }
-                    <ShareButton client:load label={t.share} post={post} />
+                <div class={`buttons ${!guestId ? "centralized" : ""}`}>
+                    <button id="toggleAside" class="toggle">
+                        <Svg
+                            width={16}
+                            class={"chevron"}
+                            src={import("@/public/icons/chevron.svg?raw")}
+                            aria-label={"Chevron icon"}
+                        />
+                    </button>
+                    <div class={`container shareIntegrated`}>
+                        {
+                            guestId && (
+                                <div class="row">
+                                    <LikeButton
+                                        client:load
+                                        post={post}
+                                        guest={guest}
+                                        initialValue={hasLiked}
+                                    />
+                                    <BookmarkButton
+                                        client:load
+                                        post={post}
+                                        guest={guest}
+                                        initialValue={hasMarked}
+                                    />
+                                </div>
+                            )
+                        }
+                        <ShareButton client:load label={t.share} post={post} />
+                    </div>
                 </div>
                 {
-                    guest && guest.readingList.length > 0 && (
+                    guest && guest.readingList.length > 0 ? (
                         <div class="container">
-                            <h6>{t.reading_list}</h6>
+                            <h6>{t.reading_list.title}</h6>
                             {post && post.categories && (
                                 <PostPreview
                                     post={post}
@@ -184,6 +207,11 @@ const seo = {
                                     isMinimal
                                 />
                             )}
+                        </div>
+                    ) : (
+                        <div class="container" style="text-align: center;">
+                            <h6>{t.reading_list.empty.title}</h6>
+                            <p>{t.reading_list.empty.subtitle}</p>
                         </div>
                     )
                 }

@@ -1,54 +1,63 @@
 .button {
-	position: relative;
+    position: relative;
 }
 
 .button svg {
-	min-width: fit-content;
+    min-width: fit-content;
+}
+
+.button .icon {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.button.error .icon {
+    transform: scale(0);
 }
 
 .outlined {
-	display: flex;
-	position: initial;
+    display: flex;
+    position: initial;
 }
 
 .filled {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(0);
-	animation: animateOutlined 0.6s cubic-bezier(0, 0.92, 0.59, 1.15) forwards;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: animateOutlined 0.6s cubic-bezier(0, 0.92, 0.59, 1.15) forwards;
 }
 
 .button.active .filled {
-	animation: animateFilled 0.6s cubic-bezier(0, 0.92, 0.59, 1.15) forwards;
+    animation: animateFilled 0.6s cubic-bezier(0, 0.92, 0.59, 1.15) forwards;
 }
 
 @keyframes animateFilled {
-	0% {
-		transform: translate(-50%, -50%) scale(0);
-	}
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
 
-	50% {
-		transform: translate(-50%, -50%) scale(1.25);
-	}
+    50% {
+        transform: translate(-50%, -50%) scale(1.25);
+    }
 
-	100% {
-		transform: translate(-50%, -50%) scale(1);
-	}
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 @keyframes animateOutlined {
-	0% {
-		transform: translate(-50%, -50%) scale(1);
-	}
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 
-	100% {
-		transform: translate(-50%, -50%) scale(0);
-	}
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
 }
 
 @media (max-width: 1260px) {
-	.icon.ephemeral {
-		display: none;
-	}
+    .icon.ephemeral {
+        display: none;
+    }
 }

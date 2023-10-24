@@ -104,6 +104,7 @@
             "button": "Entrar com Github"
         },
         "tags": {
+            "all": "Tudo",
             "empty": "Parece que ainda não há nenhum post com essa tag!"
         },
         "reading_list": {

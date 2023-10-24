@@ -7,9 +7,9 @@ import styles from "@/styles/projects.module.css";
 import ProjectsCarousel from "@/components/Carousel";
 
 // Icons
-import { ReactComponent as ChevronLeft } from "src/assets/icons/chevron.svg";
-import { ReactComponent as LinkIcon } from "src/assets/icons/link.svg";
-import { ReactComponent as GithubLogo } from "src/assets/icons/github.svg";
+import ChevronLeft from "src/assets/icons/chevron.svg?react";
+import LinkIcon from "src/assets/icons/link.svg?react";
+import GithubLogo from "src/assets/icons/github.svg?react";
 
 import type { Project, ProjectTechnology } from "src/lib/types/project";
 

@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { useRef, useState } from 'react';
-import styles from './buttons.module.css'
+import axios from "axios";
+import { useRef, useState } from "react";
+import styles from "./buttons.module.css";
 
-import { ReactComponent as BookmarkFilled } from "src/assets/icons/bookmark_filled.svg";
-import { ReactComponent as BookmarkOutlined } from "src/assets/icons/bookmark.svg";
+import BookmarkFilled from "src/assets/icons/bookmark_filled.svg?react";
+import BookmarkOutlined from "src/assets/icons/bookmark.svg?react";
 
 interface Props {
     post: any;
@@ -12,8 +12,11 @@ interface Props {
 }
 
 async function toggleLike(guest: any, post: any) {
-    const response = await axios.patch(`/api/post/${post.slug.current}/bookmarks`, { guestId: guest.id });
-    console.log(response.data)
+    const response = await axios.patch(
+        `/api/post/${post.slug.current}/bookmarks`,
+        { guestId: guest.id }
+    );
+    console.log(response.data);
 }
 
 export default function BookmarkButton({ guest, post, initialValue }: Props) {
@@ -22,14 +25,16 @@ export default function BookmarkButton({ guest, post, initialValue }: Props) {
 
     return (
         <button
-            className={`button modern ${styles.button} ${isActive ? `${styles.active} selected` : ""}`}
+            className={`button modern ${styles.button} ${
+                isActive ? `${styles.active} selected` : ""
+            }`}
             style={{ width: "100%", paddingInline: "0px" }}
             onClick={() => {
-                setActive(!isActive)
+                setActive(!isActive);
                 if (debouncing.current === false) {
                     debouncing.current = true;
                     setTimeout(() => {
-                        toggleLike(guest, post)
+                        toggleLike(guest, post);
                         debouncing.current = false;
                     }, 2000);
                 }
@@ -38,5 +43,5 @@ export default function BookmarkButton({ guest, post, initialValue }: Props) {
             <BookmarkFilled className={styles.filled} />
             <BookmarkOutlined className={styles.outlined} />
         </button>
-    )
+    );
 }

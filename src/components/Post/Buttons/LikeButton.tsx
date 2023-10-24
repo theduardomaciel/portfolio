@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import styles from "./buttons.module.css";
 
-import { ReactComponent as LikeFilled } from "src/assets/icons/like_filled.svg";
-import { ReactComponent as LikeOutlined } from "src/assets/icons/like.svg";
+import LikeFilled from "src/assets/icons/like_filled.svg?react";
+import LikeOutlined from "src/assets/icons/like.svg?react";
 
 import axios from "axios";
 import debounce from "@/utils/debounce";

@@ -4,16 +4,16 @@ import type { MotionProps } from "framer-motion";
 import styles from "@/styles/projects.module.css";
 
 // Icons
-import { ReactComponent as FigmaIcon } from "src/assets/icons/figma.svg";
-import { ReactComponent as DownArrow } from "src/assets/icons/down_arrow.svg";
+import FigmaIcon from "src/assets/icons/figma.svg?react";
+import DownArrow from "src/assets/icons/down_arrow.svg?react";
 
 // Status Icons
-import { ReactComponent as FinishedIcon } from "src/assets/icons/ok.svg";
-import { ReactComponent as PendingIcon } from "src/assets/icons/pending.svg";
-import { ReactComponent as UnfinishedIcon } from "src/assets/icons/warning.svg";
-import { ReactComponent as ArchivedIcon } from "src/assets/icons/archived.svg";
-import { ReactComponent as SketchIcon } from "src/assets/icons/sketch.svg";
-import { ReactComponent as PauseIcon } from "src/assets/icons/pause.svg";
+import FinishedIcon from "src/assets/icons/ok.svg?react";
+import PendingIcon from "src/assets/icons/pending.svg?react";
+import UnfinishedIcon from "src/assets/icons/warning.svg?react";
+import ArchivedIcon from "src/assets/icons/archived.svg?react";
+import SketchIcon from "src/assets/icons/sketch.svg?react";
+import PauseIcon from "src/assets/icons/pause.svg?react";
 
 // Types
 import type { Dispatch, SetStateAction } from "react";

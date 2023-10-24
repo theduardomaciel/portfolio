@@ -104,6 +104,7 @@
             "button": "Iniciar sesión con Github"
         },
         "tags": {
+            "all": "Todo",
             "empty": "Parece que no hay publicaciones en el blog con esta etiqueta aún."
         },
         "reading_list": {

@@ -104,6 +104,7 @@
             "button": "Login with Github"
         },
         "tags": {
+            "all": "All",
             "empty": "It looks like there aren't any blog posts with this tag yet!"
         },
         "reading_list": {

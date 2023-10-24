@@ -5,8 +5,20 @@ import Svg from "@jasikpark/astro-svg-loader";
 <script>
     function toggleHandler() {
         const header = document.getElementById("header") as HTMLDivElement;
+        const menu = document.getElementById("menu") as HTMLDivElement;
+
         if (header) {
-            header.classList.toggle("menuExpanded");
+            if (header.classList.contains("menuExpanded")) {
+                header.classList.toggle("menuExpanded");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 215);
+            } else {
+                menu.style.display = "flex";
+                setTimeout(() => {
+                    header.classList.toggle("menuExpanded");
+                }, 10);
+            }
         }
     }
 

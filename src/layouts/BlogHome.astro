@@ -133,7 +133,9 @@ const t = useTranslations(lang as keyof typeof translations).blog;
             <div class="limit left"></div>
             <ul id="tagsScroll" class="tags">
                 <li class={`tag ${category === undefined ? "active" : ""}`}>
-                    <a style="z-index: 100;" href={`/${lang}/blog`}>All</a>
+                    <a style="z-index: 100;" href={`/${lang}/blog`}
+                        >{t.tags.all}</a
+                    >
                     <div id="selectionCircle" class="selectionCircle"></div>
                 </li>
                 <div class="divisor"></div>
