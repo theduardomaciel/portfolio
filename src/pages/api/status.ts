@@ -10,6 +10,9 @@ export function fetchProjectsStatus() {
                     where: {
                         resolved: false,
                     },
+                    include: {
+                        logs: true,
+                    },
                 },
             },
         });

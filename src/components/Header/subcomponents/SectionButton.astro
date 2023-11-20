@@ -1,5 +1,6 @@
 ---
 export interface Props {
+    pathname: string;
     section: {
         name: string;
         id: string;
@@ -7,8 +8,7 @@ export interface Props {
     };
 }
 
-const { section } = Astro.props;
-const { pathname } = Astro.url;
+const { section, pathname } = Astro.props;
 
 const isActive = pathname.includes(section.id);
 ---
@@ -26,7 +26,9 @@ const isActive = pathname.includes(section.id);
 
 <li>
     <a
-        href={pathname === "/" ? "#" : section.href}
+        href={!pathname.split("/")[2] && section.href === "/"
+            ? "#"
+            : section.href}
         class={`sectionButton ${isActive ? "active" : ""}`}
         title={section.id}
     >

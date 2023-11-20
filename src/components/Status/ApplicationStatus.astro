@@ -19,6 +19,12 @@ const { name, href, hasDependencies, status, incident, lang } = Astro.props;
 import { type translations, useTranslations } from "@/i18n/utils";
 const t = useTranslations(lang as keyof typeof translations).status;
 
+const secondsSinceLastUpdate = incident?.updatedAt
+    ? Math.floor(
+          (new Date().getTime() - new Date(incident.updatedAt).getTime()) / 1000
+      )
+    : 0;
+
 const minutesSinceLastUpdate = incident?.updatedAt
     ? Math.floor(
           (new Date().getTime() - new Date(incident.updatedAt).getTime()) /
@@ -45,7 +51,9 @@ const timeString = `${t.last_updated} ${
         ? `${daysSinceLastUpdate} ${t.days}`
         : hoursSinceLastUpdate > 0
         ? `${hoursSinceLastUpdate} ${t.hours}`
-        : `${minutesSinceLastUpdate} ${t.minutes}`
+        : minutesSinceLastUpdate > 0
+        ? `${minutesSinceLastUpdate} ${t.minutes}`
+        : `${secondsSinceLastUpdate} ${t.seconds}`
 } ${t.ago}`;
 
 const STATUS_COLORS = {
@@ -128,19 +136,21 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
         incident?.logs && (
             <ul class="logs">
                 {incident?.logs?.map(({ createdAt, tag, description }) => (
-                    <li class="row">
-                        <p>
-                            {new Date(createdAt).toLocaleString(lang, {
-                                month: "short",
-                                day: "numeric",
-                                hour: "numeric",
-                                minute: "numeric",
-                                hour12: false,
-                                year: "numeric",
-                                timeZoneName: "short",
-                            })}
-                        </p>
-                        <p class="tag">{`[${t.incident.logs.tag[tag]}]`}</p>
+                    <li class="log row">
+                        <div class="row">
+                            <p>
+                                {new Date(createdAt).toLocaleString(lang, {
+                                    month: "short",
+                                    day: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                    hour12: false,
+                                    year: "numeric",
+                                    timeZoneName: "short",
+                                })}
+                            </p>
+                            <p class="tag">{`[${t.incident.logs.tag[tag]}]`}</p>
+                        </div>
                         <p>{description}</p>
                     </li>
                 ))}
@@ -177,6 +187,12 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
         width: 0.75rem;
         height: 0.75rem;
         border-radius: 50%;
+    }
+
+    .log {
+        flex-wrap: wrap;
+        text-align: left;
+        justify-content: flex-start;
     }
 
     .application_status header {
@@ -220,6 +236,8 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
         gap: 5rem;
         width: 100%;
 
+        text-align: left;
+
         font-family: "Roboto";
         font-size: 1.375rem;
     }
@@ -233,8 +251,11 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
 
     .status {
         display: flex;
+        flex-wrap: wrap;
         padding: 0.9375rem 1.5625rem;
         align-self: stretch;
+
+        gap: 1rem;
 
         border-radius: 0.625rem;
     }
@@ -262,14 +283,14 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
     }
 
     .degraded {
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
 
         background: #f5a623;
     }
 
     .critical {
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
 
         background: #d0021b;
@@ -290,5 +311,15 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
     .tag {
         text-transform: capitalize;
         font-weight: 700;
+    }
+
+    @media (min-width: 1024px) {
+        .degraded {
+            justify-content: space-between;
+        }
+
+        .critical {
+            justify-content: space-between;
+        }
     }
 </style>

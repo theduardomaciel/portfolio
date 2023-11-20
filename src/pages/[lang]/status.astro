@@ -22,6 +22,8 @@ const t = useTranslations(lang as keyof typeof translations).status;
 
 import { fetchProjectsStatus } from "@/api/status";
 const projectsStatus = await fetchProjectsStatus();
+
+export const prerender = false;
 ---
 
 <BaseLayout seo={seo}>
@@ -60,6 +62,7 @@ const projectsStatus = await fetchProjectsStatus();
         justify-content: center;
         gap: 2.5rem;
         width: 100%;
+        padding-inline: var(--margin);
     }
 
     @media (min-width: 1024px) {

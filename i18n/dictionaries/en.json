@@ -149,12 +149,14 @@
             }
         },
         "last_updated": "Last updated",
+        "second": "second",
+        "seconds": "seconds",
+        "minute": "minute",
+        "minutes": "minutes",
         "day": "day",
         "days": "days",
         "hour": "hour",
         "hours": "hours",
-        "minute": "minute",
-        "minutes": "minutes",
         "ago": "ago"
     }
 }

@@ -132,7 +132,7 @@
             "MAINTENANCE": "Em Manutenção"
         },
         "incident": {
-            "locations": "Localizações",
+            "locations": "Serviços afetados",
             "level": {
                 "NONE": "Todos os sistemas estão operando normalmente",
                 "MINOR": "Estamos enfrentando algumas instabilidades",
@@ -149,12 +149,14 @@
             }
         },
         "last_updated": "Atualizado há",
+        "second": "segundo",
+        "seconds": "segundos",
+        "minute": "minuto",
+        "minutes": "minutos",
         "day": "dia",
         "days": "dias",
         "hour": "hora",
         "hours": "horas",
-        "minute": "minuto",
-        "minutes": "minutos",
-        "ago": "atrás"
+        "ago": ""
     }
 }

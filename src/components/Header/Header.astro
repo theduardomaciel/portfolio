@@ -13,11 +13,13 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const { pathname } = Astro.url;
+
 const SECTIONS = [
     {
         name: t.nav.home,
         id: "home",
-        href: `#`,
+        href: `/`,
     },
     {
         name: t.nav.projects,
@@ -38,21 +40,14 @@ const SECTIONS = [
 ---
 
 <script>
-    let originalSizes: { [key: string]: number } = {};
-
     function updateNavLine(button: HTMLElement, sectionId: string) {
         const navLine = document.getElementById("headerLine") as HTMLElement;
-        /* navLine.style.left = `${button.offsetLeft}px`; */
         if (navLine) {
             const decrease = (50 / 100) * button.offsetWidth;
             const decreasedSize = button.offsetWidth - decrease; // button.offsetWidth - ((35 / 100) * button.offsetWidth)
             navLine.style.width = `${decreasedSize}px`;
             if (button && navLine) {
-                navLine.style.left = `${
-                    button.offsetLeft +
-                    (button.offsetWidth + decrease) / 2 -
-                    originalSizes[sectionId] / 2
-                }px`;
+                navLine.style.left = `${button.offsetLeft + decrease / 2}px`;
             }
         }
     }
@@ -142,20 +137,6 @@ const SECTIONS = [
         changeMenuSection();
     };
 
-    const sectionsButtons = document.querySelectorAll(
-        `.menu a`
-    ) as NodeListOf<HTMLElement>;
-    const buttonsSizes = (Object.entries(sectionsButtons) as Array<any>).map(
-        ([index, data]) => {
-            data.style.width = data.offsetWidth /* + 10 */ + "px"; // Adicionando 10px para evitar que o texto se desloque quando mudar de peso - resolve o problema mas causa layout shift!!!!
-            return {
-                [data.getAttribute("title")]: data.offsetWidth,
-            };
-        }
-    );
-
-    originalSizes = Object.assign({}, ...buttonsSizes);
-
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 </script>
@@ -168,7 +149,11 @@ const SECTIONS = [
     <div id="menu" class="menu">
         {!isBlog && !isStatus && <div id="headerLine" class="sectionLine" />}
         <ul class="list">
-            {SECTIONS.map((section, _) => <SectionButton section={section} />)}
+            {
+                SECTIONS.map((section, _) => (
+                    <SectionButton pathname={pathname} section={section} />
+                ))
+            }
             <li>
                 <a
                     rel="prefetch"

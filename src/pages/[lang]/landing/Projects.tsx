@@ -24,7 +24,7 @@ interface Props {
 
 export function Projects({ projects, lang }: Props) {
     const [projectIndex, setProjectIndex] = useState(0);
-    const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(true);
+    const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(false);
 
     const t = useTranslations(lang as keyof typeof translations).projects;
 
