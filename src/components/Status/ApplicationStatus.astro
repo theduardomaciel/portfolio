@@ -11,9 +11,11 @@ interface Props {
     status: Status;
     incident?: Incident & { logs?: Log[] };
     lang: string;
+    focus?: boolean;
 }
 
-const { name, href, hasDependencies, status, incident, lang } = Astro.props;
+const { name, href, hasDependencies, status, incident, lang, focus } =
+    Astro.props;
 
 // Internationalization
 import { type translations, useTranslations } from "@/i18n/utils";
@@ -71,7 +73,7 @@ const INCIDENT_COLORS = {
 const locationsArray = incident?.locations as Prisma.JsonArray;
 ---
 
-<li class="application_status">
+<li class={`application_status ${focus ? "focus" : ""}`}>
     <header>
         <a class="row" href={href} target="_blank">
             <h2>{name}</h2>
@@ -173,6 +175,13 @@ const locationsArray = incident?.locations as Prisma.JsonArray;
         border-radius: 0.625rem;
         border: 1px solid var(--primary-01);
         background: var(--secondary-01);
+    }
+
+    .application_status.focus {
+        outline-style: solid;
+        outline-color: var(--primary-01);
+        outline-offset: 4px;
+        outline-width: 4px;
     }
 
     .row {

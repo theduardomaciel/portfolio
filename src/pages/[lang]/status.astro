@@ -23,6 +23,9 @@ const t = useTranslations(lang as keyof typeof translations).status;
 import { fetchProjectsStatus } from "@/api/status";
 const projectsStatus = await fetchProjectsStatus();
 
+const utm_source = Astro.url.searchParams.get("utm_source");
+console.log(utm_source);
+
 export const prerender = false;
 ---
 
@@ -46,6 +49,7 @@ export const prerender = false;
                         status={project.status}
                         incident={project.incidents[0]}
                         lang={lang as keyof typeof translations}
+                        focus={utm_source ? utm_source === project.name : false}
                     />
                 ))
             }
