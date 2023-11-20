@@ -1,4 +1,8 @@
 {
+    "cryptosia": {
+        "description": "Utilize o cryptosia para gerar chaves públicas e privadas que funcionam em sintonia, garantindo segurança simplificada de mensagens sensíveis por meio da criptografia RSA.",
+        "technologies": []
+    },
     "officia": {
         "description": "Um aplicativo que permite criar e gerenciar fluxos automatizados para simplificar tarefas repetitivas e aumentar a produtividade.",
         "technologies": [

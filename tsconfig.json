@@ -10,7 +10,8 @@
             "@/components/*": ["src/components/*"],
             "@/styles/*": ["src/styles/*"],
             "@/utils/*": ["src/utils/*"],
-            "@/layouts/*": ["src/layouts/*"]
+            "@/layouts/*": ["src/layouts/*"],
+            "@/api/*": ["src/pages/api/*"]
         }
     }
 }

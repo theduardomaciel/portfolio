@@ -1,5 +1,33 @@
 [
     {
+        "id": "cryptosia",
+        "description": "Use cryptosia to generate public and private keys that work in sync, ensuring simplified security of sensitive messages through RSA encryption.",
+        "project_url": "https://cryptosia.vercel.app",
+        "figma_url": "https://www.figma.com/file/NmFuHmLCApizrEqbQM9xKt/Criptografia-RSA---Frontend?type=design&mode=design&t=e5psnlP509MMyp9G-1",
+        "accent_color": "238, 215, 156",
+        "image_url": "https://imgur.com/qxCZu3W.png",
+        "status": "COMPLETED",
+        "technologies": [
+            {
+                "name": "Web",
+                "link": "https://github.com/theduardomaciel/cryptosia-web",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "Next.js",
+                    "Axios",
+                    "Radix",
+                    "Material Symbols"
+                ]
+            },
+            {
+                "name": "Backend",
+                "techs": ["WebAssembly", "Emscripten", "C"]
+            }
+        ]
+    },
+    {
         "id": "officia",
         "description": "An app that lets you create and manage automated flows to simplify repetitive tasks and increase productivity.",
         "project_url": "https://officia.vercel.app",

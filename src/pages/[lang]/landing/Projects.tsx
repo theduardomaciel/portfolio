@@ -4,7 +4,7 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import styles from "@/styles/projects.module.css";
 
 // Components
-import ProjectsCarousel from "@/components/Carousel";
+import ProjectsCarousel from "@/components/Landing/Carousel";
 
 // Icons
 import ChevronLeft from "src/assets/icons/chevron.svg?react";
@@ -22,7 +22,7 @@ interface Props {
     lang?: string;
 }
 
-export default function Projects({ projects, lang }: Props) {
+export function Projects({ projects, lang }: Props) {
     const [projectIndex, setProjectIndex] = useState(0);
     const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(true);
 

@@ -1,4 +1,7 @@
 {
+    "general": {
+        "name": "Geral"
+    },
     "libraries": {
         "name": "Bibliotecas"
     },

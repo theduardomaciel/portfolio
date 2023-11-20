@@ -3,9 +3,9 @@ import "@/styles/home.css";
 
 import Svg from "@jasikpark/astro-svg-loader";
 
-import Planet from "@/components/Planet.astro";
+import Planet from "@/components/Landing/Planet.astro";
 import SocialMedia from "@/components/SocialMedia.astro";
-import Starfield from "@/components/Starfield.astro";
+import Starfield from "@/components/Landing/Starfield.astro";
 import Blobs from "@/components/Home/Blobs.astro";
 import Rocket from "@/components/Home/Rocket.astro";
 
@@ -14,7 +14,9 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { randomPhrase } = Astro.props;
+import phrases from "@/public/phrases.json";
+const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)][lang];
+
 ---
 
 <section id="home" class="home">

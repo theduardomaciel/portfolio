@@ -6,7 +6,7 @@ import getTagsFromPost from "src/lib/sanity/getTagsFromPost";
 import type { PostTag } from "src/lib/sanity/getTagsFromPost";
 
 import PostPreview from "@/components/Post/PostPreview.astro";
-import { getGuestFromId } from "src/pages/api/guest";
+import { getGuestFromId } from "@/api/guest";
 
 const { posts, tags } = Astro.props;
 const sortedTags = tags.sort((tagA: PostTag, tagB: PostTag) => {
@@ -103,7 +103,9 @@ const t = useTranslations(lang as keyof typeof translations).blog;
                 </div>
             ) : (
                 <div class="loginRequest">
-                    <h6 style="white-space: pre-line;">{t.login.title}</h6>
+                    <h6 class="subtitle" style="white-space: pre-line;">
+                        {t.login.title}
+                    </h6>
                     <button
                         id="loginButton"
                         class="button inverted fill"

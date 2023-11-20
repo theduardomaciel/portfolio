@@ -29,7 +29,7 @@ const t = useTranslations(lang).footer;
     async function getNowPlayingAndUpdate() {
         const response = await fetch("/api/spotify/nowplaying");
         const data = (await response.json()) as NowPlaying;
-        console.log(data);
+        //console.log(data);
         if (data.isPlaying) {
             spotifyHolder.classList.add("listening");
             songTitle.innerText = data.title;

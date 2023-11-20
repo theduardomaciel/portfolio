@@ -1,5 +1,15 @@
 [
     {
+        "id": "general",
+        "techs": [
+            {
+                "name": "C",
+                "experienceSince": "06/2023",
+                "icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/eeea6ea86b2fc11ac32f7779e2178428e9ce683f/c.svg"
+            }
+        ]
+    },
+    {
         "id": "web",
         "techs": [
             {

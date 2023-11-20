@@ -56,7 +56,7 @@
         "experience": "experiencia"
     },
     "contact": {
-        "title": "Tienes una idea loca?",
+        "title": "Tienes una idea en la cabeza?",
         "subtitle": "¡Ingresa tu correo electrónico para que podamos ponernos en contacto!",
         "button": "Contactar",
         "input": {
@@ -120,5 +120,41 @@
     "404": {
         "subtitle": "Esta página no existe o su funcionalidad aún no ha sido implementada.",
         "return_button": "Volver a Inicio"
+    },
+    "status": {
+        "header": {
+            "title": "Status",
+            "subtitle": "Consultar el estado actual de las aplicaciones desarrolladas y su disponibilidad para el público."
+        },
+        "status": {
+            "ACTIVE": "On-line",
+            "INACTIVE": "Inactivo",
+            "MAINTENANCE": "En Mantenimiento"
+        },
+        "incident": {
+            "locations": "Lugares",
+            "level": {
+                "NONE": "Todos los sistemas operativos",
+                "MINOR": "Problemas operativos",
+                "MAJOR": "Problemas operativos",
+                "CRITICAL": "Actualmente un problema está siendo investigado"
+            },
+            "logs": {
+                "tag": {
+                    "INVESTIGATING": "Investigando",
+                    "IDENTIFIED": "Identificado",
+                    "MONITORING": "Monitoreando",
+                    "RESOLVED": "Resuelto"
+                }
+            }
+        },
+        "last_updated": "Actualizado por última vez",
+        "day": "día",
+        "days": "días",
+        "hour": "hora",
+        "hours": "horas",
+        "minute": "minuto",
+        "minutes": "minutos",
+        "ago": "atrás"
     }
 }

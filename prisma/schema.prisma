@@ -34,12 +34,69 @@ model Post {
     @@map("views")
 }
 
-model RandomPhrase {
+model ProjectStatus {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    phrase Json
+    name   String
+    url    String
+    status Status
 
-    @@map("random_phrases")
+    hasDependencies Boolean @default(true)
+
+    incidents Incident[]
+
+    @@map("project_statuses")
+}
+
+enum Status {
+    ACTIVE
+    INACTIVE
+    MAINTENANCE
+}
+
+model Incident {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    resolved  Boolean       @default(false)
+    level     IncidentLevel
+    locations Json?
+    logs      Log[]
+
+    project         ProjectStatus @relation(fields: [projectStatusId], references: [id])
+    projectStatusId String
+
+    @@index([projectStatusId])
+    @@map("incidents")
+}
+
+enum IncidentLevel {
+    MINOR
+    MAJOR
+    CRITICAL
+}
+
+model Log {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    tag         LogTag
+    description String
+
+    Incident   Incident @relation(fields: [incidentId], references: [id])
+    incidentId String
+
+    @@index([incidentId])
+    @@map("logs")
+}
+
+enum LogTag {
+    INVESTIGATING
+    IDENTIFIED
+    MONITORING
+    RESOLVED
 }

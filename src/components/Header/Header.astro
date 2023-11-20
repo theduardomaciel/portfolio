@@ -3,8 +3,8 @@ import ActionButtons from "./subcomponents/ActionButtons.astro";
 import SectionButton from "./subcomponents/SectionButton.astro";
 import ToggleButton from "./subcomponents/ToggleButton.astro";
 
-const SECTIONS = ["home", "projects", "tech", "contact"]; // lembra de deixar minúsculo
 const isBlog = Astro.url.pathname.includes("blog");
+const isStatus = Astro.url.pathname.includes("status");
 
 const { isStatic } = Astro.props;
 
@@ -12,6 +12,29 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const SECTIONS = [
+    {
+        name: t.nav.home,
+        id: "home",
+        href: `#`,
+    },
+    {
+        name: t.nav.projects,
+        id: "projects",
+        href: `/${lang}/#projects`,
+    },
+    {
+        name: t.nav.tech,
+        id: "tech",
+        href: `/${lang}/#tech`,
+    },
+    {
+        name: "Status",
+        id: "status",
+        href: `/${lang}/status`,
+    },
+];
 ---
 
 <script>
@@ -119,8 +142,6 @@ const t = useTranslations(lang);
         changeMenuSection();
     };
 
-    changeMenuSection();
-
     const sectionsButtons = document.querySelectorAll(
         `.menu a`
     ) as NodeListOf<HTMLElement>;
@@ -134,10 +155,6 @@ const t = useTranslations(lang);
     );
 
     originalSizes = Object.assign({}, ...buttonsSizes);
-    const timeout = setTimeout(() => {
-        updateNavLine(sectionsButtons[0], "home");
-        clearTimeout(timeout);
-    }, 500);
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
@@ -149,7 +166,7 @@ const t = useTranslations(lang);
     </a>
 
     <div id="menu" class="menu">
-        {!isBlog && <div id="headerLine" class="sectionLine" />}
+        {!isBlog && !isStatus && <div id="headerLine" class="sectionLine" />}
         <ul class="list">
             {SECTIONS.map((section, _) => <SectionButton section={section} />)}
             <li>

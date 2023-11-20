@@ -4,10 +4,10 @@ import Layout from "@/layouts/BaseLayout.astro";
 import Header from "@/components/Header/Header.astro";
 import Footer from "@/components/Footer/Footer.astro";
 
-import Home from "src/sections/Home.astro";
-import Projects from "src/sections/Projects";
-import Experiences from "src/sections/Experiences.astro";
-import Contact from "src/sections/Contact/Contact.astro";
+import Home from "../[lang]/landing/Home.astro";
+import {Projects} from "../[lang]/landing/Projects";
+import Experiences from "../[lang]/landing/Experiences.astro";
+import Contact from "../[lang]/landing/Contact/Contact.astro";
 
 import projects from "@/public/projects/projects.json";
 import projects_es from "@/public/projects/dictionaries/es.json";
@@ -20,27 +20,13 @@ import experiences_pt from "@/public/experiences/dictionaries/pt-br.json";
 export const prerender = true;
 
 import { defaultLang, translations } from "@/i18n/utils";
-import prisma from "src/lib/prisma";
-import type { JsonValue } from "@prisma/client/runtime/library";
 
 export async function getStaticPaths() {
-    let randomPhrases: JsonValue[] = [];
-
-    try {
-        randomPhrases = (await prisma.randomPhrase.findMany()).map(
-            (phrase) => phrase.phrase
-        );
-    } catch (error) {
-        console.error(error);
-    }
 
     return Object.keys(translations).map((lang) => ({
         params: { lang },
         props: {
             response: {
-                randomPhrases: randomPhrases.map((phrase) =>
-                    phrase ? phrase[lang as keyof typeof phrase] : undefined
-                ),
                 projects:
                     lang == defaultLang
                         ? projects
@@ -120,11 +106,6 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 const { response } = Astro.props;
-
-const randomPhrase =
-    response.randomPhrases[
-        Math.floor(Math.random() * response.randomPhrases.length)
-    ];
 ---
 
 <script>
@@ -168,7 +149,7 @@ const randomPhrase =
 <Layout>
     <Header />
     <main>
-        <Home randomPhrase={randomPhrase} />
+        <Home />
         <Projects projects={response?.projects} lang={lang} client:load />
         <Experiences experiences={response?.experiences} />
         <Contact />

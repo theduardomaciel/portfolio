@@ -1,0 +1,74 @@
+---
+import "@/styles/blog.css";
+
+const seo = {
+    title: "Status",
+    description: "Check the status of the projects and its services.",
+};
+
+// Components
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import ApplicationStatus from "@/components/Status/ApplicationStatus.astro";
+
+// Internationalization
+import { useTranslations } from "@/i18n/utils";
+import type { translations } from "@/i18n/utils";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof translations).status;
+
+import { fetchProjectsStatus } from "@/api/status";
+const projectsStatus = await fetchProjectsStatus();
+---
+
+<BaseLayout seo={seo}>
+    <Header />
+    <main class="main blog">
+        <header class="wrapper" style="align-items: center;">
+            <h1>{t.header.title}</h1>
+
+            <h6 class="subtitle" style="white-space: pre-line;">
+                {t.header.subtitle}
+            </h6>
+        </header>
+        <ul class="list">
+            {
+                projectsStatus.map((project) => (
+                    <ApplicationStatus
+                        name={project.name}
+                        href={project.url}
+                        hasDependencies={project.hasDependencies}
+                        status={project.status}
+                        incident={project.incidents[0]}
+                        lang={lang as keyof typeof translations}
+                    />
+                ))
+            }
+        </ul>
+    </main>
+    <Footer />
+</BaseLayout>
+
+<style>
+    .list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2.5rem;
+        width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+        .list {
+            padding-inline: 12.5rem;
+        }
+
+        header h6 {
+            max-width: 40%;
+        }
+    }
+</style>

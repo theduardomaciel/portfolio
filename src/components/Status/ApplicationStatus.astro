@@ -1,0 +1,294 @@
+---
+import Svg from "@jasikpark/astro-svg-loader";
+
+// Types
+import type { Incident, Log, Prisma, Status } from "@prisma/client";
+
+interface Props {
+    name: string;
+    href: string;
+    hasDependencies?: boolean;
+    status: Status;
+    incident?: Incident & { logs?: Log[] };
+    lang: string;
+}
+
+const { name, href, hasDependencies, status, incident, lang } = Astro.props;
+
+// Internationalization
+import { type translations, useTranslations } from "@/i18n/utils";
+const t = useTranslations(lang as keyof typeof translations).status;
+
+const minutesSinceLastUpdate = incident?.updatedAt
+    ? Math.floor(
+          (new Date().getTime() - new Date(incident.updatedAt).getTime()) /
+              (1000 * 60)
+      )
+    : 0;
+
+const hoursSinceLastUpdate = incident?.updatedAt
+    ? Math.floor(
+          (new Date().getTime() - new Date(incident.updatedAt).getTime()) /
+              (1000 * 60 * 60)
+      )
+    : 0;
+
+const daysSinceLastUpdate = incident?.updatedAt
+    ? Math.floor(
+          (new Date().getTime() - new Date(incident.updatedAt).getTime()) /
+              (1000 * 60 * 60 * 24)
+      )
+    : 0;
+
+const timeString = `${t.last_updated} ${
+    daysSinceLastUpdate > 0
+        ? `${daysSinceLastUpdate} ${t.days}`
+        : hoursSinceLastUpdate > 0
+        ? `${hoursSinceLastUpdate} ${t.hours}`
+        : `${minutesSinceLastUpdate} ${t.minutes}`
+} ${t.ago}`;
+
+const STATUS_COLORS = {
+    ACTIVE: "#40a826",
+    INACTIVE: "#808080",
+    MAINTENANCE: "#f5a623",
+};
+
+const INCIDENT_COLORS = {
+    CRITICAL: "#d0021b",
+    MAJOR: "#f5a623",
+    MINOR: "#f5a623",
+};
+
+const locationsArray = incident?.locations as Prisma.JsonArray;
+---
+
+<li class="application_status">
+    <header>
+        <a class="row" href={href} target="_blank">
+            <h2>{name}</h2>
+            <Svg src={import("/public/icons/external.svg?raw")} />
+        </a>
+        <div class="row">
+            <div
+                class="dot"
+                style={`background: ${
+                    incident
+                        ? INCIDENT_COLORS[incident.level]
+                        : STATUS_COLORS[status]
+                }`}
+            >
+            </div>
+            <p>
+                {
+                    incident && incident.level === "CRITICAL"
+                        ? "Off-line"
+                        : status === "INACTIVE"
+                        ? t.status.INACTIVE
+                        : status === "MAINTENANCE"
+                        ? t.status.MAINTENANCE
+                        : "On-line"
+                }
+            </p>
+        </div>
+    </header>
+    {
+        incident?.locations ? (
+            <>
+                <div class="locations row">
+                    <p>{t.incident.locations}: </p>
+                    <p>{locationsArray.join(", ")}</p>
+                </div>
+                <div class="divisor" />
+            </>
+        ) : null
+    }
+
+    {
+        status === "ACTIVE" && hasDependencies ? (
+            !incident ? (
+                <div class="status ok">
+                    <p>{t.incident.level.NONE}</p>
+                </div>
+            ) : incident?.level === "MAJOR" ||
+              incident?.level === "CRITICAL" ? (
+                <div class="status critical">
+                    <p>{t.incident.level[incident.level]}</p>
+                    {incident.updatedAt && <p class="time">{timeString}</p>}
+                </div>
+            ) : incident?.level === "MINOR" ? (
+                <div class="status degraded">
+                    <p>{t.incident.level.MINOR}</p>
+                    {incident?.updatedAt && <p class="time">{timeString}</p>}
+                </div>
+            ) : null
+        ) : null
+    }
+    {
+        incident?.logs && (
+            <ul class="logs">
+                {incident?.logs?.map(({ createdAt, tag, description }) => (
+                    <li class="row">
+                        <p>
+                            {new Date(createdAt).toLocaleString(lang, {
+                                month: "short",
+                                day: "numeric",
+                                hour: "numeric",
+                                minute: "numeric",
+                                hour12: false,
+                                year: "numeric",
+                                timeZoneName: "short",
+                            })}
+                        </p>
+                        <p class="tag">{`[${t.incident.logs.tag[tag]}]`}</p>
+                        <p>{description}</p>
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</li>
+
+<style>
+    .application_status {
+        display: flex;
+        padding: 2.5rem 3.5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        align-self: stretch;
+
+        border-radius: 0.625rem;
+        border: 1px solid var(--primary-01);
+        background: var(--secondary-01);
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+    }
+
+    .dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+    }
+
+    .application_status header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .application_status header h2 {
+        color: var(--primary-01);
+
+        font-family: "Roboto Serif Variable";
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+    }
+
+    .application_status header a:hover {
+        text-decoration: underline;
+    }
+
+    .application_status header p {
+        color: var(--primary-01);
+
+        font-family: "Roboto";
+        font-size: 1.375rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .locations {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5rem;
+        width: 100%;
+
+        font-family: "Roboto";
+        font-size: 1.375rem;
+    }
+
+    .divisor {
+        width: 100%;
+        height: 0.1rem;
+        opacity: 1;
+        background: var(--primary-01);
+    }
+
+    .status {
+        display: flex;
+        padding: 0.9375rem 1.5625rem;
+        align-self: stretch;
+
+        border-radius: 0.625rem;
+    }
+
+    .status p {
+        color: #fff;
+        font-family: "Roboto Serif Variable";
+
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .status .time {
+        font-size: 1.25rem;
+        opacity: 0.8;
+    }
+
+    .ok {
+        justify-content: center;
+        align-items: center;
+
+        background: #40a826;
+    }
+
+    .degraded {
+        justify-content: space-between;
+        align-items: center;
+
+        background: #f5a623;
+    }
+
+    .critical {
+        justify-content: space-between;
+        align-items: center;
+
+        background: #d0021b;
+    }
+
+    .logs {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+
+        font-family: "Roboto";
+        font-size: 1.4rem;
+    }
+
+    .tag {
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+</style>

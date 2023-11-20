@@ -56,7 +56,7 @@
         "experience": "experience"
     },
     "contact": {
-        "title": "Have a crazy idea?",
+        "title": "Have an idea in your mind?",
         "subtitle": "Enter your email so we can get in touch!",
         "button": "Contact",
         "input": {
@@ -120,5 +120,41 @@
     "404": {
         "subtitle": "This page does not exist, or its functionality has not yet been implemented.",
         "return_button": "Return to home"
+    },
+    "status": {
+        "header": {
+            "title": "Status",
+            "subtitle": "Check the current status of developed applications and their availability to the public"
+        },
+        "status": {
+            "ACTIVE": "On-line",
+            "INACTIVE": "Inactive",
+            "MAINTENANCE": "Maintenance"
+        },
+        "incident": {
+            "level": {
+                "NONE": "All systems operational",
+                "MINOR": "Operational issues",
+                "MAJOR": "Operational issues",
+                "CRITICAL": "The issue is being investigated"
+            },
+            "locations": "Locations",
+            "logs": {
+                "tag": {
+                    "INVESTIGATING": "Investigating",
+                    "IDENTIFIED": "Identified",
+                    "MONITORING": "Monitoring",
+                    "RESOLVED": "Resolved"
+                }
+            }
+        },
+        "last_updated": "Last updated",
+        "day": "day",
+        "days": "days",
+        "hour": "hour",
+        "hours": "hours",
+        "minute": "minute",
+        "minutes": "minutes",
+        "ago": "ago"
     }
 }
