@@ -340,7 +340,7 @@
     .home {
         display: flex;
         flex-direction: row;
-        min-height: 100vh;
+        height: calc(100vh - var(--nav-height));
     }
 
     .home .mouseScroll {
