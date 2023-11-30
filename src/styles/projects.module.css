@@ -3,6 +3,7 @@
     width: 100vw;
     overflow: hidden;
     gap: 5rem;
+    padding-top: 0px;
 }
 
 .title {
@@ -13,35 +14,34 @@
     justify-content: center;
 }
 
-.carrousel {
+.projects .carrousel {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+
+    gap: 2.5rem;
 }
 
 .carrousel::placeholder {
-    /* Most modern browsers support this now. */
     color: var(--secondary-01);
 }
 
 .carrousel .image {
-    filter: drop-shadow(0px 0px 10px rgba(52, 98, 89, 0.5));
-    opacity: 1;
-
-    height: 100%;
     width: 100%;
-
-    border-radius: 1.5rem;
-
-    transition: 0.35s;
-
-    margin-top: 3rem;
-    /* only mobile */
-
+    user-select: none;
     object-fit: contain;
+
+    filter: drop-shadow(0px 0px 10px rgba(52, 98, 89, 0.5));
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: 0.35s;
+    opacity: 1;
 }
 
 .carrousel .info .infoHeader {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
     width: 100%;
 }
@@ -52,13 +52,15 @@
 
 .info .headerDecoration {
     position: absolute;
-    top: -10%;
+    top: -7.5%;
     left: -40%;
 
     width: 150%;
     height: 115%;
     /* transform: rotate(-90deg); */
     transition: all 1s ease-in-out;
+
+    user-select: none;
 
     z-index: -1;
 }
@@ -78,16 +80,14 @@
 .info .infoHeader h3 {
     font-weight: 900;
     font-size: 12.5vw;
-    line-height: 12.5vw;
+    line-height: 75%;
     line-break: normal;
     width: 100%;
-
-    margin-bottom: 2.5rem;
 }
 
 .info h4 {
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 2rem;
 }
 
 .info .moreInfo {
@@ -102,8 +102,6 @@
     gap: 1.5rem;
 
     cursor: pointer;
-
-    margin-bottom: 2.5rem;
 }
 
 .sectionDots {
@@ -144,8 +142,8 @@
     width: 100%;
     overflow: hidden;
     transition-property: all;
-    transition-timing-function: cubic-bezier(0.17, 0.67, 0.25, 1.01);
-    transition-duration: 850ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
 
     gap: 2.5rem;
 }
@@ -245,17 +243,23 @@
     align-items: center;
 
     justify-content: center;
-    margin-bottom: 1rem;
-
     height: 2.5rem;
 }
 
-.statusHolder div {
-    width: 0.25rem;
-    height: 100%;
+.statusHolder .separator {
+    width: 0.225rem;
+    height: 90%;
 
     background-color: var(--primary-01);
     border-radius: 0.5rem;
+}
+
+.statusHolder .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+
+    border-radius: 50%;
+    background-color: var(--primary-01);
 }
 
 .statusHolder p {
@@ -268,8 +272,11 @@
 
 .imageHolder {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    user-select: none;
+    gap: 2.5rem;
 }
 
 @media (min-width: 1024px) {
@@ -289,14 +296,8 @@
     .info .infoHeader h3 {
         font-weight: 900;
         font-size: 6vw;
-        line-height: 5.5vw;
         line-break: normal;
-
-        margin-bottom: 2.5rem;
-    }
-
-    .image {
-        margin-top: 0px;
+        margin-bottom: 3rem;
     }
 
     .projects .carrousel {
@@ -317,13 +318,12 @@
         margin-top: -2rem;
     }
 
-    /* .projects .carrousel .column2 {
-        height: 100%;
-        width: 50%;
-    } */
-
     .projects .carrousel .imageHolder {
         height: 100%;
         width: 50%;
+    }
+
+    .carrousel .image {
+        max-height: 27.5rem;
     }
 }

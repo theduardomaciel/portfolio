@@ -5,24 +5,23 @@ import Header from "@/components/Header/Header.astro";
 import Footer from "@/components/Footer/Footer.astro";
 
 import Home from "../[lang]/landing/Home.astro";
-import {Projects} from "../[lang]/landing/Projects";
+import { Projects } from "../[lang]/landing/Projects";
 import Experiences from "../[lang]/landing/Experiences.astro";
 import Contact from "../[lang]/landing/Contact/Contact.astro";
 
-import projects from "@/public/projects/projects.json";
-import projects_es from "@/public/projects/dictionaries/es.json";
-import projects_pt from "@/public/projects/dictionaries/pt-br.json";
+import projects from "@/public/data/projects/projects.json";
+import projects_es from "@/public/data/projects/dictionaries/es.json";
+import projects_pt from "@/public/data/projects/dictionaries/pt-br.json";
 
-import experiences from "@/public/experiences/experiences.json";
-import experiences_es from "@/public/experiences/dictionaries/es.json";
-import experiences_pt from "@/public/experiences/dictionaries/pt-br.json";
+import experiences from "@/public/data/experiences/experiences.json";
+import experiences_es from "@/public/data/experiences/dictionaries/es.json";
+import experiences_pt from "@/public/data/experiences/dictionaries/pt-br.json";
 
 export const prerender = true;
 
 import { defaultLang, translations } from "@/i18n/utils";
 
 export async function getStaticPaths() {
-
     return Object.keys(translations).map((lang) => ({
         params: { lang },
         props: {

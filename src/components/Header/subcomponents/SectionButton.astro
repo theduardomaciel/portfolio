@@ -31,6 +31,7 @@ const isActive = pathname.includes(section.id);
             : section.href}
         class={`sectionButton ${isActive ? "active" : ""}`}
         title={section.id}
+        id={`sectionButton-${section.id}`}
     >
         {section.name}
     </a>

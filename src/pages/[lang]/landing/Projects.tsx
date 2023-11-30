@@ -24,7 +24,7 @@ interface Props {
 
 export function Projects({ projects, lang }: Props) {
     const [projectIndex, setProjectIndex] = useState(0);
-    const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(false);
+    const [isMoreInfoExpanded, setMoreInfoExpanded] = useState(true);
 
     const t = useTranslations(lang as keyof typeof translations).projects;
 
@@ -44,66 +44,77 @@ export function Projects({ projects, lang }: Props) {
                     projectIndex={projectIndex}
                     setMoreInfoExpanded={setMoreInfoExpanded}
                     isMoreInfoExpanded={isMoreInfoExpanded}
-                />
+                >
+                    <div className={styles.sectionDots}>
+                        <ChevronLeft
+                            style={{
+                                cursor:
+                                    projectIndex === 0 ? "initial" : "pointer",
+                                transition: "0.5s",
+                            }}
+                            fill={
+                                projectIndex === 0
+                                    ? "#808080"
+                                    : "var(--primary-01)"
+                            }
+                            onClick={() => {
+                                if (projectIndex > 0) {
+                                    setProjectIndex(projectIndex - 1);
+                                }
+                            }}
+                        />
+                        <ul>
+                            {projects &&
+                                projects.map(function (project, index) {
+                                    const isCurrentProject =
+                                        index === projectIndex;
+                                    return (
+                                        <li
+                                            onClick={() =>
+                                                setProjectIndex(index)
+                                            }
+                                            key={index}
+                                        >
+                                            <div
+                                                style={{
+                                                    backgroundColor:
+                                                        isCurrentProject
+                                                            ? `rgb(${project.accent_color})`
+                                                            : "var(--primary-01)",
+                                                }}
+                                                className={`${
+                                                    isCurrentProject &&
+                                                    "bulletUp"
+                                                }`}
+                                            />
+                                        </li>
+                                    );
+                                })}
+                        </ul>
+                        <ChevronLeft
+                            style={{
+                                cursor:
+                                    projectIndex === projects.length - 1
+                                        ? "initial"
+                                        : "pointer",
+                                transition: "0.5s",
+                                transform: "rotate(180deg)",
+                            }}
+                            fill={
+                                projectIndex === projects.length - 1
+                                    ? "#808080"
+                                    : "var(--primary-01)"
+                            }
+                            onClick={() => {
+                                if (projectIndex < projects.length - 1) {
+                                    setProjectIndex(projectIndex + 1);
+                                }
+                            }}
+                        />
+                    </div>
+                </ProjectsCarousel>
             </LazyMotion>
 
-            <div className={styles.sectionDots}>
-                <ChevronLeft
-                    style={{
-                        cursor: projectIndex === 0 ? "initial" : "pointer",
-                        transition: "0.5s",
-                    }}
-                    fill={projectIndex === 0 ? "#808080" : "var(--primary-01)"}
-                    onClick={() => {
-                        if (projectIndex > 0) {
-                            setProjectIndex(projectIndex - 1);
-                        }
-                    }}
-                />
-                <ul>
-                    {projects &&
-                        projects.map(function (project, index) {
-                            const isCurrentProject = index === projectIndex;
-                            return (
-                                <li
-                                    onClick={() => setProjectIndex(index)}
-                                    key={index}
-                                >
-                                    <div
-                                        style={{
-                                            backgroundColor: isCurrentProject
-                                                ? `rgb(${project.accent_color})`
-                                                : "var(--primary-01)",
-                                        }}
-                                        className={`${
-                                            isCurrentProject && "bulletUp"
-                                        }`}
-                                    />
-                                </li>
-                            );
-                        })}
-                </ul>
-                <ChevronLeft
-                    style={{
-                        cursor:
-                            projectIndex === projects.length - 1
-                                ? "initial"
-                                : "pointer",
-                        transition: "0.5s",
-                        transform: "rotate(180deg)",
-                    }}
-                    fill={
-                        projectIndex === projects.length - 1
-                            ? "#808080"
-                            : "var(--primary-01)"
-                    }
-                    onClick={() => {
-                        if (projectIndex < projects.length - 1) {
-                            setProjectIndex(projectIndex + 1);
-                        }
-                    }}
-                />
-            </div>
             {projectTechs && projectTechs.length >= 1 && (
                 <div
                     className={styles.projectTechnologies}

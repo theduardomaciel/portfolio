@@ -4,6 +4,15 @@ import { getNowPlaying } from "src/lib/spotify";
 export const GET: APIRoute = async ({ request, redirect }) => {
     const response = await getNowPlaying();
 
+    if (!response) {
+        return new Response(JSON.stringify({ isPlaying: false }), {
+            status: 500,
+            headers: {
+                "content-type": "application/json",
+            },
+        });
+    }
+
     if (response.status === 204 || response.status > 400) {
         return new Response(JSON.stringify({ isPlaying: false }), {
             status: 200,

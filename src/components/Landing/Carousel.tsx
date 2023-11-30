@@ -18,12 +18,14 @@ import PauseIcon from "src/assets/icons/pause.svg?react";
 // Types
 import type { Dispatch, SetStateAction } from "react";
 import type { Project } from "src/lib/types/project";
+import type React from "react";
 
 // i18n
 import type { translations } from "@/i18n/utils";
 import { useTranslations } from "@/i18n/utils";
 
 interface Props {
+    children?: React.ReactNode;
     projects: Project[];
     lang?: string;
     projectIndex: number;
@@ -45,15 +47,11 @@ const column1Props = {
 } as MotionProps;
 
 const column2Props = {
-    initial: { opacity: 0, x: "100vw" },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: "100vw" },
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
     transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 1,
-        ease: "easeOut",
+        duration: 0.375,
     },
 } as MotionProps;
 
@@ -67,6 +65,7 @@ const status_info = {
 };
 
 export default function ProjectsCarousel({
+    children,
     projects,
     lang,
     projectIndex,
@@ -99,7 +98,7 @@ export default function ProjectsCarousel({
                         } /* {...popTransitionProps} */
                     >
                         {projectStatusIcon}
-                        <div />
+                        <div className={styles.separator} />
                         <p>
                             {
                                 t.status[
@@ -107,6 +106,16 @@ export default function ProjectsCarousel({
                                 ]
                             }
                         </p>
+                        {project.year && (
+                            <>
+                                <div className={styles.dot} />
+                                <p>
+                                    {project.status === "WORK_IN_PROGRESS" &&
+                                        t.since}{" "}
+                                    {project.year}
+                                </p>
+                            </>
+                        )}
                     </m.div>
                     <h3>{project.name || project.id}</h3>
                     <h4>{project.description}</h4>
@@ -188,29 +197,19 @@ export default function ProjectsCarousel({
                 {...column2Props}
             >
                 <picture>
-                    {/* <source
-                    style={{ filter: `drop-shadow(0px 0px 10px rgba(${project.accent_color}, 0.5))` }}
-                    className={styles.image}
-                    width={720}
-                    height={576}
-                    sizes="((max-width: 768px)) 360px,
-              (min-width: 769px) 720px"
-                    srcSet={`src/assets/projects/${project.image_url}.avif`}
-                    type="image/avif"
-                /> */}
                     <img
                         style={{
                             filter: `drop-shadow(0px 0px 10px rgba(${project.accent_color}, 0.5))`,
                         }}
                         className={styles.image}
-                        width={720}
-                        height={576}
+                        width={"100%"}
                         sizes="((max-width: 768px)) 360px,
               (min-width: 769px) 720px"
                         src={project.image_url}
                         alt="Imagem representando o projeto"
                     />
                 </picture>
+                {children}
             </m.div>
         </m.div>
     ));

@@ -9,10 +9,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    margin-block: 1.5rem;
+    justify-content: center;
 
     width: 100%;
+    height: 100%;
+    padding-inline: var(--margin);
 
     z-index: 5;
     gap: 2.5rem;
@@ -28,7 +29,7 @@
 
 .home header h1 {
     font-family: "Organic Relief";
-    font-size: 4rem;
+    font-size: 3.2rem;
     text-align: center;
     line-height: 8rem;
 }
@@ -36,7 +37,7 @@
 .home header p {
     font-family: "Roboto Serif Variable";
     font-size: 1.8rem;
-    width: 65%;
+    width: 85%;
 }
 
 .home .outro {
@@ -87,7 +88,7 @@
 }
 
 .home .title {
-    max-width: 80vw;
+    padding-inline: var(--margin);
 }
 
 [data-theme="light"] .astronaut {
@@ -349,10 +350,11 @@
         justify-content: center;
         gap: 10px;
 
-        margin-top: 5rem;
         opacity: 1;
         transform: scale(1);
         transition: opacity 500ms, transform 500ms;
+
+        padding-top: 3.5rem;
 
         /* Create View Timeline */
         view-timeline-name: --hiding-icon;
@@ -374,15 +376,6 @@
     .doubleArrow {
         animation: mouseScrollArrowsAnimation 1500ms
             cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite alternate-reverse;
-    }
-
-    .home header {
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        width: 33%;
-
-        transform: translate(-50%, 0%);
     }
 
     .home header p {
@@ -488,21 +481,31 @@
         flex-direction: column;
         align-items: center;
 
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        width: 33%;
+
+        transform: translate(-50%, 0%);
         order: 2;
 
-        margin-block: 1.5rem;
+        padding-inline: 0px;
 
-        gap: 2.5rem;
+        gap: 3.5rem;
         padding-top: 5rem;
     }
 
     .home header h2 {
-        /* font-size: 3.2rem; */
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .home header p {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
+        max-width: 30vw;
+    }
+
+    .home .title {
+        padding-inline: initial;
     }
 
     .homePlanet {

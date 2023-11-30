@@ -13,10 +13,6 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-import phrases from "@/public/phrases.json";
-const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)][lang];
-
 ---
 
 <section id="home" class="home">
@@ -34,11 +30,20 @@ const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)][lang];
         </div>
         <p>{t.home.subtitle}</p>
 
-        <div class="outro">
-            <p>({randomPhrase})<!-- {t.home.outro} --></p>
-        </div>
+        <a
+            href="https://github.com/theduardomaciel"
+            target="_blank"
+            class="button modern inverted"
+            style="padding-block: 1rem; padding-inline: 2rem;"
+        >
+            <Svg
+                src={import("@/public/icons/enterprises/github.svg?raw")}
+                aria-label="Github icon"
+            />
+            {t.home.action}
+        </a>
 
-        <SocialMedia />
+        <SocialMedia excludeGithub excludeLinkedin />
         <div id="mouseScroll" class="mouseScroll">
             <Svg
                 src={import("@/public/icons/mouse.svg?raw")}

@@ -6,6 +6,7 @@ export interface Project {
     accent_color: string;
     image_url: string;
     status: string;
+    year?: number;
     technologies?: ProjectTechnology[];
     name?: string;
 }

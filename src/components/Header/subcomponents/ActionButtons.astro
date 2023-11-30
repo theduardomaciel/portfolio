@@ -85,7 +85,7 @@ const t = useTranslations(lang).nav;
             {t.theme.dark}
         </p>
     </div>
-    <div class="iconHolder">
+    <div class="iconHolder github">
         <a
             title="github"
             href="https://github.com/theduardomaciel"
@@ -160,6 +160,10 @@ const t = useTranslations(lang).nav;
         height: 2.8rem;
     }
 
+    .holder .iconHolder.github {
+        display: flex;
+    }
+
     @media (min-width: 1024px) {
         .holder .iconHolder {
             justify-content: center;
@@ -176,6 +180,10 @@ const t = useTranslations(lang).nav;
         .holder .iconHolder .interactiveIcon {
             width: 2.2rem;
             height: 2.2rem;
+        }
+
+        .holder .iconHolder.github {
+            display: none;
         }
     }
 </style>

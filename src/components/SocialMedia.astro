@@ -6,8 +6,10 @@ type Props = {
     excludeTwitter?: boolean;
     excludeEmail?: boolean;
     excludeWhatsApp?: boolean;
-    style?: any;
+    excludeGithub?: boolean;
+    excludeLinkedin?: boolean;
     classes?: string;
+    style?: string;
 };
 
 const {
@@ -15,6 +17,8 @@ const {
     excludeTwitter,
     excludeEmail,
     excludeWhatsApp,
+    excludeGithub,
+    excludeLinkedin,
     classes,
     style,
 } = Astro.props;
@@ -22,24 +26,9 @@ const {
 
 <div class={`social ${classes}`} style={style}>
     {
-        !excludeEmail && (
-            <a
-                title="email"
-                href="mailto:eduardomacielbr@gmail.com"
-                target="_blank"
-            >
-                <Svg
-                    class={"icon"}
-                    src={import("@/public/icons/mail.svg?raw")}
-                    aria-label="E-mail icon"
-                />
-            </a>
-        )
-    }
-    {
         !excludeWhatsApp && (
             <a
-                title="whatsApp"
+                title="WhatsApp"
                 target="_blank"
                 href="https://api.whatsapp.com/send?phone=5582988299223&text=Want%20to%20develop%20an%20awesome%20project?%20Contact%20me%20directly%20so%20we%20can%20talk%20about%20it%20:)"
             >
@@ -54,7 +43,7 @@ const {
     {
         !excludeInstagram && (
             <a
-                title="instagram"
+                title="Instagram"
                 href="https://instagram.com/theduardomaciel"
                 target="_blank"
             >
@@ -69,7 +58,7 @@ const {
     {
         !excludeTwitter && (
             <a
-                title="twitter"
+                title="Twitter/X"
                 href="https://twitter.com/theduardomaciel"
                 target="_blank"
             >
@@ -81,15 +70,68 @@ const {
             </a>
         )
     }
+    {
+        !excludeEmail && (
+            <a
+                title="E-mail"
+                href="mailto:eduardomacielbr@gmail.com"
+                target="_blank"
+            >
+                <Svg
+                    class={"icon"}
+                    src={import("@/public/icons/mail.svg?raw")}
+                    aria-label="E-mail icon"
+                />
+            </a>
+        )
+    }
+    {
+        !excludeLinkedin && (
+            <a
+                title="Linkedin"
+                href="https://github.com/theduardomaciel"
+                target="_blank"
+            >
+                <Svg
+                    class={"icon"}
+                    src={import("@/public/icons/enterprises/linkedin.svg?raw")}
+                    aria-label="E-mail icon"
+                />
+            </a>
+        )
+    }
+    {
+        !excludeGithub && (
+            <a
+                title="Github"
+                href="https://github.com/theduardomaciel"
+                target="_blank"
+            >
+                <Svg
+                    class={"icon"}
+                    src={import("@/public/icons/enterprises/github.svg?raw")}
+                    aria-label="E-mail icon"
+                />
+            </a>
+        )
+    }
 </div>
 
 <style>
     .social {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: center;
         gap: 2.5rem;
 
         align-items: center;
+    }
+
+    .social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .icon {

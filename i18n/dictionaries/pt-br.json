@@ -14,8 +14,9 @@
         }
     },
     "home": {
-        "title": "Eai? Me chamo",
-        "subtitle": "e eu gosto de arte e programação.",
+        "title": "oi, oi! Me chamo",
+        "subtitle": "Sou um designer e engenheiro de software de 18 anos em constante aprendizado.",
+        "action": "Dar uma olhada no Github",
         "outro": "(atualmente cursando Ciência da Computação! 🎉)"
     },
     "projects": {
@@ -29,6 +30,7 @@
                 "ARCHIVED": "Arquivado",
                 "OUTDATED": "Obsoleto"
             },
+            "since": "Desde",
             "button": "Ver Projeto",
             "expand": "Expandir",
             "collapse": "Recolher"
@@ -104,7 +106,7 @@
             "button": "Entrar com Github"
         },
         "tags": {
-            "all": "Tudo",
+            "all": "Ver todos",
             "empty": "Parece que ainda não há nenhum post com essa tag!"
         },
         "reading_list": {

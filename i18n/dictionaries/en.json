@@ -15,7 +15,8 @@
     },
     "home": {
         "title": "Hi, I'm",
-        "subtitle": "and I like art and computing.",
+        "subtitle": "An 18 years old Brazilian ongoing designer and software engineer.",
+        "action": "Take a look at Github",
         "outro": "(currently majoring in Computer Science! 🎉)"
     },
     "projects": {
@@ -29,6 +30,7 @@
                 "ARCHIVED": "Archived",
                 "OUTDATED": "Outdated"
             },
+            "since": "Since",
             "button": "View Project",
             "expand": "More Info",
             "collapse": "Less Info"

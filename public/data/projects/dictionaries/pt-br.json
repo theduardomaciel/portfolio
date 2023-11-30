@@ -1,6 +1,6 @@
 {
     "cryptosia": {
-        "description": "Utilize o cryptosia para gerar chaves públicas e privadas que funcionam em sintonia, garantindo segurança simplificada de mensagens sensíveis por meio da criptografia RSA.",
+        "description": "Uma plataforma que permite gerar chaves públicas e privadas que funcionam em sintonia, garantindo segurança simplificada de mensagens sensíveis por meio da criptografia RSA.",
         "technologies": []
     },
     "officia": {
@@ -13,7 +13,7 @@
         ]
     },
     "estudaí": {
-        "description": "Uma plataforma de organização de estudos online que vai te ajudar a revisar e manter suas disciplinas atualizadas.",
+        "description": "Uma plataforma de organização de estudos online que busca ajudar a revisar e manter as disciplinas em dia.",
         "technologies": [
             {
                 "name": "Mobile",
@@ -22,7 +22,7 @@
         ]
     },
     "DFL": {
-        "description": "Um aplicativo que vai te ajudar a denunciar focos de lixo e encontrar pontos de coleta de lixo em sua cidade.",
+        "description": "Um aplicativo que busca ajudar a denunciar focos de lixo e encontrar pontos de coleta de lixo em metrópoles.",
         "technologies": [
             {
                 "name": "Mobile",
@@ -31,7 +31,7 @@
         ]
     },
     "presenteio": {
-        "description": "Uma plataforma de automatização de eventos sociais que busca ajudar a criar bons momentos de forma fácil e prática. Boas lembranças duram para sempre."
+        "description": "Uma plataforma de organização de eventos sociais que busca ajudar a criar bons momentos de forma fácil e prática."
     },
     "PATA": {
         "description": "Um site que irá ajudá-lo a encontrar animais desabrigados vulneráveis, bem como ajudar abrigos superlotados."

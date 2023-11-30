@@ -1,5 +1,45 @@
 [
     {
+        "id": "presenteio",
+        "description": "A platform for automating social events that seeks to help create good moments in an easy and practical way. Good memories last forever.",
+        "project_url": "https://presenteio.vercel.app",
+        "figma_url": "https://www.figma.com/file/PuDRDoObYhb6F1DWohqrjE/Presenteio?node-id=152%3A114",
+        "accent_color": "255, 38, 38",
+        "image_url": "https://imgur.com/eDFa8Ux.png",
+        "status": "WORK_IN_PROGRESS",
+        "year": 2023,
+        "technologies": [
+            {
+                "name": "Frontend",
+                "link": "https://github.com/theduardomaciel/presenteio",
+                "techs": [
+                    "HTML",
+                    "CSS",
+                    "Typescript",
+                    "React",
+                    "Next.js",
+                    "Axios",
+                    "Radix"
+                ]
+            },
+            {
+                "name": "Backend",
+                "techs": [
+                    "Prisma",
+                    "MySQL",
+                    "Typescript",
+                    "Node.js",
+                    "Next.js",
+                    "React Email",
+                    "Vercel OG",
+                    "SendGrid",
+                    "Imgur",
+                    "JWT"
+                ]
+            }
+        ]
+    },
+    {
         "id": "cryptosia",
         "description": "Use cryptosia to generate public and private keys that work in sync, ensuring simplified security of sensitive messages through RSA encryption.",
         "project_url": "https://cryptosia.vercel.app",
@@ -7,6 +47,7 @@
         "accent_color": "238, 215, 156",
         "image_url": "https://imgur.com/qxCZu3W.png",
         "status": "COMPLETED",
+        "year": 2023,
         "technologies": [
             {
                 "name": "Web",
@@ -35,6 +76,7 @@
         "accent_color": "108, 190, 69",
         "image_url": "https://i.imgur.com/fLc7gD3.png",
         "status": "WORK_IN_PROGRESS",
+        "year": 2022,
         "technologies": [
             {
                 "name": "Web",
@@ -76,6 +118,7 @@
         "accent_color": "118, 66, 203",
         "image_url": "https://imgur.com/AljLPyX.png",
         "status": "WORK_IN_PROGRESS",
+        "year": 2021,
         "technologies": [
             {
                 "name": "Web",
@@ -119,6 +162,7 @@
         "accent_color": "52, 98, 89",
         "image_url": "https://imgur.com/b8s3idf.png",
         "status": "ARCHIVED",
+        "year": 2020,
         "technologies": [
             {
                 "name": "Web",
@@ -156,54 +200,6 @@
                 "outro": "And other +30 libraries"
             }
         ]
-    },
-    {
-        "id": "presenteio",
-        "description": "A platform for automating social events that seeks to help create good moments in an easy and practical way. Good memories last forever.",
-        "project_url": "https://presenteio.vercel.app",
-        "figma_url": "https://www.figma.com/file/PuDRDoObYhb6F1DWohqrjE/Presenteio?node-id=152%3A114",
-        "accent_color": "255, 38, 38",
-        "image_url": "https://imgur.com/eDFa8Ux.png",
-        "status": "PAUSED",
-        "technologies": [
-            {
-                "name": "Frontend",
-                "link": "https://github.com/theduardomaciel/presenteio",
-                "techs": [
-                    "HTML",
-                    "CSS",
-                    "Typescript",
-                    "React",
-                    "Next.js",
-                    "Axios",
-                    "Radix"
-                ]
-            },
-            {
-                "name": "Backend",
-                "techs": [
-                    "Prisma",
-                    "MySQL",
-                    "Typescript",
-                    "Node.js",
-                    "Next.js",
-                    "React Email",
-                    "Vercel OG",
-                    "SendGrid",
-                    "Imgur",
-                    "JWT"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "PATA",
-        "description": "A website that will help you find vulnerable homeless animals, as well as help overcrowded shelters.",
-        "accent_color": "125, 120, 182",
-        "image_url": "https://imgur.com/GSY7raE.png",
-        "figma_url": "https://www.figma.com/file/zRMVA07zlfuybQ9TkzydIw/PATAS?node-id=301%3A129",
-        "status": "SKETCH",
-        "technologies": []
     },
     {
         "id": "portfolio",

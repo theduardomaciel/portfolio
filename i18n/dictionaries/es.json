@@ -15,7 +15,8 @@
     },
     "home": {
         "title": "Hola, soy",
-        "subtitle": "y me gusta el arte y la informática.",
+        "subtitle": "Un diseñador e ingeniero de software en curso brasileño de 18 años.",
+        "action": "Echa un vistazo a Github",
         "outro": "(¡actualmente estudiando Ciencias de la Computación! 🎉)"
     },
     "projects": {
@@ -29,6 +30,7 @@
                 "ARCHIVED": "Archivado",
                 "OUTDATED": "Obsoleto"
             },
+            "since": "Desde",
             "button": "Ver Proyecto",
             "expand": "Más Información",
             "collapse": "Menos Información"
