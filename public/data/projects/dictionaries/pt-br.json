@@ -1,6 +1,6 @@
 {
-	"IChess": {
-		"description": "Uma aplicação web para membros e administradores do projeto de extensão IChess.",
+	"verifIC": {
+		"description": "Um sistema de credenciamento para eventos que permite criar e gerenciar eventos, gerar códigos QR para participantes e verificar sua presença por meio de uma interface web simples.",
 		"technologies": []
 	},
 	"cryptosia": {

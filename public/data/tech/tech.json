@@ -79,7 +79,7 @@
 			},
 			{
 				"name": "Angular",
-				"experience_level": 3,
+				"experience_level": 2,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/e80c209e3f3728597cac59e00a4b81c44ba1b097/angular.svg"
 			},
 			{
@@ -89,7 +89,7 @@
 			},
 			{
 				"name": "TailwindCSS",
-				"experience_level": 2,
+				"experience_level": 3,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/03b71945919d4934500bdd0cfd661d55bc299a82/tailwindcss.svg"
 			}
 		]
@@ -99,12 +99,12 @@
 		"techs": [
 			{
 				"name": "Node.js",
-				"experience_level": 2,
+				"experience_level": 3,
 				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/nodejs.svg"
 			},
 			{
 				"name": "Express.js",
-				"experience_level": 2,
+				"experience_level": 1,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/expressjs.svg"
 			},
 			{
@@ -119,7 +119,7 @@
 			},
 			{
 				"name": "Spring Boot",
-				"experience_level": 2,
+				"experience_level": 1,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/spring.svg"
 			}
 		]

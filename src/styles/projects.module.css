@@ -28,14 +28,13 @@
 }
 
 .carousel .image {
-    width: fit-content;
-    height: 100%;
+    object-fit: cover;
     user-select: none;
-    object-fit: contain;
+
+    width: auto;
+    height: 100%;
 
     filter: drop-shadow(0px 0px 10px rgba(52, 98, 89, 0.5));
-    overflow: hidden;
-    border-radius: 1.5rem;
     transition: 0.35s;
     opacity: 1;
 }
@@ -138,14 +137,17 @@
     align-items: center;
     justify-content: center;
 
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 
     gap: 2rem;
 }
 
 .sectionDots ul::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, and Opera */
+    display: none;
+    /* Chrome, Safari, and Opera */
 }
 
 .sectionDots ul li div {
@@ -321,6 +323,8 @@
     justify-content: center;
     width: 100%;
     height: 27.5rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -390,12 +394,5 @@
     .imageHolder {
         display: flex;
         align-items: center;
-        width: 100%;
-        height: 27.5rem;
-    }
-
-    .carousel .image {
-        min-height: 22.5rem;
-        max-height: 27.5rem;
     }
 }

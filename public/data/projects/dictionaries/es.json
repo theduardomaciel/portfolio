@@ -1,6 +1,6 @@
 {
-	"IChess": {
-		"description": "Utilice criptosia para generar claves públicas y privadas que funcionen sincronizadas, garantizando una seguridad simplificada de los mensajes confidenciales mediante el cifrado RSA.",
+	"verifIC": {
+		"description": "Un sistema de acreditación para eventos que permite crear y gestionar eventos, generar códigos QR para los asistentes y verificar su presencia a través de una sencilla interfaz web.",
 		"technologies": []
 	},
 	"cryptosia": {
