@@ -16,7 +16,7 @@ import SketchIcon from "@/icons/sketch.svg?react";
 import PauseIcon from "@/icons/pause.svg?react";
 
 // Types
-import { useLayoutEffect, type Dispatch, type ReactEventHandler, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { Project } from "src/types/project";
 import type React from "react";
 
@@ -247,14 +247,6 @@ export default function ProjectsCarousel({
 			</m.div>
 		);
 	});
-
-	/* useLayoutEffect(() => {
-		const carousel = document.getElementById("carousel");
-
-		if (projectIndex && carousel) {
-			carousel.style.maxHeight = `${carousel.scrollHeight}px`;
-		}
-	}, [projectIndex]); */
 
 	const images = projects.map((project) => {
 		return (
