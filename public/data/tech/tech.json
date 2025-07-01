@@ -8,24 +8,24 @@
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/eeea6ea86b2fc11ac32f7779e2178428e9ce683f/c.svg"
 			},
 			{
+				"name": "C#",
+				"experience_level": 1,
+				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/csharp.svg"
+			},
+			{
 				"name": "Java",
 				"experience_level": 1,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/01b5c8cb2a06025428cb61c18bc5a7d23b4bc517/java.svg"
 			},
 			{
+				"name": "Lua",
+				"experience_level": 2,
+				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/lua.svg"
+			},
+			{
 				"name": "Python",
 				"experience_level": 2,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/58dd2b02e767c81b9c8c89e1ce9adcace01eeda3/python.svg"
-			}
-		]
-	},
-	{
-		"id": "mobile",
-		"techs": [
-			{
-				"name": "React Native",
-				"experience_level": 2,
-				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/react.svg"
 			},
 			{
 				"name": "Kotlin",
@@ -56,11 +56,16 @@
 				"name": "TypeScript",
 				"experience_level": 3,
 				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/typescript.svg"
+			},
+			{
+				"name": "React",
+				"experience_level": 3,
+				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/react.svg"
 			}
 		]
 	},
 	{
-		"id": "frameworks",
+		"id": "frontend",
 		"techs": [
 			{
 				"name": "Next.js",
@@ -73,24 +78,64 @@
 				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/astro.svg"
 			},
 			{
-				"name": "Node.js",
-				"experience_level": 2,
-				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/nodejs.svg"
-			}
-		]
-	},
-	{
-		"id": "libraries",
-		"techs": [
-			{
-				"name": "React",
+				"name": "Angular",
 				"experience_level": 3,
-				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/react.svg"
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/e80c209e3f3728597cac59e00a4b81c44ba1b097/angular.svg"
+			},
+			{
+				"name": "Svelte",
+				"experience_level": 1,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6517db50c1b84b7e84c361a0324da4968b32d677/svelte.svg"
 			},
 			{
 				"name": "TailwindCSS",
 				"experience_level": 2,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/03b71945919d4934500bdd0cfd661d55bc299a82/tailwindcss.svg"
+			}
+		]
+	},
+	{
+		"id": "backend",
+		"techs": [
+			{
+				"name": "Node.js",
+				"experience_level": 2,
+				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/nodejs.svg"
+			},
+			{
+				"name": "Express.js",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/expressjs.svg"
+			},
+			{
+				"name": "NestJS",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/nestjs.svg"
+			},
+			{
+				"name": "Ktor",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/ktor.svg"
+			},
+			{
+				"name": "Spring Boot",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/spring.svg"
+			}
+		]
+	},
+	{
+		"id": "mobile",
+		"techs": [
+			{
+				"name": "Expo",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/expo.svg"
+			},
+			{
+				"name": "Jetpack Compose",
+				"experience_level": 2,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/9bb0c3db8f310c9202b182d18c0b4c72e5dd5443/android.svg"
 			}
 		]
 	},
@@ -136,6 +181,11 @@
 				"name": "Drizzle",
 				"experience_level": 1,
 				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/4da35d1845a078121c3b9cf9c5a6279ac8649819/drizzle.svg"
+			},
+			{
+				"name": "Exposed",
+				"experience_level": 1,
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/exposed.svg"
 			}
 		]
 	},
@@ -143,14 +193,9 @@
 		"id": "games",
 		"techs": [
 			{
-				"name": "Lua",
-				"experience_level": 2,
-				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/lua.svg"
-			},
-			{
-				"name": "C#",
+				"name": "Unity",
 				"experience_level": 1,
-				"icon_url": "https://gistcdn.githack.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/6063bd44f21f735eda26e716b91933d7db0bdef8/csharp.svg"
+				"icon_url": "https://gist.githubusercontent.com/theduardomaciel/099d3e6ae02bf45bc9b1f3bb6b4ed09e/raw/a1d972040d25a4eab22e91215552347e4afa9bcf/unity.svg"
 			}
 		]
 	}
