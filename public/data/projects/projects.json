@@ -1,17 +1,17 @@
 [
 	{
-		"id": "IChess",
-		"description": "A web application for members and administrators of the IChess extension project.",
-		"project_url": "https://ichess-web.vercel.app",
-		"figma_url": "https://www.figma.com/design/DKXZoEFnCNbtVV6XGPXGv0/IChess?node-id=181-823&t=vTSQE66slBGmxmQE-1",
-		"accent_color": "131, 179, 82",
-		"image_url": "https://imgur.com/grhIZXD.png",
+		"id": "verifIC",
+		"description": "An accreditation system for events that allows you to create and manage events, generate QR codes for attendees, and verify their presence through a simple web interface.",
+		"project_url": "https://verific.vercel.app",
+		"figma_url": "https://www.figma.com/design/I55WPfDNhSViBbha5eQEq4/verifIC?node-id=610-9553&t=qycqa0u3ULCpOBBH-1",
+		"accent_color": "59, 130, 246",
+		"image_url": "https://imgur.com/k8GfGgP.png",
 		"status": "COMPLETED",
-		"year": 2024,
+		"year": 2025,
 		"technologies": [
 			{
 				"name": "Frontend",
-				"link": "https://github.com/theduardomaciel/ichess",
+				"link": "https://github.com/theduardomaciel/verific",
 				"techs": [
 					"HTML",
 					"CSS",
@@ -19,12 +19,15 @@
 					"React",
 					"Next.js",
 					"TailwindCSS",
-					"Radix"
+					"Shadcn UI"
 				]
 			},
 			{
 				"name": "Backend",
-				"techs": ["tRPC", "Turborepo"]
+				"techs": [
+					"tRPC",
+					"Turborepo"
+				]
 			}
 		]
 	},
@@ -53,7 +56,11 @@
 			},
 			{
 				"name": "Backend",
-				"techs": ["WebAssembly", "Emscripten", "C"]
+				"techs": [
+					"WebAssembly",
+					"Emscripten",
+					"C"
+				]
 			}
 		]
 	},
@@ -84,7 +91,12 @@
 			{
 				"name": "API",
 				"link": "https://github.com/theduardomaciel/officia-api",
-				"techs": ["NestJS", "Node.js", "Prisma", "MySQL (Planet Scale)"]
+				"techs": [
+					"NestJS",
+					"Node.js",
+					"Prisma",
+					"MySQL (Planet Scale)"
+				]
 			},
 			{
 				"name": "Mobile",
@@ -174,7 +186,9 @@
 			},
 			{
 				"name": "API",
-				"techs": ["MongoDB"]
+				"techs": [
+					"MongoDB"
+				]
 			}
 		]
 	},
@@ -276,11 +290,21 @@
 		"technologies": [
 			{
 				"name": "Front End",
-				"techs": ["React", "TypeScript", "HTML", "CSS", "Astro"]
+				"techs": [
+					"React",
+					"TypeScript",
+					"HTML",
+					"CSS",
+					"Astro"
+				]
 			},
 			{
 				"name": "Backend",
-				"techs": ["MDX", "Astro Collections", "Vercel"]
+				"techs": [
+					"MDX",
+					"Astro Collections",
+					"Vercel"
+				]
 			}
 		]
 	}

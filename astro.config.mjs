@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import svgr from "vite-plugin-svgr";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
