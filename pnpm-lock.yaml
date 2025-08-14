@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/mdx':
-        specifier: ^4.3.0
-        version: 4.3.0(astro@5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))
+        specifier: ^4.3.3
+        version: 4.3.3(astro@5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))
       '@astrojs/react':
         specifier: ^4.3.0
         version: 4.3.0(@types/node@24.0.9)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -18,8 +18,8 @@ importers:
         specifier: ^4.0.12
         version: 4.0.12
       '@astrojs/vercel':
-        specifier: ^8.2.0
-        version: 8.2.0(astro@5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))(react@19.1.0)(rollup@4.44.1)
+        specifier: ^8.2.5
+        version: 8.2.5(astro@5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))(react@19.1.0)(rollup@4.44.1)
       '@fontsource-variable/inter':
         specifier: ^5.2.6
         version: 5.2.6
@@ -39,8 +39,8 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       astro:
-        specifier: ^5.10.2
-        version: 5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
+        specifier: ^5.13.0
+        version: 5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
       axios:
         specifier: ^1.10.0
         version: 1.10.0
@@ -88,14 +88,14 @@ packages:
   '@astrojs/compiler@2.12.2':
     resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
 
-  '@astrojs/internal-helpers@0.6.1':
-    resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
+  '@astrojs/internal-helpers@0.7.1':
+    resolution: {integrity: sha512-7dwEVigz9vUWDw3nRwLQ/yH/xYovlUA0ZD86xoeKEBmkz9O6iELG1yri67PgAPW6VLL/xInA4t7H0CK6VmtkKQ==}
 
-  '@astrojs/markdown-remark@6.3.2':
-    resolution: {integrity: sha512-bO35JbWpVvyKRl7cmSJD822e8YA8ThR/YbUsciWNA7yTcqpIAL2hJDToWP5KcZBWxGT6IOdOkHSXARSNZc4l/Q==}
+  '@astrojs/markdown-remark@6.3.5':
+    resolution: {integrity: sha512-MiR92CkE2BcyWf3b86cBBw/1dKiOH0qhLgXH2OXA6cScrrmmks1Rr4Tl0p/lFpvmgQQrP54Pd1uidJfmxGrpWQ==}
 
-  '@astrojs/mdx@4.3.0':
-    resolution: {integrity: sha512-OGX2KvPeBzjSSKhkCqrUoDMyzFcjKt5nTE5SFw3RdoLf0nrhyCXBQcCyclzWy1+P+XpOamn+p+hm1EhpCRyPxw==}
+  '@astrojs/mdx@4.3.3':
+    resolution: {integrity: sha512-+9+xGP2TBXxcm84cpiq4S9JbuHOHM1fcvREfqW7VHxlUyfUQPByoJ9YYliqHkLS6BMzG+O/+o7n8nguVhuEv4w==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -120,11 +120,8 @@ packages:
     resolution: {integrity: sha512-UFBgfeldP06qu6khs/yY+q1cDAaArM2/7AEIqQ9Cuvf7B1hNLq0xDrZkct+QoIGyjq56y8IaE2I3CTvG99mlhQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/underscore-redirects@1.0.0':
-    resolution: {integrity: sha512-qZxHwVnmb5FXuvRsaIGaqWgnftjCuMY+GSbaVZdBmE4j8AfgPqKPxYp8SUERyJcjpKCEmO4wD6ybuGH8A2kVRQ==}
-
-  '@astrojs/vercel@8.2.0':
-    resolution: {integrity: sha512-fUNT+QIQzUfCE0qQAm2yQwEjOn9fhydZZqvLxhsu0TmWww1oppm9uaXASMWA62CX7r3rq3ZMOF/0y3JZTsIl1Q==}
+  '@astrojs/vercel@8.2.5':
+    resolution: {integrity: sha512-SXD3CKKsxPuAe9Fd9PEOjnX/hSpSq4fM7uQ4sz6R1g2MgkX8bwkshz0qRDUx4744GSfCn/J2nDlTV/aJUkhHkA==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -1161,13 +1158,23 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/edge@1.2.2':
-    resolution: {integrity: sha512-1+y+f6rk0Yc9ss9bRDgz/gdpLimwoRteKHhrcgHvEpjbP1nyT3ByqEMWm2BTcpIO5UtDmIFXc8zdq4LR190PDA==}
+  '@vercel/functions@2.2.11':
+    resolution: {integrity: sha512-NhbMW01IyepdcaQiYUt9XXodtq5SFr2gNiL7lmX/2cgjP7cKy6V+RYXKT15EbizqZ9o3j9gqdYScxd1tvY211w==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-web-identity': '*'
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-web-identity':
+        optional: true
 
   '@vercel/nft@0.29.4':
     resolution: {integrity: sha512-6lLqMNX3TuycBPABycx7A9F1bHQR7kiQln6abjFbPrf5C/05qHM9M5E4PeTE59c7z8g6vHnx1Ioihb2AQl7BTA==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@vercel/oidc@2.0.0':
+    resolution: {integrity: sha512-U0hncpXof7gC9xtmSrjz6vrDqdwJXi8z/zSc9FyS80AoXKfCZtpkBz9gtL3x30Agmpxpwe35P1W2dP9Epa/RGA==}
+    engines: {node: '>= 18'}
 
   '@vercel/routing-utils@5.0.8':
     resolution: {integrity: sha512-R/lz7BqN3EY8MBM9PSUdZ0o48fN5et0e54ra3+LIHgpuf6mtVVIjC7poEp09I+vnmUYd26263opo3fb10JhUxQ==}
@@ -1245,8 +1252,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro@5.10.2:
-    resolution: {integrity: sha512-CCBU+e/Apk6NWEMnc/R9dVZD/+FaCnNqWJicX1Oe6T18vLKop+LPs/m/88ekJk4zxP1g1N/GfUq4wEedUSk1Wg==}
+  astro@5.13.0:
+    resolution: {integrity: sha512-kWahyvrrxUtgxFRRWSH5X0DESvgg4ZZ0fk6tU7blVZRgmj4PY79nzfaXFT+N+Ac2vWXX7eYUPYs1kLLk5IjBfQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2874,11 +2881,11 @@ snapshots:
 
   '@astrojs/compiler@2.12.2': {}
 
-  '@astrojs/internal-helpers@0.6.1': {}
+  '@astrojs/internal-helpers@0.7.1': {}
 
-  '@astrojs/markdown-remark@6.3.2':
+  '@astrojs/markdown-remark@6.3.5':
     dependencies:
-      '@astrojs/internal-helpers': 0.6.1
+      '@astrojs/internal-helpers': 0.7.1
       '@astrojs/prism': 3.3.0
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.3
@@ -2902,12 +2909,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))':
+  '@astrojs/mdx@4.3.3(astro@5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))':
     dependencies:
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.5
       '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
       acorn: 8.15.0
-      astro: 5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
+      astro: 5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -2965,20 +2972,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/underscore-redirects@1.0.0': {}
-
-  '@astrojs/vercel@8.2.0(astro@5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))(react@19.1.0)(rollup@4.44.1)':
+  '@astrojs/vercel@8.2.5(astro@5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3))(react@19.1.0)(rollup@4.44.1)':
     dependencies:
-      '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/underscore-redirects': 1.0.0
+      '@astrojs/internal-helpers': 0.7.1
       '@vercel/analytics': 1.5.0(react@19.1.0)
-      '@vercel/edge': 1.2.2
+      '@vercel/functions': 2.2.11
       '@vercel/nft': 0.29.4(rollup@4.44.1)
       '@vercel/routing-utils': 5.0.8
-      astro: 5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
+      astro: 5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3)
       esbuild: 0.25.5
       tinyglobby: 0.2.14
     transitivePeerDependencies:
+      - '@aws-sdk/credential-provider-web-identity'
       - '@remix-run/react'
       - '@sveltejs/kit'
       - encoding
@@ -3904,7 +3909,9 @@ snapshots:
     optionalDependencies:
       react: 19.1.0
 
-  '@vercel/edge@1.2.2': {}
+  '@vercel/functions@2.2.11':
+    dependencies:
+      '@vercel/oidc': 2.0.0
 
   '@vercel/nft@0.29.4(rollup@4.44.1)':
     dependencies:
@@ -3924,6 +3931,8 @@ snapshots:
       - encoding
       - rollup
       - supports-color
+
+  '@vercel/oidc@2.0.0': {}
 
   '@vercel/routing-utils@5.0.8':
     dependencies:
@@ -3997,11 +4006,11 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@5.10.2(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3):
+  astro@5.13.0(@types/node@24.0.9)(jiti@2.4.2)(rollup@4.44.1)(typescript@5.8.3):
     dependencies:
       '@astrojs/compiler': 2.12.2
-      '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/internal-helpers': 0.7.1
+      '@astrojs/markdown-remark': 6.3.5
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 2.4.0
       '@oslojs/encoding': 1.1.0
@@ -4044,6 +4053,7 @@ snapshots:
       rehype: 13.0.2
       semver: 7.7.2
       shiki: 3.7.0
+      smol-toml: 1.4.1
       tinyexec: 0.3.2
       tinyglobby: 0.2.14
       tsconfck: 3.1.6(typescript@5.8.3)
