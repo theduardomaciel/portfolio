@@ -33,12 +33,16 @@ export const GET: APIRoute = async ({ request }) => {
 			status: 200,
 			headers: {
 				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
 			},
 		});
 	} catch (error) {
 		console.log(error);
 		return new Response("Error", {
 			status: 500,
+			headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
 		});
 	}
 };
